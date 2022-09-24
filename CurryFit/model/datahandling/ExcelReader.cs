@@ -8,7 +8,7 @@ namespace CurryFit.model
 {
     internal class ExcelReader
     {
-        private static readonly String defaultpath = "../../../resources/";
+        private static readonly String defaultpath = "../../../resources/excel-files";
 
         static Dictionary<String, Excercise> convertExcelFileToHandledData(String path)
         {
@@ -25,7 +25,7 @@ namespace CurryFit.model
 
                     String name = values[0];
                     int variant = Int32.Parse(values[5]);
-                    Console.WriteLine(name);
+                    Console.WriteLine(name); //test
 
                 }
 
