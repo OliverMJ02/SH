@@ -6,7 +6,6 @@ using System.IO;
 
 namespace CurryFit.model
 {
-   
     internal class ExcelReader
     {
         private static readonly String defaultpath = "../../../resources/";

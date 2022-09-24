@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CurryFit.model
 {
-    public class Excersice
+    public class Excercise
     {
     }
 }

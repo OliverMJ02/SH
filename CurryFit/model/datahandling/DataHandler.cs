@@ -6,5 +6,6 @@ namespace CurryFit.model.datahandling
 {
     internal class DataHandler
     {
+
     }
 }
