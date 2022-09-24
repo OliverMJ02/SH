@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit.Android", "CurryFit\CurryFit.Android\CurryFit.Android.csproj", "{4862C63A-6427-4778-AEB4-EC593619F381}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit.Android", "CurryFit.Android\CurryFit.Android.csproj", "{4862C63A-6427-4778-AEB4-EC593619F381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit.iOS", "CurryFit\CurryFit.iOS\CurryFit.iOS.csproj", "{4B2C873A-AA7E-4CC6-8A26-4C54B4509378}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit.iOS", "CurryFit.iOS\CurryFit.iOS.csproj", "{4B2C873A-AA7E-4CC6-8A26-4C54B4509378}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit", "CurryFit\CurryFit\CurryFit.csproj", "{E7BA49DE-2E65-4972-8087-224B9ECE61B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit", "CurryFit\CurryFit.csproj", "{E7BA49DE-2E65-4972-8087-224B9ECE61B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
