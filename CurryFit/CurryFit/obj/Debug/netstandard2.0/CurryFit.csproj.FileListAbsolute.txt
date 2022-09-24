@@ -1,0 +1,17 @@
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.csproj.AssemblyReference.cache
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\view\MainPage.xaml.g.cs
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\view\ScannerView.xaml.g.cs
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\view\WorkoutPage.xaml.g.cs
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.AssemblyInfoInputs.cache
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.AssemblyInfo.cs
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.csproj.CoreCompileInputs.cache
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\bin\Debug\netstandard2.0\CurryFit.deps.json
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\bin\Debug\netstandard2.0\CurryFit.dll
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\bin\Debug\netstandard2.0\CurryFit.pdb
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.dll
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\refint\CurryFit.dll
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\CurryFit.pdb
+C:\Users\oscar\source\repos\CurryFit\CurryFit\CurryFit\obj\Debug\netstandard2.0\ref\CurryFit.dll
