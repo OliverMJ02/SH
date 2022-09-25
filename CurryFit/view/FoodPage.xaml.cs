@@ -10,11 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ScannerView : ContentView
+    public partial class FoodPage : ContentPage
     {
-        public ScannerView()
+        public FoodPage()
         {
             InitializeComponent();
         }
+        private async void Handle_ScannerPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ScannerPage());
+        }
+
     }
 }
