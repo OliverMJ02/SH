@@ -10,9 +10,9 @@ namespace CurryFit.model
     {
         private static readonly String defaultpath = "../../../resources/excel-files";
 
-        static Dictionary<String, Excercise> convertExcelFileToHandledData(String path)
+        static Dictionary<String, Exercise> convertExcelFileToHandledData(String path)
         {
-            Dictionary<String, Excercise> converted = new Dictionary<String, Excercise>();
+            Dictionary<String, Exercise> converted = new Dictionary<String, Exercise>();
             String line;
             path = "OvningsDataBas-CurryFit.csv";
             String file = Path.Combine(defaultpath + path);
