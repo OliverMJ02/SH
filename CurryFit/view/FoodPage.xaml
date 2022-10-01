@@ -2,11 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurryFit.view.FoodPage">
+
+    <!--Nav Bar-->
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Food and Nutrition" HorizontalTextAlignment="Center" Margin="0,0,75,0"
+                   FontSize="20"  TextColor="{DynamicResource AshGrey}"
+                   HorizontalOptions="Center">
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
     
     
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Scan" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_ScannerPage"></Button>
+            <Button Text="Scan" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Title" Clicked="Handle_ScannerPage"></Button>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
+                <Label x:Name="dateLabel" Text="" HorizontalOptions="CenterAndExpand" FontSize="15"></Label>
+                <Button Text=">" HorizontalOptions="End" Clicked="Next_Date"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

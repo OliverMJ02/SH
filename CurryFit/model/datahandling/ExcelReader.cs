@@ -10,19 +10,20 @@ namespace CurryFit.model
     {
         private static readonly String defaultpath = "../../../resources/excel-files";
 
-        static Dictionary<String, Exercise> convertExcelFileToHandledData(String path)
+        static Dictionary<Int32, Exercise> convertExcelFileToHandledData(String path)
         {
-            Dictionary<String, Exercise> converted = new Dictionary<String, Exercise>();
+            Dictionary<Int32, Exercise> converted = new Dictionary<Int32, Exercise>();
             String line;
             path = "OvningsDataBas-CurryFit.csv";
             String file = Path.Combine(defaultpath + path);
             using (var stream = new StreamReader(file))
             {
+                int i = 0;
                 stream.ReadLine();
                 while ((line = stream.ReadLine()) != null)
                 {
-                    String[] values = line.Split(';');
 
+                    String[] values = line.Split(';');
                     String name = values[0];
                     int variant = Int32.Parse(values[5]);
                     Console.WriteLine(name); //test

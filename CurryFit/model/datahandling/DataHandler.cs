@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CurryFit.model.datahandling
 {
-    internal class DataHandler
+    public class DataHandler
     {
-
+       
     }
 }
