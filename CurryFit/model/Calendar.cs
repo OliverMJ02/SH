@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+
 
 namespace CurryFit.model
 {
@@ -10,7 +12,9 @@ namespace CurryFit.model
     public class Calendar
     {
         private int currentDate;
-        private String format = "ddMMyyyy";
+        CultureInfo culture = new CultureInfo("en-SE", false);
+        String format = "dd MMMM yyyy";
+         
 
         /// <summary>
         /// Method for getting the next calendar day 
@@ -19,10 +23,9 @@ namespace CurryFit.model
         /// <returns></returns
         public String get_NextDay(String date)
         {
-            DateTime.TryParseExact(date, format, null,
-                System.Globalization.DateTimeStyles.AdjustToUniversal, out DateTime convertedDate);
+            var convertedDate = DateTime.Parse(date, culture);
             convertedDate = convertedDate.AddDays(1);
-            return convertedDate.ToString("d MM yyyy");
+            return convertedDate.ToString(format);
         }
 
         /// <summary>
@@ -32,11 +35,11 @@ namespace CurryFit.model
         /// <returns></returns>
         public String get_PreviousDay(String date)
         {
-            DateTime.TryParseExact(date, format, null,
-                System.Globalization.DateTimeStyles.AdjustToUniversal, out DateTime convertedDate);
-            convertedDate = convertedDate.AddDays(1);
-            return convertedDate.ToString("d MM yyyy");
+            var convertedDate = DateTime.Parse(date, culture);
+            convertedDate = convertedDate.AddDays(-1);
+            return convertedDate.ToString(format);
         }
+
         /// <summary>
         /// Method for getting the selected date's weekday 
         /// </summary>

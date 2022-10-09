@@ -17,6 +17,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Button Text="Scan" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Title" Clicked="Handle_ScannerPage"></Button>
+            
+            <!--DatePane-->
             <StackLayout Orientation="Horizontal" VerticalOptions="End">
                 <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
                 <Label x:Name="dateLabel" Text="" HorizontalOptions="CenterAndExpand" FontSize="15"></Label>
