@@ -18,19 +18,6 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WorkoutPage : ContentPage
     {
-        List<Exercise> ExercisesList = new List<Exercise>();
-        ProgramExercise pex = new ProgramExercise
-        {
-            TpCreator = "All",
-            TpDifficulty = "All",
-            TpLocation = "All",
-            TpMuscleGroups = "All",
-            ExCreator = "All",
-            ExDifficulty = "All",
-            ExLocation = "All",
-            ExMuscleGroup = "All",
-            isProgram = true
-        };
         public WorkoutPage()
         {
             InitializeComponent();
@@ -42,94 +29,89 @@ namespace CurryFit.view
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
 
+            MenuLayout.WidthRequest = xamarinWidth;
 
-            GridRowZero.HeightRequest = Math.Round(xamarinHeight) - 125;
+            BtnHome.WidthRequest = xamarinWidth * 0.2;
+            BtnFood.WidthRequest = xamarinWidth * 0.2;
+            BtnWorkout.WidthRequest = xamarinWidth * 0.2;
+            BtnStats.WidthRequest = xamarinWidth * 0.2;
+            BtnProfile.WidthRequest = xamarinWidth * 0.2;
 
-            MenuBtn1.WidthRequest = Math.Round(xamarinWidth) / 5.5;
-            MenuBtn2.WidthRequest = Math.Round(xamarinWidth) / 5.5;
-            MenuBtn3.WidthRequest = Math.Round(xamarinWidth) / 5.5;
-            MenuBtn4.WidthRequest = Math.Round(xamarinWidth) / 5.5;
-            MenuBtn5.WidthRequest = Math.Round(xamarinWidth) / 5.5;
+            SearchBar.WidthRequest = xamarinWidth * 0.6;
+            FilterBtn.WidthRequest = xamarinWidth * 0.3;
 
-            CurrentExcerciseVideoLink.WidthRequest = Math.Round(xamarinWidth * 0.9);
-            CurrentExcerciseVideoLink.HeightRequest = Math.Round(xamarinWidth * 0.5063);
-
-            EditExcerciseDescription.HeightRequest = Math.Round(xamarinHeight * 0.15);
-            EditExcerciseDescription.WidthRequest = Math.Round(xamarinWidth * 0.95);
-            EditProgramDescription.HeightRequest = Math.Round(xamarinHeight * 0.15);
-            EditProgramDescription.WidthRequest = Math.Round(xamarinWidth * 0.95);
-
-            CreateExcerciseDescription.HeightRequest = Math.Round(xamarinHeight * 0.15);
-            CreateExcerciseDescription.WidthRequest = Math.Round(xamarinWidth * 0.95);
-            CreateProgramDescription.HeightRequest = Math.Round(xamarinHeight * 0.15);
-            CreateProgramDescription.WidthRequest = Math.Round(xamarinWidth * 0.95);
-
-            //Till för att fylla alla pickers, går säkert att effektivisera senare.
-            CreateProgramDifficulty.Items.Add("Beginner");
-            CreateProgramDifficulty.Items.Add("Easy");
-            CreateProgramDifficulty.Items.Add("Normal");
-            CreateProgramDifficulty.Items.Add("Hard");
-            CreateProgramDifficulty.Items.Add("Expert");
-
-            CreateExcerciseDifficulty.Items.Add("Beginner");
-            CreateExcerciseDifficulty.Items.Add("Easy");
-            CreateExcerciseDifficulty.Items.Add("Normal");
-            CreateExcerciseDifficulty.Items.Add("Hard");
-            CreateExcerciseDifficulty.Items.Add("Expert");
-
-            EditExcerciseDifficulty.Items.Add("Beginner");
-            EditExcerciseDifficulty.Items.Add("Easy");
-            EditExcerciseDifficulty.Items.Add("Normal");
-            EditExcerciseDifficulty.Items.Add("Hard");
-            EditExcerciseDifficulty.Items.Add("Expert");
-
-            EditProgramDifficulty.Items.Add("Beginner");
-            EditProgramDifficulty.Items.Add("Easy");
-            EditProgramDifficulty.Items.Add("Normal");
-            EditProgramDifficulty.Items.Add("Hard");
-            EditProgramDifficulty.Items.Add("Expert");
-
-            CreateExcerciseLocation.Items.Add("Home");
-            CreateExcerciseLocation.Items.Add("Gym");
-            CreateExcerciseLocation.Items.Add("Outside");
-            CreateExcerciseLocation.Items.Add("Sports center");
-            CreateExcerciseLocation.Items.Add("Lake/Pool");
-
-            CreateProgramLocation.Items.Add("Home");
-            CreateProgramLocation.Items.Add("Gym");
-            CreateProgramLocation.Items.Add("Outside");
-            CreateProgramLocation.Items.Add("Sports center");
-            CreateProgramLocation.Items.Add("Lake/Pool");
-
-            EditExcerciseLocation.Items.Add("Home");
-            EditExcerciseLocation.Items.Add("Gym");
-            EditExcerciseLocation.Items.Add("Outside");
-            EditExcerciseLocation.Items.Add("Sports center");
-            EditExcerciseLocation.Items.Add("Lake/Pool");
-
-            EditProgramLocation.Items.Add("Home");
-            EditProgramLocation.Items.Add("Gym");
-            EditProgramLocation.Items.Add("Outside");
-            EditProgramLocation.Items.Add("Sports center");
-            EditProgramLocation.Items.Add("Lake/Pool");
         }
+
+        void Handle_Favorised(object sender, EventArgs e)
+        {
+            ImageButton btn = sender as ImageButton;
+            int id = (int) btn.CommandParameter;
+            Exercise ex = App.Database.GetSingleExercise(id);
+            if (ex.FavorisedSource.Equals("star_empty.png"))
+            {
+                ex.FavorisedSource = "star_filled.png";
+            }
+            else
+            {
+                ex.FavorisedSource = "star_empty.png";
+            }
+            App.Database.UpdateExercise(ex);
+            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+
+        }
+
+
+        //Dessa genererar bara test exempel på övningar för att se hur det kan se ut. Kommer inte behövas sen.
+        void Handle_AddNewExercise(object sender, EventArgs e)
+        {
+
+            Exercise ex = new Exercise();
+            ex.Name = "Test namn";
+            ex.Creator = "Strengthhub";
+            ex.MainEquipment = "Machine";
+            ex.MainMuscle = "Triceps";
+            ex.FavorisedSource = "star_empty.png";
+            App.Database.SaveExercise(ex);
+            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+        }
+
+        void Handle_AddNewExercise2(object sender, EventArgs e)
+        {
+            Exercise ex = new Exercise();
+            ex.Name = "Annat namn";
+            ex.Creator = "Strengthhub";
+            ex.MainEquipment = "Dumbells";
+            ex.MainMuscle = "Biceps";
+            ex.FavorisedSource = "star_empty.png";
+            App.Database.SaveExercise(ex);
+            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+
+        }
+
+        void Handle_DeleteExercise(object sender, EventArgs e)
+        {
+            App.Database.DeleteSingleExercise((sender as Button).CommandParameter);
+            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+        }
+
 
         protected override void OnAppearing()
         {
+            /*
             base.OnAppearing();
             try
             {
                 trainingProgramsView.ItemsSource = App.Database.GetTrainingPrograms();
             }
             catch { }
-
+            */
             try
             {
-                exercisesView.ItemsSource = App.Database.GetExercises();
+                BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
             }
             catch { }
         }
-
+/*
         private void Handle_TrainingPrograms(object sender, EventArgs e)
         {
             trainingProgramsView.IsVisible = true;
@@ -869,7 +851,9 @@ namespace CurryFit.view
             trainingProgramsView.ItemsSource = tps;
             exercisesView.ItemsSource = exs;
             pex = newPex;
-            */
+            
+        
+        }
+    */
         }
     }
-}
