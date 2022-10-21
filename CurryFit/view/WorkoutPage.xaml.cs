@@ -42,6 +42,23 @@ namespace CurryFit.view
 
         }
 
+        void Handle_ToExercises(object sender, EventArgs e)
+        {
+            ExerciseLayout.IsVisible = true;
+            LogbookLayout.IsVisible = false;
+        }
+
+        void Handle_ToLogbook(object sender, EventArgs e)
+        {
+            ExerciseLayout.IsVisible = false;
+            LogbookLayout.IsVisible = true;
+        }
+
+        void Handle_AddSets(object sender, EventArgs e)
+        {
+            ChooseSetLayout.IsVisible = true;
+        }
+
         void Handle_Favorised(object sender, EventArgs e)
         {
             ImageButton btn = sender as ImageButton;
@@ -56,7 +73,7 @@ namespace CurryFit.view
                 ex.FavorisedSource = "star_empty.png";
             }
             App.Database.UpdateExercise(ex);
-            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
 
         }
 
@@ -72,7 +89,7 @@ namespace CurryFit.view
             ex.MainMuscle = "Triceps";
             ex.FavorisedSource = "star_empty.png";
             App.Database.SaveExercise(ex);
-            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
         }
 
         void Handle_AddNewExercise2(object sender, EventArgs e)
@@ -84,14 +101,14 @@ namespace CurryFit.view
             ex.MainMuscle = "Biceps";
             ex.FavorisedSource = "star_empty.png";
             App.Database.SaveExercise(ex);
-            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
 
         }
 
         void Handle_DeleteExercise(object sender, EventArgs e)
         {
             App.Database.DeleteSingleExercise((sender as Button).CommandParameter);
-            BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
         }
 
 
@@ -107,7 +124,7 @@ namespace CurryFit.view
             */
             try
             {
-                BindableLayout.SetItemsSource(ExercisesLayout, App.Database.GetExercises());
+                BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
             }
             catch { }
         }
