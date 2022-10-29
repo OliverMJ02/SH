@@ -1,10 +1,203 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CurryFit.view.WorkoutPage">
+             x:Class="CurryFit.view.WorkoutPage"
+             BackgroundColor="#726E72"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <!--
+    White          #FFFFFF
+    Light gray     #A6A0A6
+    Medium gray    #726E72
+    Dark gray      #2A282A
+    Orange fade    #FF4816
+    Yellow fade    #FFE000
+    Orange pastell #FF7B5E
+    Yellow pastell #FFE88C
+    
+    Yellow         #FFE000
+    Dark yellow    #CCB628
+    Blue           #2C91FF
+    Dark Blue      #284ECC
+    Red            #FF1648
+    Dark red       #993D51
+    -->
     <ContentPage.Content>
+        <StackLayout>
+            <!-- Layout for exercises -->
+            <StackLayout x:Name="ExerciseLayout" VerticalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
+                    <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
+                    <Label Text="TRÄNING" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#9C969C" FontSize="Large" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
+                    <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="M.G.S." BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
+                    <Button Text="Exercises" BackgroundColor="Transparent" TextColor="#FFE000" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToExercises"></Button>
+                    <Button Text="Pass" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
+                    <Button Text="Logbook" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToLogbook"></Button>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
+                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" VerticalOptions="Center">
+                            <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Sök efter övningar" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
+                            <Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HeightRequest="40">
+                        <StackLayout Orientation="Horizontal">
+                            <Image></Image>
+                            <Button x:Name="FilterBtn" Text="Filter" BackgroundColor="Transparent" TextColor="#A6A0A6" FontAttributes="Bold" CharacterSpacing="1"></Button>
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+
+                <StackLayout Margin="13,0,13,0">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="ADVERTISEMENT" FontSize="8" FontAttributes="Bold"></Label>
+                        <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
+                    </StackLayout>
+                    <StackLayout HeightRequest="50" MinimumHeightRequest="50" BackgroundColor="Green" Margin="0,-3,0,1">
+                        <Label Text="Ad" HorizontalTextAlignment="Center"></Label>
+                    </StackLayout>
+                    <BoxView BackgroundColor="#2A282A" HeightRequest="2"></BoxView>
+                </StackLayout>
+
+
+                <ScrollView Margin="0,0,0,0">
+
+                    <FlexLayout x:Name="ExerciseCollection" Direction="Column" JustifyContent="Start" AlignItems="Center" Margin="13,0,13,0">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame CornerRadius="8" BackgroundColor="#2A282A" Margin="0,3,0,3" Padding="0,0,0,0">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
+                                                <Label TextColor="#A6A0A6" FontSize="Medium" Text="{Binding Name}" HorizontalOptions="Start" FontFamily="Nunito" FontAttributes="Bold"></Label>
+                                                <ImageButton HorizontalOptions="EndAndExpand" Source="{Binding FavorisedSource}" HeightRequest="25" BackgroundColor="Transparent" Clicked="Handle_Favorised" CommandParameter="{Binding Id}"></ImageButton>
+                                            </StackLayout>
+
+                                            <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" >
+                                                <Frame BorderColor="#FF4816" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                    <Label TextColor="#FF4816" Text="{Binding MainEquipment}" FontAttributes="Bold"></Label>
+                                                </Frame>
+                                                <Frame BorderColor="#FFE000" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                    <Label TextColor="#FFE000" Text="{Binding MainMuscle}" FontAttributes="Bold"></Label>
+                                                </Frame>
+                                            </FlexLayout>
+
+
+                                            <StackLayout Orientation="Horizontal" Margin="13,0,0,13">
+                                                <Label TextColor="#A6A0A6" Text="Created by:"></Label>
+                                                <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
+                                                <Image Source="verified.png" HeightRequest="10"></Image>
+                                                <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10"></Button>
+                                            </StackLayout>
+
+
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+
+                </ScrollView>
+
+                <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="+" FontSize="Title" HorizontalOptions="Center" Clicked="Handle_AddNewExercise" ></Button>
+                    <Button Text="+" FontSize="Title" HorizontalOptions="Center" Clicked="Handle_AddNewExercise2" ></Button>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Layout for Logbook -->
+            <StackLayout x:Name="LogbookLayout" IsVisible="False" VerticalOptions="FillAndExpand">
+                
+                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
+                    <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
+                    <Label Text="TRÄNING" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#9C969C" FontSize="Large" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
+                    <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="M.G.S." BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
+                    <Button Text="Exercises" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToExercises"></Button>
+                    <Button Text="Pass" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
+                    <Button Text="Logbook" BackgroundColor="Transparent" TextColor="#FFE000" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToLogbook"></Button>
+                </StackLayout>
+
+
+                <Frame x:Name="ChooseSetLayout" Padding="0,0,0,0" BackgroundColor="#2A282A" CornerRadius="6" IsVisible="False" Margin="13,0,13,0">
+                    <StackLayout>
+                        <Button Text="NORMAL SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5"></Button>
+                        <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                        <Button Text="DROP-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5"></Button>
+                        <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                        <Button Text="SUPER-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5"></Button>
+                        <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                        <Button Text="ENDURANCE-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5"></Button>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Margin="13,0,13,0">
+
+                    <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
+                        <Label Text="ADD NEW BLOCK" FontSize="Micro" FontAttributes="Bold"></Label>
+                        <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
+                    </StackLayout>
+                    
+                    <Frame Padding="0,0,0,0"  BackgroundColor="#2A282A" CornerRadius="6">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,15">
+                            <StackLayout>
+                                <ImageButton Source="add_text.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Yellow" BorderWidth="2" CornerRadius="50"></ImageButton>
+                                <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                <Label Text="TEXTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                            </StackLayout>
+                            <StackLayout Margin="20,0,20,0">
+                                <ImageButton Source="add_sets.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Yellow" BorderWidth="2" CornerRadius="50" Clicked="Handle_AddSets"></ImageButton>
+                                <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                <Label Text="WORKOUTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                            </StackLayout>
+                            <StackLayout>
+                                <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Yellow" BorderWidth="2" CornerRadius="50"></ImageButton>
+                                <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                <Label Text="CHECKLIST" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <Frame Padding="1,1,1,1"  BackgroundColor="#2A282A" CornerRadius="6" VerticalOptions="EndAndExpand" BorderColor="Yellow" Margin="13,0,13,-2" HeightRequest="55">
+                    <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Yellow">
+                        <StackLayout Orientation="Horizontal" HeightRequest="45">
+                            <Button HorizontalOptions="StartAndExpand" WidthRequest="25"></Button>
+                            <Button HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" BorderColor="#4A484A" Text="25 . SEP . 2022" BorderWidth="1" CornerRadius="25" Padding="15,0,15,0" TextColor="#FFFFFF" VerticalOptions="Center" HeightRequest="40" FontAttributes="Bold"></Button>
+                            <Button HorizontalOptions="EndAndExpand" WidthRequest="25"></Button>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+                
+            </StackLayout>
+            
+            
+            <!-- Menu buttons -->
+            <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
+            <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
+                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+            </StackLayout>
+        </StackLayout>
+        
+        <!--
         <StackLayout BackgroundColor="#444444">
-            <!-- Background layer-->
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
@@ -297,5 +490,6 @@
 
             </Grid>
         </StackLayout>
+        -->
     </ContentPage.Content>
 </ContentPage>
