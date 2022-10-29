@@ -25,6 +25,7 @@ namespace CurryFit
             _database.CreateTable<TrainingProgram>();
             _database.CreateTable<Exercise>();
             _database.CreateTable<TrainingProgramsExercises>();
+
         }
 
         //Methods for TrainingPrograms 
@@ -67,12 +68,21 @@ namespace CurryFit
 
         //Methods for Exercises 
 
+        public void UpdateExerciseWithChildren(Exercise exercise)
+        {
+            _database.UpdateWithChildren(exercise);
+        }
         public List<Exercise> GetExercises()
         {
             return _database.Table<Exercise>().ToList();
         }
 
-        public int SaveExercises(Exercise excercise)
+        public Exercise GetExerciseWithChildren(object id)
+        {
+            return _database.GetWithChildren<Exercise>(id);
+        }
+
+        public int SaveExercise(Exercise excercise)
         {
             return _database.Insert(excercise);
         }
@@ -96,5 +106,6 @@ namespace CurryFit
         {
             return _database.Delete<Exercise>(id);
         }
+
     }
 }
