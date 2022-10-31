@@ -2,9 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurryFit.MainPage">
-
+    
+    <!--Nav Bar-->
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="CurryFit" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
+                   FontSize="20"  TextColor="{DynamicResource AshGrey}">
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    
+    <!--Content-->
     <StackLayout>
         <Button Text="Workout" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_WorkoutPage"></Button>
+        <Button Text="Food" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
     </StackLayout>
 
 </ContentPage>
