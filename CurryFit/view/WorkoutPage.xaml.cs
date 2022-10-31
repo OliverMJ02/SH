@@ -12,6 +12,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.Extensions;
 using CurryFit.model;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace CurryFit.view
 {
@@ -19,6 +21,7 @@ namespace CurryFit.view
     public partial class WorkoutPage : ContentPage
     {
         List<string> TextBlocks = new List<string>();
+        FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
         public WorkoutPage()
         {
             InitializeComponent();
@@ -41,6 +44,24 @@ namespace CurryFit.view
             SearchBar.WidthRequest = xamarinWidth * 0.6;
             FilterBtn.WidthRequest = xamarinWidth * 0.3;
 
+        }
+
+        public async Task<List<Exercise>> GetAllExercises()
+        {
+
+            return (await firebaseClient
+              .Child("Exercises")
+              .OnceAsync<Exercise>()).Select(item => new Exercise
+              {
+                  Id = item.Object.Id,
+                  Name = item.Object.Name,
+                  Description = item.Object.Description,
+                  Creator = item.Object.Creator,
+                  MainMuscle = item.Object.MainMuscle,
+                  MainEquipment = item.Object.MainEquipment,
+                  isFavorised = item.Object.isFavorised,
+                  FavorisedSource = item.Object.FavorisedSource,  
+              }).ToList();
         }
 
         void Handle_ToExercises(object sender, EventArgs e)
@@ -87,20 +108,22 @@ namespace CurryFit.view
 
 
         //Dessa genererar bara test exempel på övningar för att se hur det kan se ut. Kommer inte behövas sen.
-        void Handle_AddNewExercise(object sender, EventArgs e)
+        async void Handle_AddNewExercise(object sender, EventArgs e)
         {
-
+            
             Exercise ex = new Exercise();
             ex.Name = "Test namn";
             ex.Creator = "Strengthhub";
             ex.MainEquipment = "Machine";
             ex.MainMuscle = "Triceps";
             ex.FavorisedSource = "star_empty.png";
-            App.Database.SaveExercise(ex);
-            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
+            await firebaseClient.Child("Exercises").PostAsync(ex);
+            BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
+            //App.Database.SaveExercise(ex);
+            //BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
         }
 
-        void Handle_AddNewExercise2(object sender, EventArgs e)
+        async void Handle_AddNewExercise2(object sender, EventArgs e)
         {
             Exercise ex = new Exercise();
             ex.Name = "Annat namn";
@@ -108,8 +131,10 @@ namespace CurryFit.view
             ex.MainEquipment = "Dumbells";
             ex.MainMuscle = "Biceps";
             ex.FavorisedSource = "star_empty.png";
-            App.Database.SaveExercise(ex);
-            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
+            await firebaseClient.Child("Exercises").PostAsync(ex);
+            BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
+            //App.Database.SaveExercise(ex);
+            //BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
 
         }
 
@@ -120,21 +145,24 @@ namespace CurryFit.view
         }
 
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            /*
             base.OnAppearing();
+            /*
             try
             {
                 trainingProgramsView.ItemsSource = App.Database.GetTrainingPrograms();
             }
             catch { }
             */
+            /*
             try
             {
                 BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
             }
             catch { }
+            */
+            BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
         }
 /*
         private void Handle_TrainingPrograms(object sender, EventArgs e)

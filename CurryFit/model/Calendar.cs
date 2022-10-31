@@ -12,7 +12,7 @@ namespace CurryFit.model
     public class Calendar
     {
         private int currentDate;
-        CultureInfo culture = new CultureInfo("en-SE", false);
+        CultureInfo culture = new CultureInfo("en-EN", false);
         String format = "dd MMMM yyyy";
          
 
