@@ -18,6 +18,7 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WorkoutPage : ContentPage
     {
+        List<string> TextBlocks = new List<string>();
         public WorkoutPage()
         {
             InitializeComponent();
@@ -57,6 +58,13 @@ namespace CurryFit.view
         void Handle_AddSets(object sender, EventArgs e)
         {
             ChooseSetLayout.IsVisible = true;
+        }
+        
+        void Handle_NewTextBlock(object sender, EventArgs e)
+        {
+            TextBlocks.Add("");
+            BindableLayout.SetItemsSource(TextBlockCollection, null);
+            BindableLayout.SetItemsSource(TextBlockCollection, TextBlocks);
         }
 
         void Handle_Favorised(object sender, EventArgs e)
