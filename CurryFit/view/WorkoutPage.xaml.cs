@@ -45,23 +45,9 @@ namespace CurryFit.view
             FilterBtn.WidthRequest = xamarinWidth * 0.3;
 
         }
-
-        public async Task<List<Exercise>> GetAllExercises()
+        private async void Handle_MainPage(object sender, EventArgs e)
         {
-
-            return (await firebaseClient
-              .Child("Exercises")
-              .OnceAsync<Exercise>()).Select(item => new Exercise
-              {
-                  Id = item.Object.Id,
-                  Name = item.Object.Name,
-                  Description = item.Object.Description,
-                  Creator = item.Object.Creator,
-                  MainMuscle = item.Object.MainMuscle,
-                  MainEquipment = item.Object.MainEquipment,
-                  isFavorised = item.Object.isFavorised,
-                  FavorisedSource = item.Object.FavorisedSource,  
-              }).ToList();
+            await Navigation.PushAsync(new MainPage());
         }
 
         void Handle_ToExercises(object sender, EventArgs e)
@@ -90,25 +76,13 @@ namespace CurryFit.view
 
         void Handle_Favorised(object sender, EventArgs e)
         {
-            ImageButton btn = sender as ImageButton;
-            int id = (int) btn.CommandParameter;
-            Exercise ex = App.Database.GetSingleExercise(id);
-            if (ex.FavorisedSource.Equals("star_empty.png"))
-            {
-                ex.FavorisedSource = "star_filled.png";
-            }
-            else
-            {
-                ex.FavorisedSource = "star_empty.png";
-            }
-            App.Database.UpdateExercise(ex);
+            App.Database.GetSingleExercise((int)(sender as ImageButton).CommandParameter).UpdateFavorised();
             BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
-
         }
 
 
         //Dessa genererar bara test exempel på övningar för att se hur det kan se ut. Kommer inte behövas sen.
-        async void Handle_AddNewExercise(object sender, EventArgs e)
+        void Handle_AddNewExercise(object sender, EventArgs e)
         {
             
             Exercise ex = new Exercise();
@@ -117,10 +91,10 @@ namespace CurryFit.view
             ex.MainEquipment = "Machine";
             ex.MainMuscle = "Triceps";
             ex.FavorisedSource = "star_empty.png";
-            await firebaseClient.Child("Exercises").PostAsync(ex);
-            BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
-            //App.Database.SaveExercise(ex);
-            //BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
+            //await firebaseClient.Child("Exercises").PostAsync(ex);
+            //BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
+            App.Database.SaveExercise(ex);
+            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
         }
 
         async void Handle_AddNewExercise2(object sender, EventArgs e)
@@ -132,14 +106,16 @@ namespace CurryFit.view
             ex.MainMuscle = "Biceps";
             ex.FavorisedSource = "star_empty.png";
             await firebaseClient.Child("Exercises").PostAsync(ex);
-            BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
+            //BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
             //App.Database.SaveExercise(ex);
-            //BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
+            BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
 
         }
 
         void Handle_DeleteExercise(object sender, EventArgs e)
         {
+            //await firebaseClient.Child("Exercises").Child((string)(sender as Button).CommandParameter).DeleteAsync();
+            //BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
             App.Database.DeleteSingleExercise((sender as Button).CommandParameter);
             BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
         }
@@ -155,14 +131,14 @@ namespace CurryFit.view
             }
             catch { }
             */
-            /*
+            
             try
             {
                 BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
             }
             catch { }
-            */
-            BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
+           
+            //BindableLayout.SetItemsSource(ExerciseCollection, await GetAllExercises());
         }
 /*
         private void Handle_TrainingPrograms(object sender, EventArgs e)

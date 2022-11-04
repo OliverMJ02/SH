@@ -124,7 +124,7 @@
                                                 <Label TextColor="#A6A0A6" Text="Created by:"></Label>
                                                 <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
                                                 <Image Source="verified.png" HeightRequest="10"></Image>
-                                                <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10"></Button>
+                                                <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10" BackgroundColor="AliceBlue"></Button>
                                             </StackLayout>
 
 
@@ -204,7 +204,6 @@
                         <Button Text="ENDURANCE-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5"></Button>
                     </StackLayout>
                 </Frame>
-
                 <StackLayout Margin="13,0,13,0">
 
                     <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
@@ -299,7 +298,7 @@
             <!-- Menu buttons -->
             <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
             <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
-                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
                 <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
