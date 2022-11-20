@@ -12,8 +12,8 @@ namespace CurryFit.model
     public class Calendar
     {
         private DateTime selectedDate;
-        CultureInfo culture = new CultureInfo("en-SE", false);
-        String format = "dd MMMM yyyy";
+        CultureInfo culture = CultureInfo.CurrentCulture;
+        readonly string format = "dd MMMM yyyy";
          
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace CurryFit.model
         /// </summary>
         /// <param name="date"> the date as a string </param>
         /// <returns></returns
-        public String Get_NextDay(String date)
+        public string Get_NextDay(string date)
         {
             var convertedDate = DateTime.Parse(date, culture);
             convertedDate = convertedDate.AddDays(1);
@@ -34,7 +34,7 @@ namespace CurryFit.model
         /// </summary>
         /// <param name="date"> the date as a string </param>
         /// <returns></returns>
-        public String Get_PreviousDay(String date)
+        public string Get_PreviousDay(string date)
         {
             var convertedDate = DateTime.Parse(date, culture);
             convertedDate = convertedDate.AddDays(-1);
@@ -47,7 +47,7 @@ namespace CurryFit.model
         /// </summary>
         /// <param name="date"> the date in DateTime format </param>
         /// <returns> The name of the weekday as a string </returns>
-        public String Get_WeekDay(DateTime date)
+        public string Get_WeekDay(DateTime date)
         {
             return date.DayOfWeek.ToString();
         }
