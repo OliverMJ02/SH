@@ -26,6 +26,11 @@ namespace CurryFit
             await Navigation.PushAsync(new WorkoutPage());
         }
 
+        private async void Handle_ScannedBarcodePage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ScannedBarcodePage());
+        }
+
         private async void Handle_FoodPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FoodPage());

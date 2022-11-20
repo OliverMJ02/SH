@@ -29,7 +29,7 @@
         <StackLayout>
             <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
                 <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
-                <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#9C969C" FontSize="Large" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
+                <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
                 <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
             </StackLayout>
             <!-- Layout for exercises -->

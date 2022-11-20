@@ -32,7 +32,6 @@ namespace CurryFit.view
             var density = mainDisplayInfo.Density;
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
-
             MenuLayout.WidthRequest = xamarinWidth;
 
             BtnHome.WidthRequest = xamarinWidth * 0.2;
