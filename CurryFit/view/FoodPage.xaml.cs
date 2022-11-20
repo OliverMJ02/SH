@@ -13,7 +13,7 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FoodPage : ContentPage
     {
-        Calendar calendar = new Calendar();
+        //Calendar calendar = new Calendar();
         public FoodPage()
         {
             InitializeComponent();
@@ -26,11 +26,11 @@ namespace CurryFit.view
         
         private void Previous_Date(object sender, EventArgs e)
         {
-            dateLabel.Text = calendar.get_PreviousDay(dateLabel.Text);
+            //dateLabel.Text = calendar.get_PreviousDay(dateLabel.Text);
         }
         private void Next_Date(object sender, EventArgs e)
         {
-            dateLabel.Text = calendar.get_NextDay(dateLabel.Text);
+            //dateLabel.Text = calendar.get_NextDay(dateLabel.Text);
         }
     }
 }

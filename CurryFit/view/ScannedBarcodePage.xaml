@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
+             x:Class="CurryFit.view.ScannedBarcodePage"
+             BackgroundColor="#726E72"
+             NavigationPage.HasNavigationBar="False">
+    <!--
+    White          #FFFFFF
+    Light gray     #A6A0A6
+    Medium gray    #726E72
+    Dark gray      #2A282A
+    Orange fade    #FF4816
+    Yellow fade    #FFE000
+    Orange pastell #FF7B5E
+    Yellow pastell #FFE88C
+    
+    Yellow         #FFE000
+    Dark yellow    #CCB628
+    Blue           #2C91FF
+    Dark Blue      #284ECC
+    Red            #FF1648
+    Dark red       #993D51
+    -->
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal"  HeightRequest="60" MinimumHeightRequest="60">
+                <ImageButton Source="backwards_arrow_gray.png" BackgroundColor="Transparent" WidthRequest="35" HeightRequest="35" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0"></ImageButton>
+                <Label Text="SCANNED BARCODE" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="280" VerticalTextAlignment="Center"></Label>
+                <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+            </StackLayout>
+            
+            <Frame Padding="10,10,10,10" BackgroundColor="#2A282A" Margin="13,2,13,0" CornerRadius="7">
+                <StackLayout>
+                    <StackLayout  Orientation="Horizontal">
+                        <StackLayout>
+                            <Label Text="LÄTTMJÖLK 0,5 %" TextColor="#A6A0A6" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,0,0,0" FontSize="Medium"></Label>
+                            <Label Text="ARLA 1000 ML" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,-8,0,0" FontSize="Subtitle"></Label>
+                        </StackLayout>
+                        <ImageButton HorizontalOptions="EndAndExpand" Source="star_empty.png" HeightRequest="35" BackgroundColor="Transparent"></ImageButton>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+
+                        <StackLayout Margin="5,0,0,0">
+                            <Grid>
+                                <control:ProgressRing WidthRequest="130" HeightRequest="130" RingProgressColor="#FF1648" RingBaseColor="#FFE000" RingThickness="10" Progress="0.65" Scale="0.9"></control:ProgressRing>
+                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Label Text="40 kcal" TextColor="White" FontFamily="Montserrat" FontSize="Large"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="verified.png" WidthRequest="15" HeightRequest="15"></Image>
+                                <Label Text="Rik på Protein" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="Bold" FontSize="Caption"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,3,0,0">
+                                <Image Source="verified.png" WidthRequest="15" HeightRequest="15"></Image>
+                                <Label Text="Bra fettsorter" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="Bold" FontSize="Caption"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,3,0,0">
+                                <Image Source="verified.png" WidthRequest="15" HeightRequest="15"></Image>
+                                <Label Text="Få kalorier" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="Bold" FontSize="Caption"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                        
+                        <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
+                            <Label Text="NÄRINGSINNEHÅLL" TextColor="#A6A0A6" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,0,20,0" FontSize="Medium"></Label>
+                            <StackLayout Orientation="Horizontal" Margin="0,-8,0,0">
+                                <Label Text="per" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,0,0,0" FontSize="Caption"></Label>
+                                <Label Text="100 gram" TextColor="#FFFFFF" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,0,0,0" FontSize="Caption"></Label>
+                                <Label Text="livsmedel" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,0,0,0" FontSize="Caption"></Label>
+                            </StackLayout>
+                            
+                            <StackLayout Orientation="Horizontal" Margin="0,7,0,0">
+                                <Label Text="ENERGI" TextColor="#A6A0A6" FontFamily="Montserrat"  FontSize="13"></Label>
+                                <Label Text="40 KCAL" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="13" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,-6,0,0">
+                                <Label Text="FETT" TextColor="#FFE000" FontFamily="Montserrat" FontSize="13"></Label>
+                                <Label Text="0,5 G" TextColor="#FFE000" FontFamily="Montserrat" FontSize="13" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,-6,0,0">
+                                <Label Text="KOLHYDRATER" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="13"></Label>
+                                <Label Text="0 G" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="13" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,-6,0,0">
+                                <Label Text="PROTEIN" TextColor="#FF1648" FontFamily="Montserrat" FontSize="13"></Label>
+                                <Label Text="3,5 G" TextColor="#FF1648" FontFamily="Montserrat" FontSize="13" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,-6,0,0">
+                                <Label Text="FIBRER" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="13"></Label>
+                                <Label Text="0 G" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="13" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+
+                            <Button Text="VISA DETALJ VY" BackgroundColor="#726E72" TextColor="#2A282A" CornerRadius="25" HeightRequest="40" FontSize="Caption" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,20,0,10"></Button>
+                            
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

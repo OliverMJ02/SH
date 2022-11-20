@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:effects="clr-namespace:CurryFit.Effects"
+             xmlns:local="clr-namespace:CurryFit.CustomRenderers"
+             xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="CurryFit.view.WorkoutPage"
              BackgroundColor="#726E72"
              NavigationPage.HasNavigationBar="False"
@@ -24,19 +27,45 @@
     -->
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
+                <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
+                <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
+                <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+            </StackLayout>
             <!-- Layout for exercises -->
             <StackLayout x:Name="ExerciseLayout" VerticalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
-                    <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
-                    <Label Text="TRÄNING" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#9C969C" FontSize="Large" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
-                    <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="M.G.S." BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
-                    <Button Text="Exercises" BackgroundColor="Transparent" TextColor="#FFE000" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToExercises"></Button>
-                    <Button Text="Pass" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
-                    <Button Text="Logbook" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToLogbook"></Button>
-                </StackLayout>
+                
+                <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#2A282A" TextColor1="#2A282A" TextColor2="#2A282A" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor1="#FF4816" TextColor2="#FFE000" TextColor="Orange" Text="Exercises" FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#2A282A" TextColor1="#2A282A" TextColor2="#2A282A" Text="Pass" FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#2A282A" TextColor1="#2A282A" TextColor2="#2A282A" Text="Logbook" FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    
+                </FlexLayout>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
@@ -95,7 +124,7 @@
                                                 <Label TextColor="#A6A0A6" Text="Created by:"></Label>
                                                 <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
                                                 <Image Source="verified.png" HeightRequest="10"></Image>
-                                                <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10"></Button>
+                                                <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10" BackgroundColor="AliceBlue"></Button>
                                             </StackLayout>
 
 
@@ -117,17 +146,51 @@
             <!-- Layout for Logbook -->
             <StackLayout x:Name="LogbookLayout" IsVisible="False" VerticalOptions="FillAndExpand">
                 
-                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
-                    <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
-                    <Label Text="TRÄNING" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#9C969C" FontSize="Large" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
-                    <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="M.G.S." BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
-                    <Button Text="Exercises" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToExercises"></Button>
-                    <Button Text="Pass" BackgroundColor="Transparent" TextColor="#2A282A" FontSize="Default" FontAttributes="Bold"></Button>
-                    <Button Text="Logbook" BackgroundColor="Transparent" TextColor="#FFE000" FontSize="Default" FontAttributes="Bold" Clicked="Handle_ToLogbook"></Button>
-                </StackLayout>
+                <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#2A282A" TextColor1="#2A282A" TextColor2="#2A282A" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#2A282A" TextColor1="#2A282A" TextColor2="#2A282A" Text="Exercises" FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#2A282A" TextColor1="#2A282A" TextColor2="#2A282A" Text="Pass" FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor1="#FF4816" TextColor2="#FFE000" TextColor="Orange" Text="Logbook" FontAttributes="Bold" FontSize="Medium"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                </FlexLayout>
+
+                <FlexLayout x:Name="TextBlockCollection" Direction="Column">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="7,7,7,7" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,10" HorizontalOptions="EndAndExpand">
+                                <Frame Padding="1,1,1,1" BackgroundColor="Transparent" BorderColor="#726E72">
+                                    <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#726E72">
+                                        <local:CustomEditor Keyboard="Plain" AutoSize="TextChanges" Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8" Text="{Binding .}" WidthRequest="9999" ></local:CustomEditor>
+                                    </Frame>
+                                </Frame>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
 
 
                 <Frame x:Name="ChooseSetLayout" Padding="0,0,0,0" BackgroundColor="#2A282A" CornerRadius="6" IsVisible="False" Margin="13,0,13,0">
@@ -141,28 +204,67 @@
                         <Button Text="ENDURANCE-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5"></Button>
                     </StackLayout>
                 </Frame>
-
                 <StackLayout Margin="13,0,13,0">
 
                     <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
                         <Label Text="ADD NEW BLOCK" FontSize="Micro" FontAttributes="Bold"></Label>
                         <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
                     </StackLayout>
-                    
+
                     <Frame Padding="0,0,0,0"  BackgroundColor="#2A282A" CornerRadius="6">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,15">
+
                             <StackLayout>
-                                <ImageButton Source="add_text.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Yellow" BorderWidth="2" CornerRadius="50"></ImageButton>
+                                <yummi:PancakeView CornerRadius="50" HorizontalOptions="Center">
+                                    <yummi:PancakeView.Border>
+                                        <yummi:Border Thickness="2">
+                                            <yummi:Border.GradientStops>
+                                                <yummi:GradientStopCollection>
+                                                    <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                    <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                </yummi:GradientStopCollection>
+                                            </yummi:Border.GradientStops>
+                                        </yummi:Border>
+                                    </yummi:PancakeView.Border>
+                                    <ImageButton Source="add_text.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="Handle_NewTextBlock" CornerRadius="50"></ImageButton>
+                                </yummi:PancakeView>
+
                                 <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
                                 <Label Text="TEXTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
                             </StackLayout>
+                            
                             <StackLayout Margin="20,0,20,0">
-                                <ImageButton Source="add_sets.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Yellow" BorderWidth="2" CornerRadius="50" Clicked="Handle_AddSets"></ImageButton>
+                                <yummi:PancakeView CornerRadius="50" HorizontalOptions="Center">
+                                    <yummi:PancakeView.Border>
+                                        <yummi:Border Thickness="2">
+                                            <yummi:Border.GradientStops>
+                                                <yummi:GradientStopCollection>
+                                                    <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                    <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                </yummi:GradientStopCollection>
+                                            </yummi:Border.GradientStops>
+                                        </yummi:Border>
+                                    </yummi:PancakeView.Border>
+                                    <ImageButton Source="add_sets.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50" Clicked="Handle_AddSets"></ImageButton>
+                                </yummi:PancakeView>
                                 <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
                                 <Label Text="WORKOUTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
                             </StackLayout>
+                                
                             <StackLayout>
-                                <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Yellow" BorderWidth="2" CornerRadius="50"></ImageButton>
+                                <yummi:PancakeView CornerRadius="50" HorizontalOptions="Center">
+                                    <yummi:PancakeView.Border>
+                                        <yummi:Border Thickness="2">
+                                            <yummi:Border.GradientStops>
+                                                <yummi:GradientStopCollection>
+                                                    <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                    <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                </yummi:GradientStopCollection>
+                                            </yummi:Border.GradientStops>
+                                        </yummi:Border>
+                                    </yummi:PancakeView.Border>
+                                    <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50"></ImageButton>
+                                </yummi:PancakeView>
                                 <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
                                 <Label Text="CHECKLIST" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
                             </StackLayout>
@@ -171,15 +273,24 @@
                     </Frame>
                 </StackLayout>
 
-                <Frame Padding="1,1,1,1"  BackgroundColor="#2A282A" CornerRadius="6" VerticalOptions="EndAndExpand" BorderColor="Yellow" Margin="13,0,13,-2" HeightRequest="55">
-                    <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Yellow">
-                        <StackLayout Orientation="Horizontal" HeightRequest="45">
-                            <Button HorizontalOptions="StartAndExpand" WidthRequest="25"></Button>
-                            <Button HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" BorderColor="#4A484A" Text="25 . SEP . 2022" BorderWidth="1" CornerRadius="25" Padding="15,0,15,0" TextColor="#FFFFFF" VerticalOptions="Center" HeightRequest="40" FontAttributes="Bold"></Button>
-                            <Button HorizontalOptions="EndAndExpand" WidthRequest="25"></Button>
-                        </StackLayout>
-                    </Frame>
-                </Frame>
+                <yummi:PancakeView Padding="0,0,0,0"  BackgroundColor="#2A282A" CornerRadius="6" VerticalOptions="EndAndExpand" Margin="13,0,13,-3" HeightRequest="55">
+                    <yummi:PancakeView.Border>
+                        <yummi:Border Thickness="3">
+                            <yummi:Border.GradientStops>
+                                <yummi:GradientStopCollection>
+                                    <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                    <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                </yummi:GradientStopCollection>
+                            </yummi:Border.GradientStops>
+                        </yummi:Border>
+                    </yummi:PancakeView.Border>
+                    
+                    <StackLayout Orientation="Horizontal" HeightRequest="45">
+                        <Button HorizontalOptions="StartAndExpand" WidthRequest="25"></Button>
+                        <Button HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" BorderColor="#4A484A" Text="25. SEP. 2022" BorderWidth="1" CornerRadius="25" Padding="15,0,15,0" TextColor="#FFFFFF" VerticalOptions="Center" HeightRequest="40" FontAttributes="Bold"></Button>
+                        <Button HorizontalOptions="EndAndExpand" WidthRequest="25"></Button>
+                    </StackLayout>
+                </yummi:PancakeView>
                 
             </StackLayout>
             
@@ -187,14 +298,21 @@
             <!-- Menu buttons -->
             <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
             <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
-                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
                 <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
             </StackLayout>
         </StackLayout>
-        
+
+<!-- Entry utan svart streck under
+        <Entry Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8">
+            <Entry.Effects>
+                <effects:PlainEntry/>
+            </Entry.Effects>
+        </Entry>
+    -->
         <!--
         <StackLayout BackgroundColor="#444444">
             
