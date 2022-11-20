@@ -26,8 +26,8 @@ namespace CurryFit.view
 
         private async void ZXingScannerPage_OnScanResult(ZXing.Result result)
         {
-           FoodProduct product = await DabasClient.GetDabasProduct(result.Text);
-           
+            FoodProduct product = await ApiHandler.GetProduct(result.Text);
+            await Navigation.PushAsync(new ScannedBarcodePage(product));
         }
 
         protected override void OnAppearing()

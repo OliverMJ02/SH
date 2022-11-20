@@ -10,11 +10,19 @@ using System.Threading.Tasks;
 
 namespace CurryFit.model.api
 {
-    public static class DabasClient
+    public class DabasClient : IApiClient
     {
-        private static HttpClient client = new HttpClient();
+        private static readonly HttpClient client = new HttpClient();
+        private static readonly DabasAdapter adapter = new DabasAdapter();
 
-        public static async Task<FoodProduct> GetDabasProduct(string gtin)
+        public async Task<FoodProduct> GetProductAsync(string gtin)
+        {
+            DabasProduct product = null;
+            product = await GetDabasProduct(gtin);
+            return adapter.ConvertToFoodProduct(product);
+        }
+
+        private async Task<DabasProduct> GetDabasProduct(string gtin)
         {
             string url = "https://api.dabas.com/DABAService/V2/article/gtin/";
             client.BaseAddress = new Uri(url);
@@ -23,13 +31,20 @@ namespace CurryFit.model.api
             client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("apikey", "8e8d6aa6-4112-4eae-a287-22bca4ab5207");
 
+            string end = "/JSON?apikey=8e8d6aa6-4112-4eae-a287-22bca4ab5207";
+            string productString = Path.Combine(url, gtin, end);
+
             try
             {
-                string end = "/JSON?apikey=8e8d6aa6-4112-4eae-a287-22bca4ab5207";
-                string productString = Path.Combine(url, gtin, end);
-                FoodProduct product = await GetProductAsync(productString);
+                DabasProduct product = null;
+                HttpResponseMessage response = await client.GetAsync(productString);
+                if (response.IsSuccessStatusCode)
+                {
+                    product = await response.Content.ReadAsAsync<DabasProduct>();
+                }
                 client.Dispose();
                 return product;
+               
                // FoodProduct product = await GetProductAsync(
                  //   " https://api.dabas.com/DABASService/V2/article/gtin/02002059100005/JSON?apikey=8e8d6aa6-4112-4eae-a287-22bca4ab5207");
             }
@@ -37,21 +52,7 @@ namespace CurryFit.model.api
             {
                 Console.WriteLine("Fail");
                 return null;
-            }
-            
+            }   
         }
-        private static async Task<FoodProduct> GetProductAsync(string path)
-        {
-            FoodProduct product = null;
-            HttpResponseMessage response = await client.GetAsync(path);
-            Console.WriteLine(response.Headers.Location);
-            Console.WriteLine(response.Content);
-            if (response.IsSuccessStatusCode)
-            {
-                product = await response.Content.ReadAsAsync<FoodProduct>();
-            }
-            return product;
-        }
-
     }
 }
