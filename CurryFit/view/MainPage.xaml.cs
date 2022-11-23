@@ -69,15 +69,20 @@ namespace CurryFit
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            CloudExercises = await GetAllExercises();
-            LocalExercises = App.Database.GetExercises();
-            foreach(Exercise ex in CloudExercises)
+            try
             {
-                if (!ex.CheckExistence(LocalExercises))
-                {
-                    App.Database.SaveExercise(ex);
-                }
+                CloudExercises = await GetAllExercises();
+                LocalExercises = App.Database.GetExercises();
             }
+            catch { }
+            foreach (Exercise ex in CloudExercises)
+                {
+                    if (!ex.CheckExistence(LocalExercises))
+                    {
+                        App.Database.SaveExercise(ex);
+                    }
+                }
+            
         }
     }
 }
