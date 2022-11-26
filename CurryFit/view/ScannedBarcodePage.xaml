@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
              x:Class="CurryFit.view.ScannedBarcodePage"
-             BackgroundColor="#726E72"
+             BackgroundColor="#1F1E1F"
              NavigationPage.HasNavigationBar="False">
              
     
