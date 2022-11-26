@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using CurryFit.model.api;
 
 using Xamarin.Forms;
@@ -26,7 +20,8 @@ namespace CurryFit.view
 
         private async void ZXingScannerPage_OnScanResult(ZXing.Result result)
         {
-            FoodProduct product = await ApiHandler.GetProduct(result.Text);
+            string r = "0" + result.Text;
+            FoodProduct product = await ApiHandler.GetProduct(r);
             await Navigation.PushAsync(new ScannedBarcodePage(product));
         }
 

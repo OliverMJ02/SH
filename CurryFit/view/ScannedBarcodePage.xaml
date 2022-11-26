@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
+             xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="CurryFit.view.ScannedBarcodePage"
              BackgroundColor="#726E72"
              NavigationPage.HasNavigationBar="False">
@@ -45,8 +45,9 @@
 
                         <StackLayout Margin="5,0,0,0">
                             <Grid>
-                                <control:ProgressRing x:Name="DonutChart" WidthRequest="130" HeightRequest="130" RingProgressColor="#FF1648" RingBaseColor="#FFE000" RingThickness="10" Progress="0.65" Scale="0.9"></control:ProgressRing>
-                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <charts:ChartView x:Name="DonutChart" WidthRequest="130" HeightRequest="130" BackgroundColor="Transparent" Chart="{Binding ProductChart}"/>
+                                <!--RingProgressColor="#FF1648" RingBaseColor="#FFE000" RingThickness="10" Progress="0.65" Scale="0.9"-->
+                                    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                                     <Label x:Name="CalorieText" Text="40 kcal" TextColor="White" FontFamily="Montserrat" FontSize="Large"></Label>
                                 </StackLayout>
                             </Grid>

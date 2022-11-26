@@ -13,18 +13,38 @@ namespace CurryFit.model.api
 
             foodProduct.Name = dabasProduct.Artikelbenamning;
 
-            for (int i = 0; i < naringsvarden.Count; i++)
-            {
-                foodProduct.Nutrients[i].Name = naringsvarden[i].Benamning;
-                foodProduct.Nutrients[i].Amount = naringsvarden[i].Mangd;
-                foodProduct.Nutrients[i].Unit = naringsvarden[i].Enhet;
-                foodProduct.Nutrients[i].DailyIntake = naringsvarden[i].Dagsintag;
-            }
+            convertNutrients(foodProduct, naringsvarden);
 
-            foodProduct.Content.Unit = dabasProduct.NettoInnehall[0].Typ;
-            foodProduct.Content.Size = dabasProduct.NettoInnehall[0].Mangd;
+            convertContents(dabasProduct, foodProduct);
 
             return foodProduct;
+        }
+
+        private static void convertContents(DabasProduct dabasProduct, FoodProduct foodProduct)
+        {
+            FoodProduct.Content contents = new FoodProduct.Content();
+            contents.Unit = dabasProduct.NettoInnehall[0].Typ;
+            contents.Size = dabasProduct.NettoInnehall[0].Mangd;
+
+            foodProduct.Contents = contents;
+        }
+
+        private static void convertNutrients(FoodProduct foodProduct, List<DabasProduct.Naringsvarden> naringsvarden)
+        {
+            List<FoodProduct.Nutrient> nutrients = new List<FoodProduct.Nutrient>(naringsvarden.Count);
+
+            for (int i = 0; i < naringsvarden.Count; i++)
+            {
+                nutrients.Add(new FoodProduct.Nutrient
+                {
+                    Name = naringsvarden[i].Benamning,
+                    Amount = naringsvarden[i].Mangd,
+                    Unit = naringsvarden[i].Enhet,
+                    DailyIntake = naringsvarden[i].Dagsintag
+                });
+            }
+
+            foodProduct.Nutrients = nutrients;
         }
     }
 }

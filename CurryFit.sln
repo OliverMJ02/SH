@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit.Android", "CurryFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit.iOS", "CurryFit.iOS\CurryFit.iOS.csproj", "{4B2C873A-AA7E-4CC6-8A26-4C54B4509378}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurryFit", "CurryFit\CurryFit.csproj", "{E7BA49DE-2E65-4972-8087-224B9ECE61B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurryFit", "CurryFit\CurryFit.csproj", "{E7BA49DE-2E65-4972-8087-224B9ECE61B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

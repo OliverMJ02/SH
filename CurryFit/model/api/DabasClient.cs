@@ -24,7 +24,7 @@ namespace CurryFit.model.api
 
         private async Task<DabasProduct> GetDabasProduct(string gtin)
         {
-            string url = "https://api.dabas.com/DABAService/V2/article/gtin/";
+            string url = "https://api.dabas.com/DABASService/V2/article/gtin/";
             client.BaseAddress = new Uri(url);
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -32,12 +32,13 @@ namespace CurryFit.model.api
                 new AuthenticationHeaderValue("apikey", "8e8d6aa6-4112-4eae-a287-22bca4ab5207");
 
             string end = "/JSON?apikey=8e8d6aa6-4112-4eae-a287-22bca4ab5207";
-            string productString = Path.Combine(url, gtin, end);
+            string productString = Path.Combine(url, gtin);
+            string call = String.Concat(productString, end);
 
             try
             {
                 DabasProduct product = null;
-                HttpResponseMessage response = await client.GetAsync(productString);
+                HttpResponseMessage response = await client.GetAsync(call);
                 if (response.IsSuccessStatusCode)
                 {
                     product = await response.Content.ReadAsAsync<DabasProduct>();
