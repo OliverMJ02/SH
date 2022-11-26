@@ -16,7 +16,7 @@
     <!--Content-->
     <StackLayout>
         <Button Text="Workout" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_WorkoutPage"></Button>
-        <Button Text="Scanned barcode" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_ScannedBarcodePage"></Button>
+        
         <Button Text="Food" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
     </StackLayout>
 

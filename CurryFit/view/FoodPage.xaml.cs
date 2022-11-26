@@ -17,7 +17,7 @@ namespace CurryFit.view
         public FoodPage()
         {
             InitializeComponent();
-            dateLabel.Text = DateTime.Now.ToString("dd MM yyyy");
+            dateLabel.Text = DateTime.Now.ToString("dd MMMM yyyy");
         }
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
