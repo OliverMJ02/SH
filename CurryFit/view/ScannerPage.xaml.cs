@@ -20,8 +20,7 @@ namespace CurryFit.view
 
         private async void ZXingScannerPage_OnScanResult(ZXing.Result result)
         {
-            string r = "0" + result.Text;
-            FoodProduct product = await ApiHandler.GetProduct(r);
+            FoodProduct product = await ApiHandler.GetProduct(result.Text);
             await Navigation.PushAsync(new ScannedBarcodePage(product));
         }
 
