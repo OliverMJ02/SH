@@ -11,6 +11,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\fonts\Montserrat-Semibold.ttf" />
+    <None Remove="resources\fonts\Nunito-Semibold.ttf" />
+    <None Remove="resources\font\Montserrat-Medium.ttf" />
+    <None Remove="resources\font\Montserrat-Semibold.ttf" />
+    <None Remove="resources\font\Nunito-Semibold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="resources\font\Montserrat-Medium.ttf" />
+    <EmbeddedResource Include="resources\font\Montserrat-Semibold.ttf" />
+    <EmbeddedResource Include="resources\font\Nunito-Semibold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net" Version="4.1.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
@@ -24,6 +38,11 @@
 
   <ItemGroup>
     <Folder Include="viewmodel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="resources\fonts\Montserrat-Semibold.ttf" />
+    <Resource Include="resources\fonts\Nunito-Semibold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
