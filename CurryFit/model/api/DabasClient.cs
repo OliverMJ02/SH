@@ -9,7 +9,6 @@ namespace CurryFit.model.api
 {
     public class DabasClient : IApiClient
     {
-        private static readonly HttpClient client = new HttpClient();
         private static readonly DabasAdapter adapter = new DabasAdapter();
 
         public async Task<FoodProduct> GetProductAsync(string gtin)
@@ -21,6 +20,7 @@ namespace CurryFit.model.api
 
         private async Task<DabasProduct> GetDabasProduct(string gtin)
         {
+            HttpClient client = new HttpClient();
             gtin = "0" + gtin;
             string url = "https://api.dabas.com/DABASService/V2/article/gtin/";
             client.BaseAddress = new Uri(url);

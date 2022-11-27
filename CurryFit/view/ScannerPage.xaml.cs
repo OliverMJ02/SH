@@ -17,11 +17,18 @@ namespace CurryFit.view
         {
             InitializeComponent();
         }
-
+        
         private async void ZXingScannerPage_OnScanResult(ZXing.Result result)
         {
-            FoodProduct product = await ApiHandler.GetProduct(result.Text);
-            await Navigation.PushAsync(new ScannedBarcodePage(product));
+            FoodProduct product = ApiHandler.GetProductAndWaitOnResult(result.Text);
+            if (product != null)
+            {
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+                    await Navigation.PushAsync(new ScannedBarcodePage(product));
+                });
+                       
+            }
         }
 
         protected override void OnAppearing()

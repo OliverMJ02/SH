@@ -22,5 +22,13 @@ namespace CurryFit.model.api
             }
             return product;
         }
+
+        public static FoodProduct GetProductAndWaitOnResult(string path)
+        {
+            var task = GetProduct(path);
+            task.Wait();
+            var result = task.Result;
+            return result;
+        }
     }
 }

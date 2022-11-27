@@ -13,20 +13,15 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScannedBarcodePage : ContentPage
     {
-        FoodProduct foodProduct;
         public ScannedBarcodePage(FoodProduct product)
         {
-            this.foodProduct = product;
             InitializeComponent();
-        }
-
-        private void populateLabels()
-        {
-
+            FoodProduct foodProduct = product;
             ProductName.Text = foodProduct.Name;
             FatLabel.Text = foodProduct.Nutrients[2].Amount.ToString();
         }
 
+        /*
         public Chart ProductChart => new DonutChart()
         {
             Entries = new[]
@@ -42,10 +37,6 @@ namespace CurryFit.view
                 }
             }
         };
-
-        private async void Handle_ProductDetailView(object sender, EventArgs e)
-        {
-           // await Navigation.PushAsync()
-        }
+        */
     }
 }

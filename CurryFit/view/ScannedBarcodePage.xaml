@@ -39,7 +39,7 @@
                 <StackLayout>
                     <StackLayout  Orientation="Horizontal">
                         <StackLayout>
-                            <Label Text="LÄTTMJÖLK 0,5 %" TextColor="#A6A0A6" FontFamily="Montserrat" FontAttributes="None" Margin="4,0,0,0" FontSize="14"></Label>
+                            <Label x:Name="ProductName" Text="LÄTTMJÖLK 0,5 %" TextColor="#A6A0A6" FontFamily="Montserrat" FontAttributes="None" Margin="4,0,0,0" FontSize="14"></Label>
                             <Label Text="ARLA  |  1000 ML" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="None" Margin="4,-8,0,0" FontSize="14"></Label>
                         </StackLayout>
                         <StackLayout Margin="145,0,0,0">
@@ -80,19 +80,19 @@
                             </StackLayout>
                             
                             <StackLayout Orientation="Horizontal" Margin="0,7,0,0">
-                                <Label Text="ENERGI" TextColor="#A6A0A6" FontFamily="Montserrat"  FontSize="10"></Label>
+                                <Label x:Name="EnergyLabel" Text="ENERGI" TextColor="#A6A0A6" FontFamily="Montserrat"  FontSize="10"></Label>
                                 <Label Text="40 KCAL" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="FETT" TextColor="#CCB628" FontFamily="Montserrat" FontSize="10"></Label>
+                                <Label x:Name="FatLabel" Text="FETT" TextColor="#CCB628" FontFamily="Montserrat" FontSize="10"></Label>
                                 <Label Text="0,5 G" TextColor="#CCB628" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="KOLHYDRATER" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="10"></Label>
+                                <Label x:Name="CarbsLabel" Text="KOLHYDRATER" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="10"></Label>
                                 <Label Text="0 G" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="PROTEIN" TextColor="#FF2656" FontFamily="Montserrat" FontSize="10"></Label>
+                                <Label x:Name="ProteinLabel" Text="PROTEIN" TextColor="#FF2656" FontFamily="Montserrat" FontSize="10"></Label>
                                 <Label Text="3,5 G" TextColor="#FF2656" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
