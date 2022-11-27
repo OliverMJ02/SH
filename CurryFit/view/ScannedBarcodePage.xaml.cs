@@ -13,30 +13,39 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScannedBarcodePage : ContentPage
     {
+        FoodProduct foodProduct;
         public ScannedBarcodePage(FoodProduct product)
         {
             InitializeComponent();
-            FoodProduct foodProduct = product;
+            foodProduct = product;
             ProductName.Text = foodProduct.Name;
-            FatLabel.Text = foodProduct.Nutrients[2].Amount.ToString();
-        }
+            EnergyLabel.Text = foodProduct.Nutrients[1].Amount.ToString() + " " + foodProduct.Nutrients[1].Unit;
+            FatLabel.Text = foodProduct.Nutrients[2].Amount.ToString() + " " + foodProduct.Nutrients[2].Unit;
+            CarbsLabel.Text = foodProduct.Nutrients[4].Amount.ToString() + " " + foodProduct.Nutrients[4].Unit;
+            ProteinLabel.Text = foodProduct.Nutrients[6].Amount.ToString() + " " + foodProduct.Nutrients[6].Unit;
 
-        /*
-        public Chart ProductChart => new DonutChart()
+             var entries = new[]
         {
-            Entries = new[]
+            new ChartEntry((float)foodProduct.Nutrients[2].Amount)
             {
-                new ChartEntry((float)foodProduct.Nutrients[2].Amount)
-                {
-                    Color = SKColor.Parse("#FFE000")
-                    
-                },
-                new ChartEntry((float)foodProduct.Nutrients[4].Amount)
-                {
-                    Color = SKColor.Parse("#2C91FF")
-                }
+                Color = SKColor.Parse("#FFE000")
+
+            },
+            new ChartEntry((float)foodProduct.Nutrients[4].Amount)
+            {
+                Color = SKColor.Parse("#2C91FF")
+            },
+             new ChartEntry((float)foodProduct.Nutrients[6].Amount)
+            {
+                Color = SKColor.Parse("#FF2656")
             }
         };
-        */
+
+            ProductChart.Chart = new DonutChart { Entries = entries, HoleRadius = 0.8f, IsAnimated = true, BackgroundColor = SKColors.Transparent };
+
+
+        }
+        
+       
     }
 }

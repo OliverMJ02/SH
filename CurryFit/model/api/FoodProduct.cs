@@ -7,6 +7,7 @@ namespace CurryFit.model.api
     public class FoodProduct
     {
         public string Name { get; set; }
+        public string Creator { get; set; }
         public string Description { get; set; }
         public List<Nutrient> Nutrients { get; set; }
         public Content Contents { get; set; }

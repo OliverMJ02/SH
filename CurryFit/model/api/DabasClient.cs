@@ -13,7 +13,7 @@ namespace CurryFit.model.api
 
         public async Task<FoodProduct> GetProductAsync(string gtin)
         {
-            DabasProduct product = null;
+            DabasProduct product;
             product = await GetDabasProduct(gtin);
             return adapter.ConvertToFoodProduct(product);
         }
@@ -33,21 +33,15 @@ namespace CurryFit.model.api
             string productString = Path.Combine(url, gtin);
             string call = String.Concat(productString, end);
 
-            try
+           
+            DabasProduct product = new DabasProduct();
+            HttpResponseMessage response = await client.GetAsync(call);
+            if (response.IsSuccessStatusCode)
             {
-                DabasProduct product = null;
-                HttpResponseMessage response = await client.GetAsync(call);
-                if (response.IsSuccessStatusCode)
-                {
-                    product = await response.Content.ReadAsAsync<DabasProduct>();
-                }
-                client.Dispose();
-                return product;
+                product = await response.Content.ReadAsAsync<DabasProduct>();
             }
-            catch
-            {
-                return null;
-            }   
+            client.Dispose();
+            return product;       
         }
     }
 }

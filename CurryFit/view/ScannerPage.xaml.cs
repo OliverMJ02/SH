@@ -18,7 +18,7 @@ namespace CurryFit.view
             InitializeComponent();
         }
         
-        private async void ZXingScannerPage_OnScanResult(ZXing.Result result)
+        private void ZXingScannerPage_OnScanResult(ZXing.Result result)
         {
             FoodProduct product = ApiHandler.GetProductAndWaitOnResult(result.Text);
             if (product != null)
