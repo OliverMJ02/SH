@@ -10,6 +10,7 @@ namespace CurryFit.model.api
         public string ProduktKod { get; set; }
         public List<Naringsinfon> Naringsinfo { get; set; }
         public List<NettoInnehallen> NettoInnehall { get; set; }
+        public Varumarken Varumarke { get; set; }
 
         public class Naringsinfon
         {
@@ -37,6 +38,21 @@ namespace CurryFit.model.api
             public double Mangd { get;  set; }
             public int TypKod { get; set; }
             public string Typ { get; set; }
+        }
+
+        public class Varumarken
+        {
+            public string Varumarke { get; set; }
+            public string AgareGLN { get; set; }
+            public string AgareNamn { get; set; }
+            public Tillverkaren Tillverkare { get; set; }
+
+            public class Tillverkaren
+            {
+                public string Namn { get; set; }
+                public string EAN { get; set; }
+            }
+
         }
 
     }

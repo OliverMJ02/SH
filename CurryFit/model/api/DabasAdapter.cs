@@ -12,6 +12,7 @@ namespace CurryFit.model.api
             List<DabasProduct.Naringsvarden> naringsvarden = dabasProduct.Naringsinfo[0].Naringsvarden;
 
             foodProduct.Name = dabasProduct.Artikelbenamning;
+            foodProduct.Brand = dabasProduct.Varumarke.Tillverkare.Namn;
 
             convertNutrients(foodProduct, naringsvarden);
 
@@ -20,7 +21,7 @@ namespace CurryFit.model.api
             return foodProduct;
         }
 
-        private static void convertContents(DabasProduct dabasProduct, FoodProduct foodProduct)
+        private void convertContents(DabasProduct dabasProduct, FoodProduct foodProduct)
         {
             FoodProduct.Content contents = new FoodProduct.Content();
             contents.Unit = dabasProduct.NettoInnehall[0].Typ;
@@ -29,7 +30,7 @@ namespace CurryFit.model.api
             foodProduct.Contents = contents;
         }
 
-        private static void convertNutrients(FoodProduct foodProduct, List<DabasProduct.Naringsvarden> naringsvarden)
+        private void convertNutrients(FoodProduct foodProduct, List<DabasProduct.Naringsvarden> naringsvarden)
         {
             List<FoodProduct.Nutrient> nutrients = new List<FoodProduct.Nutrient>(naringsvarden.Count);
 
