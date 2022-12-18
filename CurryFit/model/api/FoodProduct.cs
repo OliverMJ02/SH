@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CurryFit.model.api
 {
+    /// <summary>
+    /// A class representing a food product with data retrieved from the API that is used in the program
+    /// </summary>
     public class FoodProduct
     {
         public string Name { get; set; }

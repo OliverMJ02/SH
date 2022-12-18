@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CurryFit.model.api
 {
+    /// <summary>
+    /// A class representing a dabas product with data retrieved from their database
+    /// </summary>
     public class DabasProduct
     {
         public string Artikelbenamning { get; set; }
