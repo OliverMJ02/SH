@@ -24,8 +24,14 @@ namespace CurryFit.view
             CarbsLabel.Text = foodProduct.Nutrients[4].Amount.ToString() + " " + foodProduct.Nutrients[4].Unit;
             ProteinLabel.Text = foodProduct.Nutrients[6].Amount.ToString() + " " + foodProduct.Nutrients[6].Unit;
 
-             var entries = new[]
+            populateProductChart();
+
+        }
+
+        private void populateProductChart()
         {
+            var entries = new[]
+       {
             new ChartEntry((float)foodProduct.Nutrients[2].Amount)
             {
                 Color = SKColor.Parse("#FFE000")
@@ -41,11 +47,14 @@ namespace CurryFit.view
             }
         };
 
-            ProductChart.Chart = new DonutChart { Entries = entries, HoleRadius = 0.8f, IsAnimated = true, BackgroundColor = SKColors.Transparent };
 
+            ProductChart.Chart = new DonutChart { Entries = entries, HoleRadius = 0.8f, IsAnimated = true, BackgroundColor = SKColors.Transparent };
+        }
+
+        private void updateProductChart()
+        {
 
         }
-        
-       
+
     }
 }

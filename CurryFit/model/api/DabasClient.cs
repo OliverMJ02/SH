@@ -7,10 +7,17 @@ using System.Threading.Tasks;
 
 namespace CurryFit.model.api
 {
+    /// <summary>
+    /// A class for the Api client towards Dabas's free database
+    /// </summary>
     public class DabasClient : IApiClient
     {
         private static readonly DabasAdapter adapter = new DabasAdapter();
 
+        /// <summary>
+        /// A method for sending a GET request to an URI to recieve the wanted "product"
+        /// </summary>
+        /// <param name="gtin">The gtin number of a product</param>
         public async Task<FoodProduct> GetProductAsync(string gtin)
         {
             DabasProduct product;
@@ -18,6 +25,10 @@ namespace CurryFit.model.api
             return adapter.ConvertToFoodProduct(product);
         }
 
+        /// <summary>
+        /// A method for recieving a DabasProduct object from the API
+        /// </summary>
+        /// <param name="gtin">The gtin number of a product</param>
         private async Task<DabasProduct> GetDabasProduct(string gtin)
         {
             HttpClient client = new HttpClient();
