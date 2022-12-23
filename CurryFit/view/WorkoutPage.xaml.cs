@@ -12,15 +12,20 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.Extensions;
 using CurryFit.model;
+using CurryFit.model.blocks;
 using Firebase.Database;
 using Firebase.Database.Query;
+using CurryFit.model.Sets;
 
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WorkoutPage : ContentPage
     {
-        List<string> TextBlocks = new List<string>();
+        int CurrentDay = 2;
+        LogDay currentLogDay;
+
+        List<object> Blocks = new List<object>();
         FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
         public WorkoutPage()
         {
@@ -59,6 +64,112 @@ namespace CurryFit.view
         {
             ExerciseLayout.IsVisible = false;
             LogbookLayout.IsVisible = true;
+
+            List<LogDay> logDays = App.Database.GetLogDays();
+            bool exists = false;
+            foreach(LogDay logDay in logDays)
+            {
+                if(logDay.Day == CurrentDay)
+                {
+                    exists = true;
+                    currentLogDay = logDay;
+                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
+                    break;
+                }
+            }
+            if (!exists)
+            {
+                currentLogDay = new LogDay{ 
+                    Day = CurrentDay,
+                    
+                    NormalSetBlocks = new List<NormalSetBlock>() { },
+                    DropSetBlocks = new List<DropSetBlock>() { },
+                    
+                    
+                };
+                App.Database.SaveLogDay(currentLogDay);
+            }
+            try
+            {
+                Blocks = currentLogDay.GetAllBlocks();
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            }
+            catch { }
+        }
+
+        void Handle_NextDay(object sender, EventArgs e)
+        {
+            CurrentDay++;
+            List<LogDay> logDays = App.Database.GetLogDays();
+            bool exists = false;
+            foreach (LogDay logDay in logDays)
+            {
+                if (logDay.Day == CurrentDay)
+                {
+                    exists = true;
+                    currentLogDay = logDay;
+                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
+                    break;
+                }
+            }
+            if (!exists)
+            {
+                currentLogDay = new LogDay
+                {
+                    Day = CurrentDay,
+
+                    NormalSetBlocks = new List<NormalSetBlock>() { },
+                    DropSetBlocks = new List<DropSetBlock>() { },
+
+
+                };
+                App.Database.SaveLogDay(currentLogDay);
+            }
+            try
+            {
+                Blocks = currentLogDay.GetAllBlocks();
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            }
+            catch { }
+        }
+
+        void Handle_PreviousDay(object sender, EventArgs e)
+        {
+            CurrentDay--;
+            List<LogDay> logDays = App.Database.GetLogDays();
+            bool exists = false;
+            foreach (LogDay logDay in logDays)
+            {
+                if (logDay.Day == CurrentDay)
+                {
+                    exists = true;
+                    currentLogDay = logDay;
+                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
+                    break;
+                }
+            }
+            if (!exists)
+            {
+                currentLogDay = new LogDay
+                {
+                    Day = CurrentDay,
+
+                    NormalSetBlocks = new List<NormalSetBlock>() { },
+                    DropSetBlocks = new List<DropSetBlock>() { },
+
+
+                };
+                App.Database.SaveLogDay(currentLogDay);
+            }
+            try
+            {
+                Blocks = currentLogDay.GetAllBlocks();
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            }
+            catch { }
         }
 
         void Handle_AddSets(object sender, EventArgs e)
@@ -68,9 +179,492 @@ namespace CurryFit.view
         
         void Handle_NewTextBlock(object sender, EventArgs e)
         {
-            TextBlocks.Add("");
-            BindableLayout.SetItemsSource(TextBlockCollection, null);
-            BindableLayout.SetItemsSource(TextBlockCollection, TextBlocks);
+
+            Blocks.Add(new TextBlock{ IsTextBlock = true, IsNormalSet = false, IsDropSet = false, IsSuperSet = false, IsEnduranceSet = false, Order = currentLogDay.Counter, Text="", Title="TEXT BLOCK"});
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            currentLogDay.Counter++;
+            App.Database.UpdateLogDay(currentLogDay);
+        }
+
+        //---------- NORMAL SETS ---------------
+
+        void Handle_AddNormalSet(object sender, EventArgs e)
+        {
+            NormalSet ns = new NormalSet();
+            App.Database.SaveNormalSet(ns);
+            NormalSetBlock nsb = new NormalSetBlock(currentLogDay.Counter);
+            App.Database.SaveNormalBlock(nsb);
+            nsb = App.Database.GetNormalBlockWithChildren(nsb.Id);
+            nsb.NormalSets.Add(App.Database.GetNormalSetWithChildren(ns.Id));
+            App.Database.UpdateNormalBlockWithChildren(nsb);
+            currentLogDay.NormalSetBlocks.Add(nsb);
+            currentLogDay.Counter++;
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            Blocks.Add(nsb);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            ChooseSetLayout.IsVisible = false;
+        }
+
+        void Handle_NewNormalSet(object sender, EventArgs e)
+        {
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(((Button)sender).CommandParameter);
+            NormalSet ns = new NormalSet (nsb.NormalSets.Count + 1);
+            App.Database.SaveNormalSet(ns);
+            nsb = nsb.CloseAllSets();
+            nsb.NormalSets.Add(App.Database.GetNormalSetWithChildren(ns.Id));
+            nsb.Fade1 = "#A6A0A6";
+            nsb.Fade2 = "#A6A0A6";
+            App.Database.UpdateNormalBlockWithChildren(nsb);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void UpdateNormalSetVisibility(object sender, EventArgs e)
+        {
+            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            ns.UpdateSetVisibility();
+            App.Database.UpdateNormalSetWithChildren(ns);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DeleteNormalSet(object sender, EventArgs e)
+        {
+            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+            nsb.UpdateNormalSetTitels(int.Parse((ns.Title).Remove(0, 4)));
+            App.Database.DeleteNormalSet(ns);
+            //If there is no sets left, change Add new set button border to fade colors
+            if(nsb.NormalSets.Count-1 == 0)
+            {
+                nsb.Fade1 = "#FF4816";
+                nsb.Fade2 = "#FFE000";
+                App.Database.UpdateNormalBlockWithChildren(nsb);
+            }
+            nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DeleteNormalBlock(object sender, EventArgs e)
+        {
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(((ImageButton)sender).CommandParameter);
+            foreach (NormalSet ns in nsb.NormalSets)
+            {
+                App.Database.DeleteNormalSet(ns);
+            }
+            App.Database.DeleteNormalBlock(nsb);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_NormalSetDecreaseWeight(object sender, EventArgs e)
+        {
+            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            ns.Weight--;
+            App.Database.UpdateNormalSetWithChildren(ns);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+        void Handle_NormalSetIncreaseWeight(object sender, EventArgs e)
+        {
+            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            ns.Weight++;
+            App.Database.UpdateNormalSetWithChildren(ns);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+ 
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+        
+        void Handle_NormalSetUpdateWeight(object sender, EventArgs e)
+        {
+            try
+            {
+                NormalSet ns = App.Database.GetNormalSetWithChildren(((Entry)sender).Placeholder);
+
+                try
+                {
+                    ns.Weight = Double.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ns.Weight = 0;
+                }
+                
+                App.Database.UpdateNormalSetWithChildren(ns);
+                NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+
+            }
+            catch { }
+        }
+        void Handle_NormalSetDecreaseReps(object sender, EventArgs e)
+        {
+            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            ns.Reps--;
+            App.Database.UpdateNormalSetWithChildren(ns);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+        void Handle_NormalSetIncreaseReps(object sender, EventArgs e)
+        {
+            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            ns.Reps++;
+            App.Database.UpdateNormalSetWithChildren(ns);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+
+            bool check = true;
+            foreach (NormalSet ns2 in nsb.NormalSets)
+            {
+                if (ns2.Id > ns.Id)
+                {
+                    check = false;
+                    break;
+                }
+            }
+            //Changes add new set button to faded border only if the last set was edited
+            if (check && ns.Reps > 0)
+            {
+                nsb.Fade1 = "#FF4816";
+                nsb.Fade2 = "#FFE000";
+                App.Database.UpdateNormalBlockWithChildren(nsb);
+            }
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_NormalSetUpdateReps(object sender, EventArgs e)
+        {
+            bool check = true;
+            try
+            {
+                NormalSet ns = App.Database.GetNormalSetWithChildren(((Entry)sender).Placeholder);
+                //We dont want to make add new set buttons border faded if we just focused and then unfocused without changing anything on reps
+                try
+                {
+                    if (int.Parse(((Entry)sender).Text) == ns.Reps)
+                    {
+                        check = false;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    ns.Reps = int.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ns.Reps = 0;
+                }
+
+                App.Database.UpdateNormalSetWithChildren(ns);
+                NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+                
+                foreach(NormalSet ns2 in nsb.NormalSets)
+                {
+                    if(ns2.Id > ns.Id)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+                //Changes add new set button to faded border only if the last set was edited
+                if (check)
+                {
+                    nsb.Fade1 = "#FF4816";
+                    nsb.Fade2 = "#FFE000";
+                    App.Database.UpdateNormalBlockWithChildren(nsb);
+                }
+                
+            }
+            catch { }
+
+        }
+
+        //---------- DROP SETS ---------------
+        void Handle_AddDropSet(object sender, EventArgs e)
+        {
+            DropSet ds = new DropSet();
+            App.Database.SaveDropSet(ds);
+            DropSetBlock dsb = new DropSetBlock(currentLogDay.Counter);
+            App.Database.SaveDropBlock(dsb);
+            dsb = App.Database.GetDropBlockWithChildren(dsb.Id);
+            dsb.DropSets.Add(App.Database.GetDropSetWithChildren(ds.Id));
+            App.Database.UpdateDropBlockWithChildren(dsb);
+            Blocks.Add(dsb);
+            currentLogDay.DropSetBlocks.Add(dsb);
+            currentLogDay.Counter++;
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            ChooseSetLayout.IsVisible = false;
+        }
+
+        void Handle_NewDropSet(object sender, EventArgs e)
+        {
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(((Button)sender).CommandParameter);
+            DropSet ds = new DropSet(dsb.DropSets.Count + 1);
+            App.Database.SaveDropSet(ds);
+            dsb = dsb.CloseAllSets();
+            dsb.DropSets.Add(App.Database.GetDropSetWithChildren(ds.Id));
+            dsb.Fade1 = "#A6A0A6";
+            dsb.Fade2 = "#A6A0A6";
+            App.Database.UpdateDropBlockWithChildren(dsb);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void UpdateDropSetVisibility(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.UpdateSetVisibility();
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DeleteDropSet(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+            dsb.UpdateDropSetTitels(int.Parse((ds.Title).Remove(0, 4)));
+            App.Database.DeleteDropSet(ds);
+            //If there is no sets left, change Add new set button border to fade colors
+            if (dsb.DropSets.Count - 1 == 0)
+            {
+                dsb.Fade1 = "#FF4816";
+                dsb.Fade2 = "#FFE000";
+                App.Database.UpdateDropBlockWithChildren(dsb);
+            }
+            dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DeleteDropBlock(object sender, EventArgs e)
+        {
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(((ImageButton)sender).CommandParameter);
+            foreach (DropSet ds in dsb.DropSets)
+            {
+                App.Database.DeleteDropSet(ds);
+            }
+            App.Database.DeleteDropBlock(dsb);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DropSetDecreaseStartWeight(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.StartWeight--;
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+        void Handle_DropSetIncreaseStartWeight(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.StartWeight++;
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DropSetUpdateStartWeight(object sender, EventArgs e)
+        {
+            try
+            {
+                DropSet ds = App.Database.GetDropSetWithChildren(((Entry)sender).Placeholder);
+
+                try
+                {
+                    ds.StartWeight = Double.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ds.StartWeight = 0;
+                }
+
+                App.Database.UpdateDropSetWithChildren(ds);
+                DropSetBlock nsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            }
+            catch { }
+        }
+
+
+        void Handle_DropSetDecreaseEndWeight(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.EndWeight--;
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+        void Handle_DropSetIncreaseEndWeight(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.EndWeight++;
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DropSetUpdateEndWeight(object sender, EventArgs e)
+        {
+            try
+            {
+                DropSet ds = App.Database.GetDropSetWithChildren(((Entry)sender).Placeholder);
+
+                try
+                {
+                    ds.EndWeight = Double.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ds.EndWeight = 0;
+                }
+
+                App.Database.UpdateDropSetWithChildren(ds);
+                DropSetBlock nsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            }
+            catch { }
+        }
+
+
+        void Handle_DropSetDecreaseReps(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.Reps--;
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+        void Handle_DropSetIncreaseReps(object sender, EventArgs e)
+        {
+            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
+            ds.Reps++;
+            App.Database.UpdateDropSetWithChildren(ds);
+            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+            bool check = true;
+            foreach (DropSet ds2 in dsb.DropSets)
+            {
+                if (ds2.Id > ds.Id)
+                {
+                    check = false;
+                    break;
+                }
+            }
+            //Changes add new set button to faded border only if the last set was edited
+            if (check && ds.Reps > 0)
+            {
+                dsb.Fade1 = "#FF4816";
+                dsb.Fade2 = "#FFE000";
+                App.Database.UpdateDropBlockWithChildren(dsb);
+            }
+
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DropSetUpdateReps(object sender, EventArgs e)
+        {
+            bool check = true;
+            try
+            {
+                DropSet ds = App.Database.GetDropSetWithChildren(((Entry)sender).Placeholder);
+                //We dont want to make add new set buttons border faded if we just focused and then unfocused without changing anything on reps
+                try
+                {
+                    if (int.Parse(((Entry)sender).Text) == ds.Reps)
+                    {
+                        check = false;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    ds.Reps = int.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ds.Reps = 0;
+                }
+
+                App.Database.UpdateDropSetWithChildren(ds);
+                DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+
+                foreach (DropSet ds2 in dsb.DropSets)
+                {
+                    if (ds2.Id > ds.Id)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+                //Changes add new set button to faded border only if the last set was edited
+                if (check)
+                {
+                    dsb.Fade1 = "#FF4816";
+                    dsb.Fade2 = "#FFE000";
+                    App.Database.UpdateDropBlockWithChildren(dsb);
+                }
+            }
+            catch { }
+
+        }
+
+        //---------- SUPER SETS ---------------
+        void Handle_AddSuperSet(object sender, EventArgs e)
+        {
+            Blocks.Add(new SuperSetBlock { IsTextBlock = false, IsNormalSet = false, IsDropSet = false, IsSuperSet = true, IsEnduranceSet = false, Order = currentLogDay.Counter, Title="SUPER SET" });
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            ChooseSetLayout.IsVisible = false;
+            currentLogDay.Counter++;
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+        }
+
+        //---------- ENDURANCE SETS ---------------
+        void Handle_AddEnduranceSet(object sender, EventArgs e)
+        {
+            Blocks.Add(new EnduranceSetBlock { IsTextBlock = false, IsNormalSet = false, IsDropSet = false, IsSuperSet = false, IsEnduranceSet = true, Order = currentLogDay.Counter, Title="ENDURANCE SET" });
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            ChooseSetLayout.IsVisible = false;            
+            currentLogDay.Counter++;
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
         }
 
         void Handle_Favorised(object sender, EventArgs e)
