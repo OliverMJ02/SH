@@ -387,6 +387,8 @@ namespace CurryFit.view
                     nsb.Fade1 = "#FF4816";
                     nsb.Fade2 = "#FFE000";
                     App.Database.UpdateNormalBlockWithChildren(nsb);
+                    BindableLayout.SetItemsSource(BlockCollection, null);
+                    BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
                 }
                 
             }
@@ -639,6 +641,8 @@ namespace CurryFit.view
                     dsb.Fade1 = "#FF4816";
                     dsb.Fade2 = "#FFE000";
                     App.Database.UpdateDropBlockWithChildren(dsb);
+                    BindableLayout.SetItemsSource(BlockCollection, null);
+                    BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
                 }
             }
             catch { }
