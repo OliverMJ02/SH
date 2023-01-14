@@ -3,6 +3,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
 
+[assembly: ExportFont("Nunito-SemiBold.ttf", Alias = "N")]
+[assembly: ExportFont("Montserrat-SemiBold.ttf", Alias = "M")]
+
 namespace CurryFit
 {
     public partial class App : Application

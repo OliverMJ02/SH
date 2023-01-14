@@ -70,7 +70,7 @@
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
                         <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" VerticalOptions="Center">
-                            <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Sök efter övningar" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
+                            <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Sök efter övningar" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
                             <Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>
                         </StackLayout>
                     </Frame>
