@@ -98,7 +98,7 @@
                                 <Label x:Name="FiberLabel" Text="0 G" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
 
-                            <Button Text="VISA DETALJERAD VY" BackgroundColor="#726E72" TextColor="#2A282A" CornerRadius="25" HeightRequest="36" FontSize="10" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,16,0,10"></Button>
+                            <Button Text="DETAILED NUTRIENTS" BackgroundColor="#726E72" TextColor="#2A282A" CornerRadius="25" HeightRequest="36" FontSize="10" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,16,0,10"></Button>
 
                         </StackLayout>
                     </StackLayout>
@@ -117,7 +117,7 @@
                         </Picker.Items>
                     </Picker>
                 </StackLayout>
-                <Button Text="Add" Clicked="AddProductClick"></Button>
+                <Button Text="ADD TO" Clicked="AddProductClick"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
