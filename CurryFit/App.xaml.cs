@@ -2,8 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
-[assembly: ExportFont("Montserrat-Semibold.ttf", Alias = "Montserrat")]
-[assembly: ExportFont("Nunito-Semibold.ttf", Alias = "Nunito")]
 
 [assembly: ExportFont("Nunito-SemiBold.ttf", Alias = "N")]
 [assembly: ExportFont("Montserrat-SemiBold.ttf", Alias = "M")]

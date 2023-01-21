@@ -31,7 +31,7 @@
 
             <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal"  HeightRequest="50" MinimumHeightRequest="50">
                 <ImageButton Source="backwards_arrow_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0"></ImageButton>
-                <Label Text="SKANNAD STRECKKOD" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="14" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="280" VerticalTextAlignment="Center"></Label>
+                <Label Text="SCANNED BARCODE" FontFamily="M" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="14" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="280" VerticalTextAlignment="Center"></Label>
                 <ImageButton Source="settings_gray.png" WidthRequest="25" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
             </StackLayout>
 
@@ -39,8 +39,8 @@
                 <StackLayout>
                     <StackLayout  Orientation="Horizontal">
                         <StackLayout>
-                            <Label x:Name="ProductName" Text="LÄTTMJÖLK 0,5 %" TextColor="#A6A0A6" FontFamily="Montserrat" FontAttributes="None" Margin="4,0,0,0" FontSize="14"></Label>
-                            <Label x:Name="CreatorName" Text="ARLA  |  1000 ML" TextColor="#726E72" FontFamily="Montserrat" FontAttributes="None" Margin="4,-8,0,0" FontSize="14"></Label>
+                            <Label x:Name="ProductName" Text="LÄTTMJÖLK 0,5 %" TextColor="#A6A0A6" FontFamily="M" FontAttributes="None" Margin="4,0,0,0" FontSize="14"></Label>
+                            <Label x:Name="CreatorName" Text="ARLA  |  1000 ML" TextColor="#726E72" FontFamily="M" FontAttributes="None" Margin="4,-8,0,0" FontSize="14"></Label>
                         </StackLayout>
                         <ImageButton HorizontalOptions="EndAndExpand" Source="star_empty.png" HeightRequest="30" BackgroundColor="Transparent"></ImageButton>
                     </StackLayout>
@@ -51,26 +51,26 @@
                             <Grid>
                                 <microcharts:ChartView x:Name="ProductChart" WidthRequest="110" HeightRequest="120" BackgroundColor="Transparent"></microcharts:ChartView>
                                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                    <Label Text="40 kcal" TextColor="White" FontFamily="Montserrat" FontSize="14"></Label>
+                                    <Label Text="40 kcal" TextColor="White" FontFamily="M" FontSize="14"></Label>
                                 </StackLayout>
                             </Grid>
 
                             <StackLayout Orientation="Horizontal" Margin="4,-6,0,0">
                                 <Image Source="verified.png" WidthRequest="15" HeightRequest="15"></Image>
-                                <Label Text="Rik på Protein" TextColor="#A6A0A6" FontFamily="Nunito"  FontSize="12"></Label>
+                                <Label Text="Rik på Protein" TextColor="#A6A0A6" FontFamily="N"  FontSize="12"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="4,3,0,0">
                                 <Image Source="verified.png" WidthRequest="15" HeightRequest="15"></Image>
-                                <Label Text="Bra fettsorter" TextColor="#A6A0A6" FontFamily="Nunito" FontSize="12"></Label>
+                                <Label Text="Bra fettsorter" TextColor="#A6A0A6" FontFamily="N" FontSize="12"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="4,3,0,0">
                                 <Image Source="verified.png" WidthRequest="15" HeightRequest="15"></Image>
-                                <Label Text="Få kalorier" TextColor="#A6A0A6" FontFamily="Nunito" FontSize="12"></Label>
+                                <Label Text="Få kalorier" TextColor="#A6A0A6" FontFamily="N" FontSize="12"></Label>
                             </StackLayout>
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
-                            <Label Text="NÄRINGSINNEHÅLL" TextColor="#A6A0A6" FontFamily="Montserrat" FontAttributes="None" Margin="0,0,20,0" FontSize="14"></Label>
+                            <Label Text="NÄRINGSINNEHÅLL" TextColor="#A6A0A6" FontFamily="M" FontAttributes="None" Margin="0,0,20,0" FontSize="14"></Label>
                             <StackLayout Orientation="Horizontal" Margin="0,-8,0,0">
                                 <Label Text="per" TextColor="#A6A0A6" FontFamily="Nunito" FontAttributes="None" Margin="0,0,0,0" FontSize="12"></Label>
                                 <Label Text="100 gram" TextColor="#FFFFFF" FontFamily="Nunito" FontAttributes="None" Margin="-3,0,0,0" FontSize="12"></Label>
@@ -78,27 +78,27 @@
                             </StackLayout>
 
                             <StackLayout Orientation="Horizontal" Margin="0,7,0,0">
-                                <Label Text="ENERGI" TextColor="#A6A0A6" FontFamily="Montserrat"  FontSize="10"></Label>
-                                <Label x:Name="EnergyLabel" Text="40 KCAL" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="ENERGI" TextColor="#A6A0A6" FontFamily="M"  FontSize="10"></Label>
+                                <Label x:Name="EnergyLabel" Text="40 KCAL" TextColor="#A6A0A6" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="FETT" TextColor="#CCB628" FontFamily="Montserrat" FontSize="10"></Label>
-                                <Label x:Name="FatLabel" Text="0,5 G" TextColor="#CCB628" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="FETT" TextColor="#CCB628" FontFamily="M" FontSize="10"></Label>
+                                <Label x:Name="FatLabel" Text="0,5 G" TextColor="#CCB628" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="KOLHYDRATER" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="10"></Label>
-                                <Label x:Name="CarbsLabel" Text="0 G" TextColor="#2C91FF" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="KOLHYDRATER" TextColor="#2C91FF" FontFamily="M" FontSize="10"></Label>
+                                <Label x:Name="CarbsLabel" Text="0 G" TextColor="#2C91FF" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="PROTEIN" TextColor="#FF2656" FontFamily="Montserrat" FontSize="10"></Label>
-                                <Label x:Name="ProteinLabel" Text="3,5 G" TextColor="#FF2656" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="PROTEIN" TextColor="#FF2656" FontFamily="M" FontSize="10"></Label>
+                                <Label x:Name="ProteinLabel" Text="3,5 G" TextColor="#FF2656" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="FIBRER" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="10"></Label>
-                                <Label x:Name="FiberLabel" Text="0 G" TextColor="#A6A0A6" FontFamily="Montserrat" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="FIBRER" TextColor="#A6A0A6" FontFamily="M" FontSize="10"></Label>
+                                <Label x:Name="FiberLabel" Text="0 G" TextColor="#A6A0A6" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
 
-                            <Button Text="DETAILED NUTRIENTS" BackgroundColor="#726E72" TextColor="#2A282A" CornerRadius="25" HeightRequest="36" FontSize="10" FontFamily="Montserrat" FontAttributes="Bold" Margin="0,16,0,10"></Button>
+                            <Button Text="DETAILED NUTRIENTS" BackgroundColor="#726E72" TextColor="#2A282A" CornerRadius="25" HeightRequest="36" FontSize="10" FontFamily="M" FontAttributes="Bold" Margin="0,16,0,10"></Button>
 
                         </StackLayout>
                     </StackLayout>
