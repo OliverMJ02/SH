@@ -12,6 +12,8 @@ using SQLiteNetExtensions.Extensions.TextBlob;
 using System.Reflection;
 using SQLiteNetExtensions.Extensions;
 using CurryFit.model;
+using CurryFit.model.blocks;
+using CurryFit.model.Sets;
 
 namespace CurryFit
 {
@@ -25,6 +27,14 @@ namespace CurryFit
             _database.CreateTable<TrainingProgram>();
             _database.CreateTable<Exercise>();
             _database.CreateTable<TrainingProgramsExercises>();
+
+            _database.CreateTable<LogDay>();
+
+            _database.CreateTable<NormalSetBlock>();
+            _database.CreateTable<NormalSet>();
+
+            _database.CreateTable<DropSetBlock>();
+            _database.CreateTable<DropSet>();
 
         }
 
@@ -106,6 +116,137 @@ namespace CurryFit
         {
             return _database.Delete<Exercise>(id);
         }
+
+        //Methods for LogDay
+        public void UpdateLogDayWithChildren(LogDay log)
+        {
+            _database.UpdateWithChildren(log);
+        }
+
+        public void UpdateLogDay(LogDay log)
+        {
+            _database.Update(log);
+        }
+
+        public int SaveLogDay(LogDay log)
+        {
+            return _database.Insert(log);
+        }
+
+        public List<LogDay> GetLogDays()
+        {
+            return _database.Table<LogDay>().ToList();
+        }
+
+        public LogDay GetLogDayWithChildren(object id)
+        {
+            return _database.GetWithChildren<LogDay>(id);
+        }
+
+        //Methods for NormalSetBlocks
+        public void UpdateNormalBlockWithChildren(NormalSetBlock block)
+        {
+            _database.UpdateWithChildren(block);
+        }
+
+        public int DeleteSingleNormalBlock(object id)
+        {
+            return _database.Delete<NormalSetBlock>(id);
+        }
+
+        public NormalSetBlock GetNormalBlockWithChildren(object id)
+        {
+            return _database.GetWithChildren<NormalSetBlock>(id);
+        }
+
+        public int SaveNormalBlock(NormalSetBlock block)
+        {
+            return _database.Insert(block);
+        }
+
+        public void DeleteNormalBlock(NormalSetBlock block)
+        {
+            _database.Delete(block);
+        }
+
+        //Methods for NormalSets
+        public void UpdateNormalSetWithChildren(NormalSet set)
+        {
+            _database.UpdateWithChildren(set);
+        }
+
+        public int DeleteSingleNormalSet(object id)
+        {
+            return _database.Delete<NormalSet>(id);
+        }
+
+        public NormalSet GetNormalSetWithChildren(object id)
+        {
+            return _database.GetWithChildren<NormalSet>(id);
+        }
+
+        public int SaveNormalSet(NormalSet set)
+        {
+            return _database.Insert(set);
+        }
+        public void DeleteNormalSet(NormalSet set)
+        {
+            _database.Delete(set);
+        }
+
+
+
+        //Methods for DropSetBlocks
+        public void UpdateDropBlockWithChildren(DropSetBlock block)
+        {
+            _database.UpdateWithChildren(block);
+        }
+
+        public int DeleteSingleDropBlock(object id)
+        {
+            return _database.Delete<DropSetBlock>(id);
+        }
+
+        public DropSetBlock GetDropBlockWithChildren(object id)
+        {
+            return _database.GetWithChildren<DropSetBlock>(id);
+        }
+
+        public int SaveDropBlock(DropSetBlock block)
+        {
+            return _database.Insert(block);
+        }
+
+        public void DeleteDropBlock(DropSetBlock block)
+        {
+            _database.Delete(block);
+        }
+
+        //Methods for DropSets
+        public void UpdateDropSetWithChildren(DropSet set)
+        {
+            _database.UpdateWithChildren(set);
+        }
+
+        public int DeleteSingleDropSet(object id)
+        {
+            return _database.Delete<DropSet>(id);
+        }
+
+        public DropSet GetDropSetWithChildren(object id)
+        {
+            return _database.GetWithChildren<DropSet>(id);
+        }
+
+        public int SaveDropSet(DropSet set)
+        {
+            return _database.Insert(set);
+        }
+        public void DeleteDropSet(DropSet set)
+        {
+            _database.Delete(set);
+        }
+
 
     }
 }
