@@ -107,9 +107,17 @@
             </Frame>
             <StackLayout Orientation="Vertical">
                 <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="ProductAmount" BackgroundColor="#2A282A"> </Entry>
-                    <Picker x:Name="UnitPicker"> </Picker>
+                    <Entry x:Name="ProductAmount" BackgroundColor="#2A282A" Text="{Binding BoundValue}" Keyboard="Numeric" TextChanged="OnTextChanged"/> 
+                    <Picker x:Name="UnitPicker">
+                        <Picker.Items>
+                            <x:String>kg</x:String>
+                            <x:String>g</x:String>
+                            <x:String>l</x:String>
+                            <x:String>dl</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </StackLayout>
+                <Button Text="Add" Clicked="AddProductClick"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
