@@ -31,6 +31,11 @@ namespace CurryFit
      //       await Navigation.PushAsync(new ScannedBarcodePage());
         }
 
+        private async void Handle_MainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
         private async void Handle_FoodPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FoodPage());

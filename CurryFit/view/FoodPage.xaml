@@ -16,10 +16,25 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Scan" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Title" Clicked="Handle_ScannerPage"></Button>
+            <!--Top-->
+            <StackLayout Orientation="Vertical" VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal">
+                   
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Scan" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Title" Clicked="Handle_ScannerPage"></Button>
+                </StackLayout>
+            </StackLayout>
             
-            <!--DatePane-->
-            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+            <!--Middle-->
+            <StackLayout VerticalOptions="CenterAndExpand">
+                
+            </StackLayout>
+            
+            <!--Bottom-->
+            <StackLayout Orientation ="Vertical" VerticalOptions="End">
+                <!--DatePane-->
+             <StackLayout Orientation="Horizontal">
                 <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
                 <Label x:Name="dateLabel" Text="" HorizontalOptions="CenterAndExpand" FontSize="15"></Label>
                 <Button Text=">" HorizontalOptions="End" Clicked="Next_Date"></Button>
@@ -27,13 +42,15 @@
             
             <!-- Menu buttons -->
             <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
-            <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
-                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
-                <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
+                    <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
+                    <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                    <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                    <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                    <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                </StackLayout>
             </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

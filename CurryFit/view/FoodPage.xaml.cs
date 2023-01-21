@@ -23,6 +23,10 @@ namespace CurryFit.view
         {
             await Navigation.PushAsync(new ScannerPage());
         }
+        private async void Handle_MainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
         
         private void Previous_Date(object sender, EventArgs e)
         {
