@@ -13,13 +13,9 @@
   <ItemGroup>
     <None Remove="resources\fonts\Montserrat-Semibold.ttf" />
     <None Remove="resources\fonts\Nunito-Semibold.ttf" />
-    <None Remove="resources\font\Montserrat-Medium.ttf" />
-    <None Remove="resources\font\Montserrat-Semibold.ttf" />
-    <None Remove="resources\font\Nunito-Semibold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="resources\font\Montserrat-Medium.ttf" />
     <EmbeddedResource Include="resources\font\Montserrat-Semibold.ttf" />
     <EmbeddedResource Include="resources\font\Nunito-Semibold.ttf" />
   </ItemGroup>
