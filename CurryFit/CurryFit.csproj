@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="viewmodel\**" />
+    <EmbeddedResource Remove="viewmodel\**" />
+    <None Remove="viewmodel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="resources\fonts\Montserrat-SemiBold.ttf" />
     <EmbeddedResource Include="resources\fonts\Nunito-SemiBold.ttf" />
   </ItemGroup>
@@ -29,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="resources\fonts\" />
-    <Folder Include="viewmodel\" />
   </ItemGroup>
 
   <ItemGroup>
