@@ -21,6 +21,20 @@ namespace CurryFit.model.blocks
         public string Fade1 { get; set; }
         public string Fade2 { get; set; }
 
+        // Test 
+        public double XMargin { get; set; }
+        public double Width { get; set; }
+        public double GradientOffset { get; set; }
+        public int Hours { get; set; }
+        public int Minutes { get; set; }
+        public int Seconds { get; set; }
+
+        public int HoursSet { get; set; }
+        public int MinutesSet { get; set; }
+        public int SecondsSet { get; set; }
+
+        public string TimerDisplay { get; set; }
+        //--
         [OneToMany]
         public List<NormalSet> NormalSets { get; set; }
 
@@ -38,6 +52,45 @@ namespace CurryFit.model.blocks
             Title = "NORMAL SET";
             Fade1 = "#A6A0A6";
             Fade2 = "#A6A0A6";
+            Width = 0;
+            GradientOffset = 1.0;
+            XMargin = 40;
+            Hours = 0;
+            Minutes = 0;
+            Seconds = 30;
+            HoursSet = 0;
+            MinutesSet = 0;
+            SecondsSet = 30;
+
+            //Used to determine TimerDisplay
+            string hs;
+            string ms;
+            string ss;
+            if (Hours <= 9)
+            {
+                hs = '0' + Hours.ToString();
+            }
+            else
+            {
+                hs = Hours.ToString();
+            }
+            if (Minutes <= 9)
+            {
+                ms = '0' + Minutes.ToString();
+            }
+            else
+            {
+                ms = Minutes.ToString();
+            }
+            if (Seconds <= 9)
+            {
+                ss = '0' + Seconds.ToString();
+            }
+            else
+            {
+                ss = Seconds.ToString();
+            }
+            TimerDisplay = hs + ":" + ms + ":" + ss;
         }
 
         public NormalSetBlock()
@@ -51,6 +104,14 @@ namespace CurryFit.model.blocks
             Title = "NORMAL SET";
             Fade1 = this.Fade1;
             Fade2 = this.Fade2;
+            GradientOffset = this.GradientOffset;
+            XMargin = this.XMargin;
+            Hours = this.Hours;
+            Minutes = this.Minutes;
+            Seconds = this.Seconds;
+            HoursSet = this.HoursSet;
+            MinutesSet = this.MinutesSet;
+            SecondsSet = this.SecondsSet;
         }
 
         public NormalSetBlock CloseAllSets()

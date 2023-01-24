@@ -24,6 +24,7 @@ namespace CurryFit.view
     {
         int CurrentDay = 2;
         LogDay currentLogDay;
+        double startWidth;
 
         List<object> Blocks = new List<object>();
         FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -47,6 +48,8 @@ namespace CurryFit.view
 
             SearchBar.WidthRequest = xamarinWidth * 0.6;
             FilterBtn.WidthRequest = xamarinWidth * 0.3;
+
+            startWidth = xamarinWidth - 26 - 35 - 26 - 5;
 
         }
         private async void Handle_MainPage(object sender, EventArgs e)
@@ -393,6 +396,76 @@ namespace CurryFit.view
                 
             }
             catch { }
+
+        }
+
+        List<object> blocks = new List<object>();
+
+        bool TimerOn = false;
+        model.Timer timer = new model.Timer(0, 0, 0);
+        void Handle_StartNormalSetTimer(object sender, EventArgs e)
+        {
+            NormalSetBlock nsbb = App.Database.GetNormalBlockWithChildren((int)(sender as ImageButton).CommandParameter);
+            nsbb.TimerDisplay = timer.Display;
+            int time = nsbb.Hours * 3600 + nsbb.Minutes * 60 + nsbb.Seconds;
+            int c = 0;
+            if (TimerOn)
+            {
+                TimerOn = false;
+            }
+            else
+            {
+                double barWidth = startWidth - nsbb.Width;
+                timer.Hours = nsbb.Hours;
+                timer.Minutes = nsbb.Minutes;
+                timer.Seconds = nsbb.Seconds;
+                TimerOn = true;
+                Device.StartTimer(TimeSpan.FromMilliseconds(900), () =>
+                {
+                    try
+                    {
+                        NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren((int)(sender as ImageButton).CommandParameter);
+                        blocks.Clear();
+                        nsbb.Width = nsbb.Width + barWidth / time;
+                        nsbb.XMargin = nsbb.XMargin - barWidth / time;
+                        timer.Update();
+                        timer.UpdateDisplay();
+                        nsbb.TimerDisplay = timer.Display;
+                        nsbb.Hours = timer.Hours;
+                        nsbb.Minutes = timer.Minutes;
+                        nsbb.Seconds = timer.Seconds;
+                        //If anything has updated on any set.
+                        nsbb.NormalSets = nsb.NormalSets;
+                        App.Database.UpdateNormalBlockWithChildren(nsbb);
+                        c++;
+                        blocks.Add(nsbb);
+                        BindableLayout.SetItemsSource(BlockCollection, null);
+                        BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                    }
+                    catch { TimerOn = false; }
+
+                    if (time - c < 1)
+                    {
+                        TimerOn = false;
+                        nsbb.Width = 0;
+                        nsbb.XMargin = 40;
+                        nsbb.Hours = nsbb.HoursSet;
+                        nsbb.Minutes = nsbb.MinutesSet;
+                        nsbb.Seconds = nsbb.SecondsSet;
+                        timer.Hours = nsbb.HoursSet;
+                        timer.Minutes = nsbb.MinutesSet;
+                        timer.Seconds = nsbb.SecondsSet;
+                        timer.UpdateDisplay();
+                        nsbb.TimerDisplay = timer.Display;
+                        App.Database.UpdateNormalBlockWithChildren(nsbb);
+                        return false;
+                    }
+
+                    return TimerOn;
+                });
+
+            }
+
 
         }
 
