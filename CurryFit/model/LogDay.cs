@@ -4,6 +4,7 @@ using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CurryFit.model
@@ -36,6 +37,8 @@ namespace CurryFit.model
         {
             LogDay d = App.Database.GetLogDayWithChildren(this.Id);
             List<object> blocks = new List<object>();
+    
+
             /*
             foreach(TextBlock tb in this.TextBlocks)
             {
@@ -43,19 +46,21 @@ namespace CurryFit.model
             }
             */
             
-            try
-            {
+            
                 foreach (NormalSetBlock nb in d.NormalSetBlocks)
                 {
                     blocks.Add(App.Database.GetNormalBlockWithChildren(nb.Id));
+                    //blocks.Add(nb);
                 }
-            }
-            catch { }
+            
+            
+            /*
             try
             {
                 foreach (DropSetBlock db in d.DropSetBlocks)
                 {
                     blocks.Add(App.Database.GetDropBlockWithChildren(db.Id));
+                    //blocks.Add(db);
                 }
             }
             catch { }

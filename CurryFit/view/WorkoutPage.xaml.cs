@@ -16,6 +16,8 @@ using CurryFit.model.blocks;
 using Firebase.Database;
 using Firebase.Database.Query;
 using CurryFit.model.Sets;
+using System.Threading;
+using System.Globalization;
 
 namespace CurryFit.view
 {
@@ -68,37 +70,6 @@ namespace CurryFit.view
             ExerciseLayout.IsVisible = false;
             LogbookLayout.IsVisible = true;
 
-            List<LogDay> logDays = App.Database.GetLogDays();
-            bool exists = false;
-            foreach(LogDay logDay in logDays)
-            {
-                if(logDay.Day == CurrentDay)
-                {
-                    exists = true;
-                    currentLogDay = logDay;
-                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
-                    break;
-                }
-            }
-            if (!exists)
-            {
-                currentLogDay = new LogDay{ 
-                    Day = CurrentDay,
-                    
-                    NormalSetBlocks = new List<NormalSetBlock>() { },
-                    DropSetBlocks = new List<DropSetBlock>() { },
-                    
-                    
-                };
-                App.Database.SaveLogDay(currentLogDay);
-            }
-            try
-            {
-                Blocks = currentLogDay.GetAllBlocks();
-                BindableLayout.SetItemsSource(BlockCollection, null);
-                BindableLayout.SetItemsSource(BlockCollection, Blocks);
-            }
-            catch { }
         }
 
         void Handle_NextDay(object sender, EventArgs e)
@@ -204,7 +175,7 @@ namespace CurryFit.view
             currentLogDay.NormalSetBlocks.Add(nsb);
             currentLogDay.Counter++;
             App.Database.UpdateLogDayWithChildren(currentLogDay);
-            Blocks.Add(nsb);
+            //Blocks.Add(nsb);
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
             ChooseSetLayout.IsVisible = false;
@@ -225,10 +196,24 @@ namespace CurryFit.view
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
         }
+        
+        void Handle_UpdateNormalSetBlockVisibility(object sender, EventArgs e)
+        {
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(((ImageButton)sender).CommandParameter);
+            nsb.UpdateNormalSetBlockVisibility();
+            App.Database.UpdateNormalBlockWithChildren(nsb);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+
+        }
 
         void UpdateNormalSetVisibility(object sender, EventArgs e)
         {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+            NormalSet ns = null;
+            try { ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);}
+            catch { }
+            try { ns = App.Database.GetNormalSetWithChildren(((Button)sender).CommandParameter); }
+            catch { }
             ns.UpdateSetVisibility();
             App.Database.UpdateNormalSetWithChildren(ns);
             NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
@@ -273,7 +258,6 @@ namespace CurryFit.view
             NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
             ns.Weight--;
             App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
 
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
@@ -283,7 +267,6 @@ namespace CurryFit.view
             NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
             ns.Weight++;
             App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
  
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
@@ -315,7 +298,6 @@ namespace CurryFit.view
             NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
             ns.Reps--;
             App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
 
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
@@ -390,8 +372,8 @@ namespace CurryFit.view
                     nsb.Fade1 = "#FF4816";
                     nsb.Fade2 = "#FFE000";
                     App.Database.UpdateNormalBlockWithChildren(nsb);
-                    BindableLayout.SetItemsSource(BlockCollection, null);
-                    BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                    //BindableLayout.SetItemsSource(BlockCollection, null);
+                    //BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
                 }
                 
             }
@@ -801,10 +783,42 @@ namespace CurryFit.view
             }
             catch { }
             */
-            
+
             try
             {
                 BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
+            }
+            catch { }
+            List<LogDay> logDays = App.Database.GetLogDays();
+            bool exists = false;
+            foreach (LogDay logDay in logDays)
+            {
+                if (logDay.Day == CurrentDay)
+                {
+                    exists = true;
+                    currentLogDay = logDay;
+                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
+                    break;
+                }
+            }
+            if (!exists)
+            {
+                currentLogDay = new LogDay
+                {
+                    Day = CurrentDay,
+
+                    NormalSetBlocks = new List<NormalSetBlock>() { },
+                    DropSetBlocks = new List<DropSetBlock>() { },
+
+
+                };
+                App.Database.SaveLogDay(currentLogDay);
+            }
+
+            try
+            {
+                Blocks = currentLogDay.GetAllBlocks();
+                BindableLayout.SetItemsSource(BlockCollection, Blocks);
             }
             catch { }
            

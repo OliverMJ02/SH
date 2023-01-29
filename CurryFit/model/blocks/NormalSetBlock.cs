@@ -12,14 +12,19 @@ namespace CurryFit.model.blocks
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public bool IsTextBlock { get; set; }
+
+        // Dessa kan ersättas med "NormalSetBlockVisibility" osv
         public bool IsNormalSet { get; set; }
         public bool IsDropSet { get; set; }
         public bool IsSuperSet { get; set; }
         public bool IsEnduranceSet { get; set; }
+        // -----------
         public int Order { get; set; }
         public string Title { get; set; }
         public string Fade1 { get; set; }
         public string Fade2 { get; set; }
+
+        public bool NormalSetBlockVisibility { get; set; }
 
         // Test 
         public double XMargin { get; set; }
@@ -52,6 +57,7 @@ namespace CurryFit.model.blocks
             Title = "NORMAL SET";
             Fade1 = "#A6A0A6";
             Fade2 = "#A6A0A6";
+            NormalSetBlockVisibility = true;
             Width = 0;
             GradientOffset = 1.0;
             XMargin = 40;
@@ -104,6 +110,7 @@ namespace CurryFit.model.blocks
             Title = "NORMAL SET";
             Fade1 = this.Fade1;
             Fade2 = this.Fade2;
+            NormalSetBlockVisibility = true;
             GradientOffset = this.GradientOffset;
             XMargin = this.XMargin;
             Hours = this.Hours;
@@ -135,6 +142,19 @@ namespace CurryFit.model.blocks
                     App.Database.UpdateNormalSetWithChildren(ns);
                 }
             }
+        }
+
+        public NormalSetBlock UpdateNormalSetBlockVisibility()
+        {
+            if (this.NormalSetBlockVisibility)
+            {
+                this.NormalSetBlockVisibility = false;
+            }
+            else
+            {
+                this.NormalSetBlockVisibility = true;
+            }
+            return this;
         }
 
     }
