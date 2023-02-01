@@ -184,14 +184,14 @@
                         <FlexLayout x:Name="BlockCollection" Direction="Column">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout FlexLayout.Order="{Binding Order}">
+                                    <StackLayout FlexLayout.Order="{Binding Order}" Margin="0,0,0,-10">
 
                                         <StackLayout Orientation="Horizontal" Margin="18,0,18,0">
                                             <Label Text="{Binding Title}" FontSize="Micro" FontAttributes="Bold" TextColor="#A6A0A6" FontFamily="Montserrat"></Label>
                                             <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
                                         </StackLayout>
 
-                                        <Frame Padding="7,7,7,7" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsTextBlock}">
+                                        <Frame Padding="7,7,7,7" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsTextBlock, FallbackValue=False}">
                                             <Frame Padding="1,1,1,1" BackgroundColor="Transparent" BorderColor="#726E72">
                                                 <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#726E72">
                                                     <local:CustomEditor Keyboard="Plain" AutoSize="TextChanges" Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8" Text="{Binding Text}" WidthRequest="9999" ></local:CustomEditor>
@@ -199,7 +199,7 @@
                                             </Frame>
                                         </Frame>
 
-                                        <Frame CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
+                                        <Frame CornerRadius="7" Padding="5,10,30,10" Margin="13,0,13,20">
                                             <Frame.Triggers>
                                                 <DataTrigger TargetType="Frame" Binding="{Binding NormalSetBlockVisibility}" Value="True">
                                                     <Setter Property="IsVisible" Value="False" />
@@ -212,10 +212,16 @@
                                                     <GradientStop Color="#2A282A" Offset="1.0"/>
                                                 </LinearGradientBrush>
                                             </Frame.Background>
-                                            <StackLayout>
-                                                
-                                                <Label Text="Hello"></Label>
-                                                <ImageButton HorizontalOptions="Center" WidthRequest="20" HeightRequest="20" BackgroundColor="Red" CommandParameter="{Binding Id}" Clicked="Handle_UpdateNormalSetBlockVisibility"></ImageButton>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <ImageButton Source="pointer_down_gray.png" BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="35" HeightRequest="35" Command="{Binding UpdateBlockVisibilityCmd}"></ImageButton>
+                                                <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" HeightRequest="35">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
+                                                        <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png" CommandParameter="{Binding Id}"></ImageButton>
+                                                    </StackLayout>
+                                                </Frame>
+                                                <Label FontFamily="M" VerticalTextAlignment="Center" TextColor="#A6A0A6" Text="{Binding NumberOfSets}"></Label>
                                             </StackLayout>
                                         </Frame>
                                         
@@ -232,16 +238,25 @@
 
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal">
+                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" Margin="-5,0,0,0">
+                                                            <Frame.Triggers>
+                                                                <DataTrigger TargetType="Frame" Binding="{Binding IsNotFinished}" Value="True">
+                                                                    <Setter Property="IsVisible" Value="False" />
+                                                                </DataTrigger>
+                                                            </Frame.Triggers>
+                                                            <ImageButton Source="pointer_up_gray.png" BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="35" HeightRequest="35" Command="{Binding UpdateBlockVisibilityCmd}"></ImageButton>
+                                                        </Frame>
+
                                                         <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" HeightRequest="35">
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
-                                                                <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png" Clicked="Handle_UpdateNormalSetBlockVisibility" CommandParameter="{Binding Id}"></ImageButton>
+                                                                <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png"></ImageButton>
                                                             </StackLayout>
                                                         </Frame>
 
-                                                        <Frame Padding="0,0,0,0" BorderColor="#A6A0A6" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,5,0" HeightRequest="35" WidthRequest="100">
+                                                        <Frame Padding="0,0,0,0" BorderColor="#A6A0A6" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,5,0" HeightRequest="35" WidthRequest="100" IsVisible="{Binding IsNotFinished}">
                                                             <StackLayout Orientation="Horizontal">
-                                                                <Label Text="1:00.0" Margin="10,10,0,10" TextColor="#A6A0A6"></Label>
+                                                                <Label Text="kebab" Margin="10,10,0,10" TextColor="#A6A0A6"></Label>
                                                                 <BoxView WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="20" BackgroundColor="Gray"></BoxView>
                                                             </StackLayout>
                                                         </Frame>
@@ -249,7 +264,7 @@
                                                         <ImageButton BorderColor="#A6A0A6" VerticalOptions="Center" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteNormalBlock"></ImageButton>
                                                     </StackLayout>
 
-                                                    <StackLayout Orientation="Horizontal">
+                                                    <StackLayout Orientation="Horizontal" IsVisible="{Binding IsNotFinished}">
                                                         <Frame Padding="0,0,0,0" Margin="0,0,0,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="Start">
                                                             <AbsoluteLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="370">
                                                                 <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="35" BorderColor="#726E72">
@@ -279,7 +294,7 @@
                                                             </AbsoluteLayout>
                                                         </Frame>
 
-                                                        <ImageButton  Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="Red" Clicked="Handle_StartNormalSetTimer" CommandParameter="{Binding Id}" HeightRequest="35" WidthRequest="35" HorizontalOptions="EndAndExpand" VerticalOptions="Center" CornerRadius="50" ></ImageButton>
+                                                        <ImageButton  Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="Red" Command="{Binding HandleRestingTimerCmd}"  CommandParameter="{Binding Id}" HeightRequest="35" WidthRequest="35" HorizontalOptions="EndAndExpand" VerticalOptions="Center" CornerRadius="50" ></ImageButton>
                                                     </StackLayout>
                                                 </StackLayout>
 
@@ -290,9 +305,9 @@
                                                         <DataTemplate>
                                                             <StackLayout Margin="0,20,0,0">
                                                                 <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="-10,0,0,0">
-                                                                    <ImageButton Source="{Binding IsVisibleSource}" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0,-10,-5,0" CommandParameter="{Binding Id}" Clicked="UpdateNormalSetVisibility"></ImageButton>
+                                                                    <ImageButton Source="{Binding IsVisibleSource}" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0,-10,-5,0" Command="{Binding UpdateSetVisibilityCmd}"></ImageButton>
                                                                     <Label Text="{Binding Title}" TextColor="#A6A0A6" HorizontalOptions="FillAndExpand" FontFamily="M" FontSize="14.5"></Label>
-                                                                    <Button Padding="0,0,0,0" HorizontalOptions="EndAndExpand" TextColor="#A6A0A6" VerticalOptions="Start" FontSize="14.5" FontFamily="M" HeightRequest="17" BackgroundColor="Transparent" CommandParameter="{Binding Id}" Clicked="UpdateNormalSetVisibility">
+                                                                    <Button Padding="0,0,0,0" HorizontalOptions="EndAndExpand" TextColor="#A6A0A6" VerticalOptions="Start" FontSize="14.5" FontFamily="M" HeightRequest="17" BackgroundColor="Transparent" Command="{Binding UpdateSetVisibilityCmd}">
                                                                         <Button.Text>
                                                                             <MultiBinding StringFormat="{}{0} REPS,  {1} KG">
                                                                                 <Binding Path="Reps" />
@@ -305,7 +320,7 @@
                                                                             </DataTrigger>
                                                                         </Button.Triggers>
                                                                     </Button>
-                                                                    <ImageButton BorderColor="#A6A0A6" VerticalOptions="Start" Margin="-30,-10,0,0" HorizontalOptions="EndAndExpand" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteNormalSet"></ImageButton>
+                                                                    <ImageButton BorderColor="#A6A0A6" VerticalOptions="Start" Margin="-29,-10,0,0" HorizontalOptions="EndAndExpand" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteNormalSet"></ImageButton>
                                                                 </StackLayout>
 
                                                                 <StackLayout IsVisible="{Binding IsVisible}">
@@ -314,11 +329,11 @@
                                                                         <Label Text="REPETITIONS: " TextColor="#A6A0A6" VerticalOptions="Center" FontFamily="M"></Label>
                                                                         <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_NormalSetDecreaseReps" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Command="{Binding DecrementRepsCmd}"></ImageButton>
                                                                                 <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
                                                                                     <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" FontFamily="N" Text="{Binding Reps}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_NormalSetUpdateReps" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
                                                                                 </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_NormalSetIncreaseReps" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Command="{Binding IncrementRepsCmd}"></ImageButton>
                                                                             </StackLayout>
                                                                         </Frame>
                                                                         <Label Text="KG" TextColor="Transparent" VerticalOptions="Center" Margin="5,0,12,0" FontFamily="M"></Label>
@@ -328,11 +343,11 @@
                                                                         <Label Text="WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center" FontFamily="M"></Label>
                                                                         <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
                                                                             <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_NormalSetDecreaseWeight" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Command="{Binding DecrementWeightCmd}"></ImageButton>
                                                                                 <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
-                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" FontFamily="N" Text="{Binding Weight}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_NormalSetUpdateWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
+                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" FontFamily="N" Text="{Binding Weight}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_NormalSetUpdateWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent" BindingContext="{Binding .}"></Entry>
                                                                                 </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_NormalSetIncreaseWeight" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Command="{Binding IncrementWeightCmd}"></ImageButton>
                                                                             </StackLayout>
                                                                         </Frame>
                                                                         <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0" FontFamily="M"></Label>
@@ -356,35 +371,35 @@
                                                             <yummi:Border Thickness="1">
                                                                 <yummi:Border.GradientStops>
                                                                     <yummi:GradientStopCollection>
-                                                                        <yummi:GradientStop Color="{Binding Fade1}" Offset="0"></yummi:GradientStop>
-                                                                        <yummi:GradientStop Color="{Binding Fade2}" Offset="1"></yummi:GradientStop>
+                                                                        <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                                        <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
                                                                     </yummi:GradientStopCollection>
                                                                 </yummi:Border.GradientStops>
                                                             </yummi:Border>
                                                         </yummi:PancakeView.Border>
-                                                        <Button Text="ADD NEW SET" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" Clicked="Handle_NewNormalSet" CornerRadius="50" CommandParameter="{Binding Id}"></Button>
+                                                        <Button Text="ADD NEW SET" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" Clicked="Handle_NewNormalSet" CornerRadius="50" CommandParameter="{Binding Id}" ></Button>
                                                     </yummi:PancakeView>
                                                     <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="3,10,0,0" Grid.Column="1">
                                                         <yummi:PancakeView.Border>
                                                             <yummi:Border Thickness="1">
                                                                 <yummi:Border.GradientStops>
                                                                     <yummi:GradientStopCollection>
-                                                                        <yummi:GradientStop Color="{Binding Fade1}" Offset="0"></yummi:GradientStop>
-                                                                        <yummi:GradientStop Color="{Binding Fade2}" Offset="1"></yummi:GradientStop>
+                                                                        <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                                        <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
                                                                     </yummi:GradientStopCollection>
                                                                 </yummi:Border.GradientStops>
                                                             </yummi:Border>
                                                         </yummi:PancakeView.Border>
-                                                        <Button Text="FINISH EXERCISE" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" CornerRadius="50" CommandParameter="{Binding Id}"></Button>
+                                                        <Button Text="{Binding SaveOrFinish}" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" CornerRadius="50" Command="{Binding UpdateBlockVisibilityCmd}"></Button>
                                                     </yummi:PancakeView>
                                                 </Grid>
 
                                             </StackLayout>
                                         </Frame>
-                                        
-                                        
 
-                                        <Frame IsVisible="{Binding IsDropSet}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
+
+
+                                        <Frame IsVisible="{Binding IsDropSet, FallbackValue=False}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
                                             <Frame.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                     <GradientStop Color="#504E50" Offset="0.1"/>
@@ -490,13 +505,13 @@
 
                                             </StackLayout>
                                         </Frame>
-                                        
-                                        
 
-                                        <StackLayout BackgroundColor="Blue" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsSuperSet}">
+
+
+                                        <StackLayout BackgroundColor="Blue" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsSuperSet, FallbackValue=False}">
                                             <Label Text="This is A Super Set"></Label>
                                         </StackLayout>
-                                        <StackLayout BackgroundColor="Yellow" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsEnduranceSet}">
+                                        <StackLayout BackgroundColor="Yellow" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsEnduranceSet, FallbackValue=False}">
                                             <Label Text="This is An Endurance Set"></Label>
                                         </StackLayout>
                                     </StackLayout>
@@ -518,7 +533,7 @@
 
                         <StackLayout Margin="13,2,13,0">
 
-                            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
+                            <StackLayout Orientation="Horizontal" Margin="5,-10,5,0">
                                 <Label Text="ADD NEW BLOCK" FontSize="Micro" FontAttributes="Bold" TextColor="#A6A0A6"></Label>
                                 <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
                             </StackLayout>
