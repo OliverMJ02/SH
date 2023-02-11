@@ -39,11 +39,14 @@ namespace CurryFit.model.api
         private List<FoodProduct.Nutrient> orderNutrients(List<FoodProduct.Nutrient> nutrients)
         {
             List<FoodProduct.Nutrient> orderedNutrients = new List<FoodProduct.Nutrient>(nutrients.Count);
+            List<FoodProduct.Nutrient> detailedNutrients = new List<FoodProduct.Nutrient>(nutrients.Count - 5);
 
             for (int i = 0; i < nutrients.Count; i++)
             {
-                InsertNutrientsInOrder(nutrients, orderedNutrients, i);
+                InsertNutrientsInOrder(nutrients, orderedNutrients, detailedNutrients, i);
             }
+            
+            orderedNutrients.AddRange(detailedNutrients);
 
             return orderedNutrients;
         }
@@ -52,8 +55,10 @@ namespace CurryFit.model.api
         /// </summary>
         /// <param name="nutrients">The list of nutrients to be ordered</param>
         /// <param name="orderedNutrients">The list of nutrients to be ordered in</param>
+        /// <param name="detailedNutrients">The list of nutrients that are not ordered</param>
         /// <param name="i">The index of the nutrient to be inserted</param>
-        private void InsertNutrientsInOrder(List<FoodProduct.Nutrient> nutrients, List<FoodProduct.Nutrient> orderedNutrients, int i)
+        private void InsertNutrientsInOrder(List<FoodProduct.Nutrient> nutrients, List<FoodProduct.Nutrient> orderedNutrients,
+          List<FoodProduct.Nutrient> detailedNutrients , int i)
         {
             switch (nutrients[i].Name)
             {
@@ -76,7 +81,7 @@ namespace CurryFit.model.api
                     orderedNutrients.Insert(4, nutrients[i]);
                     break;
                 default:
-                    orderedNutrients.Add(nutrients[i]);
+                    detailedNutrients.Add(nutrients[i]);
                     break;
             }
         }
