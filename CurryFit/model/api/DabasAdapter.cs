@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CurryFit.model.util;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -31,59 +32,44 @@ namespace CurryFit.model.api
             return foodProduct;
         }
 
-        /// <summary>
-        /// Converts the nutrients from the dabas product to the food product
-        /// </summary>
-        /// <param name="foodProduct">The food product to be converted to</param>
-        /// <param name="naringsvarden">The nutrients to be converted</param>
+        private Dictionary<string, int> nutrientOrder = new Dictionary<string, int>
+            {
+                { "Energi", 0 },
+                { "Kolhydrat", 1 },
+                { "Fett", 2 },
+                { "Protein", 3 },
+                { "Salt (SALTEQ)", 4 }
+            };
+
         private List<FoodProduct.Nutrient> orderNutrients(List<FoodProduct.Nutrient> nutrients)
         {
             List<FoodProduct.Nutrient> orderedNutrients = new List<FoodProduct.Nutrient>(nutrients.Count);
             List<FoodProduct.Nutrient> detailedNutrients = new List<FoodProduct.Nutrient>(nutrients.Count - 5);
 
-            for (int i = 0; i < nutrients.Count; i++)
+            foreach (var nutrient in nutrients)
             {
-                InsertNutrientsInOrder(nutrients, orderedNutrients, detailedNutrients, i);
+                if (nutrientOrder.ContainsKey(nutrient.Name))
+                {   
+                    if (nutrient.Name == "Energi" && nutrient.Unit != "kcal")
+                    {
+                        detailedNutrients.Add(nutrient);
+                    }
+                    else
+                    {
+                        orderedNutrients.Add(nutrient);
+                    }
+                }
+                else
+                {
+                    detailedNutrients.Add(nutrient);
+                }
             }
-            
+
+
+            orderedNutrients.Sort((n1, n2) => nutrientOrder[n1.Name].CompareTo(nutrientOrder[n2.Name]));
             orderedNutrients.AddRange(detailedNutrients);
 
             return orderedNutrients;
-        }
-        /// <summary>
-        /// Inserts the nutrients in the correct order in the orderedNutrients list
-        /// </summary>
-        /// <param name="nutrients">The list of nutrients to be ordered</param>
-        /// <param name="orderedNutrients">The list of nutrients to be ordered in</param>
-        /// <param name="detailedNutrients">The list of nutrients that are not ordered</param>
-        /// <param name="i">The index of the nutrient to be inserted</param>
-        private void InsertNutrientsInOrder(List<FoodProduct.Nutrient> nutrients, List<FoodProduct.Nutrient> orderedNutrients,
-          List<FoodProduct.Nutrient> detailedNutrients , int i)
-        {
-            switch (nutrients[i].Name)
-            {
-                case "Energi":
-                    if (nutrients[i].Unit == "kcal")
-                    {
-                        orderedNutrients.Insert(0, nutrients[i]);
-                    }
-                    break;
-                case "Kolhydrat":
-                    orderedNutrients.Insert(1, nutrients[i]);
-                    break;
-                case "Fett":
-                    orderedNutrients.Insert(2, nutrients[i]);
-                    break;
-                case "Protein":
-                    orderedNutrients.Insert(3, nutrients[i]);
-                    break;
-                case "Fiber":
-                    orderedNutrients.Insert(4, nutrients[i]);
-                    break;
-                default:
-                    detailedNutrients.Add(nutrients[i]);
-                    break;
-            }
         }
 
         /// <summary>
@@ -95,7 +81,7 @@ namespace CurryFit.model.api
         {
             FoodProduct.Content contents = new FoodProduct.Content();
             contents.Unit = dabasProduct.NettoInnehall[0].Typ;
-            contents.Size = dabasProduct.NettoInnehall[0].Mangd;
+            contents.Size = dabasProduct.NettoInnehall[0].Mängd;
 
             foodProduct.Contents = contents;
         }
@@ -123,4 +109,5 @@ namespace CurryFit.model.api
             foodProduct.Nutrients = nutrients;
         }
     }
+
 }

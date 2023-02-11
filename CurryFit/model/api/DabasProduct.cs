@@ -38,7 +38,7 @@ namespace CurryFit.model.api
         public class NettoInnehallen
         {
             public string Enhet { get; set; }
-            public double Mangd { get;  set; }
+            public double Mängd { get;  set; }
             public int TypKod { get; set; }
             public string Typ { get; set; }
         }

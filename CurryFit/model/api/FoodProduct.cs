@@ -11,7 +11,6 @@ namespace CurryFit.model.api
     {
         public string Name { get; set; }
         public string Brand { get; set; }
-        public string Description { get; set; }
         public List<Nutrient> Nutrients { get; set; }
         public Content Contents { get; set; }
 
@@ -28,7 +27,6 @@ namespace CurryFit.model.api
         {
             public string Unit { get; set; }
             public double Size { get; set; }
-
         }
     }
     
