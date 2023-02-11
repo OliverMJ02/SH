@@ -51,7 +51,7 @@
                             <Grid>
                                 <microcharts:ChartView x:Name="ProductChart" WidthRequest="110" HeightRequest="120" BackgroundColor="Transparent"></microcharts:ChartView>
                                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                    <Label Text="40 kcal" TextColor="White" FontFamily="M" FontSize="14"></Label>
+                                    <Label x:Name="DonutEnergyLabel" Text="40 kcal" TextColor="White" FontFamily="M" FontSize="14"></Label>
                                 </StackLayout>
                             </Grid>
 
@@ -94,8 +94,8 @@
                                 <Label x:Name="ProteinLabel" Text="3,5 G" TextColor="#FF2656" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Margin="0,-5,0,0">
-                                <Label Text="FIBRER" TextColor="#A6A0A6" FontFamily="M" FontSize="10"></Label>
-                                <Label x:Name="FiberLabel" Text="0 G" TextColor="#A6A0A6" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
+                                <Label Text="SALT" TextColor="#A6A0A6" FontFamily="M" FontSize="10"></Label>
+                                <Label x:Name="SaltLabel" Text="0 G" TextColor="#A6A0A6" FontFamily="M" FontSize="10" HorizontalOptions="EndAndExpand"></Label>
                             </StackLayout>
 
                             <Button Text="DETAILED NUTRIENTS" BackgroundColor="#726E72" TextColor="#2A282A" CornerRadius="25" HeightRequest="36" FontSize="10" FontFamily="M" FontAttributes="Bold" Margin="0,16,0,10"></Button>

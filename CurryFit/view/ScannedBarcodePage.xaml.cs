@@ -7,26 +7,30 @@ using CurryFit.model.api;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScannedBarcodePage : ContentPage
     {
-        FoodProduct foodProduct;
+        private FoodProduct foodProduct;
+        private FirebaseClient firebaseClient = new FirebaseClient("https://strengthhub-app-default-rtdb.europe-west1.firebasedatabase.app/");
         public ScannedBarcodePage(FoodProduct product)
         {
             InitializeComponent();
             foodProduct = product;
             ProductName.Text = foodProduct.Name;
+            CreatorName.Text = foodProduct.Brand + " | " + foodProduct.Contents.Size.ToString() + " " + foodProduct.Contents.Unit;
             EnergyLabel.Text = foodProduct.Nutrients[0].Amount.ToString() + " " + foodProduct.Nutrients[0].Unit;
             CarbsLabel.Text = foodProduct.Nutrients[1].Amount.ToString() + " " + foodProduct.Nutrients[1].Unit;
             FatLabel.Text = foodProduct.Nutrients[2].Amount.ToString() + " " + foodProduct.Nutrients[2].Unit;
             ProteinLabel.Text = foodProduct.Nutrients[3].Amount.ToString() + " " + foodProduct.Nutrients[3].Unit;
-            FiberLabel.Text = foodProduct.Nutrients[4].Amount.ToString() + " " + foodProduct.Nutrients[4].Unit;
+            SaltLabel.Text = foodProduct.Nutrients[4].Amount.ToString() + " " + foodProduct.Nutrients[4].Unit;
+            DonutEnergyLabel.Text = EnergyLabel.Text;
 
             populateProductChart();
-
         }
 
         private void populateProductChart()
@@ -57,7 +61,7 @@ namespace CurryFit.view
             CarbsLabel.Text = foodProduct.Nutrients[1].Amount.ToString() + " " + foodProduct.Nutrients[1].Unit;
             FatLabel.Text = foodProduct.Nutrients[2].Amount.ToString() + " " + foodProduct.Nutrients[2].Unit;
             ProteinLabel.Text = foodProduct.Nutrients[3].Amount.ToString() + " " + foodProduct.Nutrients[3].Unit;
-            FiberLabel.Text = foodProduct.Nutrients[4].Amount.ToString() + " " + foodProduct.Nutrients[4].Unit;
+            SaltLabel.Text = foodProduct.Nutrients[4].Amount.ToString() + " " + foodProduct.Nutrients[4].Unit;
 
         }
 
@@ -80,9 +84,21 @@ namespace CurryFit.view
              
             }
         }
-        private void AddProductClick(object sender, EventArgs e)
+        private async void AddProductClick(object sender, EventArgs e)
         {
-            Navigation.PopAsync();
+            AddProductToDB();
+            int BackCount = 2;
+            for  (var counter = 1; counter < BackCount; counter++)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            }
+            await Navigation.PopAsync();
+        }
+
+        private async void AddProductToDB()
+        {
+            await firebaseClient.Child("FoodProduct").PostAsync(foodProduct);
+
         }
     }
 }
