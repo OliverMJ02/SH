@@ -74,6 +74,35 @@ namespace CurryFit.view
 
         }
 
+        void Handle_ToFilterView(object sendr, EventArgs e)
+        {
+            FilterView.IsVisible = true;
+            List<string> list = new List<string>();
+            for(int i = 0; i < 60; i++)
+            {
+                if(i < 10)
+                {
+                    list.Add("0"+i.ToString());
+                }
+                else
+                {
+                    list.Add(i.ToString());
+                }
+                
+            }
+            WheelPickerMinutes.ItemsSourceSimple = list;
+            WheelPickerMinutes.SelectedItemsIndex = new List<int>() { 0 };
+            WheelPickerSeconds.ItemsSourceSimple = list;
+            WheelPickerSeconds.SelectedItemsIndex = new List<int>() { 0 };
+
+        }
+
+        void Handle_BackFromFilterView(object sendr, EventArgs e)
+        {
+            FilterView.IsVisible = false;
+        }
+
+
         void Handle_NextDay(object sender, EventArgs e)
         {
             CurrentDay++;
