@@ -11,7 +11,7 @@ using CurryFit.model;
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FoodPage : ContentPage
+    public partial class FoodPage : TabbedPage
     {
         Calendar calendar = new Calendar();
         public FoodPage()

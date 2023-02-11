@@ -73,7 +73,7 @@
                             <Label Text="NÄRINGSINNEHÅLL" TextColor="#A6A0A6" FontFamily="M" FontAttributes="None" Margin="0,0,20,0" FontSize="14"></Label>
                             <StackLayout Orientation="Horizontal" Margin="0,-8,0,0">
                                 <Label Text="per" TextColor="#A6A0A6" FontFamily="Nunito" FontAttributes="None" Margin="0,0,0,0" FontSize="12"></Label>
-                                <Label Text="100 gram" TextColor="#FFFFFF" FontFamily="Nunito" FontAttributes="None" Margin="-3,0,0,0" FontSize="12"></Label>
+                                <Label x:Name="PerAmountLabel" Text="100 gram" TextColor="#FFFFFF" FontFamily="Nunito" FontAttributes="None" Margin="-3,0,0,0" FontSize="12"></Label>
                                 <Label Text="livsmedel" TextColor="#A6A0A6" FontFamily="Nunito" FontAttributes="None" Margin="-3,0,0,0" FontSize="12"></Label>
                             </StackLayout>
 

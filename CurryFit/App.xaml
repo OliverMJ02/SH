@@ -9,6 +9,7 @@
             <Color x:Key="BCGrey">#2A282A</Color>
             <Color x:Key="AshGrey">#A6A0A6</Color>
             <Color x:Key="RiceWhite">#FFFFFF</Color>
+            <Color x:Key="Black">#1F1E1F</Color>
             
 
                 <!--Global Styles-->
