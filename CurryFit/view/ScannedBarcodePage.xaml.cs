@@ -97,8 +97,17 @@ namespace CurryFit.view
 
         private async void AddProductToDB()
         {
-            await firebaseClient.Child("FoodProduct").PostAsync(foodProduct);
-
+            // Add foodProduct to database if it doesn't exist and have the foodProduct.name as the key, if it does exist display error message
+            var foodProductFromDB = await firebaseClient.Child("FoodProducts").Child(foodProduct.Name).OnceSingleAsync<FoodProduct>();
+            if (foodProductFromDB == null)
+            {
+                await firebaseClient.Child("FoodProducts").Child(foodProduct.Name).PutAsync(foodProduct);
+            }
+            else
+            {
+                await DisplayAlert("Error", "Product already exists in database", "OK");
+            }
+      
         }
     }
 }
