@@ -2,6 +2,8 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurryFit.view.FoodPage"
+             xmlns:local="clr-namespace:CurryFit.CustomRenderers"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              BarBackgroundColor="{StaticResource Black}"
              BarTextColor="{StaticResource AshGrey}">
 
@@ -15,30 +17,52 @@
         </StackLayout>
     </NavigationPage.TitleView>
 
-    
+
     <ContentPage Title="Nutrimeter">
         <StackLayout BackgroundColor="#1F1E1F">
             <!--Top-->
-            <StackLayout Orientation="Vertical" VerticalOptions="Start">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                     <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="40">
                         <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Start">
-                            <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Search for foods to add" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="0,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
-                            <Image Source="search.png" HeightRequest="20" Margin="0,0,10,0"></Image>
+                        <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Search for foods to add" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="15" VerticalOptions="Center" WidthRequest="250"></SearchBar>
+                        <Image Source="search.png" HeightRequest="20" Margin="0,0,10,0"></Image>
                         </StackLayout>
                     </Frame>
-                    <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" HeightRequest="40">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                            <Image></Image>
-                            <Button Text="Scan" HorizontalOptions="Center" VerticalOptions="Center" FontSize="15" Clicked="Handle_ScannerPage"></Button>
-                        </StackLayout>
-                    </Frame>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                 
+                        <Button Text="S" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" FontSize="12" Clicked="Handle_ScannerPage" WidthRequest="40"></Button>
+                    
+                  
+                        <Button Text="M" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Clicked="Handle_ManualPage" WidthRequest="40"></Button>
+                    
                 </StackLayout>
             </StackLayout>
+               
+       
             
             <!--Middle-->
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Label Text="Alpha" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <Frame CornerRadius="2" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" >
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#504E50" Offset="0.1"/>
+                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Label Text="Alpha" HorizontalOptions="Center"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <microcharts:ChartView x:Name="CarbChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                            <microcharts:ChartView x:Name="ProteinChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                            <microcharts:ChartView x:Name="FatChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                </Frame>
             </StackLayout>
             
             <!--Bottom-->
@@ -47,7 +71,7 @@
              <StackLayout Orientation="Horizontal">
                 <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
                     <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="40">
-                        <Label x:Name="dateLabel" Text="" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="15"></Label>
+                        <local:GradientLabel x:Name="dateLabel" Text="" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="15" TextColor1="#FFE000" TextColor2="#FF4816" ></local:GradientLabel>
                     </Frame>
                     <Button Text=">" HorizontalOptions="End" Clicked="Next_Date"></Button>
             </StackLayout>
