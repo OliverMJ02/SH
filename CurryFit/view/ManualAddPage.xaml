@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CurryFit.CustomRenderers"
+             x:Class="CurryFit.view.ManualAddPage"
+             NavigationPage.HasNavigationBar="False"
+             
+               BackgroundColor="#1F1E1F">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="Start">
+            <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
+                <ImageButton Source="backwards_arrow_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0" Clicked="Handle_BackButton"></ImageButton>
+                <Label Text="REGISTER MANUALLY" FontFamily="M" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="14" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="250" VerticalTextAlignment="Center"></Label>
+                <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+            </StackLayout>
+
+            <!-- Manual Add Main View -->
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                <ScrollView>
+                    <Frame CornerRadius="3" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" WidthRequest="290" HeightRequest="400">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Color="#504E50" Offset="0.1"/>
+                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <StackLayout Orientation="Vertical">
+                        <Label x:Name="TotalCaloriesLabel" Text="40 KCAL" HorizontalOptions="Center" TextColor="White" FontSize="20" FontFamily="M"></Label>
+                        <Frame CornerRadius="10" Padding="5">
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Color="Red" Offset="0.5"/>
+                                    <GradientStop Color="Blue" Offset="0.2"/>
+                                    <GradientStop Color="Green" Offset="0.3"/>
+                                </LinearGradientBrush>
+                            </Frame.Background>
+                        </Frame>
+                        <StackLayout Orientation="Horizontal">
+                            <Label x:Name="BarCarbs" Text="1" HorizontalOptions="Start"></Label>
+                            <Label x:Name="BarProtein" Text="2" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label x:Name="BarFat" Text="3" HorizontalOptions="End"></Label>
+                        </StackLayout>
+
+                        <!--User Input-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="NAME:" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M" VerticalOptions="Center"/>
+                            <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" x:Name="ProductName" TextColor="White"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="BRAND" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M" VerticalOptions="Center"/>
+                            <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="Brand" TextColor="White"/>
+                            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="NUTRIENTS per 100 gram" TextColor="{DynamicResource AshGrey}" FontFamily="M"/>
+                            <local:GradientLabel Grid.Row="3" Grid.Column="0" Text="ENERGY:" TextColor1="#FFE000" TextColor2="#FF4816" FontSize="14" FontFamily="M" VerticalOptions="Center"/>
+                            <Entry Grid.Row="3" Grid.Column="1" x:Name="Energy" TextColor="White" />
+                            <Label Grid.Row="3" Grid.Column="2" Text="KCAL" TextColor="{DynamicResource AshGrey}" FontFamily="M" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Grid.Row="4" Grid.Column="0" Text="CARBS:" TextColor="#2C91FF" FontSize="14" FontFamily="M" VerticalOptions="Center"/>
+                            <Entry Grid.Row="4" Grid.Column="1" x:Name="Carbs" TextColor="White"/>
+                            <Picker Grid.Row="4" Grid.Column="2"/>
+                            <Label Grid.Row="5" Grid.Column="0" Text="PROTEIN:" TextColor="#FF2656" FontSize="14" FontFamily="M" VerticalOptions="Center"/>
+                            <Entry Grid.Row="5" Grid.Column="1" x:Name="Protein" TextColor="White"/>
+                            <Picker Grid.Row="5" Grid.Column="2"/>
+                            <Label Grid.Row="6" Grid.Column="0" Text="FAT:" TextColor="#CCB628" FontSize="14" FontFamily="M" VerticalOptions="Center"/>
+                            <Entry Grid.Row="6" Grid.Column="1" x:Name="Fat" TextColor="White"/>
+                            <Picker Grid.Row="6" Grid.Column="2"/>
+                        </Grid>
+
+                    </StackLayout>
+                </Frame>
+                </ScrollView>
+            </StackLayout>
+            
+            <!-- Add Menu -->
+            <StackLayout Orientation="Vertical" VerticalOptions="End" >
+                <Frame BackgroundColor="{DynamicResource BCGrey}" CornerRadius="10" Padding="5" BorderColor="{DynamicResource SPGrey}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.Row="0" Grid.Column="0" x:Name="Amount"/>
+                        <Picker Grid.Row="0" Grid.Column="1" x:Name="Unit" SelectedIndex="0" TextColor="{DynamicResource SPGrey}" FontFamily="M" FontSize="14">
+                            <Picker.Items>
+                                <x:String>GRAM</x:String>
+                                <x:String>KILOGRAM</x:String>
+                                <x:String>DECILITER</x:String>
+                                <x:String>LITER</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Button Grid.Row="1" Grid.Column="0" Text="ADD TO" FontFamily="M" FontSize="17" BorderColor="Black" BorderWidth="1" Clicked="AddProductButton_Clicked">
+                            
+                        </Button>
+
+                        <Picker Grid.Row="1" Grid.Column="1" Title="SELECT MEAL" TitleColor="{DynamicResource SPGrey}" FontFamily="M">
+                            <Picker.Items>
+                                <x:String>BREAKFAST</x:String>
+                                <x:String>LUNCH</x:String>
+                                <x:String>DINNER</x:String>
+                                <x:String>SNACK</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                </Frame>
+                
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
