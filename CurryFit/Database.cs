@@ -142,8 +142,15 @@ namespace CurryFit
         {
             return _database.GetWithChildren<LogDay>(id);
         }
-
+        
         //Methods for NormalSetBlocks
+
+        //test
+        public List<NormalSetBlock> GetAllNormalSetBlocksWithChildren()
+        {
+            return _database.Table<NormalSetBlock>().ToList();
+        }
+        //test
         public void UpdateNormalBlockWithChildren(NormalSetBlock block)
         {
             _database.UpdateWithChildren(block);
@@ -159,9 +166,9 @@ namespace CurryFit
             return _database.GetWithChildren<NormalSetBlock>(id);
         }
 
-        public int SaveNormalBlock(NormalSetBlock block)
+        public void SaveNormalBlock(NormalSetBlock block)
         {
-            return _database.Insert(block);
+            _database.InsertWithChildren(block);
         }
 
         public void DeleteNormalBlock(NormalSetBlock block)
@@ -185,9 +192,9 @@ namespace CurryFit
             return _database.GetWithChildren<NormalSet>(id);
         }
 
-        public int SaveNormalSet(NormalSet set)
+        public void SaveNormalSet(NormalSet set)
         {
-            return _database.Insert(set);
+            _database.InsertWithChildren(set);
         }
         public void DeleteNormalSet(NormalSet set)
         {
