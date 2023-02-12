@@ -27,7 +27,15 @@ namespace CurryFit.view
                 {
                     await Navigation.PushAsync(new ScannedBarcodePage(product));
                 });
-                       
+                 
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Error", "Product not found", "OK");
+                    await Navigation.PushAsync(new ManualAddPage());
+                });
             }
         }
 
