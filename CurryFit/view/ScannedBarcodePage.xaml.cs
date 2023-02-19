@@ -85,11 +85,11 @@ namespace CurryFit.view
             }
         }
 
-        private async void BackArrow_Clicked(object sender, EventArgs e)
+        private void BackArrow_Clicked(object sender, EventArgs e)
         {
             GoBackToFoodPage();
         }
-        private async void AddProductClick(object sender, EventArgs e)
+        private void AddProductClick(object sender, EventArgs e)
         {
             AddProductToDB();
             GoBackToFoodPage();
