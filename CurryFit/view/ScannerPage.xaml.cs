@@ -34,7 +34,7 @@ namespace CurryFit.view
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await DisplayAlert("Error", "Product not found", "OK");
-                    await Navigation.PushAsync(new ManualAddPage());
+                    await Navigation.PushAsync(new ManualAddPage(result.Text));
                 });
             }
         }

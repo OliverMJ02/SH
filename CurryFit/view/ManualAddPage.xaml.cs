@@ -17,9 +17,12 @@ namespace CurryFit.view
     public partial class ManualAddPage : ContentPage
     {
         private FirebaseClient firebaseClient = new FirebaseClient("https://strengthhub-app-default-rtdb.europe-west1.firebasedatabase.app/");
-        public ManualAddPage()
+        FoodProduct foodProduct;
+        public ManualAddPage(string gtin)
         {
             InitializeComponent();
+            foodProduct = new FoodProduct();
+            foodProduct.gtin = gtin;
         }
 
         //Create a new food product make the user fill in all the values manually and then add it to the database
@@ -39,7 +42,6 @@ namespace CurryFit.view
             else
             {
                 //Create a new food product
-                FoodProduct foodProduct = new FoodProduct();
                 FoodProduct.Content contents = new FoodProduct.Content();
                 foodProduct.Name = ProductName.Text;
                 foodProduct.Brand = Brand.Text;
@@ -67,7 +69,7 @@ namespace CurryFit.view
                 foodProduct.Nutrients.Add(new FoodProduct.Nutrient { Name = "Fett", Amount = Convert.ToDouble(Fat.Text), DailyIntake = 0, Unit = "g" });
                 foodProduct.Nutrients.Add(new FoodProduct.Nutrient { Name = "Protein", Amount = Convert.ToDouble(Protein.Text), DailyIntake = 0, Unit = "g" });
 
-                //Add the product to the database
+                //Add the product to the database 
                 try
                 {
                     await firebaseClient.Child("FoodProducts").Child(foodProduct.Name).PutAsync(foodProduct);
@@ -77,9 +79,7 @@ namespace CurryFit.view
                 {
                     await DisplayAlert("Error", ex.ToString(), "OK");
                 }
-
-               
-
+                
                 int BackCount = 2;
                 for (var counter = 1; counter < BackCount; counter++)
                 {

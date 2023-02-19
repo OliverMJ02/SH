@@ -13,6 +13,7 @@ namespace CurryFit.model.api
         public string Brand { get; set; }
         public List<Nutrient> Nutrients { get; set; }
         public Content Contents { get; set; }
+        public string gtin { get; set; }
 
 
         public class Nutrient

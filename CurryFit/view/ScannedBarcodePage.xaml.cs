@@ -84,11 +84,21 @@ namespace CurryFit.view
              
             }
         }
+
+        private async void BackArrow_Clicked(object sender, EventArgs e)
+        {
+            GoBackToFoodPage();
+        }
         private async void AddProductClick(object sender, EventArgs e)
         {
             AddProductToDB();
+            GoBackToFoodPage();
+        }
+
+        private async void GoBackToFoodPage()
+        {
             int BackCount = 2;
-            for  (var counter = 1; counter < BackCount; counter++)
+            for (var counter = 1; counter < BackCount; counter++)
             {
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             }
@@ -97,11 +107,11 @@ namespace CurryFit.view
 
         private async void AddProductToDB()
         {
-            // Add foodProduct to database if it doesn't exist and have the foodProduct.name as the key, if it does exist display error message
-            var foodProductFromDB = await firebaseClient.Child("FoodProducts").Child(foodProduct.Name).OnceSingleAsync<FoodProduct>();
+            // Add foodProduct to database if it doesn't exist and have the foodProduct.gtin as the key, if it does exist display error message
+            var foodProductFromDB = await firebaseClient.Child("FoodProducts").Child(foodProduct.gtin).OnceSingleAsync<FoodProduct>();
             if (foodProductFromDB == null)
             {
-                await firebaseClient.Child("FoodProducts").Child(foodProduct.Name).PutAsync(foodProduct);
+                await firebaseClient.Child("FoodProducts").Child(foodProduct.gtin).PutAsync(foodProduct);
             }
             else
             {
