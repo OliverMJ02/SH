@@ -10,8 +10,8 @@
     <!--Nav Bar-->
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Nutrition" HorizontalTextAlignment="Center" Margin="0,0,75,0"
-                   FontSize="20" FontFamily="M"  TextColor="{DynamicResource AshGrey}"
+            <Label Text="NUTRITION" HorizontalTextAlignment="Center" Margin="0,0,75,0"
+                   FontSize="17" FontFamily="M" CharacterSpacing="3" TextColor="{DynamicResource AshGrey}"
                    HorizontalOptions="Center">
             </Label>
         </StackLayout>

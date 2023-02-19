@@ -30,7 +30,7 @@
         <StackLayout>
 
             <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal"  HeightRequest="50" MinimumHeightRequest="50">
-                <ImageButton Source="backwards_arrow_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0"></ImageButton>
+                <ImageButton Source="backwards_arrow_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,0,0,0" Clicked="BackArrow_Clicked"></ImageButton>
                 <Label Text="SCANNED BARCODE" FontFamily="M" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="14" CharacterSpacing="4" HorizontalTextAlignment="Center" WidthRequest="280" VerticalTextAlignment="Center"></Label>
                 <ImageButton Source="settings_gray.png" WidthRequest="25" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
             </StackLayout>
@@ -105,19 +105,43 @@
 
                 </StackLayout>
             </Frame>
-            <StackLayout Orientation="Vertical">
-                <StackLayout Orientation="Horizontal">
-                    <Entry x:Name="ProductAmount" BackgroundColor="#2A282A" Text="{Binding BoundValue}" Keyboard="Numeric" TextChanged="OnTextChanged"/> 
-                    <Picker x:Name="UnitPicker">
-                        <Picker.Items>
-                            <x:String>kg</x:String>
-                            <x:String>g</x:String>
-                            <x:String>l</x:String>
-                            <x:String>dl</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-                <Button Text="ADD TO" Clicked="AddProductClick"></Button>
+            
+            <!-- Add Menu -->
+            <StackLayout Orientation="Vertical" VerticalOptions="End" >
+                <Frame BackgroundColor="{DynamicResource BCGrey}" CornerRadius="10" Padding="5" BorderColor="{DynamicResource SPGrey}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.Row="0" Grid.Column="0" x:Name="Amount"/>
+                        <Picker Grid.Row="0" Grid.Column="1" x:Name="Unit" SelectedIndex="0" TextColor="{DynamicResource SPGrey}" FontFamily="M" FontSize="14">
+                            <Picker.Items>
+                                <x:String>GRAM</x:String>
+                                <x:String>KILOGRAM</x:String>
+                                <x:String>DECILITER</x:String>
+                                <x:String>LITER</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Button Grid.Row="1" Grid.Column="0" Text="ADD TO" FontFamily="M" FontSize="17" BorderColor="Black" BorderWidth="1" Clicked="AddProductClick">
+
+                        </Button>
+
+                        <Picker Grid.Row="1" Grid.Column="1" Title="SELECT MEAL" TitleColor="{DynamicResource SPGrey}" FontFamily="M">
+                            <Picker.Items>
+                                <x:String>BREAKFAST</x:String>
+                                <x:String>LUNCH</x:String>
+                                <x:String>DINNER</x:String>
+                                <x:String>SNACK</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                </Frame>
+
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
