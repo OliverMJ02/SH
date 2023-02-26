@@ -32,7 +32,7 @@ namespace CurryFit.view
 
         private async void Handle_ManualPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ManualAddPage());
+            await Navigation.PushAsync(new ManualAddPage("2"));
         }
         
         private void Previous_Date(object sender, EventArgs e)

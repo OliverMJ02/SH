@@ -25,7 +25,7 @@ namespace CurryFit.view
             {
                 Device.BeginInvokeOnMainThread(async() =>
                 {
-                    await Navigation.PushAsync(new ScannedBarcodePage(product));
+                    await Navigation.PushAsync(new ScannedBarcodePage(product, result.Text));
                 });
                  
             }
