@@ -36,7 +36,67 @@ namespace CurryFit
             _database.CreateTable<DropSetBlock>();
             _database.CreateTable<DropSet>();
 
+            _database.CreateTable<Settings>();
+            _database.CreateTable<model.Timer>();
+
+            
+            try {
+                
+                if (_database.Table<Settings>().ToList().Count < 1)     //Create new settings, but only do it once
+                {
+                    Settings settings = new Settings() { PresetTimers = new List<model.Timer>()};
+                    SaveSettings(settings);
+                    model.Timer t = new model.Timer() { IsPreset = false, PresetMenuVisible = true, PresetOrder = 10 };
+                    SaveTimer(t);
+                    settings.PresetTimers.Add(t);
+                    UpdateSettings(settings);
+                }
+            }
+            catch { }
+
+            
+            
         }
+
+        //Methods for settings
+        public Settings GetSettings()
+        {
+            return _database.GetWithChildren<Settings>(_database.Table<Settings>().ToList()[0].Id);
+        }
+        public int SaveSettings(Settings settings)
+        {
+            return _database.Insert(settings);
+        }
+        public void UpdateSettings(Settings settings)
+        {
+            _database.UpdateWithChildren(settings);
+        }
+
+        //Methods for Timer
+        public List<model.Timer> GetTimers()
+        {
+            return _database.Table<model.Timer>().ToList();
+        }
+
+        public model.Timer GetTimer(object id)
+        {
+            return _database.Get<model.Timer>(id);
+        }
+
+        public int SaveTimer(model.Timer timer)
+        {
+            return _database.Insert(timer);
+        }
+        public void UpdateTimer(model.Timer timer)
+        {
+            _database.UpdateWithChildren(timer);
+        }
+
+        public int DeleteTimer(object id)
+        {
+            return _database.Delete<model.Timer>(id);
+        }
+
 
         //Methods for TrainingPrograms 
         public List<TrainingProgram> GetTrainingPrograms()
