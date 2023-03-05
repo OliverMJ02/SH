@@ -20,7 +20,10 @@ namespace CurryFit
         {
             InitializeComponent();
         }
-
+        private async void Handle_NewMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewMainPage());
+        }
         private async void Handle_WorkoutPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new WorkoutPage());

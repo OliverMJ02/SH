@@ -17,6 +17,7 @@
         <!--Top-->
         <StackLayout Orientation="Vertical" VerticalOptions="Start">
             <StackLayout Orientation="Vertical">
+                <Button Text="New Main Page" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_NewMainPage"></Button>
                 <Button Text="Workout" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_WorkoutPage"></Button>
 
                 <Button Text="Food" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
