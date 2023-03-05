@@ -17,10 +17,11 @@ namespace CurryFit.view
     {
         private FoodProduct foodProduct;
         private FirebaseClient firebaseClient = new FirebaseClient("https://strengthhub-app-default-rtdb.europe-west1.firebasedatabase.app/");
-        public ScannedBarcodePage(FoodProduct product)
+        public ScannedBarcodePage(FoodProduct product, string gtin)
         {
             InitializeComponent();
             foodProduct = product;
+            foodProduct.gtin = gtin;
             ProductName.Text = foodProduct.Name;
             CreatorName.Text = foodProduct.Brand + " | " + foodProduct.Contents.Size.ToString() + " " + foodProduct.Contents.Unit;
             EnergyLabel.Text = foodProduct.Nutrients[0].Amount.ToString() + " " + foodProduct.Nutrients[0].Unit;
@@ -94,7 +95,6 @@ namespace CurryFit.view
             AddProductToDB();
             GoBackToFoodPage();
         }
-
         private async void GoBackToFoodPage()
         {
             int BackCount = 2;
