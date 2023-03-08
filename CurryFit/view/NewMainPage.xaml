@@ -201,7 +201,10 @@
                                        <StackLayout>
                                             
                                             <StackLayout>
-                                                <Label Text="TO DO LIST" TextColor="{DynamicResource RiceWhite}" FontSize="12" FontFamily="M" Margin="10,5,0,0" />
+                                                <AbsoluteLayout>
+                                                    <Label Text="TO DO LIST" TextColor="{DynamicResource RiceWhite}" FontSize="12" FontFamily="M" AbsoluteLayout.LayoutBounds="10,5" />
+                                                </AbsoluteLayout>
+                                                
                                             </StackLayout>  
                                             
                                              <StackLayout Orientation="Horizontal">
@@ -319,6 +322,25 @@
                                         <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
                                     </LinearGradientBrush>
                                 </Frame.Background>
+
+                                        <StackLayout Spacing="4">
+                                            <StackLayout>
+                                                <AbsoluteLayout>
+                                                    <local:GradientLabel AbsoluteLayout.LayoutBounds="10,5" Text="NEXT WORKOUT" FontSize="12" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
+                                                    <Label Text="Leg Day" FontFamily="N" FontSize="20" TextColor="{DynamicResource RiceWhite}" AbsoluteLayout.LayoutBounds="10,18"/>
+                                                </AbsoluteLayout>
+                                            </StackLayout>
+
+                                            <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" >
+                                                <Frame BorderColor="{DynamicResource EquipmentColor}" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                    <Label TextColor="{DynamicResource AshGrey}" Text="GYM" FontAttributes="Bold"></Label>
+                                                </Frame>
+                                                <Frame BorderColor="{DynamicResource TargetMuscelGroup}" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="15,5,-4,5">
+                                                    <Label TextColor="{DynamicResource AshGrey}" Text="LEGS" FontAttributes="Bold"></Label>
+                                                </Frame>
+                                            </FlexLayout>
+                                        </StackLayout>
+                                        
                             </Frame>
                                     <Frame x:Name="ExerciseF2" CornerRadius="5" HeightRequest="120" Padding="0,0,0,0" Margin="4,0,0,0">
                                 <Frame.Background>
