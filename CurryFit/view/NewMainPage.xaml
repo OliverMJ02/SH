@@ -414,7 +414,7 @@
                
                     </StackLayout>
                     
-                    <!-- Gör så att det inte blir en svart bar längst ner som följer med hela vägen i scrollviewn, istället går nu gränsen mellan scrollview direkt vid nedre respektive övre nav bar-->
+                    <!-- Gör så att det inte blir en svart bar längst ner som följer med hela vägen i scrollviewn, istället går nu gränsen mellan scrollview direkt vid nedre respektive övre nav bar / Funkar inte längre as of 22/3-23-->
                         <StackLayout>
                             <BoxView BackgroundColor="Transparent" HeightRequest="10"/>
                         </StackLayout>
@@ -425,16 +425,35 @@
 
 
 
-            <!-- Menu Buttons -->
+            <!-- Menu Buttons / navbar -->
             <StackLayout VerticalOptions="EndAndExpand">
-                <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
-                <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
-                    <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
-                    <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                    <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                    <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                    <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                </StackLayout>
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
+                <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                        <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
+                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                        <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
+                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                        <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
+                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                        <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
+                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                        <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
+                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+                </AbsoluteLayout>
             </StackLayout>
 
         </StackLayout>

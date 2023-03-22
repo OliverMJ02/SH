@@ -33,11 +33,33 @@ namespace CurryFit.view
             ProgressF2.WidthRequest = xamarinWidth * 0.85;
 
         }
+
+        //Navbar
         private async void Handle_MainPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
         }
+        private async void Handle_FoodPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FoodPage());
+        }
 
+        private async void Handle_WorkoutPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WorkoutPage());
+        }
+
+        private async void Handle_StatPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StatPage());
+        }
+
+        private async void Handle_ProfilePage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+
+        //Gidview shortcuts
         private void Handle_StepCounter(object sender, EventArgs e)
         {
 
@@ -58,6 +80,6 @@ namespace CurryFit.view
 
         }
 
-        
+       
     }
 }
