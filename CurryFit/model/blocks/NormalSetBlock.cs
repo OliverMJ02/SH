@@ -16,6 +16,8 @@ namespace CurryFit.model.blocks
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        public bool IsNormalSet { get; set; }
+
         private bool normalSetBlockVisibility;
         public bool NormalSetBlockVisibility
         {
@@ -121,6 +123,7 @@ namespace CurryFit.model.blocks
         
         public NormalSetBlock()
         {
+            IsNormalSet = this.IsNormalSet;
             IsNotFinished = this.IsNotFinished;
             SaveOrFinish = this.SaveOrFinish;
             Order = this.Order;
@@ -235,6 +238,7 @@ namespace CurryFit.model.blocks
 
         public NormalSetBlock(int Counter)
         {
+            IsNormalSet = true;
             IsNotFinished = true;
             SaveOrFinish = "FINISH EXERCISE";
             Order = Counter;

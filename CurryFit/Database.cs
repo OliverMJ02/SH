@@ -36,6 +36,10 @@ namespace CurryFit
             _database.CreateTable<DropSetBlock>();
             _database.CreateTable<DropSet>();
 
+            _database.CreateTable<TextBlock>();
+
+            _database.CreateTable<ToDoList>();
+
             _database.CreateTable<Settings>();
             _database.CreateTable<model.Timer>();
 
@@ -95,6 +99,48 @@ namespace CurryFit
         public int DeleteTimer(object id)
         {
             return _database.Delete<model.Timer>(id);
+        }
+
+        //Methods for TextBlock
+
+        public TextBlock GetTextBlock(object id)
+        {
+            return _database.Get<TextBlock>(id);
+        }
+
+        public int SaveTextBlock(TextBlock textBlock)
+        {
+            return _database.Insert(textBlock);
+        }
+        public void UpdateTextBlock(TextBlock textBlock)
+        {
+            _database.UpdateWithChildren(textBlock);
+        }
+
+        public int DeleteTextBlock(object id)
+        {
+            return _database.Delete<TextBlock>(id);
+        }
+
+        //Methods for ToDoList
+
+        public ToDoList GetToDoList(object id)
+        {
+            return _database.Get<ToDoList>(id);
+        }
+
+        public int SaveToDoList(ToDoList toDoList)
+        {
+            return _database.Insert(toDoList);
+        }
+        public void UpdateToDoList(ToDoList toDoList)
+        {
+            _database.UpdateWithChildren(toDoList);
+        }
+
+        public int DeleteToDoList(object id)
+        {
+            return _database.Delete<ToDoList>(id);
         }
 
 

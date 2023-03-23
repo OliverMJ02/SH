@@ -189,14 +189,58 @@ namespace CurryFit.view
             ChooseSetLayout.IsVisible = true;
         }
         
+        // --------- TextBlocks ----------
         void Handle_NewTextBlock(object sender, EventArgs e)
         {
-
-            Blocks.Add(new TextBlock{ IsTextBlock = true, IsNormalSet = false, IsDropSet = false, IsSuperSet = false, IsEnduranceSet = false, Order = currentLogDay.Counter, Text="", Title="TEXT BLOCK"});
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, Blocks);
+            TextBlock tb = new TextBlock();
+            tb.TextBlockVisibility = true;
+            tb.IsEditing = true;
+            tb.HasText = false;
+            tb.Order = currentLogDay.Counter;
+            tb.Title = "TEXT BLOCK";
+            App.Database.SaveTextBlock(tb);
+            currentLogDay.TextBlocks.Add(tb);
             currentLogDay.Counter++;
-            App.Database.UpdateLogDay(currentLogDay);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            
+        }
+
+        void Handle_DeleteTextBlock(object sender, EventArgs e)
+        {
+            TextBlock tb = App.Database.GetTextBlock(((ImageButton)sender).CommandParameter);
+            currentLogDay.TextBlocks.Remove(tb);
+            App.Database.DeleteTextBlock(tb.Id);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            currentLogDay = App.Database.GetLogDayWithChildren(currentLogDay.Id);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+
+        }
+
+        // --------- ToDoLists -----------------
+
+        void Handle_NewToDoList(object sender, EventArgs e)
+        {
+            ToDoList tdl = new ToDoList() { ToDoListVisibility = true, Title = "TO DO LIST", Order = currentLogDay.Counter };
+            App.Database.SaveToDoList(tdl);
+            currentLogDay.ToDoLists.Add(tdl);
+            currentLogDay.Counter++;
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_DeleteToDoList(object sender, EventArgs e)
+        {
+            ToDoList tdl = App.Database.GetToDoList(((ImageButton)sender).CommandParameter);
+            currentLogDay.ToDoLists.Remove(tdl);
+            App.Database.DeleteToDoList(tdl.Id);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            currentLogDay = App.Database.GetLogDayWithChildren(currentLogDay.Id);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
         }
 
         //---------- NORMAL SETS ---------------
@@ -685,27 +729,27 @@ namespace CurryFit.view
 
         void Handle_Test(object sender, EventArgs e)
         {
-            if(t1.BorderColor == Color.LimeGreen)
+            if(t1.Border.Thickness == 2)
             {
-                t1.BorderColor = Color.Transparent;
-                t2.BorderColor = Color.LimeGreen;
+                t1.Border.Thickness = 0;
+                t2.Border.Thickness = 2;
             }
             else
             {
-                t2.BorderColor = Color.Transparent;
-                t1.BorderColor = Color.LimeGreen;
+                t2.Border.Thickness = 0;
+                t1.Border.Thickness = 2;
             }
         }
 
         void Handle_Test2(object sender, EventArgs e)
         {
-             t1.BorderColor = Color.LimeGreen;
-             t2.BorderColor = Color.Transparent;
+            t2.Border.Thickness = 0;
+            t1.Border.Thickness = 2;
         }
         void Handle_Test3(object sender, EventArgs e)
         {
-            t1.BorderColor = Color.Transparent;
-            t2.BorderColor = Color.LimeGreen;
+            t1.Border.Thickness = 0;
+            t2.Border.Thickness = 2;
         }
 
         void Handle_SaveFilterView(object sendr, EventArgs e)

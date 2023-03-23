@@ -193,15 +193,73 @@
                                                     <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
                                                 </StackLayout>
 
-                                                <Frame Padding="7,7,7,7" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsTextBlock, FallbackValue=False}">
-                                                    <Frame Padding="1,1,1,1" BackgroundColor="Transparent" BorderColor="#726E72">
-                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#726E72">
-                                                            <local:CustomEditor Keyboard="Plain" AutoSize="TextChanges" Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8" Text="{Binding Text}" WidthRequest="9999" ></local:CustomEditor>
-                                                        </Frame>
-                                                    </Frame>
+                                                <!-- Text Blocks-->
+                                                <Frame Padding="10,10,10,10" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="FillAndExpand" IsVisible="{Binding TextBlockVisibility, FallbackValue=False}">
+                                                   
+                                                    <Frame.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#504E50" Offset="0.1"/>
+                                                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Frame.Background>
+                                                    <StackLayout>
+                                                        <StackLayout IsVisible="{Binding IsEditing}">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HeightRequest="35" >
+                                                                    <Entry Text="{Binding TextTitle}" Placeholder="Add title (optional)" Margin="10,0,5,0" FontFamily="M" PlaceholderColor="#726E72" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" VerticalTextAlignment="Center">
+                                                                        <Entry.Effects>
+                                                                            <effects:PlainEntry/>
+                                                                        </Entry.Effects>
+                                                                    </Entry>
+                                                                </Frame>
+                                                                <ImageButton WidthRequest="30" HeightRequest="30" HorizontalOptions="Center" BackgroundColor="Red" IsVisible="{Binding HasText, FallbackValue=False}" Command="{Binding SaveTextBlockCmd}"></ImageButton>
+                                                            </StackLayout>
+
+
+
+                                                            <Frame Padding="0,0,0,0" CornerRadius="15" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,5,0,0">
+                                                                <local:CustomEditor Text="{Binding Text}" Placeholder="Type text here" Margin="10,0,5,0" FontFamily="M" PlaceholderColor="#726E72" TextColor="White" HorizontalOptions="FillAndExpand" FontSize="14" HeightRequest="68"></local:CustomEditor>
+                                                            </Frame>
+                                                        </StackLayout>
+
+                                                        <StackLayout Padding="10,10,10,10">
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding IsEditing}" Value="True">
+                                                                    <Setter Property="IsVisible" Value="False" />
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="{Binding TextTitle}" FontFamily="N" FontSize="14" TextColor="White"></Label>
+                                                                <ImageButton BackgroundColor="RoyalBlue" HeightRequest="30" WidthRequest="30" HorizontalOptions="EndAndExpand" Command="{Binding EditTextBlockCmd}"></ImageButton>
+                                                            </StackLayout>
+                                                            <Label FontFamily="N" FontSize="12" TextColor="White" Text="{Binding Text}" Margin="0,-10,0,0"></Label>
+                                                            <ImageButton BackgroundColor="IndianRed" HeightRequest="30" WidthRequest="30" HorizontalOptions="EndAndExpand" Clicked="Handle_DeleteTextBlock" CommandParameter="{Binding Id}"></ImageButton>
+                                                            
+                                                        </StackLayout>
+
+                                                    </StackLayout>
+                                                    
                                                 </Frame>
 
-                                                <Frame CornerRadius="7" Padding="5,10,30,10" Margin="13,0,13,20">
+                                                <!-- To Do List-->
+                                                <Frame Padding="10,10,10,10" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="FillAndExpand" IsVisible="{Binding ToDoListVisibility, FallbackValue=False}">
+
+                                                    <Frame.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#504E50" Offset="0.1"/>
+                                                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Frame.Background>
+                                                    <StackLayout>
+                                                        <ImageButton HeightRequest="30" WidthRequest="30" BackgroundColor="Red" HorizontalOptions="Center" Clicked="Handle_DeleteToDoList" CommandParameter="{Binding Id}"></ImageButton>
+                                                    </StackLayout>
+
+                                                </Frame>
+
+                                                <!-- Normal Blocks-->
+                                                <Frame CornerRadius="7" Padding="5,10,30,10" Margin="13,0,13,20" IsVisible="{Binding IsNormalSet, FallbackValue=False}">
                                                     <Frame.Triggers>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding NormalSetBlockVisibility}" Value="True">
                                                             <Setter Property="IsVisible" Value="False" />
@@ -228,7 +286,7 @@
                                                 </Frame>
 
 
-                                                <Frame IsVisible="{Binding NormalSetBlockVisibility}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20" >
+                                                <Frame IsVisible="{Binding NormalSetBlockVisibility, FallbackValue=False}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
                                                     <Frame.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#504E50" Offset="0.1"/>
@@ -400,8 +458,9 @@
                                                 </Frame>
 
 
-
-                                                <Frame IsVisible="{Binding IsDropSet, FallbackValue=False}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
+                                                <!-- Dropset Blocks-->
+                                                <Frame  CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20" IsVisible="{Binding DropSetBlockVisibility, FallbackValue=False}">
+                                                    
                                                     <Frame.Background>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                             <GradientStop Color="#504E50" Offset="0.1"/>
@@ -509,11 +568,12 @@
                                                 </Frame>
 
 
-
-                                                <StackLayout BackgroundColor="Blue" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsSuperSet, FallbackValue=False}">
+                                                <!-- Super Blocks-->
+                                                <StackLayout BackgroundColor="Blue" HeightRequest="150" Margin="13,0,13,20" IsVisible="False">
                                                     <Label Text="This is A Super Set"></Label>
                                                 </StackLayout>
-                                                <StackLayout BackgroundColor="Yellow" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsEnduranceSet, FallbackValue=False}">
+                                                <!-- Endurance Blocks-->
+                                                <StackLayout BackgroundColor="Yellow" HeightRequest="150" Margin="13,0,13,20" IsVisible="False">
                                                     <Label Text="This is An Endurance Set"></Label>
                                                 </StackLayout>
                                             </StackLayout>
@@ -574,7 +634,7 @@
                                             <StackLayout>
                                                 <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
                                                     <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
-                                                        <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50"></ImageButton>
+                                                        <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50" Clicked="Handle_NewToDoList"></ImageButton>
                                                     </Frame>
                                                 </Frame>
                                                 <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
@@ -627,8 +687,8 @@
 
                 <StackLayout Orientation="Horizontal">
                     
-                    <StackLayout  WidthRequest="150" Margin="20,0,0,0">
-                        <yummi:PancakeView CornerRadius="50" HeightRequest="60" WidthRequest="130" Margin="0,40,0,0" VerticalOptions="CenterAndExpand">
+                    <StackLayout  Margin="25,0,0,0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                        <yummi:PancakeView CornerRadius="50" HeightRequest="60" WidthRequest="140" Margin="0,40,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                             <yummi:PancakeView.Border>
                                 <yummi:Border Thickness="2">
                                     <yummi:Border.GradientStops>
@@ -640,21 +700,45 @@
                                 </yummi:Border>
                             </yummi:PancakeView.Border>
                             <StackLayout Orientation="Horizontal">
-                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent">
-                                    <Frame.GestureRecognizers>
+
+                                <yummi:PancakeView x:Name="t1" CornerRadius="50" Margin="7,0,0,0" VerticalOptions="CenterAndExpand" Padding="0,0,0,0" HorizontalOptions="Start">
+                                    <yummi:PancakeView.GestureRecognizers>
                                         <SwipeGestureRecognizer Swiped="Handle_Test" Direction="Right" Threshold="5"></SwipeGestureRecognizer>
                                         <TapGestureRecognizer Tapped="Handle_Test2" CommandParameter="Left"></TapGestureRecognizer>
-                                    </Frame.GestureRecognizers>
-                                    <ImageButton x:Name="t1" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" Margin="5,0,0,0" HeightRequest="47" WidthRequest="47" VerticalOptions="Center" BorderColor="LimeGreen" BorderWidth="2" CornerRadius="50" IsEnabled="False"></ImageButton>
-                                </Frame>
-                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand">
-                                    <Frame.GestureRecognizers>
+                                    </yummi:PancakeView.GestureRecognizers>
+                                    <yummi:PancakeView.Border>
+                                        <yummi:Border Thickness="2">
+                                            <yummi:Border.GradientStops>
+                                                <yummi:GradientStopCollection>
+                                                    <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                    <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                </yummi:GradientStopCollection>
+                                            </yummi:Border.GradientStops>
+                                        </yummi:Border>
+                                    </yummi:PancakeView.Border>
+                                    <ImageButton BackgroundColor="Transparent" Source="timer_manual.png" Padding="-3,-3,-3,-3" Margin="0,0,0,0" HeightRequest="47" WidthRequest="47" VerticalOptions="Center" BorderColor="Transparent" BorderWidth="2" CornerRadius="50" IsEnabled="False"></ImageButton>
+                                </yummi:PancakeView>
+
+
+
+                                <yummi:PancakeView x:Name="t2" CornerRadius="50" Margin="0,0,7,0" VerticalOptions="CenterAndExpand" Padding="0,0,0,0" HorizontalOptions="EndAndExpand">
+                                    <yummi:PancakeView.GestureRecognizers>
                                         <SwipeGestureRecognizer Swiped="Handle_Test" Direction="Left" Threshold="5"></SwipeGestureRecognizer>
                                         <TapGestureRecognizer Tapped="Handle_Test3" CommandParameter="Right"></TapGestureRecognizer>
-                                    </Frame.GestureRecognizers>
-                                    <ImageButton x:Name="t2" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" Margin="0,0,5,0" HeightRequest="47" WidthRequest="47" VerticalOptions="Center" BorderColor="Transparent" BorderWidth="2" CornerRadius="50" IsEnabled="False"></ImageButton>
-                                </Frame>
-                                
+                                    </yummi:PancakeView.GestureRecognizers>
+                                    <yummi:PancakeView.Border>
+                                        <yummi:Border Thickness="0">
+                                            <yummi:Border.GradientStops>
+                                                <yummi:GradientStopCollection>
+                                                    <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                    <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                </yummi:GradientStopCollection>
+                                            </yummi:Border.GradientStops>
+                                        </yummi:Border>
+                                    </yummi:PancakeView.Border>
+                                    <ImageButton BackgroundColor="Transparent" Source="timer_auto.png" Padding="-3,-3,-3,-3" Margin="0,0,0,0" HeightRequest="47" WidthRequest="47" VerticalOptions="Center" BorderColor="Transparent" BorderWidth="2" CornerRadius="50" IsEnabled="False"></ImageButton>
+                                </yummi:PancakeView>
+
                             </StackLayout>
                         </yummi:PancakeView>
                     </StackLayout>
@@ -691,7 +775,7 @@
                 <Label FontFamily="M" Text="PRESETS" TextColor="#A6A0A6" FontSize="16" Margin="23,0,0,0"></Label>
 
 
-                <FlexLayout x:Name="PresetsView" Wrap="Wrap" JustifyContent="Start">
+                <FlexLayout x:Name="PresetsView" Wrap="Wrap" JustifyContent="Start" Margin="10,0,10,0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Orientation="Horizontal" FlexLayout.Order="{Binding PresetOrder}">
@@ -718,10 +802,10 @@
                                             <GradientStop Color="#2A282A" Offset="1.0"/>
                                         </LinearGradientBrush>
                                     </Frame.Background>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                        <ImageButton BackgroundColor="Blue" WidthRequest="28" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="28" Clicked="Handle_AddPresetTime"></ImageButton>
-                                        <BoxView WidthRequest="1" BackgroundColor="#A6A0A6" Margin="0,2,0,2" VerticalOptions="Fill"></BoxView>
-                                        <ImageButton BackgroundColor="Red" WidthRequest="28" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="28"></ImageButton>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                        <ImageButton Source="add_gray_v2.png" BackgroundColor="Transparent" WidthRequest="28" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" HeightRequest="28" Clicked="Handle_AddPresetTime" Margin="10,0,0,0"></ImageButton>
+                                        <BoxView WidthRequest="1" BackgroundColor="#726E72" Margin="0,2,0,2" VerticalOptions="Fill" HorizontalOptions="CenterAndExpand"></BoxView>
+                                        <ImageButton Source="editobject_gray_v2.png" BackgroundColor="Transparent" WidthRequest="28" VerticalOptions="CenterAndExpand" HeightRequest="28" Margin="0,0,10,0"></ImageButton>
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
