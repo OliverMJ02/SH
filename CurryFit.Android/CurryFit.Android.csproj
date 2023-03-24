@@ -249,12 +249,6 @@
     <AndroidResource Include="Resources\drawable\FootSteeps_Gray.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\clock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\down_arrow_left.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\stats_white.png" />
   </ItemGroup>
   <ItemGroup>
