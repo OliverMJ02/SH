@@ -130,6 +130,18 @@
                                         <Label Text="ALL &#10; BADGES" FontSize="8" FontFamily="M" TextColor="{DynamicResource GameYellow}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
                                     </StackLayout>
                                     
+                                    <!-- Progressbar / XPBar -->
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="5" AbsoluteLayout.LayoutFlags="YProportional" AbsoluteLayout.LayoutBounds="8,0.9">
+                                        <Label Text="L4" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
+                                        <AbsoluteLayout>
+                                            <Frame x:Name="XPBar" HeightRequest="6" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="Transparent" BorderColor="{DynamicResource SPGrey}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5">
+                                            </Frame>
+                                            <Frame Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource RiceWhite}" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0.5,0.3,0.5">
+                                            </Frame>
+                                        </AbsoluteLayout>
+                                        <Label Text="L5" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
+                                    </StackLayout>
+                                    
                                 </AbsoluteLayout>
                         
                        <!-- OLD KOD<StackLayout Margin="10,10,0,0">
@@ -218,8 +230,21 @@
                                             
                                             <StackLayout Orientation="Horizontal">
                                                 <AbsoluteLayout>
+                                                    
                                                     <ImageButton HorizontalOptions="Start" Source="todo_box_unticked.png" HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="10,5,20,20"/>
                                                     <Label Text = "10 min stretching" TextColor="{DynamicResource RiceWhite}" FontSize="14" FontFamily="N" AbsoluteLayout.LayoutBounds="40,5"/>
+                                                    
+                                                    <!-- Koden nedan skall bara vara "aktiv" när boxen är unticked som i detta exemplet -->
+                                                    <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="14,25" Orientation="Horizontal" Padding="0,0,0,0">
+                                                        <Image Source="arrow_down_left.png" HeightRequest="30"/>
+                                                        <Image Source="clock.png" HeightRequest="30"/>
+                                                        <Label Text="REMINDER AT" FontSize="10" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,9,0,0"/>
+                                                        <Label Text="15:30" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="5,9,0,0"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutBounds="75,35" Spacing="4">
+                                                        
+                                                    </StackLayout>
+                                                    
                                                 </AbsoluteLayout>
                                             </StackLayout> 
                                             
@@ -269,9 +294,20 @@
                                                 <Label Text="664/1926 KCAL" TextColor="{DynamicResource RiceWhite}" FontSize="20" FontFamily="M" Margin="10,5,0,0"/>
                                             </StackLayout>
 
-                                            <StackLayout> <!-- Kolla med leif om progressbar // hans timer -->
-                                                <ProgressBar HorizontalOptions="CenterAndExpand" ProgressColor="{DynamicResource ThemeOrange}" Progress="0.35"/>
-                                            </StackLayout>
+                                            <AbsoluteLayout HeightRequest="17">
+                                                <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0.5,0,0.95,1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="Transparent" BorderColor="{DynamicResource SPGrey}">
+                                                    
+                                                </Frame>
+
+                                                <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0.5,0,0.5,1" Padding="0,0,0,0" CornerRadius="50" BorderColor="{DynamicResource SPGrey}">
+                                                    <Frame.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#FFE000" Offset="0"/>
+                                                            <GradientStop Color="#FF4816" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Frame.Background>
+                                                </Frame>
+                                            </AbsoluteLayout>
 
                                             <StackLayout Orientation="Horizontal" Spacing="0">
                                                 <AbsoluteLayout HorizontalOptions="FillAndExpand">

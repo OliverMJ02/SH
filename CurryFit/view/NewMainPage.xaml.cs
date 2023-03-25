@@ -31,6 +31,8 @@ namespace CurryFit.view
             ShopF2.WidthRequest = xamarinWidth * 0.85;
             ProgressF1.WidthRequest = xamarinWidth * 0.85;
             ProgressF2.WidthRequest = xamarinWidth * 0.85;
+            XPBar.WidthRequest = xamarinWidth * 0.15;
+
 
         }
 
