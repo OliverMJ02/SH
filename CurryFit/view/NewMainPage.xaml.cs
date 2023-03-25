@@ -32,7 +32,13 @@ namespace CurryFit.view
             ProgressF1.WidthRequest = xamarinWidth * 0.85;
             ProgressF2.WidthRequest = xamarinWidth * 0.85;
             XPBar.WidthRequest = xamarinWidth * 0.15;
+            KcalBar.WidthRequest = xamarinWidth;
 
+            double ratio = 664.0 / 1926.0;
+            double fullBar = 0.85 * xamarinWidth - 20; // Full bar width for the kcal progress bar
+            Test.TranslationX = -1*(fullBar - fullBar*(ratio));    // Used for calculating kcal progress
+
+            Fade2.Color = Color.FromRgb(255, (int)(Math.Round((16*14-72)*(1-ratio)+72)), 16); 
 
         }
 

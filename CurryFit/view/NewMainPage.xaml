@@ -294,20 +294,24 @@
                                                 <Label Text="664/1926 KCAL" TextColor="{DynamicResource RiceWhite}" FontSize="20" FontFamily="M" Margin="10,5,0,0"/>
                                             </StackLayout>
 
-                                            <AbsoluteLayout HeightRequest="17">
-                                                <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0.5,0,0.95,1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="Transparent" BorderColor="{DynamicResource SPGrey}">
-                                                    
-                                                </Frame>
+                                            <Frame Padding="0,0,0,0" Margin="10,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                                                <AbsoluteLayout x:Name="KcalBar" VerticalOptions="Center">
+                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="#726E72">
 
-                                                <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0.5,0,0.5,1" Padding="0,0,0,0" CornerRadius="50" BorderColor="{DynamicResource SPGrey}">
-                                                    <Frame.Background>
-                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                            <GradientStop Color="#FFE000" Offset="0"/>
-                                                            <GradientStop Color="#FF4816" Offset="1"/>
-                                                        </LinearGradientBrush>
-                                                    </Frame.Background>
-                                                </Frame>
-                                            </AbsoluteLayout>
+                                                    </Frame>
+                                                    <Frame x:Name="Test" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="-250" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
+                                                        <Frame.Background>
+                                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                                <GradientStop Color="{DynamicResource ThemeYellow}" Offset="0"/>
+                                                                <GradientStop x:Name="Fade2" Color="{DynamicResource ThemeOrange}"  Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Frame.Background>
+
+                                                    </Frame>
+                                                    
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                            
 
                                             <StackLayout Orientation="Horizontal" Spacing="0">
                                                 <AbsoluteLayout HorizontalOptions="FillAndExpand">
