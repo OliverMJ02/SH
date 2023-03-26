@@ -27,11 +27,24 @@ namespace CurryFit.model.blocks
             }
         }
 
+        private string blockTitle;
+        public string BlockTitle
+        {
+            get { return blockTitle; }
+            set
+            {
+
+                blockTitle = value;
+                OnPropertyChanged(nameof(BlockTitle));
+            }
+        }
+
         public string Title { get; set; }
         public int Order { get; set; }
 
         [ForeignKey(typeof(LogDay))]
         public int LogDayId { get; set; }
+
 
         public ToDoList()
         {
@@ -39,7 +52,9 @@ namespace CurryFit.model.blocks
             LogDayId= this.LogDayId;
             ToDoListVisibility = this.ToDoListVisibility;
             Title= this.Title;
+            BlockTitle= this.BlockTitle;
             Order = this.Order;
+
         }
     }
 }

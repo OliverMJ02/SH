@@ -253,6 +253,28 @@
                                                         </LinearGradientBrush>
                                                     </Frame.Background>
                                                     <StackLayout>
+                                                        <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" HeightRequest="34" HasShadow="True">
+                                                            <Entry Placeholder="Add title (optional)" FontSize="14" FontFamily="N" PlaceholderColor="#726E72" TextColor="White" HeightRequest="34" VerticalOptions="CenterAndExpand" Margin="10,0,0,-5" Text="{Binding BlockTitle}">
+                                                                <Entry.Effects>
+                                                                    <effects:PlainEntry/>
+                                                                </Entry.Effects>
+                                                            </Entry>
+                                                        </Frame>
+
+                                                        <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,5" Grid.Column="0" HeightRequest="34">
+                                                            <yummi:PancakeView.Border>
+                                                                <yummi:Border Thickness="1">
+                                                                    <yummi:Border.GradientStops>
+                                                                        <yummi:GradientStopCollection>
+                                                                            <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                                            <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                                        </yummi:GradientStopCollection>
+                                                                    </yummi:Border.GradientStops>
+                                                                </yummi:Border>
+                                                            </yummi:PancakeView.Border>
+                                                            <Button Text="ADD NEW ITEM" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" CornerRadius="50" CommandParameter="{Binding Id}" ></Button>
+                                                        </yummi:PancakeView>
+
                                                         <ImageButton HeightRequest="30" WidthRequest="30" BackgroundColor="Red" HorizontalOptions="Center" Clicked="Handle_DeleteToDoList" CommandParameter="{Binding Id}"></ImageButton>
                                                     </StackLayout>
 
