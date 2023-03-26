@@ -39,6 +39,7 @@ namespace CurryFit
             _database.CreateTable<TextBlock>();
 
             _database.CreateTable<ToDoList>();
+            _database.CreateTable<ToDoItem>();
 
             _database.CreateTable<Settings>();
             _database.CreateTable<model.Timer>();
@@ -126,7 +127,7 @@ namespace CurryFit
 
         public ToDoList GetToDoList(object id)
         {
-            return _database.Get<ToDoList>(id);
+            return _database.GetWithChildren<ToDoList>(id);
         }
 
         public int SaveToDoList(ToDoList toDoList)
@@ -141,6 +142,27 @@ namespace CurryFit
         public int DeleteToDoList(object id)
         {
             return _database.Delete<ToDoList>(id);
+        }
+
+        //Methods for ToDoItem
+
+        public ToDoItem GetToDoItem(object id)
+        {
+            return _database.Get<ToDoItem>(id);
+        }
+
+        public int SaveToDoItem(ToDoItem toDoItem)
+        {
+            return _database.Insert(toDoItem);
+        }
+        public void UpdateToDoItem(ToDoItem toDoItem)
+        {
+            _database.UpdateWithChildren(toDoItem);
+        }
+
+        public int DeleteToDoItem(object id)
+        {
+            return _database.Delete<ToDoItem>(id);
         }
 
 

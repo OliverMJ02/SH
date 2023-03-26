@@ -39,6 +39,9 @@ namespace CurryFit.model.blocks
             }
         }
 
+        [OneToMany]
+        public List<ToDoItem> ToDoItems { get; set; } // List of ToDoItems connected to the ToDoList
+
         public string Title { get; set; }
         public int Order { get; set; }
 
@@ -54,6 +57,7 @@ namespace CurryFit.model.blocks
             Title= this.Title;
             BlockTitle= this.BlockTitle;
             Order = this.Order;
+            ToDoItems = this.ToDoItems;
 
         }
     }

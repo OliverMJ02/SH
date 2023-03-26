@@ -50,7 +50,7 @@ namespace CurryFit.model
 
             foreach (ToDoList tdl in this.ToDoLists)
             {
-                blocks.Add(tdl);
+                blocks.Add(App.Database.GetToDoList(tdl.Id));
             }
 
 

@@ -236,7 +236,24 @@ namespace CurryFit.view
         {
             ToDoList tdl = App.Database.GetToDoList(((ImageButton)sender).CommandParameter);
             currentLogDay.ToDoLists.Remove(tdl);
+            foreach(ToDoItem tdi in tdl.ToDoItems)
+            {
+                App.Database.DeleteToDoItem(tdi.Id);
+            }
             App.Database.DeleteToDoList(tdl.Id);
+            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            currentLogDay = App.Database.GetLogDayWithChildren(currentLogDay.Id);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+        void Handle_AddToDoItem(object sender, EventArgs e)
+        {
+            ToDoItem tdi = new ToDoItem();
+            App.Database.SaveToDoItem(tdi);
+            ToDoList tdl = App.Database.GetToDoList(((Button)sender).CommandParameter);
+            tdl.ToDoItems.Add(App.Database.GetToDoItem(tdi.Id));
+            App.Database.UpdateToDoList(tdl);
             App.Database.UpdateLogDayWithChildren(currentLogDay);
             currentLogDay = App.Database.GetLogDayWithChildren(currentLogDay.Id);
             BindableLayout.SetItemsSource(BlockCollection, null);
