@@ -5,10 +5,15 @@
              xmlns:local="clr-namespace:CurryFit.CustomRenderers"
              BackgroundColor="{DynamicResource Black}">
 
-    
-
+<!-- HOME ej i center pga pil tilbaka, antar att detta löser sig självt när denna page setts som första/Main -->
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="H O M E" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
 
     <ContentPage.Content>
+        
         <StackLayout>
             
             
@@ -133,12 +138,27 @@
                                     <!-- Progressbar / XPBar -->
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="5" AbsoluteLayout.LayoutFlags="YProportional" AbsoluteLayout.LayoutBounds="8,0.9">
                                         <Label Text="L4" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
-                                        <AbsoluteLayout>
-                                            <Frame x:Name="XPBar" HeightRequest="6" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="Transparent" BorderColor="{DynamicResource SPGrey}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5">
+                                        
+                                        <!-- 
+                                       <AbsoluteLayout>
+                                            <Frame x:Name="XPBar" HeightRequest="6" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="Transparent" BorderColor="{DynamicResource AshGrey}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5">
                                             </Frame>
                                             <Frame Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource RiceWhite}" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0.5,0.3,0.5">
                                             </Frame>
-                                        </AbsoluteLayout>
+                                        </AbsoluteLayout> 
+                                        -->       
+
+                                        <Frame Padding="0,0,0,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                            <AbsoluteLayout x:Name="XPBarOutline" VerticalOptions="Center">
+                                                <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="6">
+
+                                                </Frame>
+                                                <Frame x:Name="XPBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource RiceWhite}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="6">
+
+                                                </Frame>
+                                            </AbsoluteLayout>
+                                        </Frame>
+
                                         <Label Text="L5" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
                                     </StackLayout>
                                     
@@ -295,11 +315,11 @@
                                             </StackLayout>
 
                                             <Frame Padding="0,0,0,0" Margin="10,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
-                                                <AbsoluteLayout x:Name="KcalBar" VerticalOptions="Center">
-                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="#726E72">
+                                                <AbsoluteLayout x:Name="KcalBarOutline" VerticalOptions="Center">
+                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource BCGrey}" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="{DynamicResource SPGrey}">
 
                                                     </Frame>
-                                                    <Frame x:Name="Test" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="-250" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
+                                                    <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="-250" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
                                                         <Frame.Background>
                                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                                 <GradientStop Color="{DynamicResource ThemeYellow}" Offset="0"/>
@@ -314,27 +334,50 @@
                                             
 
                                             <StackLayout Orientation="Horizontal" Spacing="0">
-                                                <AbsoluteLayout HorizontalOptions="FillAndExpand">
-                                                   <Label Text="66g/120g CARBS." TextColor="{DynamicResource CarbBlue}" FontFamily="M" FontSize="12" AbsoluteLayout.LayoutBounds="10,0"/>
-                                                    <ProgressBar HorizontalOptions="CenterAndExpand" ProgressColor="{DynamicResource CarbBlue}" Progress="0.55" AbsoluteLayout.LayoutBounds="0.75,0" AbsoluteLayout.LayoutFlags="XProportional"/> 
-                                                </AbsoluteLayout>
+                                                <Label Text="66g/120g CARBS." TextColor="{DynamicResource CarbBlue}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
+                                                <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
+                                                        <AbsoluteLayout x:Name="CarbBarOutline" VerticalOptions="Center">
+                                                            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8">
+                                                                
+                                                            </Frame>
+                                                            <Frame x:Name="CarbBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource CarbBlue}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8">
+                                                                
+                                                            </Frame>
+                                                        </AbsoluteLayout>
+                                                    </Frame>
+                                                
                                                 
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal" Spacing="0">
-                                                <AbsoluteLayout HorizontalOptions="FillAndExpand">
-                                                    <Label Text="43g/98g PROTEIN." TextColor="{DynamicResource ProteinRed}" FontFamily="M" FontSize="12" AbsoluteLayout.LayoutBounds="10,0"/>
-                                                    <ProgressBar HorizontalOptions="CenterAndExpand" ProgressColor="{DynamicResource ProteinRed}" Progress="0.44" AbsoluteLayout.LayoutBounds="0.75,0" AbsoluteLayout.LayoutFlags="XProportional"/>
-                                                </AbsoluteLayout>
-                                                
-                                            </StackLayout>
+                                                <Label Text="43g/98g PROTEIN." TextColor="{DynamicResource ProteinRed}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
+                                                <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
+                                                    <AbsoluteLayout x:Name="ProteinBarOutline" VerticalOptions="Center">
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8">
 
-                                            <StackLayout Orientation="Horizontal" Spacing="0">
-                                                <AbsoluteLayout HorizontalOptions="FillAndExpand">
-                                                    <Label Text="21g/64g FAT." TextColor="{DynamicResource FatYellow}" FontFamily="M" FontSize="12" AbsoluteLayout.LayoutBounds="10,0"/>
-                                                    <ProgressBar HorizontalOptions="CenterAndExpand" ProgressColor="{DynamicResource FatYellow}" Progress="0.33" AbsoluteLayout.LayoutBounds="0.75,0" AbsoluteLayout.LayoutFlags="XProportional"/>
-                                                </AbsoluteLayout>
+                                                        </Frame>
+                                                        <Frame x:Name="ProteinBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource ProteinRed}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8">
+
+                                                        </Frame>
+                                                    </AbsoluteLayout>
+                                                </Frame>
+
+                                            </StackLayout>
                                                 
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label Text="21g/64g FAT." TextColor="{DynamicResource FatYellow}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
+                                                <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
+                                                    <AbsoluteLayout x:Name="FatBarOutline" VerticalOptions="Center">
+                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8">
+
+                                                    </Frame>
+                                                    <Frame x:Name="FatBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource FatYellow}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8">
+
+                                                    </Frame>
+                                                </AbsoluteLayout>
+                                                </Frame>
+                                                
+
                                             </StackLayout>
                                             
                                         </StackLayout>
