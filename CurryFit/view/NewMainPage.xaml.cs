@@ -60,17 +60,18 @@ namespace CurryFit.view
             //MacroNutrients
             //Carbs
             double CarbRatio = 66.0 / 120.0;
-            CarbBarColored.TranslationX = -1 * (xamarinWidth - xamarinWidth * (CarbRatio));
+            double CarbFullBar = xamarinWidth * 0.34; ;
+            CarbBarColored.TranslationX = -1 * (CarbFullBar - CarbFullBar * (CarbRatio));
             //Protein
             double ProteinRatio = 43.0 / 98.0;
-            ProteinBarColored.TranslationX = -1 * (xamarinWidth - xamarinWidth * (ProteinRatio));
+            ProteinBarColored.TranslationX = -1 * (CarbFullBar - CarbFullBar * (ProteinRatio));    // Can reuse "CarbFullBar" since all the progressbars has the same max width
             //Fat
-            double FatRatio = 21 / 64;
-            FatBarColored.TranslationX= -1 * (xamarinWidth - xamarinWidth* (FatRatio));
+            double FatRatio = 21.0 / 64.0;
+            FatBarColored.TranslationX= -1 * (CarbFullBar - CarbFullBar * (FatRatio));
 
             //XPBar
             double XPRatio = 45.0 / 100.0;
-            XPBarColored.TranslationX = -1 * (xamarinWidth - xamarinWidth * (XPRatio));
+            XPBarColored.TranslationX = -1 * (xamarinWidth * 0.18 - xamarinWidth * 0.18 * (XPRatio));
             
 
 
