@@ -228,7 +228,7 @@
                                                 <AbsoluteLayout x:Name="KcalBarOutline" VerticalOptions="Center">
                                                     <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource BCGrey}" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="{DynamicResource SPGrey}"/>
                                                     <!-- Cornerradius leder till att den fyller i färg utanför den yttre framen till vänster, sätter man den till 0 löses detta men vi får ingen runding tillhöger i det färglagda-->
-                                                    <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="0" Padding="0,0,0,0" CornerRadius="0" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
+                                                    <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="0" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
                                                         <Frame.Background>
                                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                                 <GradientStop Color="{DynamicResource ThemeYellow}" Offset="0"/>
@@ -244,8 +244,8 @@
                                                 <Label Text="66g/120g CARBS." TextColor="{DynamicResource CarbBlue}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
                                                 <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
                                                     <AbsoluteLayout x:Name="CarbBarOutline" VerticalOptions="Center">
-                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8"/>
-                                                        <Frame x:Name="CarbBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource CarbBlue}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                        <Frame x:Name="CarbBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource CarbBlue}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
                                                     </AbsoluteLayout>
                                                 </Frame>
                                             </StackLayout>
@@ -254,8 +254,8 @@
                                                 <Label Text="43g/98g PROTEIN." TextColor="{DynamicResource ProteinRed}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
                                                 <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
                                                     <AbsoluteLayout x:Name="ProteinBarOutline" VerticalOptions="Center">
-                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8"/>
-                                                        <Frame x:Name="ProteinBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource ProteinRed}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                        <Frame x:Name="ProteinBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource ProteinRed}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
                                                     </AbsoluteLayout>
                                                 </Frame>
                                             </StackLayout>
@@ -264,8 +264,8 @@
                                                 <Label Text="21g/64g FAT." TextColor="{DynamicResource FatYellow}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
                                                 <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
                                                     <AbsoluteLayout x:Name="FatBarOutline" VerticalOptions="Center">
-                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8"/>
-                                                        <Frame x:Name="FatBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource FatYellow}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8"/>
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                        <Frame x:Name="FatBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource FatYellow}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
                                                     </AbsoluteLayout>
                                                 </Frame>
                                             </StackLayout>
