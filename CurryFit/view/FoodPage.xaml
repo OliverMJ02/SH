@@ -9,7 +9,7 @@
 
     <!--Nav Bar-->
     <NavigationPage.TitleView>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
             <Label Text="NUTRITION" HorizontalTextAlignment="Center" Margin="0,0,75,0"
                    FontSize="17" FontFamily="M" CharacterSpacing="3" TextColor="{DynamicResource AshGrey}"
                    HorizontalOptions="Center">
