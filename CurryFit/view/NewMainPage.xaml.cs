@@ -23,7 +23,7 @@ namespace CurryFit.view
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
 
             // Calender frames
-            CalenderF1.WidthRequest = xamarinWidth * 0.85;
+            CalenderF1.WidthRequest = xamarinWidth * 0.95;
             CalenderF2.WidthRequest = xamarinWidth * 0.85;
 
             //Nurition frames
