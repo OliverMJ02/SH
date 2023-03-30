@@ -4,6 +4,7 @@
              xmlns:effects="clr-namespace:CurryFit.Effects"
              xmlns:local="clr-namespace:CurryFit.CustomRenderers"
              xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:wp="clr-namespace:Vapolia.WheelPickerForms;assembly=Vapolia.WheelPickerForms"
              x:Class="CurryFit.view.WorkoutPage"
              BackgroundColor="#1F1E1F"
              NavigationPage.HasNavigationBar="False"
@@ -26,486 +27,640 @@
     Dark red       #993D51
     -->
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
-                <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
-                <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
-                <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
-            </StackLayout>
-            <BoxView BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
-            <!-- Layout for exercises -->
-            <StackLayout x:Name="ExerciseLayout" VerticalOptions="FillAndExpand">
-                
-                <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
+                    <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
+                    <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
+                    <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+                </StackLayout>
+                <BoxView BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
+                <!-- Layout for exercises -->
+                <StackLayout x:Name="ExerciseLayout" VerticalOptions="FillAndExpand">
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                    <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor1="White" TextColor2="White" TextColor="WHITE" Text="EXERCISES" FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PASS" FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </FlexLayout>
-
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
-                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" VerticalOptions="Center">
-                            <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Sök efter övningar" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
-                            <Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>
-                        </StackLayout>
-                    </Frame>
-
-                    <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HeightRequest="40">
-                        <StackLayout Orientation="Horizontal">
-                            <Image></Image>
-                            <Button x:Name="FilterBtn" Text="Filter" BackgroundColor="Transparent" TextColor="#A6A0A6" FontAttributes="Bold" CharacterSpacing="1"></Button>
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                    </Frame>
+                        <StackLayout>
+                            <local:GradientLabel TextColor1="White" TextColor2="White" TextColor="WHITE" Text="EXERCISES" FontAttributes="Bold" FontSize="Medium"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
-                </StackLayout>
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PASS" FontAttributes="Bold" FontSize="Medium"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
-                <StackLayout Margin="13,0,13,0">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="ADVERTISEMENT" FontSize="8" FontAttributes="Bold"></Label>
-                        <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
-                    </StackLayout>
-                    <StackLayout HeightRequest="50" MinimumHeightRequest="50" BackgroundColor="Green" Margin="0,-3,0,1">
-                        <Label Text="Ad" HorizontalTextAlignment="Center"></Label>
-                    </StackLayout>
-                    <BoxView BackgroundColor="#2A282A" HeightRequest="2"></BoxView>
-                </StackLayout>
-
-
-                <ScrollView Margin="0,0,0,0">
-
-                    <FlexLayout x:Name="ExerciseCollection" Direction="Column" JustifyContent="Start" AlignItems="Center" Margin="13,0,13,0">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Frame CornerRadius="8" BackgroundColor="#2A282A" Margin="0,3,0,3" Padding="0,0,0,0">
-                                        <StackLayout>
-                                            <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
-                                                <Label TextColor="#A6A0A6" FontSize="Medium" Text="{Binding Name}" HorizontalOptions="Start" FontFamily="Nunito" FontAttributes="Bold"></Label>
-                                                <ImageButton HorizontalOptions="EndAndExpand" Source="{Binding FavorisedSource}" HeightRequest="25" BackgroundColor="Transparent" Clicked="Handle_Favorised" CommandParameter="{Binding Id}"></ImageButton>
-                                            </StackLayout>
-
-                                            <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" >
-                                                <Frame BorderColor="#FF4816" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
-                                                    <Label TextColor="#FF4816" Text="{Binding MainEquipment}" FontAttributes="Bold"></Label>
-                                                </Frame>
-                                                <Frame BorderColor="#FFE000" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
-                                                    <Label TextColor="#FFE000" Text="{Binding MainMuscle}" FontAttributes="Bold"></Label>
-                                                </Frame>
-                                            </FlexLayout>
-
-
-                                            <StackLayout Orientation="Horizontal" Margin="13,0,0,13">
-                                                <Label TextColor="#A6A0A6" Text="Created by:"></Label>
-                                                <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
-                                                <Image Source="verified.png" HeightRequest="10"></Image>
-                                                <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10" BackgroundColor="AliceBlue"></Button>
-                                            </StackLayout>
-
-
-                                        </StackLayout>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontAttributes="Bold" FontSize="Medium"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
                     </FlexLayout>
 
-                </ScrollView>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
+                            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" VerticalOptions="Center">
+                                <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Sök efter övningar" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
+                                <Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>
+                            </StackLayout>
+                        </Frame>
 
-                <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button Text="+" FontSize="Title" HorizontalOptions="Center" Clicked="Handle_AddNewExercise" ></Button>
-                    <Button Text="+" FontSize="Title" HorizontalOptions="Center" Clicked="Handle_AddNewExercise2" ></Button>
-                </StackLayout>
-            </StackLayout>
+                        <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HeightRequest="40">
+                            <StackLayout Orientation="Horizontal">
+                                <Image></Image>
+                                <Button x:Name="FilterBtn" Text="Filter" BackgroundColor="Transparent" TextColor="#A6A0A6" FontAttributes="Bold" CharacterSpacing="1"></Button>
+                            </StackLayout>
 
-            <!-- Layout for Logbook -->
-            <StackLayout x:Name="LogbookLayout" IsVisible="False" VerticalOptions="FillAndExpand">
-                
-                <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+                        </Frame>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
+                    <StackLayout Margin="13,0,13,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="ADVERTISEMENT" FontSize="8" FontAttributes="Bold"></Label>
+                            <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
+                        </StackLayout>
+                        <StackLayout HeightRequest="50" MinimumHeightRequest="50" BackgroundColor="Green" Margin="0,-3,0,1">
+                            <Label Text="Ad" HorizontalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <BoxView BackgroundColor="#2A282A" HeightRequest="2"></BoxView>
                     </StackLayout>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PASS" FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor1="White" TextColor2="White" TextColor="White" Text="LOGBOOK" FontAttributes="Bold" FontSize="Medium"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                    <ScrollView Margin="0,0,0,0">
 
-                </FlexLayout>
-
-                <ScrollView>
-                    <StackLayout>
-
-                        <FlexLayout x:Name="BlockCollection" Direction="Column">
+                        <FlexLayout x:Name="ExerciseCollection" Direction="Column" JustifyContent="Start" AlignItems="Center" Margin="13,0,13,0">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout FlexLayout.Order="{Binding Order}">
-
-                                        <StackLayout Orientation="Horizontal" Margin="18,0,18,0">
-                                            <Label Text="{Binding Title}" FontSize="Micro" FontAttributes="Bold" TextColor="#A6A0A6" FontFamily="Montserrat"></Label>
-                                            <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
-                                        </StackLayout>
-
-                                        <Frame Padding="7,7,7,7" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsTextBlock}">
-                                            <Frame Padding="1,1,1,1" BackgroundColor="Transparent" BorderColor="#726E72">
-                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#726E72">
-                                                    <local:CustomEditor Keyboard="Plain" AutoSize="TextChanges" Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8" Text="{Binding Text}" WidthRequest="9999" ></local:CustomEditor>
-                                                </Frame>
-                                            </Frame>
-                                        </Frame>
-
-
-                                        <Frame IsVisible="{Binding IsNormalSet}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
-                                            <Frame.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                    <GradientStop Color="#504E50" Offset="0.1"/>
-                                                    <GradientStop Color="#2D2B2D" Offset="0.5" />
-                                                    <GradientStop Color="#2A282A" Offset="1.0"/>
-                                                </LinearGradientBrush>
-                                            </Frame.Background>
-                                            <StackLayout Margin="10,10,10,10">
-
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" HeightRequest="35">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
-                                                            <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png"></ImageButton>
-                                                        </StackLayout>
-                                                    </Frame>
-
-                                                    <Frame Padding="0,0,0,0" BorderColor="#A6A0A6" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,5,0" HeightRequest="35" WidthRequest="100">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="1:00.0" Margin="10,10,0,10" TextColor="#A6A0A6"></Label>
-                                                            <BoxView WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="20" BackgroundColor="Gray"></BoxView>
-                                                        </StackLayout>
-                                                    </Frame>
-
-                                                    <ImageButton BorderColor="#A6A0A6" VerticalOptions="Center" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trash.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteNormalBlock"></ImageButton>
+                                    <StackLayout>
+                                        <Frame CornerRadius="8" BackgroundColor="#2A282A" Margin="0,3,0,3" Padding="0,0,0,0">
+                                            <StackLayout>
+                                                <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
+                                                    <Label TextColor="#A6A0A6" FontSize="Medium" Text="{Binding Name}" HorizontalOptions="Start" FontFamily="Nunito" FontAttributes="Bold"></Label>
+                                                    <ImageButton HorizontalOptions="EndAndExpand" Source="{Binding FavorisedSource}" HeightRequest="25" BackgroundColor="Transparent" Clicked="Handle_Favorised" CommandParameter="{Binding Id}"></ImageButton>
                                                 </StackLayout>
 
-                                                <BoxView HeightRequest="2" HorizontalOptions="Fill" BackgroundColor="#A6A0A6" Margin="-11,0,-10,-10"></BoxView>
-
-                                                <FlexLayout Margin="0,0,0,0" Direction="Column" x:Name="SetsLayout" BindableLayout.ItemsSource="{Binding NormalSets}">
-                                                    <BindableLayout.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <StackLayout Margin="0,20,0,0">
-                                                                <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="-10,0,0,0">
-                                                                    <ImageButton Source="{Binding IsVisibleSource}" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0,-10,-5,0" CommandParameter="{Binding Id}" Clicked="UpdateNormalSetVisibility"></ImageButton>
-                                                                    <Label Text="{Binding Title}" TextColor="#A6A0A6"></Label>
-                                                                    <ImageButton BorderColor="#A6A0A6" VerticalOptions="Start" Margin="0,-10,0,0" HorizontalOptions="EndAndExpand" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trash.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" IsVisible="{Binding IsVisible}" Clicked="Handle_DeleteNormalSet"></ImageButton>
-                                                                </StackLayout>
-
-                                                                <StackLayout IsVisible="{Binding IsVisible}">
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                                                        <Label Text="WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
-                                                                        <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
-                                                                            <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_NormalSetDecreaseWeight" CommandParameter="{Binding Id}"></ImageButton>
-                                                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
-                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding Weight}" HorizontalTextAlignment="Center" WidthRequest="40" TextChanged="Handle_NormalSetUpdateWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
-                                                                                </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_NormalSetIncreaseWeight" CommandParameter="{Binding Id}"></ImageButton>
-                                                                            </StackLayout>
-                                                                        </Frame>
-                                                                        <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0"></Label>
-                                                                    </StackLayout>
-
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                                                        <Label Text="REPS: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
-                                                                        <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,46,0">
-                                                                            <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_NormalSetDecreaseReps" CommandParameter="{Binding Id}"></ImageButton>
-                                                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
-                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding Reps}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_NormalSetUpdateReps" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
-                                                                                </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_NormalSetIncreaseReps" CommandParameter="{Binding Id}"></ImageButton>
-                                                                            </StackLayout>
-                                                                        </Frame>
-                                                                    </StackLayout>
-                                                                </StackLayout>
-
-                                                            </StackLayout>
-                                                        </DataTemplate>
-                                                    </BindableLayout.ItemTemplate>
-
+                                                <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" >
+                                                    <Frame BorderColor="#FF4816" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                        <Label TextColor="#FF4816" Text="{Binding MainEquipment}" FontAttributes="Bold"></Label>
+                                                    </Frame>
+                                                    <Frame BorderColor="#FFE000" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                        <Label TextColor="#FFE000" Text="{Binding MainMuscle}" FontAttributes="Bold"></Label>
+                                                    </Frame>
                                                 </FlexLayout>
 
-                                                <yummi:PancakeView CornerRadius="50" HorizontalOptions="Fill" Margin="0,10,0,0">
-                                                    <yummi:PancakeView.Border>
-                                                        <yummi:Border Thickness="1">
-                                                            <yummi:Border.GradientStops>
-                                                                <yummi:GradientStopCollection>
-                                                                    <yummi:GradientStop Color="{Binding Fade1}" Offset="0"></yummi:GradientStop>
-                                                                    <yummi:GradientStop Color="{Binding Fade2}" Offset="1"></yummi:GradientStop>
-                                                                </yummi:GradientStopCollection>
-                                                            </yummi:Border.GradientStops>
-                                                        </yummi:Border>
-                                                    </yummi:PancakeView.Border>
-                                                    <Button Text="ADD NEW SET" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" Clicked="Handle_NewNormalSet" CornerRadius="50" CommandParameter="{Binding Id}"></Button>
-                                                </yummi:PancakeView>
+
+                                                <StackLayout Orientation="Horizontal" Margin="13,0,0,13">
+                                                    <Label TextColor="#A6A0A6" Text="Created by:"></Label>
+                                                    <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
+                                                    <Image Source="verified.png" HeightRequest="10"></Image>
+                                                    <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}" Clicked="Handle_DeleteExercise" HeightRequest="10" BackgroundColor="AliceBlue"></Button>
+                                                </StackLayout>
 
 
                                             </StackLayout>
                                         </Frame>
-                                        
-                                        
-
-                                        <Frame IsVisible="{Binding IsDropSet}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
-                                            <Frame.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                    <GradientStop Color="#504E50" Offset="0.1"/>
-                                                    <GradientStop Color="#2D2B2D" Offset="0.5" />
-                                                    <GradientStop Color="#2A282A" Offset="1.0"/>
-                                                </LinearGradientBrush>
-                                            </Frame.Background>
-                                            <StackLayout Margin="10,10,10,10">
-
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" HeightRequest="35">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
-                                                            <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png"></ImageButton>
-                                                        </StackLayout>
-                                                    </Frame>
-
-                                                    <Frame Padding="0,0,0,0" BorderColor="#A6A0A6" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,5,0" HeightRequest="35" WidthRequest="100">
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <Label Text="1:00.0" Margin="10,10,0,10" TextColor="#A6A0A6"></Label>
-                                                            <BoxView WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="20" BackgroundColor="Gray"></BoxView>
-                                                        </StackLayout>
-                                                    </Frame>
-
-                                                    <ImageButton BorderColor="#A6A0A6" VerticalOptions="Center" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trash.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteDropBlock"></ImageButton>
-                                                </StackLayout>
-
-                                                <BoxView HeightRequest="2" HorizontalOptions="Fill" BackgroundColor="#A6A0A6" Margin="-11,0,-10,-10"></BoxView>
-
-                                                <FlexLayout Margin="0,0,0,0" Direction="Column" x:Name="DropSetsLayout" BindableLayout.ItemsSource="{Binding DropSets}">
-                                                    <BindableLayout.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <StackLayout Margin="0,20,0,0">
-                                                                <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="-10,0,0,0">
-                                                                    <ImageButton Source="{Binding IsVisibleSource}" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0,-10,-5,0" CommandParameter="{Binding Id}" Clicked="UpdateDropSetVisibility"></ImageButton>
-                                                                    <Label Text="{Binding Title}" TextColor="#A6A0A6"></Label>
-                                                                    <ImageButton BorderColor="#A6A0A6" VerticalOptions="Start" Margin="0,-10,0,0" HorizontalOptions="EndAndExpand" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trash.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" IsVisible="{Binding IsVisible}" Clicked="Handle_DeleteDropSet"></ImageButton>
-                                                                </StackLayout>
-
-                                                                <StackLayout IsVisible="{Binding IsVisible}">
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                                                        <Label Text="START WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
-                                                                        <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
-                                                                            <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_DropSetDecreaseStartWeight" CommandParameter="{Binding Id}"></ImageButton>
-                                                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
-                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding StartWeight}" HorizontalTextAlignment="Center" WidthRequest="40" TextChanged="Handle_DropSetUpdateStartWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
-                                                                                </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_DropSetIncreaseStartWeight" CommandParameter="{Binding Id}"></ImageButton>
-                                                                            </StackLayout>
-                                                                        </Frame>
-                                                                        <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0"></Label>
-                                                                    </StackLayout>
-
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                                                        <Label Text="END WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
-                                                                        <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
-                                                                            <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_DropSetDecreaseEndWeight" CommandParameter="{Binding Id}"></ImageButton>
-                                                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
-                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding EndWeight}" HorizontalTextAlignment="Center" WidthRequest="40" TextChanged="Handle_DropSetUpdateEndWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
-                                                                                </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_DropSetIncreaseEndWeight" CommandParameter="{Binding Id}"></ImageButton>
-                                                                            </StackLayout>
-                                                                        </Frame>
-                                                                        <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0"></Label>
-                                                                    </StackLayout>
-
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                                                        <Label Text="TOTAL REPS: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
-                                                                        <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,46,0">
-                                                                            <StackLayout Orientation="Horizontal">
-                                                                                <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_DropSetDecreaseReps" CommandParameter="{Binding Id}"></ImageButton>
-                                                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
-                                                                                    <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding Reps}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_DropSetUpdateReps" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
-                                                                                </Frame>
-                                                                                <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_DropSetIncreaseReps" CommandParameter="{Binding Id}"></ImageButton>
-                                                                            </StackLayout>
-                                                                        </Frame>
-                                                                    </StackLayout>
-                                                                </StackLayout>
-
-                                                            </StackLayout>
-                                                        </DataTemplate>
-                                                    </BindableLayout.ItemTemplate>
-
-                                                </FlexLayout>
-
-                                                <yummi:PancakeView CornerRadius="50" HorizontalOptions="Fill" Margin="0,10,0,0">
-                                                    <yummi:PancakeView.Border>
-                                                        <yummi:Border Thickness="1">
-                                                            <yummi:Border.GradientStops>
-                                                                <yummi:GradientStopCollection>
-                                                                    <yummi:GradientStop Color="{Binding Fade1}" Offset="0"></yummi:GradientStop>
-                                                                    <yummi:GradientStop Color="{Binding Fade2}" Offset="1"></yummi:GradientStop>
-                                                                </yummi:GradientStopCollection>
-                                                            </yummi:Border.GradientStops>
-                                                        </yummi:Border>
-                                                    </yummi:PancakeView.Border>
-                                                    <Button Text="ADD NEW SET" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" Clicked="Handle_NewDropSet" CornerRadius="50" CommandParameter="{Binding Id}"></Button>
-                                                </yummi:PancakeView>
-
-
-                                            </StackLayout>
-                                        </Frame>
-                                        
-                                        
-
-                                        <StackLayout BackgroundColor="Blue" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsSuperSet}">
-                                            <Label Text="This is A Super Set"></Label>
-                                        </StackLayout>
-                                        <StackLayout BackgroundColor="Yellow" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsEnduranceSet}">
-                                            <Label Text="This is An Endurance Set"></Label>
-                                        </StackLayout>
                                     </StackLayout>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </FlexLayout>
 
-                        <Frame x:Name="ChooseSetLayout" Padding="0,0,0,0" BackgroundColor="#2A282A" CornerRadius="6" IsVisible="False" Margin="13,0,13,0">
+                    </ScrollView>
+
+                    <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="+" FontSize="Title" HorizontalOptions="Center" Clicked="Handle_AddNewExercise" ></Button>
+                        <Button Text="+" FontSize="Title" HorizontalOptions="Center" Clicked="Handle_AddNewExercise2" ></Button>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Layout for Logbook -->
+                <StackLayout x:Name="LogbookLayout" IsVisible="False" VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+
                             <StackLayout>
-                                <Button Text="NORMAL SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddNormalSet"></Button>
-                                <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
-                                <Button Text="DROP-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddDropSet"></Button>
-                                <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
-                                <Button Text="SUPER-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddSuperSet"></Button>
-                                <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
-                                <Button Text="ENDURANCE-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddEnduranceSet"></Button>
-                            </StackLayout>
-                        </Frame>
-
-                        <StackLayout Margin="13,2,13,0">
-
-                            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                                <Label Text="ADD NEW BLOCK" FontSize="Micro" FontAttributes="Bold" TextColor="#A6A0A6"></Label>
-                                <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
+                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
 
-                            <Frame Padding="0,0,0,0" CornerRadius="6">
-                                <Frame.Background>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                        <GradientStop Color="#504E50" Offset="0.1"/>
-                                        <GradientStop Color="#2D2B2D" Offset="0.5" />
-                                        <GradientStop Color="#2A282A" Offset="1.0"/>
-                                    </LinearGradientBrush>
-                                </Frame.Background>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,15">
+                            <StackLayout>
+                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontAttributes="Bold" FontSize="Medium"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
 
+                            <StackLayout>
+                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PASS" FontAttributes="Bold" FontSize="Medium"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <local:GradientLabel TextColor1="White" TextColor2="White" TextColor="White" Text="LOGBOOK" FontAttributes="Bold" FontSize="Medium"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                        </FlexLayout>
+
+                        <ScrollView HeightRequest="5000">
+                            <StackLayout>
+
+                                <FlexLayout x:Name="BlockCollection" Direction="Column">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout FlexLayout.Order="{Binding Order}" Margin="0,0,0,-10">
+
+                                                <StackLayout Orientation="Horizontal" Margin="18,0,18,0">
+                                                    <Label Text="{Binding Title}" FontSize="Micro" FontAttributes="Bold" TextColor="#A6A0A6" FontFamily="Montserrat"></Label>
+                                                    <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
+                                                </StackLayout>
+
+                                                <Frame Padding="7,7,7,7" BackgroundColor="#2A282A" CornerRadius="6" Margin="13,0,13,20" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsTextBlock, FallbackValue=False}">
+                                                    <Frame Padding="1,1,1,1" BackgroundColor="Transparent" BorderColor="#726E72">
+                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#726E72">
+                                                            <local:CustomEditor Keyboard="Plain" AutoSize="TextChanges" Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8" Text="{Binding Text}" WidthRequest="9999" ></local:CustomEditor>
+                                                        </Frame>
+                                                    </Frame>
+                                                </Frame>
+
+                                                <Frame CornerRadius="7" Padding="5,10,30,10" Margin="13,0,13,20">
+                                                    <Frame.Triggers>
+                                                        <DataTrigger TargetType="Frame" Binding="{Binding NormalSetBlockVisibility}" Value="True">
+                                                            <Setter Property="IsVisible" Value="False" />
+                                                        </DataTrigger>
+                                                    </Frame.Triggers>
+                                                    <Frame.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#504E50" Offset="0.1"/>
+                                                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Frame.Background>
+
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <ImageButton Source="pointer_down_gray.png" BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="35" HeightRequest="35" Command="{Binding UpdateBlockVisibilityCmd}"></ImageButton>
+                                                        <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" HeightRequest="35">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
+                                                                <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png" CommandParameter="{Binding Id}"></ImageButton>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                        <Label FontFamily="M" VerticalTextAlignment="Center" TextColor="#A6A0A6" Text="{Binding NumberOfSets}"></Label>
+                                                    </StackLayout>
+                                                </Frame>
+
+
+                                                <Frame IsVisible="{Binding NormalSetBlockVisibility}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20" >
+                                                    <Frame.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#504E50" Offset="0.1"/>
+                                                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Frame.Background>
+                                                    <StackLayout Margin="10,10,10,10">
+
+                                                        <StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Frame Padding="0,0,0,0" BackgroundColor="Transparent" Margin="-5,0,0,0">
+                                                                    <Frame.Triggers>
+                                                                        <DataTrigger TargetType="Frame" Binding="{Binding IsNotFinished}" Value="True">
+                                                                            <Setter Property="IsVisible" Value="False" />
+                                                                        </DataTrigger>
+                                                                    </Frame.Triggers>
+                                                                    <ImageButton Source="pointer_up_gray.png" BackgroundColor="Transparent" HorizontalOptions="Start" WidthRequest="35" HeightRequest="35" Command="{Binding UpdateBlockVisibilityCmd}"></ImageButton>
+                                                                </Frame>
+
+                                                                <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" HeightRequest="35">
+                                                                    <StackLayout Orientation="Horizontal">
+                                                                        <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
+                                                                        <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png"></ImageButton>
+                                                                    </StackLayout>
+                                                                </Frame>
+
+                                                                <Frame Padding="0,0,0,0" BorderColor="#A6A0A6" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,5,0" HeightRequest="35" WidthRequest="100" IsVisible="{Binding IsNotFinished}">
+                                                                    <StackLayout Orientation="Horizontal">
+                                                                        <StackLayout.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="Handle_ToFilterView"></TapGestureRecognizer>
+                                                                        </StackLayout.GestureRecognizers>
+                                                                        <Label Text="kebab" Margin="10,10,0,10" TextColor="#A6A0A6"></Label>
+                                                                        <BoxView WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="20" BackgroundColor="Gray"></BoxView>
+                                                                    </StackLayout>
+                                                                </Frame>
+
+                                                                <ImageButton BorderColor="#A6A0A6" VerticalOptions="Center" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteNormalBlock"></ImageButton>
+                                                            </StackLayout>
+
+                                                            <StackLayout Orientation="Horizontal" IsVisible="{Binding IsNotFinished}">
+                                                                <Frame Padding="0,0,0,0" Margin="0,0,0,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="Start">
+                                                                    <AbsoluteLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="370">
+                                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="35" BorderColor="#726E72">
+                                                                            <StackLayout Orientation="Horizontal">
+                                                                                <Label Text="RESTING TIMER" TextColor="#A6A0A6" FontSize="Small" FontFamily="M" VerticalOptions="Center" Margin="40,0,0,0" MaxLines="1" HorizontalOptions="FillAndExpand"></Label>
+                                                                                <Label Text="{Binding TimerDisplay}" TextColor="#A6A0A6" FontSize="Small" FontFamily="M" VerticalOptions="Center" Margin="40,0,0,0" MaxLines="1" HorizontalOptions="FillAndExpand"></Label>
+                                                                            </StackLayout>
+                                                                        </Frame>
+                                                                        <Frame x:Name="{Binding Id}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0" TranslationX="{Binding Width}" HeightRequest="35" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
+                                                                            <Frame.Background>
+                                                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                                                    <GradientStop Color="#FFE000" Offset="0"/>
+
+                                                                                    <GradientStop Color="#FF4816" Offset="1"/>
+                                                                                </LinearGradientBrush>
+                                                                            </Frame.Background>
+                                                                            <StackLayout Orientation="Horizontal">
+                                                                                <Label Text="RESTING TIMER" TranslationX="{Binding XMargin}" TextColor="#1F1E1F" FontSize="Small" FontFamily="M" Margin="0,0,0,0" VerticalOptions="Center" MaxLines="1" HorizontalOptions="FillAndExpand"></Label>
+                                                                                <Label Text="{Binding TimerDisplay}" TranslationX="{Binding XMargin}" TextColor="#1F1E1F" FontSize="Small" FontFamily="M" Margin="0,0,0,0" VerticalOptions="Center" MaxLines="1" HorizontalOptions="FillAndExpand"></Label>
+                                                                            </StackLayout>
+
+                                                                        </Frame>
+                                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" HeightRequest="35" WidthRequest="35" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" BorderColor="#726E72">
+
+                                                                        </Frame>
+
+                                                                    </AbsoluteLayout>
+                                                                </Frame>
+
+                                                                <ImageButton  Padding="0,0,0,0" Margin="5,0,0,0" BackgroundColor="Red" Command="{Binding HandleRestingTimerCmd}"  CommandParameter="{Binding Id}" HeightRequest="35" WidthRequest="35" HorizontalOptions="EndAndExpand" VerticalOptions="Center" CornerRadius="50" ></ImageButton>
+                                                            </StackLayout>
+                                                        </StackLayout>
+
+                                                        <BoxView HeightRequest="1" HorizontalOptions="Fill" BackgroundColor="#A6A0A6" Margin="-11,0,-10,-10"></BoxView>
+
+                                                        <FlexLayout Margin="0,0,0,0" Direction="Column" x:Name="SetsLayout" BindableLayout.ItemsSource="{Binding NormalSets}">
+                                                            <BindableLayout.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackLayout Margin="0,20,0,0">
+                                                                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="-10,0,0,0">
+                                                                            <ImageButton Source="{Binding IsVisibleSource}" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0,-10,-5,0" Command="{Binding UpdateSetVisibilityCmd}"></ImageButton>
+                                                                            <Label Text="{Binding Title}" TextColor="#A6A0A6" HorizontalOptions="FillAndExpand" FontFamily="M" FontSize="14.5"></Label>
+                                                                            <Button Padding="0,0,0,0" HorizontalOptions="EndAndExpand" TextColor="#A6A0A6" VerticalOptions="Start" FontSize="14.5" FontFamily="M" HeightRequest="17" BackgroundColor="Transparent" Command="{Binding UpdateSetVisibilityCmd}">
+                                                                                <Button.Text>
+                                                                                    <MultiBinding StringFormat="{}{0} REPS,  {1} KG">
+                                                                                        <Binding Path="Reps" />
+                                                                                        <Binding Path="Weight" />
+                                                                                    </MultiBinding>
+                                                                                </Button.Text>
+                                                                                <Button.Triggers>
+                                                                                    <DataTrigger TargetType="Button" Binding="{Binding IsVisible}" Value="True">
+                                                                                        <Setter Property="IsVisible" Value="False" />
+                                                                                    </DataTrigger>
+                                                                                </Button.Triggers>
+                                                                            </Button>
+                                                                            <ImageButton BorderColor="#A6A0A6" VerticalOptions="Start" Margin="-29,-10,0,0" HorizontalOptions="EndAndExpand" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trashgray.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteNormalSet"></ImageButton>
+                                                                        </StackLayout>
+
+                                                                        <StackLayout IsVisible="{Binding IsVisible}">
+
+                                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                                                                <Label Text="REPETITIONS: " TextColor="#A6A0A6" VerticalOptions="Center" FontFamily="M"></Label>
+                                                                                <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
+                                                                                    <StackLayout Orientation="Horizontal">
+                                                                                        <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Command="{Binding DecrementRepsCmd}"></ImageButton>
+                                                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
+                                                                                            <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" FontFamily="N" Text="{Binding Reps}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_NormalSetUpdateReps" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
+                                                                                        </Frame>
+                                                                                        <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Command="{Binding IncrementRepsCmd}"></ImageButton>
+                                                                                    </StackLayout>
+                                                                                </Frame>
+                                                                                <Label Text="KG" TextColor="Transparent" VerticalOptions="Center" Margin="5,0,12,0" FontFamily="M"></Label>
+                                                                            </StackLayout>
+
+                                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                                                                <Label Text="WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center" FontFamily="M"></Label>
+                                                                                <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
+                                                                                    <StackLayout Orientation="Horizontal">
+                                                                                        <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Command="{Binding DecrementWeightCmd}"></ImageButton>
+                                                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
+                                                                                            <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" FontFamily="N" Text="{Binding Weight}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_NormalSetUpdateWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent" BindingContext="{Binding .}"></Entry>
+                                                                                        </Frame>
+                                                                                        <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Command="{Binding IncrementWeightCmd}"></ImageButton>
+                                                                                    </StackLayout>
+                                                                                </Frame>
+                                                                                <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0" FontFamily="M"></Label>
+                                                                            </StackLayout>
+
+                                                                        </StackLayout>
+
+                                                                    </StackLayout>
+                                                                </DataTemplate>
+                                                            </BindableLayout.ItemTemplate>
+
+                                                        </FlexLayout>
+
+                                                        <Grid HorizontalOptions="FillAndExpand">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,3,0" Grid.Column="0">
+                                                                <yummi:PancakeView.Border>
+                                                                    <yummi:Border Thickness="1">
+                                                                        <yummi:Border.GradientStops>
+                                                                            <yummi:GradientStopCollection>
+                                                                                <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                                                <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                                            </yummi:GradientStopCollection>
+                                                                        </yummi:Border.GradientStops>
+                                                                    </yummi:Border>
+                                                                </yummi:PancakeView.Border>
+                                                                <Button Text="ADD NEW SET" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" Clicked="Handle_NewNormalSet" CornerRadius="50" CommandParameter="{Binding Id}" ></Button>
+                                                            </yummi:PancakeView>
+                                                            <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="3,10,0,0" Grid.Column="1">
+                                                                <yummi:PancakeView.Border>
+                                                                    <yummi:Border Thickness="1">
+                                                                        <yummi:Border.GradientStops>
+                                                                            <yummi:GradientStopCollection>
+                                                                                <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
+                                                                                <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                                            </yummi:GradientStopCollection>
+                                                                        </yummi:Border.GradientStops>
+                                                                    </yummi:Border>
+                                                                </yummi:PancakeView.Border>
+                                                                <Button Text="{Binding SaveOrFinish}" FontFamily="M" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" CornerRadius="50" Command="{Binding UpdateBlockVisibilityCmd}"></Button>
+                                                            </yummi:PancakeView>
+                                                        </Grid>
+
+                                                    </StackLayout>
+                                                </Frame>
+
+
+
+                                                <Frame IsVisible="{Binding IsDropSet, FallbackValue=False}" CornerRadius="7" Padding="0,0,0,0" Margin="13,0,13,20">
+                                                    <Frame.Background>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#504E50" Offset="0.1"/>
+                                                            <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                                            <GradientStop Color="#2A282A" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </Frame.Background>
+                                                    <StackLayout Margin="10,10,10,10">
+
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" HeightRequest="35">
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="Benchpress" Margin="10,0,5,0" TextColor="White" VerticalOptions="Center" HorizontalOptions="FillAndExpand"></Label>
+                                                                    <ImageButton BorderColor="#A6A0A6" BackgroundColor="Transparent" BorderWidth="1" CornerRadius="50" HeightRequest="35" Source="forward_arrow_gray.png"></ImageButton>
+                                                                </StackLayout>
+                                                            </Frame>
+
+                                                            <Frame Padding="0,0,0,0" BorderColor="#A6A0A6" CornerRadius="50" BackgroundColor="#2A282A" Margin="0,0,5,0" HeightRequest="35" WidthRequest="100">
+                                                                <StackLayout Orientation="Horizontal">
+                                                                    <Label Text="1:00.0" Margin="10,10,0,10" TextColor="#A6A0A6"></Label>
+                                                                    <BoxView WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="20" BackgroundColor="Gray"></BoxView>
+                                                                </StackLayout>
+                                                            </Frame>
+
+                                                            <ImageButton BorderColor="#A6A0A6" VerticalOptions="Center" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trash.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" Clicked="Handle_DeleteDropBlock"></ImageButton>
+                                                        </StackLayout>
+
+                                                        <BoxView HeightRequest="2" HorizontalOptions="Fill" BackgroundColor="#A6A0A6" Margin="-11,0,-10,-10"></BoxView>
+
+                                                        <FlexLayout Margin="0,0,0,0" Direction="Column" x:Name="DropSetsLayout" BindableLayout.ItemsSource="{Binding DropSets}">
+                                                            <BindableLayout.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackLayout Margin="0,20,0,0">
+                                                                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="-10,0,0,0">
+                                                                            <ImageButton Source="{Binding IsVisibleSource}" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="Transparent" Margin="0,-10,-5,0" CommandParameter="{Binding Id}" Clicked="UpdateDropSetVisibility"></ImageButton>
+                                                                            <Label Text="{Binding Title}" TextColor="#A6A0A6"></Label>
+                                                                            <ImageButton BorderColor="#A6A0A6" VerticalOptions="Start" Margin="0,-10,0,0" HorizontalOptions="EndAndExpand" BorderWidth="1" WidthRequest="35" HeightRequest="35" CornerRadius="50" BackgroundColor="Transparent" Source="trash.png" Padding="3,3,3,3" CommandParameter="{Binding Id}" IsVisible="{Binding IsVisible}" Clicked="Handle_DeleteDropSet"></ImageButton>
+                                                                        </StackLayout>
+
+                                                                        <StackLayout IsVisible="{Binding IsVisible}">
+                                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                                                                <Label Text="START WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
+                                                                                <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
+                                                                                    <StackLayout Orientation="Horizontal">
+                                                                                        <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_DropSetDecreaseStartWeight" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
+                                                                                            <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding StartWeight}" HorizontalTextAlignment="Center" WidthRequest="40" TextChanged="Handle_DropSetUpdateStartWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
+                                                                                        </Frame>
+                                                                                        <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_DropSetIncreaseStartWeight" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                    </StackLayout>
+                                                                                </Frame>
+                                                                                <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0"></Label>
+                                                                            </StackLayout>
+
+                                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                                                                <Label Text="END WEIGHT: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
+                                                                                <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,5,0">
+                                                                                    <StackLayout Orientation="Horizontal">
+                                                                                        <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_DropSetDecreaseEndWeight" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
+                                                                                            <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding EndWeight}" HorizontalTextAlignment="Center" WidthRequest="40" TextChanged="Handle_DropSetUpdateEndWeight" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
+                                                                                        </Frame>
+                                                                                        <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_DropSetIncreaseEndWeight" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                    </StackLayout>
+                                                                                </Frame>
+                                                                                <Label Text="KG" TextColor="#A6A0A6" VerticalOptions="Center" Margin="5,0,12,0"></Label>
+                                                                            </StackLayout>
+
+                                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                                                                <Label Text="TOTAL REPS: " TextColor="#A6A0A6" VerticalOptions="Center"></Label>
+                                                                                <Frame BorderColor="#1F1E1F" BackgroundColor="#2A282A" CornerRadius="50" Padding="0,0,0,0" HeightRequest="35" WidthRequest="100" Margin="0,0,46,0">
+                                                                                    <StackLayout Orientation="Horizontal">
+                                                                                        <ImageButton Source="pointer_left_gray.png" HorizontalOptions="Start" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="5,0,0,0" Clicked="Handle_DropSetDecreaseReps" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                        <Frame Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#A6A0A6" Margin="-15,5,-15,5" WidthRequest="50" CornerRadius="7" HorizontalOptions="EndAndExpand">
+                                                                                            <Entry HeightRequest="30" Margin="0,-10,0,-10" TextColor="White" Text="{Binding Reps}" HorizontalTextAlignment="Center" WidthRequest="40" Unfocused="Handle_DropSetUpdateReps" Placeholder="{Binding Id}" PlaceholderColor="Transparent"></Entry>
+                                                                                        </Frame>
+                                                                                        <ImageButton Source="pointer_right_gray.png" HorizontalOptions="EndAndExpand" HeightRequest="30" VerticalOptions="Center" BackgroundColor="Transparent" Margin="0,0,5,0" Clicked="Handle_DropSetIncreaseReps" CommandParameter="{Binding Id}"></ImageButton>
+                                                                                    </StackLayout>
+                                                                                </Frame>
+                                                                            </StackLayout>
+                                                                        </StackLayout>
+
+                                                                    </StackLayout>
+                                                                </DataTemplate>
+                                                            </BindableLayout.ItemTemplate>
+
+                                                        </FlexLayout>
+
+                                                        <yummi:PancakeView CornerRadius="50" HorizontalOptions="Fill" Margin="0,10,0,0">
+                                                            <yummi:PancakeView.Border>
+                                                                <yummi:Border Thickness="1">
+                                                                    <yummi:Border.GradientStops>
+                                                                        <yummi:GradientStopCollection>
+                                                                            <yummi:GradientStop Color="{Binding Fade1}" Offset="0"></yummi:GradientStop>
+                                                                            <yummi:GradientStop Color="{Binding Fade2}" Offset="1"></yummi:GradientStop>
+                                                                        </yummi:GradientStopCollection>
+                                                                    </yummi:Border.GradientStops>
+                                                                </yummi:Border>
+                                                            </yummi:PancakeView.Border>
+                                                            <Button Text="ADD NEW SET" HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" Clicked="Handle_NewDropSet" CornerRadius="50" CommandParameter="{Binding Id}"></Button>
+                                                        </yummi:PancakeView>
+
+
+                                                    </StackLayout>
+                                                </Frame>
+
+
+
+                                                <StackLayout BackgroundColor="Blue" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsSuperSet, FallbackValue=False}">
+                                                    <Label Text="This is A Super Set"></Label>
+                                                </StackLayout>
+                                                <StackLayout BackgroundColor="Yellow" HeightRequest="150" Margin="13,0,13,20" IsVisible="{Binding IsEnduranceSet, FallbackValue=False}">
+                                                    <Label Text="This is An Endurance Set"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
+
+                                <Frame x:Name="ChooseSetLayout" Padding="0,0,0,0" BackgroundColor="#2A282A" CornerRadius="6" IsVisible="False" Margin="13,0,13,0">
                                     <StackLayout>
-                                        <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
-                                            <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
-                                                <ImageButton Source="add_text.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="Handle_NewTextBlock" CornerRadius="50"></ImageButton>
-                                            </Frame>
-                                        </Frame>
+                                        <Button Text="NORMAL SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddNormalSet"></Button>
+                                        <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                                        <Button Text="DROP-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddDropSet"></Button>
+                                        <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                                        <Button Text="SUPER-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddSuperSet"></Button>
+                                        <BoxView HeightRequest="1" BackgroundColor="#726E72" Margin="25,-6,25,-6" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                                        <Button Text="ENDURANCE-SET" BackgroundColor="Transparent" TextColor="#A6A0A6" Margin="0,-5,0,-5" Clicked="Handle_AddEnduranceSet"></Button>
+                                    </StackLayout>
+                                </Frame>
 
-                                        <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
-                                        <Label Text="TEXTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                <StackLayout Margin="13,2,13,10">
+
+                                    <StackLayout Orientation="Horizontal" Margin="5,-10,5,0">
+                                        <Label Text="ADD NEW BLOCK" FontSize="Micro" FontAttributes="Bold" TextColor="#A6A0A6"></Label>
+                                        <BoxView HeightRequest="2" MinimumHeightRequest="2" BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
                                     </StackLayout>
 
-                                    <StackLayout Margin="20,0,20,0">
-                                        <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
-                                            <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
-                                                <ImageButton Source="add_sets.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50" Clicked="Handle_AddSets"></ImageButton>
-                                            </Frame>
-                                        </Frame>
-                                        <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
-                                        <Label Text="WORKOUTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
-                                    </StackLayout>
+                                    <Frame Padding="0,0,0,0" CornerRadius="6">
+                                        <Frame.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#504E50" Offset="0.1"/>
+                                                <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                                <GradientStop Color="#2A282A" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Frame.Background>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,15,0,15">
 
-                                    <StackLayout>
-                                        <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
-                                            <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
-                                                <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50"></ImageButton>
-                                            </Frame>
-                                        </Frame>
-                                        <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
-                                        <Label Text="CHECKLIST" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
-                                    </StackLayout>
+                                            <StackLayout>
+                                                <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
+                                                    <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
+                                                        <ImageButton Source="add_text.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" Clicked="Handle_NewTextBlock" CornerRadius="50"></ImageButton>
+                                                    </Frame>
+                                                </Frame>
 
+                                                <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                                <Label Text="TEXTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                            </StackLayout>
+
+                                            <StackLayout Margin="20,0,20,0">
+                                                <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
+                                                    <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
+                                                        <ImageButton Source="add_sets.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50" Clicked="Handle_AddSets"></ImageButton>
+                                                    </Frame>
+                                                </Frame>
+                                                <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                                <Label Text="WORKOUTBLOCK" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                            </StackLayout>
+
+                                            <StackLayout>
+                                                <Frame CornerRadius="50" HorizontalOptions="Center" BorderColor="#A6A0A6" Padding="1,1,1,1" BackgroundColor="Transparent">
+                                                    <Frame CornerRadius="50" BorderColor="#A6A0A6" Padding="0,0,0,0" BackgroundColor="Transparent">
+                                                        <ImageButton Source="add_checklist.png" HeightRequest="50" HorizontalOptions="Center" BackgroundColor="Transparent" CornerRadius="50"></ImageButton>
+                                                    </Frame>
+                                                </Frame>
+                                                <Label Text="NEW" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                                <Label Text="CHECKLIST" TextColor="#A6A0A6" HorizontalTextAlignment="Center" FontSize="Caption" FontAttributes="Bold"></Label>
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                                
+                            </StackLayout>
+                        </ScrollView>
+
+                        <Frame Padding="1,1,1,1"  BackgroundColor="#2A282A" CornerRadius="6" VerticalOptions="End" Margin="13,-6,13,-3" HeightRequest="55" MinimumHeightRequest="55" BorderColor="#4A484A">
+                            <Frame BackgroundColor="Transparent" Padding="1,1,1,1" HeightRequest="54" MinimumHeightRequest="54" BorderColor="#4A484A" VerticalOptions="EndAndExpand">
+                                <StackLayout Orientation="Horizontal" HeightRequest="45" MinimumHeightRequest="45">
+                                    <ImageButton HorizontalOptions="StartAndExpand" WidthRequest="20" Source="pointer_left_gray.png" BackgroundColor="Transparent" Margin="8,0,0,0" Clicked="Handle_PreviousDay"></ImageButton>
+                                    <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="40" MinimumHeightRequest="40" BorderColor="#4A484A" CornerRadius="25" Padding="8,0,8,0" BackgroundColor="Transparent">
+                                        <local:GradientLabel Text="29. NOV. 2022" FontAttributes="Bold" VerticalOptions="Center" FontSize="18" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>
+                                    </Frame>
+                                    <ImageButton HorizontalOptions="EndAndExpand" WidthRequest="20" Source="pointer_right_gray.png" BackgroundColor="Transparent" Margin="0,0,8,0" Clicked="Handle_NextDay"></ImageButton>
                                 </StackLayout>
                             </Frame>
-                        </StackLayout>
+                        </Frame>
                     </StackLayout>
-                </ScrollView>
-                
-                <Frame Padding="1,1,1,1"  BackgroundColor="#2A282A" CornerRadius="6" VerticalOptions="EndAndExpand" Margin="13,5,13,-3" HeightRequest="55" MinimumHeightRequest="55" BorderColor="#4A484A">
-                    <Frame BackgroundColor="Transparent" Padding="1,1,1,1" HeightRequest="54" MinimumHeightRequest="54" BorderColor="#4A484A" VerticalOptions="EndAndExpand">
-                        <StackLayout Orientation="Horizontal" HeightRequest="45" MinimumHeightRequest="45">
-                            <ImageButton HorizontalOptions="StartAndExpand" WidthRequest="20" Source="pointer_left_gray.png" BackgroundColor="Transparent" Margin="8,0,0,0" Clicked="Handle_PreviousDay"></ImageButton>
-                            <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="40" MinimumHeightRequest="40" BorderColor="#4A484A" CornerRadius="25" Padding="8,0,8,0" BackgroundColor="Transparent">
-                                <local:GradientLabel Text="29. NOV. 2022" FontAttributes="Bold" VerticalOptions="Center" FontSize="18" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>
-                            </Frame>
-                            <ImageButton HorizontalOptions="EndAndExpand" WidthRequest="20" Source="pointer_right_gray.png" BackgroundColor="Transparent" Margin="0,0,8,0" Clicked="Handle_NextDay"></ImageButton>
+
+                </StackLayout>
+
+
+                <!-- Menu buttons -->
+                <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
+                <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
+                    <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
+                    <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                    <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                    <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                    <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                </StackLayout>
+            </StackLayout>
+
+
+
+            <!-- Filterview layout -->
+            <StackLayout x:Name="FilterView" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" BackgroundColor="#F61F1E1F" HeightRequest="10000" IsVisible="false" Margin="0,-7,0,0">
+                <Button Text="Back" HorizontalOptions="Center" BackgroundColor="Red" Clicked="Handle_BackFromFilterView"></Button>
+                <Label Text="Very much nice view" FontSize="24" TextColor="Gray" HorizontalOptions="Center" Margin="0,0,0,20"></Label>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout  WidthRequest="150">
+                        <Label Text="Hej på dig din jävel" FontSize="16" TextColor="Gray"></Label>
+                    </StackLayout>
+                    <StackLayout  Margin="0,0,20,0" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                        <StackLayout>
+                            <Label Text="MINUTES" MaxLines="1" FontFamily="M" FontSize="16" TextColor="#A6A0A6" HorizontalTextAlignment="Center"></Label>
+
+                            <wp:WheelPicker SelectionLinesColor="Transparent" x:Name="WheelPickerMinutes" ItemTextColor="#4A484A" ItemTextSelectedColor="#A6A0A6" ItemTextFont="M"  Margin="10,0,0,0" HorizontalOptions="CenterAndExpand">
+                                <wp:WheelDefinition Width="*" RowHeight="50" IsCircular="True">
+                                    <DataTemplate>
+                                        <Label Text="{Binding .}" TextColor="#A6A0A6" FontSize="45" FontFamily="M" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    </DataTemplate>
+                                </wp:WheelDefinition>
+                            </wp:WheelPicker>
                         </StackLayout>
-                    </Frame>
-                </Frame>
-                
+
+                        <StackLayout Margin="20,0,0,0">
+                            <Label Text="SECONDS" MaxLines="1" FontFamily="M" FontSize="16" TextColor="#A6A0A6" HorizontalTextAlignment="Center"></Label>
+
+                            <wp:WheelPicker SelectionLinesColor="Transparent" x:Name="WheelPickerSeconds" ItemTextColor="#4A484A" ItemTextSelectedColor="#A6A0A6" ItemTextFont="M"  Margin="10,0,0,0" HorizontalOptions="CenterAndExpand">
+                                <wp:WheelDefinition Width="*" RowHeight="50" IsCircular="True">
+                                    <DataTemplate>
+                                        <Label Text="{Binding .}" TextColor="#A6A0A6" FontSize="45" FontFamily="M" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    </DataTemplate>
+                                </wp:WheelDefinition>
+                            </wp:WheelPicker>
+                        </StackLayout>
+
+                    </StackLayout>
+                    
+                </StackLayout>
             </StackLayout>
-            
-            
-            <!-- Menu buttons -->
-            <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
-            <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
-                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
-                <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-            </StackLayout>
-        </StackLayout>
+
+        </AbsoluteLayout>
+
 
 <!-- Entry utan svart streck under
         <Entry Placeholder="Click here to add text" PlaceholderColor="#726E72" FontSize="Small" TextColor="White" Margin="0,-8,0,-8">

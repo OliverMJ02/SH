@@ -4,29 +4,31 @@ using System.Text;
 using System.IO;
 
 
-namespace CurryFit.model
+namespace CurryFit.model.datahandling
 {
-    internal class ExcelReader
+    class ExcelReader : IExerciseDataRetriever
     {
-        private static readonly String defaultpath = "../../../resources/excel-files";
+        private readonly string defaultpath = "../../../resources/excel-files";
 
-        static Dictionary<Int32, Exercise> convertExcelFileToHandledData(String path)
+        public Dictionary<int, Exercise> RetrieveData()
         {
-            Dictionary<Int32, Exercise> converted = new Dictionary<Int32, Exercise>();
-            String line;
-            path = "OvningsDataBas-CurryFit.csv";
-            String file = Path.Combine(defaultpath + path);
+            Dictionary<int, Exercise> converted = new Dictionary<int, Exercise>();
+            string line;
+            string path = "OvningsDataBas-CurryFit.csv";
+            string file = Path.Combine(defaultpath + path);
             using (var stream = new StreamReader(file))
             {
-                int i = 0;
                 stream.ReadLine();
                 while ((line = stream.ReadLine()) != null)
                 {
 
                     String[] values = line.Split(';');
-                    String name = values[0];
-                    int variant = Int32.Parse(values[5]);
-                    Console.WriteLine(name); //test
+                    int id = int.Parse(values[0]);
+                    Exercise ex = new Exercise();
+                    ex.Id = id;
+                    ex.Name = values[1];
+                    ex.MainMuscle = values[2];
+                    ex.MainEquipment = values[3];
 
                 }
 
@@ -34,7 +36,6 @@ namespace CurryFit.model
 
             return converted;
         }
-
 
     }
 }

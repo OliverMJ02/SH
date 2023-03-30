@@ -16,6 +16,10 @@ using CurryFit.model.blocks;
 using Firebase.Database;
 using Firebase.Database.Query;
 using CurryFit.model.Sets;
+using System.Threading;
+using System.Globalization;
+using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace CurryFit.view
 {
@@ -24,6 +28,7 @@ namespace CurryFit.view
     {
         int CurrentDay = 2;
         LogDay currentLogDay;
+        double startWidth;
 
         List<object> Blocks = new List<object>();
         FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -48,6 +53,8 @@ namespace CurryFit.view
             SearchBar.WidthRequest = xamarinWidth * 0.6;
             FilterBtn.WidthRequest = xamarinWidth * 0.3;
 
+            startWidth = xamarinWidth - 26 - 35 - 26 - 5;
+
         }
         private async void Handle_MainPage(object sender, EventArgs e)
         {
@@ -65,38 +72,36 @@ namespace CurryFit.view
             ExerciseLayout.IsVisible = false;
             LogbookLayout.IsVisible = true;
 
-            List<LogDay> logDays = App.Database.GetLogDays();
-            bool exists = false;
-            foreach(LogDay logDay in logDays)
-            {
-                if(logDay.Day == CurrentDay)
-                {
-                    exists = true;
-                    currentLogDay = logDay;
-                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
-                    break;
-                }
-            }
-            if (!exists)
-            {
-                currentLogDay = new LogDay{ 
-                    Day = CurrentDay,
-                    
-                    NormalSetBlocks = new List<NormalSetBlock>() { },
-                    DropSetBlocks = new List<DropSetBlock>() { },
-                    
-                    
-                };
-                App.Database.SaveLogDay(currentLogDay);
-            }
-            try
-            {
-                Blocks = currentLogDay.GetAllBlocks();
-                BindableLayout.SetItemsSource(BlockCollection, null);
-                BindableLayout.SetItemsSource(BlockCollection, Blocks);
-            }
-            catch { }
         }
+
+        void Handle_ToFilterView(object sendr, EventArgs e)
+        {
+            FilterView.IsVisible = true;
+            List<string> list = new List<string>();
+            for(int i = 0; i < 60; i++)
+            {
+                if(i < 10)
+                {
+                    list.Add("0"+i.ToString());
+                }
+                else
+                {
+                    list.Add(i.ToString());
+                }
+                
+            }
+            WheelPickerMinutes.ItemsSourceSimple = list;
+            WheelPickerMinutes.SelectedItemsIndex = new List<int>() { 0 };
+            WheelPickerSeconds.ItemsSourceSimple = list;
+            WheelPickerSeconds.SelectedItemsIndex = new List<int>() { 0 };
+
+        }
+
+        void Handle_BackFromFilterView(object sendr, EventArgs e)
+        {
+            FilterView.IsVisible = false;
+        }
+
 
         void Handle_NextDay(object sender, EventArgs e)
         {
@@ -201,7 +206,6 @@ namespace CurryFit.view
             currentLogDay.NormalSetBlocks.Add(nsb);
             currentLogDay.Counter++;
             App.Database.UpdateLogDayWithChildren(currentLogDay);
-            Blocks.Add(nsb);
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
             ChooseSetLayout.IsVisible = false;
@@ -209,48 +213,65 @@ namespace CurryFit.view
 
         void Handle_NewNormalSet(object sender, EventArgs e)
         {
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(((Button)sender).CommandParameter);
-            NormalSet ns = new NormalSet (nsb.NormalSets.Count + 1);
-            App.Database.SaveNormalSet(ns);
-            nsb = nsb.CloseAllSets();
-            nsb.NormalSets.Add(App.Database.GetNormalSetWithChildren(ns.Id));
-            nsb.Fade1 = "#A6A0A6";
-            nsb.Fade2 = "#A6A0A6";
-            App.Database.UpdateNormalBlockWithChildren(nsb);
-            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            try
+            {
+                NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(((Button)sender).CommandParameter);
+                NormalSet ns = new NormalSet(nsb.NormalSets.Count + 1);
+                App.Database.SaveNormalSet(ns);
+                nsb = nsb.CloseAllSets();
+                nsb.NormalSets.Add(App.Database.GetNormalSetWithChildren(ns.Id));
+                if (nsb.NormalSets.Count == 1)
+                {
+                    nsb.NumberOfSets = "1 SET";
+                }
+                else
+                {
+                    nsb.NumberOfSets = nsb.NormalSets.Count.ToString() + " SETS";
+                }
+                App.Database.UpdateNormalBlockWithChildren(nsb);
+                App.Database.UpdateLogDayWithChildren(currentLogDay);
 
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            }
+            catch { }
         }
-
-        void UpdateNormalSetVisibility(object sender, EventArgs e)
+        
+        void Handle_UpdateNormalSetBlockVisibility(object sender, EventArgs e)
         {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
-            ns.UpdateSetVisibility();
-            App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(((ImageButton)sender).CommandParameter);
+            nsb.UpdateNormalSetBlockVisibility();
+            App.Database.UpdateNormalBlockWithChildren(nsb);
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+
         }
 
         void Handle_DeleteNormalSet(object sender, EventArgs e)
         {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
-            nsb.UpdateNormalSetTitels(int.Parse((ns.Title).Remove(0, 4)));
-            App.Database.DeleteNormalSet(ns);
-            //If there is no sets left, change Add new set button border to fade colors
-            if(nsb.NormalSets.Count-1 == 0)
+            try
             {
-                nsb.Fade1 = "#FF4816";
-                nsb.Fade2 = "#FFE000";
-                App.Database.UpdateNormalBlockWithChildren(nsb);
-            }
-            nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
-            App.Database.UpdateLogDayWithChildren(currentLogDay);
+                NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
+                NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+                nsb.UpdateNormalSetTitels(int.Parse((ns.Title).Remove(0, 4)));
+                App.Database.DeleteNormalSet(ns);
 
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                if (nsb.NormalSets.Count == 1)
+                {
+                    nsb.NumberOfSets = "1 SET";
+                }
+                else
+                {
+                    nsb.NumberOfSets = nsb.NormalSets.Count.ToString() + " SETS";
+                }
+                App.Database.UpdateNormalBlockWithChildren(nsb);
+                nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+                App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            }
+            catch { }
         }
 
         void Handle_DeleteNormalBlock(object sender, EventArgs e)
@@ -265,26 +286,8 @@ namespace CurryFit.view
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
         }
 
-        void Handle_NormalSetDecreaseWeight(object sender, EventArgs e)
-        {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
-            ns.Weight--;
-            App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
 
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
-        void Handle_NormalSetIncreaseWeight(object sender, EventArgs e)
-        {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
-            ns.Weight++;
-            App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
- 
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
+
         
         void Handle_NormalSetUpdateWeight(object sender, EventArgs e)
         {
@@ -306,43 +309,6 @@ namespace CurryFit.view
 
             }
             catch { }
-        }
-        void Handle_NormalSetDecreaseReps(object sender, EventArgs e)
-        {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
-            ns.Reps--;
-            App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
-        void Handle_NormalSetIncreaseReps(object sender, EventArgs e)
-        {
-            NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
-            ns.Reps++;
-            App.Database.UpdateNormalSetWithChildren(ns);
-            NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
-
-            bool check = true;
-            foreach (NormalSet ns2 in nsb.NormalSets)
-            {
-                if (ns2.Id > ns.Id)
-                {
-                    check = false;
-                    break;
-                }
-            }
-            //Changes add new set button to faded border only if the last set was edited
-            if (check && ns.Reps > 0)
-            {
-                nsb.Fade1 = "#FF4816";
-                nsb.Fade2 = "#FFE000";
-                App.Database.UpdateNormalBlockWithChildren(nsb);
-            }
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
         }
 
         void Handle_NormalSetUpdateReps(object sender, EventArgs e)
@@ -380,15 +346,6 @@ namespace CurryFit.view
                         check = false;
                         break;
                     }
-                }
-                //Changes add new set button to faded border only if the last set was edited
-                if (check)
-                {
-                    nsb.Fade1 = "#FF4816";
-                    nsb.Fade2 = "#FFE000";
-                    App.Database.UpdateNormalBlockWithChildren(nsb);
-                    BindableLayout.SetItemsSource(BlockCollection, null);
-                    BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
                 }
                 
             }
@@ -728,10 +685,42 @@ namespace CurryFit.view
             }
             catch { }
             */
-            
+
             try
             {
                 BindableLayout.SetItemsSource(ExerciseCollection, App.Database.GetExercises());
+            }
+            catch { }
+            List<LogDay> logDays = App.Database.GetLogDays();
+            bool exists = false;
+            foreach (LogDay logDay in logDays)
+            {
+                if (logDay.Day == CurrentDay)
+                {
+                    exists = true;
+                    currentLogDay = logDay;
+                    currentLogDay = App.Database.GetLogDayWithChildren(logDay.Id);
+                    break;
+                }
+            }
+            if (!exists)
+            {
+                currentLogDay = new LogDay
+                {
+                    Day = CurrentDay,
+
+                    NormalSetBlocks = new List<NormalSetBlock>() { },
+                    DropSetBlocks = new List<DropSetBlock>() { },
+
+
+                };
+                App.Database.SaveLogDay(currentLogDay);
+            }
+
+            try
+            {
+                Blocks = currentLogDay.GetAllBlocks();
+                BindableLayout.SetItemsSource(BlockCollection, Blocks);
             }
             catch { }
            

@@ -6,18 +6,44 @@
     <!--Nav Bar-->
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Label Text="CurryFit" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
-                   FontSize="20"  TextColor="{DynamicResource AshGrey}">
+            <Label Text="StrengthHub" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
+                   FontSize="25" FontFamily="M"  TextColor="{DynamicResource AshGrey}">
             </Label>
         </StackLayout>
     </NavigationPage.TitleView>
     
-    
     <!--Content-->
-    <StackLayout>
-        <Button Text="Workout" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_WorkoutPage"></Button>
-        <Button Text="Scanned barcode" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_ScannedBarcodePage"></Button>
-        <Button Text="Food" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
+    <StackLayout BackgroundColor="#1F1E1F">
+        <!--Top-->
+        <StackLayout Orientation="Vertical" VerticalOptions="Start">
+            <StackLayout Orientation="Vertical">
+                <Button Text="New Main Page" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_NewMainPage"></Button>
+                <Button Text="Workout" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_WorkoutPage"></Button>
+
+                <Button Text="Food" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
+            </StackLayout>
+        </StackLayout>
+
+        <!--Middle-->
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Alpha" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+        </StackLayout>
+
+        <!--Bottom-->
+        <StackLayout Orientation ="Vertical" VerticalOptions="End">
+            
+
+            <!-- Menu buttons -->
+            <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
+            <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
+                <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
+                <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+                <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
+            </StackLayout>
+        </StackLayout>
+
     </StackLayout>
 
 </ContentPage>

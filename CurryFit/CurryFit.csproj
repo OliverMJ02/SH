@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,20 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resources\fonts\Montserrat-SemiBold.ttf" />
-    <None Remove="resources\fonts\Nunito-SemiBold.ttf" />
+    <None Remove="resources\fonts\Montserrat-Semibold.ttf" />
+    <None Remove="resources\fonts\Nunito-Semibold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="resources\fonts\Montserrat-SemiBold.ttf" />
-    <EmbeddedResource Include="resources\fonts\Nunito-SemiBold.ttf" />
+    <EmbeddedResource Include="resources\font\Montserrat-Semibold.ttf" />
+    <EmbeddedResource Include="resources\font\Nunito-Semibold.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net" Version="4.1.0" />
+    <PackageReference Include="Microcharts.Forms" Version="1.0.0-preview1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
-    <PackageReference Include="Xam.Plugins.Forms.ProgressRing" Version="0.1.2" />
+    <PackageReference Include="Vapolia.WheelPicker" Version="4.8.0" />
+    <PackageReference Include="Vapolia.WheelPicker.Forms" Version="4.8.0" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
@@ -37,13 +41,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="resources\fonts\Montserrat-Semibold.ttf" />
+    <Resource Include="resources\fonts\Nunito-Semibold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="view\ManualAddPage.xaml.cs">
+      <DependentUpon>ManualAddPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="view\FoodPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="view\ManualAddPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="view\NewMainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="view\ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="view\ScannedBarcodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="view\ScannerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="view\StatPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="view\WorkoutPage.xaml">

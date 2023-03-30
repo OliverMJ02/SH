@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Firebase.Database;
-using Firebase.Database.Query;
+﻿using System.Collections.Generic;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CurryFit.model
 {

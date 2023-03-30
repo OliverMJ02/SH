@@ -20,15 +20,18 @@ namespace CurryFit
         {
             InitializeComponent();
         }
-
+        private async void Handle_NewMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewMainPage());
+        }
         private async void Handle_WorkoutPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new WorkoutPage());
         }
 
-        private async void Handle_ScannedBarcodePage(object sender, EventArgs e)
+        private async void Handle_MainPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ScannedBarcodePage());
+            await Navigation.PushAsync(new MainPage());
         }
 
         private async void Handle_FoodPage(object sender, EventArgs e)
