@@ -5,7 +5,9 @@
              xmlns:local="clr-namespace:CurryFit.CustomRenderers"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              BarBackgroundColor="{StaticResource Black}"
-             BarTextColor="{StaticResource AshGrey}">
+             BarTextColor="{StaticResource AshGrey}"
+             BackgroundColor="{DynamicResource Black}">
+    
 
     <!--Nav Bar-->
     <NavigationPage.TitleView>
@@ -19,72 +21,120 @@
 
 
     <ContentPage Title="Nutrimeter">
-        <StackLayout BackgroundColor="#1F1E1F">
-            <!--Top-->
-            
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                    <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="40">
-                        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Start">
-                        <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Search for foods to add" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="15" VerticalOptions="Center" WidthRequest="250"></SearchBar>
-                        <Image Source="search.png" HeightRequest="20" Margin="0,0,10,0"></Image>
-                        </StackLayout>
-                    </Frame>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                 
-                        <Button Text="S" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" FontSize="12" Clicked="Handle_ScannerPage" WidthRequest="40"></Button>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout>
                     
-                  
-                        <Button Text="M" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Clicked="Handle_ManualPage" WidthRequest="40"></Button>
-                    
-                </StackLayout>
-            </StackLayout>
-               
-       
-            
-            <!--Middle-->
-            <StackLayout VerticalOptions="CenterAndExpand">
-                <Frame CornerRadius="2" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" >
-                    <Frame.Background>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#504E50" Offset="0.1"/>
-                            <GradientStop Color="#2D2B2D" Offset="0.5" />
-                            <GradientStop Color="#2A282A" Offset="1.0"/>
-                        </LinearGradientBrush>
-                    </Frame.Background>
-                    <StackLayout Orientation="Vertical">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Label Text="Alpha" HorizontalOptions="Center"></Label>
+                    <!--Top-->
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="0" Margin="15,0,0,0">
+                            <Frame x:Name="SearchBar" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource AshGrey}" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="40">
+                                <AbsoluteLayout>
+                                    <SearchBar AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5" BackgroundColor="Transparent" Placeholder="Search for foods to add" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="15" VerticalOptions="Center"/>
+                                    <Image AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5" Source="search.png" HeightRequest="20" Margin="0,0,10,0" HorizontalOptions="EndAndExpand"/>
+                                </AbsoluteLayout>
+                            </Frame>
                         </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <microcharts:ChartView x:Name="CarbChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
-                            <microcharts:ChartView x:Name="ProteinChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
-                            <microcharts:ChartView x:Name="FatChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                        
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Margin="0,0,15,0" Spacing="15">
+                            <Frame HeightRequest="34" WidthRequest="34" CornerRadius="50" VerticalOptions="Center" Padding="0,0,0,0" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource AshGrey}">
+                                <ImageButton Source="barcode.png" WidthRequest="34" HeightRequest="34" BackgroundColor="Transparent" Clicked="Handle_ScannerPage"/>
+                            </Frame>
+
+                            <Frame HeightRequest="34" WidthRequest="34" CornerRadius="50" VerticalOptions="Center" Padding="0,0,0,0" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource AshGrey}">
+                                <ImageButton Source="pick_gray.png" WidthRequest="34" HeightRequest="34" BackgroundColor="Transparent" Clicked="Handle_ManualPage"/>
+                            </Frame>
                         </StackLayout>
                     </StackLayout>
+
+                    <!--Middle-->
                     
-                </Frame>
-            </StackLayout>
-            
+                    
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Frame CornerRadius="5" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" >
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#504E50" Offset="0.1"/>
+                                    <GradientStop Color="#2D2B2D" Offset="0.5" />
+                                    <GradientStop Color="#2A282A" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Frame.Background>
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                    <Label Text="Alpha" HorizontalOptions="Center"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <microcharts:ChartView x:Name="CarbChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                                    <microcharts:ChartView x:Name="ProteinChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                                    <microcharts:ChartView x:Name="FatChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                    
+                    
+                </StackLayout>
+            </ScrollView>
+
             <!--Bottom-->
-            <StackLayout Orientation ="Vertical" VerticalOptions="End">
+            <StackLayout Orientation ="Vertical" VerticalOptions="EndAndExpand">
+                
                 <!--DatePane-->
-             <StackLayout Orientation="Horizontal">
-                <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
                     <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="40">
                         <local:GradientLabel x:Name="dateLabel" Text="" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="15" TextColor1="#FFE000" TextColor2="#FF4816" ></local:GradientLabel>
                     </Frame>
                     <Button Text=">" HorizontalOptions="End" Clicked="Next_Date"></Button>
-            </StackLayout>
-            
-            <!-- Menu buttons -->
-            <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
-                <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
-                    <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
-                    <ImageButton x:Name="BtnFood" BackgroundColor="#2A282A" Source="foodgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                    <ImageButton x:Name="BtnWorkout" BackgroundColor="#2A282A" Source="trainFADE.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                    <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
-                    <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 </StackLayout>
+                
+                <!-- Menu Buttons / navbar -->
+                <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
+                    <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5">
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
+                            <Label Text="HOME" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
+                            <Label Text="NUTRITION" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
+                            <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
+                            <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
+                            <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+                    </AbsoluteLayout>
+                </StackLayout>
+
             </StackLayout>
             
         </StackLayout>

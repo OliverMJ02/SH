@@ -452,9 +452,6 @@
                         <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
                         <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
                     </StackLayout>
-
-                    
-                    
                 </AbsoluteLayout>
             </StackLayout>
 

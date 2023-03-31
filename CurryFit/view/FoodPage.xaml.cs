@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CurryFit.model;
@@ -15,19 +15,24 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FoodPage : TabbedPage
     {
+
         Calendar calendar = new Calendar();
         public FoodPage()
         {
             InitializeComponent();
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+            var deviceHeight = mainDisplayInfo.Height;
+            var deviceWidth = mainDisplayInfo.Width;
+            var density = mainDisplayInfo.Density;
+            var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
+            var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
+
             dateLabel.Text = DateTime.Now.ToString("dd MMMM yyyy");
+            SearchBar.WidthRequest = xamarinWidth - (15*4 + 34*2); // Width of searchbar, expands to make gap between searchbar and imagebuttons constant undependent on screenwidth
         }
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScannerPage());
-        }
-        private async void Handle_MainPage(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
         }
 
         private async void Handle_ManualPage(object sender, EventArgs e)
@@ -44,6 +49,32 @@ namespace CurryFit.view
         {
             dateLabel.Text = calendar.Get_NextDay(dateLabel.Text);
         }
+
+        //Navbar
+        private async void Handle_MainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+        private async void Handle_FoodPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FoodPage());
+        }
+
+        private async void Handle_WorkoutPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WorkoutPage());
+        }
+
+        private async void Handle_StatPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StatPage());
+        }
+
+        private async void Handle_ProfilePage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+
         /*
         private void populateCarbChart()
         {
@@ -66,6 +97,6 @@ namespace CurryFit.view
             CarbChart.Chart = new DonutChart { Entries = entries, HoleRadius = 0.8f, IsAnimated = true, BackgroundColor = SKColors.Transparent };
         }
         */
-        
+
     }
 }
