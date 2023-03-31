@@ -51,18 +51,44 @@
                     
                     
                     <StackLayout VerticalOptions="CenterAndExpand">
-                        <Frame CornerRadius="5" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" >
+                        <Frame CornerRadius="5" VerticalOptions="CenterAndExpand"  HorizontalOptions="FillAndExpand" Margin="10,0,10,0" HeightRequest="175">
                             <Frame.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#504E50" Offset="0.1"/>
-                                    <GradientStop Color="#2D2B2D" Offset="0.5" />
-                                    <GradientStop Color="#2A282A" Offset="1.0"/>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
+                                    <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
+                                    <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
                                 </LinearGradientBrush>
                             </Frame.Background>
+                            
                             <StackLayout Orientation="Vertical">
+                                <Frame Padding="0,0,0,0" Margin="10,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                    <AbsoluteLayout x:Name="KcalBarOutline" VerticalOptions="Center">
+                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource SPGrey}" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="20" BorderColor="{DynamicResource SPGrey}">
+                                            
+                                        </Frame>
+                                        
+                                        <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="0" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="20" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
+                                            <Frame.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                    <GradientStop Color="{DynamicResource ThemeYellow}" Offset="0"/>
+                                                    <GradientStop x:Name="Fade2" Color="{DynamicResource ThemeOrange}"  Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Frame.Background>
+                                        </Frame>
+
+                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="0" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="20" HorizontalOptions="FillAndExpand" BorderColor="Transparent" BackgroundColor="Transparent">
+                                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center"  Orientation="Horizontal">
+                                                <Label Text="1641 / 1761" FontSize="14" FontFamily="M" TextColor="{DynamicResource Black}"/>
+                                                <Label Text="KCAL" FontSize="10" FontFamily="M" TextColor="{DynamicResource Black}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            </StackLayout>
+                                        </Frame>
+                                    </AbsoluteLayout>
+                                </Frame>
+                                
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                    <Label Text="Alpha" HorizontalOptions="Center"></Label>
+                                    <Label Text="CALORIES" FontFamily="M" FontSize="14" TextColor="{DynamicResource AshGrey}" HorizontalOptions="Center"/>
                                 </StackLayout>
+                                
                                 <StackLayout Orientation="Horizontal">
                                     <microcharts:ChartView x:Name="CarbChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
                                     <microcharts:ChartView x:Name="ProteinChart" WidthRequest="80" HeightRequest="80" BackgroundColor="Transparent"></microcharts:ChartView>
@@ -78,9 +104,20 @@
             </ScrollView>
 
             <!--Bottom-->
-            <StackLayout Orientation ="Vertical" VerticalOptions="EndAndExpand">
+            <StackLayout Orientation ="Vertical" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+
+                <Frame HeightRequest="60" WidthRequest="300" Padding="0,0,0,0" HorizontalOptions="Center" CornerRadius="15" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}">
+                    <AbsoluteLayout Padding="0,0,0,0">
+                        <ImageButton Source="pointer_left_gray.png" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5"/>
+                        <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="40" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5">
+                            <local:GradientLabel x:Name="dateLabel" Text="" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="15" TextColor1="#FFE000" TextColor2="#FF4816" />
+                        </Frame>
+                        <ImageButton Source="pointer_right_gray.png" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5"/>
+                    </AbsoluteLayout>
+                </Frame>
                 
                 <!--DatePane-->
+                <!-- 
                 <StackLayout Orientation="Horizontal">
                     <Button Text="&lt;" HorizontalOptions="Start" Clicked="Previous_Date" ></Button>
                     <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="40">
@@ -88,6 +125,8 @@
                     </Frame>
                     <Button Text=">" HorizontalOptions="End" Clicked="Next_Date"></Button>
                 </StackLayout>
+                -->
+                
                 
                 <!-- Menu Buttons / navbar -->
                 <StackLayout VerticalOptions="EndAndExpand" Spacing="0">

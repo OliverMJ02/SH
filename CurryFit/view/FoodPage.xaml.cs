@@ -29,6 +29,14 @@ namespace CurryFit.view
 
             dateLabel.Text = DateTime.Now.ToString("dd MMMM yyyy");
             SearchBar.WidthRequest = xamarinWidth - (15*4 + 34*2); // Width of searchbar, expands to make gap between searchbar and imagebuttons constant undependent on screenwidth
+            KcalBarOutline.WidthRequest = xamarinWidth;
+
+            // KcalBar progress
+            double ratio = 1641.0 / 1761.0; // Ratio of (consumed Kcals / daily goal)
+            double fullBar = 0.85 * xamarinWidth - 20; // Full bar width for the kcal progress bar
+            KcalBarColored.TranslationX = -1 * (fullBar - fullBar * (ratio));    // Used for calculating kcal progress
+
+            Fade2.Color = Color.FromRgb(255, (int)(Math.Round((16 * 14 - 72) * (1 - ratio) + 72)), 16);
         }
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
