@@ -249,7 +249,7 @@ namespace CurryFit.view
 
         void Handle_AddToDoItem(object sender, EventArgs e)
         {
-            ToDoItem tdi = new ToDoItem();
+            ToDoItem tdi = new ToDoItem() { IsEditing = true, HasText = false, CheckMarked = false};
             App.Database.SaveToDoItem(tdi);
             ToDoList tdl = App.Database.GetToDoList(((Button)sender).CommandParameter);
             tdl.ToDoItems.Add(App.Database.GetToDoItem(tdi.Id));
