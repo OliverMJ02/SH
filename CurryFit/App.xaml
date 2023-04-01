@@ -25,6 +25,10 @@
             <Color x:Key="FatYellow">#E4DD18</Color>
             <Color x:Key="TargetMuscelGroup">#993D51</Color>
             <Color x:Key="EquipmentColor">#485CA3</Color>
+            <Color x:Key="Beginner">#26C152</Color>
+            <Color x:Key="Intermediate">#FFE000</Color>
+            <Color x:Key="Advanced">#FF6E11</Color>
+            <Color x:Key="Expert">#FF2656</Color>
 
 
 
