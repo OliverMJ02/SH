@@ -13,11 +13,13 @@
   <ItemGroup>
     <None Remove="resources\fonts\Montserrat-Semibold.ttf" />
     <None Remove="resources\fonts\Nunito-Semibold.ttf" />
+    <None Remove="resources\font\Regin_small-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="resources\font\Montserrat-Semibold.ttf" />
     <EmbeddedResource Include="resources\font\Nunito-Semibold.ttf" />
+    <EmbeddedResource Include="resources\font\Regin_small-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +76,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="view\WorkoutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="view\WorkoutView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

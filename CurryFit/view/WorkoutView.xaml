@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CurryFit.view.Workout_Tab"
+             xmlns:local="clr-namespace:CurryFit.CustomRenderers"
+             BackgroundColor="#1F1E1F">
+
+    <!-- HOME ej i center pga pil tilbaka, antar att detta löser sig självt när denna page setts som första/Main -->
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
+                    <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" VerticalOptions="Center">
+                        <SearchBar BackgroundColor="Transparent"  Placeholder="Search for exercises" FontFamily="N" PlaceholderColor="#726E72" TextColor="#FFFFFF" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
+                        <!--x:Name="SearchBarW"-->
+                        <Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>
+                    </StackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HeightRequest="40">
+                    <StackLayout Orientation="Horizontal">
+                        <Image></Image>
+                        <Button  Text="Filter" BackgroundColor="Transparent" TextColor="#A6A0A6" FontAttributes="Bold" CharacterSpacing="1"></Button>
+                        <!--x:Name="FilterBtnW"-->
+                    </StackLayout>
+
+                </Frame>
+
+            </StackLayout>
+
+            <StackLayout Margin="13,0,13,0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="ADVERTISEMENT" FontSize="8" FontAttributes="Bold"></Label>
+                    <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
+                </StackLayout>
+                <StackLayout HeightRequest="50" MinimumHeightRequest="50" BackgroundColor="Blue" Margin="0,-3,0,1">
+                    <Label Text="Ad" HorizontalTextAlignment="Center"></Label>
+                </StackLayout>
+                <BoxView BackgroundColor="#2A282A" HeightRequest="2"></BoxView>
+            </StackLayout>
+
+
+            <ScrollView Margin="0,0,0,0">
+
+                <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Center" Margin="13,0,13,0">
+                    <!--x:Name="WorkoutCollection"-->
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame CornerRadius="8" BackgroundColor="#2A282A" Margin="0,3,0,3" Padding="0,0,0,0">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
+                                            <Label TextColor="#A6A0A6" FontSize="Medium" Text="{Binding Name}" HorizontalOptions="Start" FontFamily="Nunito" FontAttributes="Bold"></Label>
+                                            <ImageButton HorizontalOptions="EndAndExpand" Source="{Binding FavorisedSource}" HeightRequest="25" BackgroundColor="Transparent"  CommandParameter="{Binding Id}"></ImageButton>
+                                            <!--Clicked="Handle_Favorised"-->
+                                        </StackLayout>
+
+                                        <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" >
+                                            <Frame BorderColor="#FF4816" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                <Label TextColor="#FF4816" Text="{Binding MainEquipment}" FontAttributes="Bold"></Label>
+                                            </Frame>
+                                            <Frame BorderColor="#FFE000" BackgroundColor="Transparent" Padding="6,4,6,4" CornerRadius="5" Margin="10,5,-4,5">
+                                                <Label TextColor="#FFE000" Text="{Binding MainMuscle}" FontAttributes="Bold"></Label>
+                                            </Frame>
+                                        </FlexLayout>
+
+
+                                        <StackLayout Orientation="Horizontal" Margin="13,0,0,13">
+                                            <Label TextColor="#A6A0A6" Text="Created by:"></Label>
+                                            <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
+                                            <Image Source="verified.png" HeightRequest="10"></Image>
+                                            <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}"  HeightRequest="10" BackgroundColor="#2A282A"></Button>
+                                            <!--Clicked="Handle_DeleteWorkout"-->
+                                        </StackLayout>
+
+
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+            </ScrollView>
+
+            <StackLayout VerticalOptions="EndAndExpand" BackgroundColor="Transparent" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="+" FontSize="Title" HorizontalOptions="Center"  ></Button>
+                <!--Clicked="Handle_AddNewWorkout"-->
+                <Button Text="+" FontSize="Title" HorizontalOptions="Center"  ></Button>
+                <!--Clicked="Handle_AddNewWorkout2"-->
+            </StackLayout>
+
+            <!-- Menu Buttons / navbar -->
+            <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
+                <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
+                <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                        </StackLayout.GestureRecognizers>-->
+                        <ImageButton BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <!--Clicked="Handle_MainPage"-->
+                        <!--x:Name="BtnHome"-->
+                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                        </StackLayout.GestureRecognizers>-->
+                        <ImageButton BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <!--Clicked="Handle_FoodPage"-->
+                        <!-- x:Name="BtnFood"-->
+                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                        </StackLayout.GestureRecognizers>-->
+                        <ImageButton BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <!--Clicked="Handle_WorkoutPage"-->
+                        <!--x:Name="BtnWorkout"-->
+                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                        </StackLayout.GestureRecognizers>-->
+                        <ImageButton BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <!--Clicked="Handle_StatPage"-->
+                        <!-- x:Name="BtnStats"-->
+                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                        <!--<StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                        </StackLayout.GestureRecognizers>-->
+                        <ImageButton BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <!--Clicked="Handle_ProfilePage"-->
+                        <!--:Name="BtnProfile"-->
+                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                    </StackLayout>
+
+
+
+                </AbsoluteLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -42,37 +42,77 @@ namespace CurryFit.view
             var density = mainDisplayInfo.Density;
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
-            MenuLayout.WidthRequest = xamarinWidth;
+        /*   MenuLayout.WidthRequest = xamarinWidth;
 
             BtnHome.WidthRequest = xamarinWidth * 0.2;
             BtnFood.WidthRequest = xamarinWidth * 0.2;
             BtnWorkout.WidthRequest = xamarinWidth * 0.2;
             BtnStats.WidthRequest = xamarinWidth * 0.2;
-            BtnProfile.WidthRequest = xamarinWidth * 0.2;
+            BtnProfile.WidthRequest = xamarinWidth * 0.2;*/
 
-            SearchBar.WidthRequest = xamarinWidth * 0.6;
-            FilterBtn.WidthRequest = xamarinWidth * 0.3;
+            SearchBar.WidthRequest = xamarinWidth * 0.65;
+            FilterBtn.WidthRequest = xamarinWidth * 0.25;
 
             startWidth = xamarinWidth - 26 - 35 - 26 - 5;
 
         }
+
+        //Navbar
         private async void Handle_MainPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
         }
+        private async void Handle_FoodPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FoodPage());
+        }
 
+        private async void Handle_WorkoutPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WorkoutPage());
+        }
+
+        private async void Handle_StatPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StatPage());
+        }
+
+        private async void Handle_ProfilePage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+
+        // TRAINING TABS
         void Handle_ToExercises(object sender, EventArgs e)
         {
             ExerciseLayout.IsVisible = true;
+            WorkoutLayout.IsVisible = false;
+            ProgramLayout.IsVisible = false;
             LogbookLayout.IsVisible = false;
         }
-
+        void Handle_ToWorkouts(object sender, EventArgs e)
+        {
+            ExerciseLayout.IsVisible = false;
+            WorkoutLayout.IsVisible = true;
+            ProgramLayout.IsVisible = false;
+            LogbookLayout.IsVisible = false;
+        }
+        void Handle_ToPrograms(object sender, EventArgs e)
+        {
+            ExerciseLayout.IsVisible = false;
+            WorkoutLayout.IsVisible = false;
+            ProgramLayout.IsVisible = true;
+            LogbookLayout.IsVisible = false;
+        }
         void Handle_ToLogbook(object sender, EventArgs e)
         {
             ExerciseLayout.IsVisible = false;
+            WorkoutLayout.IsVisible = false;
+            ProgramLayout.IsVisible = false;
             LogbookLayout.IsVisible = true;
-
         }
+
+
 
         void Handle_ToFilterView(object sendr, EventArgs e)
         {
