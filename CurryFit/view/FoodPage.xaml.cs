@@ -37,6 +37,9 @@ namespace CurryFit.view
             KcalBarColored.TranslationX = -1 * (fullBar - fullBar * (ratio));    // Used for calculating kcal progress
 
             Fade2.Color = Color.FromRgb(255, (int)(Math.Round((16 * 14 - 72) * (1 - ratio) + 72)), 16);
+
+            // WaterFrame
+            WaterFrame.WidthRequest = xamarinWidth;
         }
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
