@@ -6,8 +6,8 @@
     <!--Nav Bar-->
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Label Text="StrengthHub" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
-                   FontSize="25" FontFamily="M"  TextColor="{DynamicResource AshGrey}">
+            <Label Text="regin" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
+                   FontSize="25" FontFamily="R"  TextColor="{DynamicResource AshGrey}">
             </Label>
         </StackLayout>
     </NavigationPage.TitleView>
@@ -17,16 +17,17 @@
         <!--Top-->
         <StackLayout Orientation="Vertical" VerticalOptions="Start">
             <StackLayout Orientation="Vertical">
-                <Button Text="New Main Page" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_NewMainPage"></Button>
-                <Button Text="Workout" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="Title" Clicked="Handle_WorkoutPage"></Button>
+                <Button Text="new main page" FontFamily="R" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="30" Clicked="Handle_NewMainPage"></Button>
+                <Button Text="training page" FontFamily="R" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="30" Clicked="Handle_WorkoutPage"></Button>
+                <Button Text="workouts tab" FontFamily="R" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="30" Clicked="Handle_WorkoutView"></Button>
 
-                <Button Text="Food" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
+                <Button Text="food" FontFamily="R" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
             </StackLayout>
         </StackLayout>
 
         <!--Middle-->
         <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="Alpha" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <Label Text="alpha" FontFamily="R" FontSize="30" TextColor="Cyan" HorizontalOptions="Center" VerticalOptions="Center"></Label>
         </StackLayout>
 
         <!--Bottom-->
