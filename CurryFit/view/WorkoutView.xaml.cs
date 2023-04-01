@@ -31,5 +31,34 @@ namespace CurryFit.view
         {
             InitializeComponent();
         }
+
+        void Handle_ToExercises(object sender, EventArgs e)
+        {
+            //ExerciseLayout.IsVisible = true;
+            WorkoutLayout.IsVisible = false;
+            //ProgramLayout.IsVisible = false;
+            //LogbookLayout.IsVisible = false;
+        }
+        void Handle_ToWorkouts(object sender, EventArgs e)
+        {
+            //ExerciseLayout.IsVisible = false;
+            WorkoutLayout.IsVisible = true;
+            //ProgramLayout.IsVisible = false;
+            //LogbookLayout.IsVisible = false;
+        }
+        void Handle_ToPrograms(object sender, EventArgs e)
+        {
+            //ExerciseLayout.IsVisible = false;
+            WorkoutLayout.IsVisible = false;
+            //ProgramLayout.IsVisible = true;
+            //LogbookLayout.IsVisible = false;
+        }
+        void Handle_ToLogbook(object sender, EventArgs e)
+        {
+            //ExerciseLayout.IsVisible = false;
+            WorkoutLayout.IsVisible = false;
+            //ProgramLayout.IsVisible = false;
+            //LogbookLayout.IsVisible = true;
+        }
     }
 }

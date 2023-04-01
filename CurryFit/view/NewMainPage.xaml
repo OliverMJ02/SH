@@ -319,7 +319,7 @@
                                                 </Frame>
                                             </FlexLayout>
                                             <!-- Vet inte vad som blir lättas med backend koden osv, men nedan följer hur det skall se ut. Alla övningar i next workout skall radas upp, får det inte plats på en rad skall den brytas-->
-                                            <StackLayout Spacing="0">
+                                            <StackLayout Spacing="0" Margin="0,-5,0,0">
                                                 <Label FontSize="10" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="10,0,0,0" Text="Squats | Leg Press | Leg Curl | Leg Extension"/>
                                                 <Label FontSize="10" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="10,0,0,0" Text="Stiff Leg Deadlift | Standing Calf Press"/>
                                             </StackLayout>
@@ -418,15 +418,15 @@
                             <TapGestureRecognizer Tapped="Handle_MainPage"/>
                         </StackLayout.GestureRecognizers>
                         <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage" Padding="0,0,0,0"></ImageButton>
-                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M" />
+                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.28,0" Spacing="0" Margin="0,3,0,0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.27,0" Spacing="0" Margin="0,3,0,0" >
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_FoodPage"/>
                         </StackLayout.GestureRecognizers>
                         <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage" Padding="0,0,0,0"></ImageButton>
-                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
                     <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0" Margin="0,3,0,0">
@@ -434,15 +434,15 @@
                             <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
                         </StackLayout.GestureRecognizers>
                         <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage" Padding="0,0,0,0"></ImageButton>
-                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.72,0" Spacing="0" Margin="0,3,0,0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.73,0" Spacing="0" Margin="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_StatPage"/>
                         </StackLayout.GestureRecognizers>
                         <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage" Padding="0,0,0,0"></ImageButton>
-                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
                     <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.92,0" Spacing="0" Margin="0,3,0,0">
@@ -450,7 +450,7 @@
                             <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
                         </StackLayout.GestureRecognizers>
                         <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage" Padding="0,0,0,0"></ImageButton>
-                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
                     

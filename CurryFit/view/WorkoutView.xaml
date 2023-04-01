@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CurryFit.view.Workout_Tab"
+             x:Class="CurryFit.view.WorkoutView"
              xmlns:local="clr-namespace:CurryFit.CustomRenderers"
              BackgroundColor="#1F1E1F">
 
@@ -13,7 +13,52 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <StackLayout>
+
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+            <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="55" MinimumHeightRequest="55">
+                <!--  !!!!GAMMALT!!!! <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label> -->
+                <Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
+            </StackLayout>
+            <BoxView BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
+
+
+
+            <StackLayout x:Name="WorkoutLayout" IsVisible="True" VerticalOptions="FillAndExpand">
+
+
+                <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontFamily="M" FontSize="12"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor1="#FFFFFF" TextColor2="#FFFFFF" TextColor="#FFFFFF" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </FlexLayout>
+
+            </StackLayout>
 
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
@@ -41,7 +86,7 @@
                     <Label Text="ADVERTISEMENT" FontSize="8" FontAttributes="Bold"></Label>
                     <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
                 </StackLayout>
-                <StackLayout HeightRequest="50" MinimumHeightRequest="50" BackgroundColor="Blue" Margin="0,-3,0,1">
+                <StackLayout HeightRequest="50" MinimumHeightRequest="50" BackgroundColor="Cyan" Margin="0,-3,0,1">
                     <Label Text="Ad" HorizontalTextAlignment="Center"></Label>
                 </StackLayout>
                 <BoxView BackgroundColor="#2A282A" HeightRequest="2"></BoxView>
@@ -101,61 +146,66 @@
             <!-- Menu Buttons / navbar -->
             <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
                 <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
-                <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5">
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                <AbsoluteLayout MinimumHeightRequest="55" HeightRequest="55" BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.08,0" Spacing="0" Margin="0,3,0,0">
                         <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_MainPage"/>
                         </StackLayout.GestureRecognizers>-->
-                        <ImageButton BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
-                        <!--Clicked="Handle_MainPage"-->
+                        <ImageButton  BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
                         <!--x:Name="BtnHome"-->
-                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                        <!--Clicked="Handle_MainPage"-->
+                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.27,0" Spacing="0" Margin="0,3,0,0" >
                         <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_FoodPage"/>
                         </StackLayout.GestureRecognizers>-->
-                        <ImageButton BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <ImageButton  BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
+                        <!--x:Name="BtnFood"-->
                         <!--Clicked="Handle_FoodPage"-->
-                        <!-- x:Name="BtnFood"-->
-                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0" Margin="0,3,0,0">
                         <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
                         </StackLayout.GestureRecognizers>-->
-                        <ImageButton BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
-                        <!--Clicked="Handle_WorkoutPage"-->
+                        <ImageButton  BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
                         <!--x:Name="BtnWorkout"-->
-                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <!--Clicked="Handle_WorkoutPage"-->
+                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.73,0" Spacing="0" Margin="0,3,0,0">
                         <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_StatPage"/>
                         </StackLayout.GestureRecognizers>-->
-                        <ImageButton BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <ImageButton  BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
+                        <!--x:Name="BtnStats"-->
                         <!--Clicked="Handle_StatPage"-->
-                        <!-- x:Name="BtnStats"-->
-                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.92,0" Spacing="0" Margin="0,3,0,0">
                         <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
                         </StackLayout.GestureRecognizers>-->
-                        <ImageButton BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" ></ImageButton>
+                        <ImageButton  BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
+                        <!--x:Name="BtnProfile"-->
                         <!--Clicked="Handle_ProfilePage"-->
-                        <!--:Name="BtnProfile"-->
-                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
 
 
                 </AbsoluteLayout>
             </StackLayout>
+
+
+
+
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
