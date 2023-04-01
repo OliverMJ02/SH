@@ -48,9 +48,9 @@
                             <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
                             <Label FontSize="10" AbsoluteLayout.LayoutBounds="8,18" TextColor="{DynamicResource AshGrey}" Text="486 KCAL" FontFamily="M"/>
                             <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                            <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
+                            <StackLayout AbsoluteLayout.LayoutBounds="0.93,8" AbsoluteLayout.LayoutFlags="XProportional">
                                 <ImageButton Source="FootSteeps_Gray" Clicked="Handle_AddWaterPage" WidthRequest="16" HeightRequest="20" BackgroundColor="Transparent"/>
-                                <Label Text="STEP &#10; COUNTER" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                                <Label Text="STEP&#10;COUNTER" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
                             </StackLayout>
                         </AbsoluteLayout>
                     </Frame>
@@ -69,9 +69,9 @@
                                     <Label AbsoluteLayout.LayoutBounds="8,8" FontSize="10" TextColor="{DynamicResource RiceWhite}" Text="1.5 LITERS" FontFamily="M"/>
                                     <Label AbsoluteLayout.LayoutBounds="8,18" FontSize="10" TextColor="{DynamicResource AshGrey}" Text="1 L TO GO" FontFamily="M" />
                                     <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,2" AbsoluteLayout.LayoutFlags="XProportional">
+                                    <StackLayout AbsoluteLayout.LayoutBounds="0.90,2" AbsoluteLayout.LayoutFlags="XProportional">
                                         <ImageButton Source="add_water_Blue" Clicked="Handle_AddWaterPage" BackgroundColor="Transparent" WidthRequest="30" HeightRequest="30"/>
-                                        <Label Text="ADD &#10; WATER" FontSize="8" FontFamily="M" TextColor="{DynamicResource WaterBlue}" HorizontalTextAlignment="Center" Margin="0,-8,0,0"/>
+                                        <Label Text="ADD&#10;WATER" FontSize="8" FontFamily="M" TextColor="{DynamicResource WaterBlue}" HorizontalTextAlignment="Center" Margin="0,-8,0,0"/>
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </Frame>
@@ -91,9 +91,9 @@
                                     <Label AbsoluteLayout.LayoutBounds="8,18" FontSize="10" TextColor="{DynamicResource AshGrey}" Text="GYMSIS" FontFamily="M"/>
                                     <Image AbsoluteLayout.LayoutBounds="0.5,8,26,26" AbsoluteLayout.LayoutFlags="XProportional" Source="Gymsis.png"/>
                                     <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
+                                    <StackLayout AbsoluteLayout.LayoutBounds="0.90,8" AbsoluteLayout.LayoutFlags="XProportional">
                                         <ImageButton Source="medal_Yellow" BackgroundColor="Transparent" WidthRequest="20" HeightRequest="20"/>
-                                        <Label Text="ALL &#10; BADGES" FontSize="8" FontFamily="M" TextColor="{DynamicResource GameYellow}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                                        <Label Text="ALL&#10;BADGES" FontSize="8" FontFamily="M" TextColor="{DynamicResource GameYellow}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
                                     </StackLayout>
 
                                     <!-- Progressbar / XPBar -->
@@ -126,9 +126,9 @@
                                     <ImageButton AbsoluteLayout.LayoutBounds="0.29,0.854,25,25" AbsoluteLayout.LayoutFlags="PositionProportional" Source="bike_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
                                     <ImageButton AbsoluteLayout.LayoutBounds="0.53,0.854,25,25" AbsoluteLayout.LayoutFlags="PositionProportional" Source="swimming_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
                                     <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
+                                    <StackLayout AbsoluteLayout.LayoutBounds="0.90,8" AbsoluteLayout.LayoutFlags="XProportional">
                                         <ImageButton Source="cardio_Red.png" BackgroundColor="Transparent" Clicked="Handle_Cardiocenter" WidthRequest="20" HeightRequest="20"/>
-                                        <Label Text="CARDIO &#10; CENTER" TextColor="{DynamicResource Red}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                                        <Label Text="CARDIO&#10;CENTER" TextColor="{DynamicResource Red}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
                                     </StackLayout>
                                 </AbsoluteLayout>
                             </Frame>
