@@ -284,7 +284,7 @@
                                                                                             </yummi:Border.GradientStops>
                                                                                         </yummi:Border>
                                                                                     </yummi:PancakeView.Border>
-                                                                                    <ImageButton HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Green" CornerRadius="50" Command="{Binding SaveCmd}"></ImageButton>
+                                                                                    <ImageButton HeightRequest="35" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" BackgroundColor="Transparent" CornerRadius="50" Command="{Binding SaveCmd}" Source="accept.png" ></ImageButton>
                                                                                 </yummi:PancakeView>
                                                                                 
                                                                             </StackLayout>
@@ -295,7 +295,7 @@
                                                                                     <Setter Property="IsVisible" Value="False" />
                                                                                 </DataTrigger>
                                                                             </StackLayout.Triggers>
-                                                                            <ImageButton HeightRequest="20" WidthRequest="20" VerticalOptions="Center" BackgroundColor="Gray" IsVisible="{Binding CheckMarked, FallbackValue=False}" Command="{Binding UpdateCheckMarkCmd}"></ImageButton>
+                                                                            <ImageButton HeightRequest="20" WidthRequest="20" VerticalOptions="Center" BackgroundColor="Transparent" Source="todo_box_ticked.png" IsVisible="{Binding CheckMarked, FallbackValue=False}" Command="{Binding UpdateCheckMarkCmd}"></ImageButton>
                                                                             <ImageButton HeightRequest="20" WidthRequest="20" VerticalOptions="Center" BackgroundColor="Transparent" BorderWidth="1" BorderColor="#726E72" Command="{Binding UpdateCheckMarkCmd}">
                                                                                 <ImageButton.Triggers>
                                                                                     <DataTrigger TargetType="ImageButton" Binding="{Binding CheckMarked}" Value="True">
