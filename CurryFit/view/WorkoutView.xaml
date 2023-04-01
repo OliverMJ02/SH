@@ -17,52 +17,44 @@
 
     <ContentPage.Content>
         <AbsoluteLayout VerticalOptions="FillAndExpand" >
-            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" VerticalOptions="FillAndExpand" ><!---->
-
-
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" VerticalOptions="FillAndExpand" >
                 <StackLayout x:Name="WorkoutLayout" IsVisible="True" VerticalOptions="FillAndExpand">
 
-
-                
                 <!--TABS-->
                     <FlexLayout Direction="Row" Margin="10,15,10,0" JustifyContent="SpaceAround">
                         <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontFamily="M" FontSize="12"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor1="#FFFFFF" TextColor2="#FFFFFF" TextColor="#FFFFFF" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                        <StackLayout>
+                            <local:GradientLabel TextColor1="#FFFFFF" TextColor2="#FFFFFF" TextColor="#FFFFFF" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
 
-                    <StackLayout>
-                        <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </FlexLayout>
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </FlexLayout>
 
-                
-                
-                
-                
-                    <!--SEARCH BAR-->
+                <!--SEARCH BAR-->
                     <FlexLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="15,7,15,0" Direction="Row">
                         <Frame BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}"  CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,40,0" VerticalOptions="Center" HeightRequest="40" HorizontalOptions="Start">
-                            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="250" VerticalOptions="Center" HorizontalOptions="Start">
+                            <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="240" VerticalOptions="Center" HorizontalOptions="Start">
                                 <SearchBar x:Name="SearchBarW" BackgroundColor="Transparent" Placeholder="Search for workouts" FontFamily="N" PlaceholderColor="#726E72" TextColor="#FFFFFF" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Start"></SearchBar>
 
                                 <!--<Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>-->
@@ -72,7 +64,7 @@
                         <Frame BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" CornerRadius="20" Padding="0,0,0,0" VerticalOptions="CenterAndExpand" HeightRequest="40" HorizontalOptions="EndAndExpand" Margin="-30,0,0,0">
                             <StackLayout Orientation="Horizontal">
                                 <Image></Image>
-                                <Button x:Name="FilterBtnW" Text="Filter" FontFamily="M" BackgroundColor="Transparent" TextColor="#A6A0A6" FontAttributes="Bold" CharacterSpacing="1" Margin="-8,0,0,0"></Button>
+                                <Button x:Name="FilterBtnW" Text="Filter" FontFamily="M" BackgroundColor="Transparent" TextColor="#A6A0A6" FontAttributes="Bold" CharacterSpacing="1" Padding="-8,0,0,0"></Button>
                             </StackLayout>
                         </Frame>
                     </FlexLayout>
@@ -80,7 +72,7 @@
                 <!--AVGRÄNSARE FÖR STATTISKT OCH SCROLLBART INNEHÅLL-->
                     <BoxView BackgroundColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,5,0,0" ></BoxView > 
 
-                    <!--<StackLayout Margin="13,0,13,0">
+                <!--<StackLayout Margin="13,0,13,0">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="ADVERTISEMENT" FontSize="8" FontAttributes="Bold"></Label>
                     <BoxView HeightRequest="2" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,2,0,0"></BoxView>
@@ -89,7 +81,7 @@
                     <Label Text="Ad" HorizontalTextAlignment="Center"></Label>
                 </StackLayout>
                 <BoxView BackgroundColor="#2A282A" HeightRequest="2"></BoxView>
-            </StackLayout>-->
+                </StackLayout>-->
 
 
                     <ScrollView Margin="0,-6,0,0" VerticalOptions="EndAndExpand" HeightRequest="580" Padding="0,0,0,10" VerticalScrollBarVisibility="Never">
@@ -132,7 +124,7 @@
 
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -146,7 +138,7 @@
                                                 <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
                                                 <Label Text="GYM" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                             </yummi:PancakeView>
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -161,7 +153,7 @@
                                                 <!--<Label Text="ADD NEW SET" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="10,3,10,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>-->
                                             </yummi:PancakeView>
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="1">
                                                         <yummi:Border.GradientStops>
@@ -192,7 +184,7 @@
                                     <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
                                         <Label Text="@LökmeisterPonta" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
-                                        <ImageButton Source="PONTA.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
+                                        <ImageButton Source="PONTA2.jpg" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
                                     
                                 </StackLayout>
@@ -236,7 +228,7 @@
 
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -250,7 +242,7 @@
                                                 <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
                                                 <Label Text="GYM" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                             </yummi:PancakeView>
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -265,7 +257,7 @@
                                                 <Label Text="LEGS" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                             </yummi:PancakeView>
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="1">
                                                         <yummi:Border.GradientStops>
@@ -338,7 +330,7 @@
 
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -354,7 +346,7 @@
                                             </yummi:PancakeView>
 
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -369,7 +361,7 @@
                                             </yummi:PancakeView>
 
                                             
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -384,7 +376,7 @@
                                             </yummi:PancakeView>
 
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="1">
                                                         <yummi:Border.GradientStops>
@@ -413,7 +405,7 @@
                                     <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
                                         <Label Text="@LökmeisterPonta" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
-                                        <ImageButton Source="PONTA.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
+                                        <ImageButton Source="PONTA2.jpg" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
 
                                 </StackLayout>
@@ -457,7 +449,7 @@
 
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -473,7 +465,7 @@
                                             </yummi:PancakeView>
 
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -488,7 +480,7 @@
                                             </yummi:PancakeView>
 
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -502,7 +494,7 @@
                                                 <Label Text="ARMS" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                             </yummi:PancakeView>
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="1">
                                                         <yummi:Border.GradientStops>
@@ -577,7 +569,7 @@
 
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -593,7 +585,7 @@
                                             </yummi:PancakeView>
 
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -608,7 +600,7 @@
                                             </yummi:PancakeView>
 
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
@@ -622,7 +614,7 @@
                                                 <Label Text="ARMS" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                             </yummi:PancakeView>
 
-                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,3,0" HeightRequest="20">
+                                            <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="1">
                                                         <yummi:Border.GradientStops>
@@ -650,7 +642,7 @@
                                     <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
                                         <Label Text="@LökmeisterPonta" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
-                                        <ImageButton Source="PONTA.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
+                                        <ImageButton Source="PONTA2.jpg" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
 
                                 </StackLayout>
@@ -705,20 +697,20 @@
                 -->
                     <!--Clicked="Handle_AddNewWorkout2"-->
                     <!--
-            </StackLayout>-->
+                    </StackLayout>-->
 
                     <!-- Menu Buttons / navbar -->
                     <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
                         <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
                         <AbsoluteLayout MinimumHeightRequest="55" HeightRequest="55" BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,0">
                             <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.08,0" Spacing="0" Margin="0,3,0,0">
-                                <!--<StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Handle_MainPage"/>
-                        </StackLayout.GestureRecognizers>-->
-                                <ImageButton  BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
-                                <!--x:Name="BtnHome"-->
-                                <!--Clicked="Handle_MainPage"-->
-                                <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton x:Name="BtnHome" Clicked="Handle_MainPage" BackgroundColor="Transparent" Source="home_gray.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
+                                <!---->
+
+                                <Label Text="HOME" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                             </StackLayout>
 
                             <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.27,0" Spacing="0" Margin="0,3,0,0" >
@@ -735,10 +727,10 @@
                                 <!--<StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
                         </StackLayout.GestureRecognizers>-->
-                                <ImageButton  BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
+                                <ImageButton  BackgroundColor="Transparent" Source="training_white.png" HeightRequest="32" WidthRequest="32"  Padding="0,0,0,0"></ImageButton>
                                 <!--x:Name="BtnWorkout"-->
                                 <!--Clicked="Handle_WorkoutPage"-->
-                                <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
+                                <Label Text="TRAINING" TextColor="{DynamicResource RiceWhite}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                             </StackLayout>
 
                             <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.73,0" Spacing="0" Margin="0,3,0,0">
@@ -765,16 +757,7 @@
 
                         </AbsoluteLayout>
                     </StackLayout>
-
-
-
-
                 </StackLayout>
-
-
-        
-
-
 
         </StackLayout>
         </AbsoluteLayout>

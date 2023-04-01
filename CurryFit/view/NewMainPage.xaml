@@ -8,7 +8,7 @@
     <!-- HOME ej i center pga pil tilbaka, antar att detta löser sig självt när denna page setts som första/Main -->
     <NavigationPage.TitleView>
         <StackLayout>
-<Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+<Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" Margin="15,0,0,0"></Label>
         </StackLayout>
     </NavigationPage.TitleView>
 

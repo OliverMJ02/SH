@@ -60,5 +60,9 @@ namespace CurryFit.view
             //ProgramLayout.IsVisible = false;
             //LogbookLayout.IsVisible = true;
         }
+        private async void Handle_MainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewMainPage());
+        }
     }
 }

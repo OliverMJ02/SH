@@ -27,7 +27,7 @@
 
         <!--Middle-->
         <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="alpha" FontFamily="R" FontSize="30" TextColor="Cyan" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <Label Text="alpha version" FontFamily="R" FontSize="30" TextColor="Cyan" HorizontalOptions="Center" VerticalOptions="Center"></Label>
         </StackLayout>
 
         <!--Bottom-->

@@ -88,7 +88,7 @@ namespace CurryFit.view
 
         private async void Handle_WorkoutPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new WorkoutPage());
+            await Navigation.PushAsync(new WorkoutView());
         }
 
         private async void Handle_StatPage(object sender, EventArgs e)
