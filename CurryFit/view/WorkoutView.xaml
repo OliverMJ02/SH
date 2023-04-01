@@ -112,14 +112,19 @@
                                 <StackLayout>
                                     
                                     <!--TITLE of workout-->
-                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,10">
+                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
                                         <Label Text="Push-Pull Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_empty.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
-                                    
-                                    
+                                    <!--TIME of workout-->
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,5,0,0" Margin="0,-10,0,0">
+                                        <Image Source="clock.png" HeightRequest="20"/>
+                                        <Label Text="60-90 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="  |  HYPERTROPHY" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                    </StackLayout>
+
                                     <!--TAGS-->
-                                    <Grid Margin="15,0,0,0">
+                                    <Grid Margin="15,10,0,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
@@ -169,26 +174,25 @@
                                                 </yummi:PancakeView.Border>
                                                 <Label Text="INTERMEDIATE" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource Intermediate}"></Label>
                                             </yummi:PancakeView>
+                                            
+                                            
 
                                         </StackLayout>
                                     </Grid>
 
-                                    <!--TIME of workout-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,8,0,0" Margin="0,-10,0,0">
-                                        <Image Source="clock.png" HeightRequest="20"/>
-                                        <Label Text="60-90 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
-                                    </StackLayout>
+
 
                                    <!--EXERCISES in workout-->
                                     <StackLayout>
                                         <!-- Texten i den här delen skall vara kopplat till övningarna som passet innehåller -->
-                                        <Label Text = "Barbell Bench Press | Seated Cable Rows | Standing Military Press | Lat Pulldowns | Dumbbell Flyes" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,-6,15,0"/>
+                                        <Label Text = "Barbell Bench Press | Seated Cable Rows | Standing Military Press | Lat Pulldowns | Dumbbell Flyes" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
                                     </StackLayout>
 
                                     <!--AUTHOR-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,10" Margin="0,-6,0,0" >
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
-                                        <Label Text="@username123" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0"/>
+                                        <Label Text="@LökmeisterPonta" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
+                                        <ImageButton Source="PONTA.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
                                     
                                 </StackLayout>
@@ -211,14 +215,20 @@
                                 <StackLayout>
 
                                     <!--TITLE of workout-->
-                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,10">
+                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
                                         <Label Text="Leg Day Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_empty.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
 
+                                    <!--TIME of workout-->
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,5,0,0" Margin="0,-10,0,0">
+                                        <Image Source="clock.png" HeightRequest="20"/>
+                                        <Label Text="60-90 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="  |  HYPERTROPHY" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                    </StackLayout>
 
                                     <!--TAGS-->
-                                    <Grid Margin="15,0,0,0">
+                                    <Grid Margin="15,10,0,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
@@ -272,22 +282,19 @@
                                         </StackLayout>
                                     </Grid>
 
-                                    <!--TIME of workout-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,8,0,0" Margin="0,-10,0,0">
-                                        <Image Source="clock.png" HeightRequest="20"/>
-                                        <Label Text="60-90 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
-                                    </StackLayout>
+
 
                                     <!--EXERCISES in workout-->
                                     <StackLayout>
                                         <!-- Texten i den här delen skall vara kopplat till övningarna som passet innehåller -->
-                                        <Label Text = "Barbell Squats | Leg Press | Walking Lunges | Leg Curls | Calf Raises" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,-6,15,0"/>
+                                        <Label Text = "Barbell Squats | Leg Press | Walking Lunges | Leg Curls | Calf Raises" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
                                     </StackLayout>
 
                                     <!--AUTHOR-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,10" Margin="0,-6,0,0" >
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
-                                        <Label Text="@username123" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0"/>
+                                        <Label Text="@BeastLeif" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
+                                        <ImageButton Source="LEIF.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
 
                                 </StackLayout>
@@ -310,14 +317,20 @@
                                 <StackLayout>
 
                                     <!--TITLE of workout-->
-                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,10">
+                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
                                         <Label Text="Upper Body Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_filled.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
 
+                                    <!--TIME of workout-->
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,5,0,0" Margin="0,-10,0,0">
+                                        <Image Source="clock.png" HeightRequest="20"/>
+                                        <Label Text="45-60 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="  |  HYPERTROPHY" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                    </StackLayout>
 
                                     <!--TAGS-->
-                                    <Grid Margin="15,0,0,0">
+                                    <Grid Margin="15,10,0,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
@@ -388,22 +401,19 @@
                                         </StackLayout>
                                     </Grid>
 
-                                    <!--TIME of workout-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,8,0,0" Margin="0,-10,0,0">
-                                        <Image Source="clock.png" HeightRequest="20"/>
-                                        <Label Text="45-60 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
-                                    </StackLayout>
+
 
                                     <!--EXERCISES in workout-->
                                     <StackLayout>
                                         <!-- Texten i den här delen skall vara kopplat till övningarna som passet innehåller -->
-                                        <Label Text = "Barbell Curls | Dumbbell Shoulder Press | Skull Crushers | Dumbbell Lateral Raises | Cable Curls" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,-6,15,0"/>
+                                        <Label Text = "Barbell Curls | Dumbbell Shoulder Press | Skull Crushers | Dumbbell Lateral Raises | Cable Curls" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
                                     </StackLayout>
 
                                     <!--AUTHOR-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,10" Margin="0,-6,0,0" >
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
-                                        <Label Text="@username456" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0"/>
+                                        <Label Text="@LökmeisterPonta" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
+                                        <ImageButton Source="PONTA.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
 
                                 </StackLayout>
@@ -426,14 +436,20 @@
                                 <StackLayout>
 
                                     <!--TITLE of workout-->
-                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,10">
+                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
                                         <Label Text="Chest and Triceps Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_empty.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
 
-
+                                    <!--TIME of workout-->
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,5,0,0" Margin="0,-10,0,0">
+                                        <Image Source="clock.png" HeightRequest="20"/>
+                                        <Label Text="60-75 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="  |  HYPERTROPHY" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    
                                     <!--TAGS-->
-                                    <Grid Margin="15,0,0,0">
+                                    <Grid Margin="15,10,0,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
@@ -503,22 +519,19 @@
                                         </StackLayout>
                                     </Grid>
 
-                                    <!--TIME of workout-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,8,0,0" Margin="0,-10,0,0">
-                                        <Image Source="clock.png" HeightRequest="20"/>
-                                        <Label Text="60-75 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
-                                    </StackLayout>
+
 
                                     <!--EXERCISES in workout-->
                                     <StackLayout>
                                         <!-- Texten i den här delen skall vara kopplat till övningarna som passet innehåller -->
-                                        <Label Text = "Incline Bench Press | Cable Flyes | Dips | Skull Crushers | Cable Pushdowns" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,-6,15,0"/>
+                                        <Label Text = "Incline Bench Press | Cable Flyes | Dips | Skull Crushers | Cable Pushdowns" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
                                     </StackLayout>
 
                                     <!--AUTHOR-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,10" Margin="0,-6,0,0" >
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
-                                        <Label Text="@username123" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0"/>
+                                        <Label Text="@BeastLeif" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
+                                        <ImageButton Source="LEIF.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
 
                                 </StackLayout>
@@ -542,14 +555,21 @@
                                 <StackLayout>
 
                                     <!--TITLE of workout-->
-                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,10">
+                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
                                         <Label Text="Back and Biceps Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_filled.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
+                                    </StackLayout>
+                                    
+                                    <!--TIME of workout-->
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,5,0,0" Margin="0,-10,0,0">
+                                        <Image Source="clock.png" HeightRequest="20"/>
+                                        <Label Text="60-75 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="  |  HYPERTROPHY" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
                                     </StackLayout>
 
 
                                     <!--TAGS-->
-                                    <Grid Margin="15,0,0,0">
+                                    <Grid Margin="15,10,0,0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
@@ -619,22 +639,18 @@
                                         </StackLayout>
                                     </Grid>
 
-                                    <!--TIME of workout-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,8,0,0" Margin="0,-10,0,0">
-                                        <Image Source="clock.png" HeightRequest="20"/>
-                                        <Label Text="60-75 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
-                                    </StackLayout>
 
                                     <!--EXERCISES in workout-->
                                     <StackLayout>
                                         <!-- Texten i den här delen skall vara kopplat till övningarna som passet innehåller -->
-                                        <Label Text = "Deadlifts | Seated Rows | Pull-Ups | Hammer Curls | Cable Curls" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,-6,15,0"/>
+                                        <Label Text = "Deadlifts | Seated Rows | Pull-Ups | Hammer Curls | Cable Curls" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
                                     </StackLayout>
-
+                                    
                                     <!--AUTHOR-->
-                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,10" Margin="0,-6,0,0" >
+                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,5,0,0" Margin="0,-6,0,0" >
                                         <Label Text="Created by" FontSize="12" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
-                                        <Label Text="@username456" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0"/>
+                                        <Label Text="@LökmeisterPonta" FontSize="12" FontFamily="N" TextColor="{DynamicResource RiceWhite}" Margin="5,0,0,0" Padding="0,0,8,15"/>
+                                        <ImageButton Source="PONTA.png" HeightRequest="20" WidthRequest="20" CornerRadius="100" VerticalOptions="Start"/>
                                     </StackLayout>
 
                                 </StackLayout>
