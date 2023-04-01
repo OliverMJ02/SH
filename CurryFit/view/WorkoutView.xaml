@@ -57,7 +57,7 @@
                 
                 
                     <!--SEARCH BAR-->
-                    <FlexLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="15,7,15,0">
+                    <FlexLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="15,7,15,0" Direction="Row">
                         <Frame BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}"  CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,40,0" VerticalOptions="Center" HeightRequest="40" HorizontalOptions="Start">
                             <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="250" VerticalOptions="Center" HorizontalOptions="Start">
                                 <SearchBar x:Name="SearchBarW" BackgroundColor="Transparent"  Placeholder="Search for workouts" FontFamily="N" PlaceholderColor="#726E72" TextColor="#FFFFFF" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Start"></SearchBar>
@@ -93,15 +93,63 @@
 
                         <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Center" Margin="13,0,13,0">
                             <!--x:Name="WorkoutCollection"-->
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout>
-                                        <Frame CornerRadius="8" BackgroundColor="#2A282A" Margin="0,3,0,3" Padding="0,0,0,0">
+
+
+
+
+                                        <Frame x:Name="CalenderF1" CornerRadius="5" HeightRequest="120" Padding="0,0,0,0">
+                                            <Frame.Background>
+                                                <LinearGradientBrush>
+                                                    <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
+                                                    <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
+                                                    <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
+                                                </LinearGradientBrush>
+                                            </Frame.Background>
+
+                                            <StackLayout>
+
+                                                <StackLayout>
+                                                    <AbsoluteLayout>
+                                                        <Label Text="TO DO LIST" TextColor="{DynamicResource RiceWhite}" FontSize="12" FontFamily="M" AbsoluteLayout.LayoutBounds="10,5" />
+                                                    </AbsoluteLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal">
+                                                    <AbsoluteLayout>
+                                                        <ImageButton HorizontalOptions="Start" Source="todo_box_ticked.png" AbsoluteLayout.LayoutBounds="10,0,20,20"/>
+                                                        <Label Text = "15 min cardio" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" AbsoluteLayout.LayoutBounds="40,0"/>
+                                                    </AbsoluteLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Horizontal">
+                                                    <AbsoluteLayout>
+                                                        <ImageButton HorizontalOptions="Start" Source="todo_box_unticked.png" HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="10,5,20,20"/>
+                                                        <Label Text = "10 min stretching" TextColor="{DynamicResource RiceWhite}" FontSize="14" FontFamily="N" AbsoluteLayout.LayoutBounds="40,5"/>
+                                                        <!-- Koden nedan skall bara vara "aktiv" när boxen är unticked som i detta exemplet -->
+                                                        <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="14,25" Orientation="Horizontal" Padding="0,0,0,0">
+                                                            <Image Source="arrow_down_left.png" HeightRequest="30"/>
+                                                            <Image Source="clock.png" HeightRequest="30"/>
+                                                            <Label Text="REMINDER AT" FontSize="10" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,9,0,0"/>
+                                                            <Label Text="15:30" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="5,9,0,0"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutBounds="75,35" Spacing="4">
+                                                        </StackLayout>
+                                                    </AbsoluteLayout>
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </Frame>
+
+
+
+                                        <!--<Frame CornerRadius="8" BackgroundColor="#2A282A" Margin="0,3,0,3" Padding="0,0,0,0">
                                             <StackLayout>
                                                 <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
                                                     <Label TextColor="#A6A0A6" FontSize="Medium" Text="{Binding Name}" HorizontalOptions="Start" FontFamily="Nunito" FontAttributes="Bold"></Label>
                                                     <ImageButton HorizontalOptions="EndAndExpand" Source="{Binding FavorisedSource}" HeightRequest="25" BackgroundColor="Transparent"  CommandParameter="{Binding Id}"></ImageButton>
-                                                    <!--Clicked="Handle_Favorised"-->
+                                                    --><!--Clicked="Handle_Favorised"--><!--
                                                 </StackLayout>
 
                                                 <FlexLayout Direction="Row" Wrap="Wrap" JustifyContent="Start" AlignItems="Start" >
@@ -119,15 +167,14 @@
                                                     <Label TextColor="#A6A0A6" Text="{Binding Creator}"></Label>
                                                     <Image Source="verified.png" HeightRequest="10"></Image>
                                                     <Button Text="Delete" HorizontalOptions="Center" CommandParameter="{Binding Id}"  HeightRequest="10" BackgroundColor="#2A282A"></Button>
-                                                    <!--Clicked="Handle_DeleteWorkout"-->
+                                                    --><!--Clicked="Handle_DeleteWorkout"--><!--
                                                 </StackLayout>
 
 
                                             </StackLayout>
-                                        </Frame>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
+                                        </Frame>-->
+
+
                         </FlexLayout>
 
                     </ScrollView>
