@@ -24,14 +24,6 @@
         <AbsoluteLayout VerticalOptions="FillAndExpand" >
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" VerticalOptions="FillAndExpand" >
 
-                
-                
-                
-                
-                
-                
-             
-
                 <!--AVGRÄNSARE FÖR STATTISKT OCH SCROLLBART INNEHÅLL-->
                 <!--<BoxView BackgroundColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,5,0,0" ></BoxView >-->
 
@@ -97,7 +89,7 @@
 
 
 
-                    <ScrollView Margin="0,0,0,5" VerticalOptions="EndAndExpand" HeightRequest="580"  VerticalScrollBarVisibility="Never">
+                    <ScrollView Margin="0,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="580" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
 
                         <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Stretch" Margin="10,0,10,0" Padding="0,0,0,10">
                             <!--x:Name="WorkoutCollection"-->
@@ -406,7 +398,7 @@
 
 
                                                     </StackLayout>
-                                                    <!--Här behöver man hitta något smart sätt att taggar som inte får plats på första raden hoppar ned en rad-->
+                         <!--Här behöver man hitta något smart sätt att taggar som inte får plats på första raden hoppar ned en rad-->
                                                     <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
                                                         <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                             <yummi:PancakeView.Border>
@@ -773,7 +765,7 @@
                     </StackLayout>
 
 
-                    <ScrollView Margin="0,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="630" Padding="0,0,0,0" VerticalScrollBarVisibility="Never">
+                    <ScrollView Margin="0,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="630" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
 
                         <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Stretch" Margin="10,0,10,0">
                             <!--x:Name="WorkoutCollection"-->
@@ -1213,6 +1205,40 @@
 
 
             </StackLayout>
+
+
+            <StackLayout   Spacing="0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="10,0,10,50" >
+                <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="{DynamicResource BCGrey}" > 
+                    
+                        <yummi:PancakeView.Border>
+                            <yummi:Border Thickness="1">
+                                <yummi:Border.GradientStops>
+                                    <yummi:GradientStopCollection>
+                                        <yummi:GradientStop Color="#FFE000" Offset="0"></yummi:GradientStop>
+                                    <yummi:GradientStop Color="#FF4816" Offset="1"></yummi:GradientStop>
+                                    </yummi:GradientStopCollection>
+                                </yummi:Border.GradientStops>
+                            </yummi:Border>
+                        </yummi:PancakeView.Border>
+
+
+                    <yummi:PancakeView.Shadow>
+                        <yummi:DropShadow Color="#000000" Opacity="1" Offset="0,2" />
+                    </yummi:PancakeView.Shadow>
+                    
+                    <local:GradientLabel WidthRequest="1000" Text="START THIS WORKOUT" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="M" FontSize="12" HeightRequest="35" Padding="10,10,10,0" BackgroundColor="Transparent" TextColor="#FFFFFF" TextColor1="#FFE000" TextColor2="#FF4816"/>
+
+                </yummi:PancakeView>
+                
+                
+
+
+            </StackLayout>
+            
+            
+            
+            
+            
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

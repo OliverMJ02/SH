@@ -29,6 +29,16 @@ namespace CurryFit.view
         public OpenWorkout()
         {
             InitializeComponent();
+
+
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+            var deviceHeight = mainDisplayInfo.Height;
+            var deviceWidth = mainDisplayInfo.Width;
+            var density = mainDisplayInfo.Density;
+            var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
+            var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
+
+            //Button_StartWorkout.WidthRequest = xamarinWidth;
         }
 
         void Handle_ToExercises(object sender, EventArgs e)

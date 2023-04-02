@@ -146,13 +146,13 @@
                                                     <yummi:Border Thickness="2">
                                                         <yummi:Border.GradientStops>
                                                             <yummi:GradientStopCollection>
-                                                                <yummi:GradientStop Color="#FF4816" Offset="0"></yummi:GradientStop>
-                                                                <yummi:GradientStop Color="#FFE000" Offset="1"></yummi:GradientStop>
+                                                                <yummi:GradientStop Color="#FFE000" Offset="0"></yummi:GradientStop>
+                                                                <yummi:GradientStop Color="#FF4816" Offset="1"></yummi:GradientStop>
                                                             </yummi:GradientStopCollection>
                                                         </yummi:Border.GradientStops>
                                                     </yummi:Border>
                                                 </yummi:PancakeView.Border>
-                                                <local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>
+                                                <local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FFE000" TextColor1="#FFE000" TextColor2="#FF4816"/>
                                                 <!--<Label Text="ADD NEW SET" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="10,3,10,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>-->
                                             </yummi:PancakeView>
 
