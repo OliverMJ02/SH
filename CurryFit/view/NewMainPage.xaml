@@ -45,7 +45,7 @@
                         
                                 <!-- I detta fallet är lablen en gradient och icon med text till höger gråa pga att målet är uppnått, om det inte är det skall de se ut som för water griden, steps är då vitt och iconen med text grön, se figma-->
                         <AbsoluteLayout>
-                            <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
+                            <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor="{DynamicResource ThemeYellow}" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
                             <Label FontSize="10" AbsoluteLayout.LayoutBounds="8,18" TextColor="{DynamicResource AshGrey}" Text="486 KCAL" FontFamily="M"/>
                             <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
                             <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
@@ -304,7 +304,7 @@
                                         <StackLayout Spacing="4">
                                             <StackLayout>
                                                 <AbsoluteLayout>
-                                                    <local:GradientLabel AbsoluteLayout.LayoutBounds="10,5" Text="NEXT WORKOUT" FontSize="12" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
+                                                    <local:GradientLabel AbsoluteLayout.LayoutBounds="10,5" Text="NEXT WORKOUT" FontSize="12" TextColor="{DynamicResource ThemeYellow}" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
                                                     <Label Text="Leg Day" FontFamily="N" FontSize="20" TextColor="{DynamicResource RiceWhite}" AbsoluteLayout.LayoutBounds="10,18"/>
                                                 </AbsoluteLayout>
                                             </StackLayout>
