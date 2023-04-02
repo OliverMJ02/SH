@@ -180,7 +180,7 @@
                                    <!--EXERCISES in workout-->
                                     <StackLayout>
                                         <!-- Texten i den här delen skall vara kopplat till övningarna som passet innehåller -->
-                                        <Label Text = "Barbell Bench Press | Seated Cable Rows | Standing Military Press | Lat Pulldowns | Dumbbell Flyes" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
+                                        <Label Text = "Bench Press | Seated Cable Rows | Incline Bench Press | Lat Pulldowns | Cable Flyes" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" LineBreakMode="WordWrap" Margin="15,0,15,0"/>
                                     </StackLayout>
 
                                     <!--AUTHOR-->
