@@ -21,50 +21,29 @@ using System.Globalization;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
-
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WorkoutView : ContentPage
+    public partial class OpenWorkout : ContentPage
     {
-        public WorkoutView()
+        public OpenWorkout()
         {
             InitializeComponent();
         }
 
         void Handle_ToExercises(object sender, EventArgs e)
         {
-            //ExerciseLayout.IsVisible = true;
-            WorkoutLayout.IsVisible = false;
+            ExerciseTab.IsVisible = true;
+            DetailsTab.IsVisible = false;
             //ProgramLayout.IsVisible = false;
             //LogbookLayout.IsVisible = false;
         }
-        void Handle_ToWorkouts(object sender, EventArgs e)
+        void Handle_ToDetails(object sender, EventArgs e)
         {
-            //ExerciseLayout.IsVisible = false;
-            WorkoutLayout.IsVisible = true;
+            ExerciseTab.IsVisible = false;
+            DetailsTab.IsVisible = true;
             //ProgramLayout.IsVisible = false;
             //LogbookLayout.IsVisible = false;
-        }
-        void Handle_ToPrograms(object sender, EventArgs e)
-        {
-            //ExerciseLayout.IsVisible = false;
-            WorkoutLayout.IsVisible = false;
-            //ProgramLayout.IsVisible = true;
-            //LogbookLayout.IsVisible = false;
-        }
-        void Handle_ToLogbook(object sender, EventArgs e)
-        {
-            //ExerciseLayout.IsVisible = false;
-            WorkoutLayout.IsVisible = false;
-            //ProgramLayout.IsVisible = false;
-            //LogbookLayout.IsVisible = true;
-        }
-
-
-        private async void Handle_OpenWorkout(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new OpenWorkout());
         }
 
         private async void Handle_MainPage(object sender, EventArgs e)

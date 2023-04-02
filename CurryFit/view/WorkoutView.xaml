@@ -102,7 +102,10 @@
 
 
                                 <StackLayout>
-                                    
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_OpenWorkout"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+
                                     <!--TITLE of workout-->
                                     <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
                                         <Label Text="Push-Pull Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
