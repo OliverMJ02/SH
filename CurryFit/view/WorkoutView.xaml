@@ -100,7 +100,6 @@
                                     </LinearGradientBrush>
                                 </Frame.Background>
 
-
                                 <StackLayout>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Handle_OpenWorkout"></TapGestureRecognizer>
@@ -114,8 +113,9 @@
                                     <!--TIME of workout-->
                                     <StackLayout Spacing="0" Orientation="Horizontal" Padding="12,5,0,0" Margin="0,-10,0,0">
                                         <Image Source="clock.png" HeightRequest="20"/>
-                                        <Label Text="60-90 MIN" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
-                                        <Label Text="  |  HYPERTROPHY" FontSize="12" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="60-90" FontSize="12" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text=" min  |  " FontSize="12" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="2,1.5,0,0" VerticalOptions="Center"/>
+                                        <Label Text="Hypertrophy" FontSize="12" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,1.,0,0" VerticalOptions="Center"/>
                                     </StackLayout>
 
                                     <!--TAGS-->
@@ -124,8 +124,8 @@
                                             <RowDefinition Height="*" />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
+                                            
 
                                             <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                 <yummi:PancakeView.Border>
@@ -141,6 +141,7 @@
                                                 <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
                                                 <Label Text="GYM" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                             </yummi:PancakeView>
+                                            
                                             <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
                                                 <yummi:PancakeView.Border>
                                                     <yummi:Border Thickness="2">
@@ -171,7 +172,6 @@
                                             </yummi:PancakeView>
                                             
                                             
-
                                         </StackLayout>
                                     </Grid>
 
