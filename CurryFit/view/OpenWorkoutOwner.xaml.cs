@@ -24,9 +24,10 @@ using System.Collections.ObjectModel;
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OpenWorkout : ContentPage
+    public partial class OpenWorkoutOwner : ContentPage
     {
-        public OpenWorkout()
+        List<(int, string)> list = new List<(int, string)>() { (0, "10"), (1,"20"), (2, "30") };
+        public OpenWorkoutOwner()
         {
             InitializeComponent();
 
@@ -37,8 +38,9 @@ namespace CurryFit.view
             var density = mainDisplayInfo.Density;
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
-
-            //Button_StartWorkout.WidthRequest = xamarinWidth;
+           
+            
+        
         }
 
         void Handle_ToExercises(object sender, EventArgs e)
@@ -56,9 +58,21 @@ namespace CurryFit.view
         {
             await Navigation.PushAsync(new NewMainPage());
         }
-        private async void Handle_ToOwnerView(object sender, EventArgs e)
+
+        void Handle_SliderVal(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OpenWorkoutOwner());
+            int value = (int)Math.Round(Slider_one.Value);
+            Val_one.Text = value.ToString();
+
         }
+
+        void Handle_SliderValTwo(object sender, EventArgs e)
+        {
+            int value = (int)Math.Round(Slider_two.Value);
+
+            Val_two.Text = list[value].Item2;
+
+        }
+
     }
 }
