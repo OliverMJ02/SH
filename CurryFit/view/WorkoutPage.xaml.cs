@@ -321,23 +321,27 @@ namespace CurryFit.view
             {
                 NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
                 NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
-                nsb.UpdateNormalSetTitels(int.Parse((ns.Title).Remove(0, 4)));
-                App.Database.DeleteNormalSet(ns);
-
-                if (nsb.NormalSets.Count == 1)
+                if(nsb.NormalSets.Count > 1) 
                 {
-                    nsb.NumberOfSets = "1 SET";
-                }
-                else
-                {
-                    nsb.NumberOfSets = nsb.NormalSets.Count.ToString() + " SETS";
-                }
-                App.Database.UpdateNormalBlockWithChildren(nsb);
-                nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
-                App.Database.UpdateLogDayWithChildren(currentLogDay);
+                    nsb.UpdateNormalSetTitels(int.Parse((ns.Title).Remove(0, 4)));
+                    App.Database.DeleteNormalSet(ns);
 
-                BindableLayout.SetItemsSource(BlockCollection, null);
-                BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                    if (nsb.NormalSets.Count == 1)
+                    {
+                        nsb.NumberOfSets = "1 SET";
+                    }
+                    else
+                    {
+                        nsb.NumberOfSets = nsb.NormalSets.Count.ToString() + " SETS";
+                    }
+                    App.Database.UpdateNormalBlockWithChildren(nsb);
+                    nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
+                    App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+                    BindableLayout.SetItemsSource(BlockCollection, null);
+                    BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                }
+                
             }
             catch { }
         }

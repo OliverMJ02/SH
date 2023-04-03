@@ -83,6 +83,45 @@ namespace CurryFit.model.blocks
 
         }
 
+        private string exerciseTitle;  // The title of the current exercise chosen
+
+        public string ExerciseTitle
+        {
+            get { return exerciseTitle; }
+            set
+            {
+                exerciseTitle = value;
+                try
+                {
+                    if (exerciseTitle.Equals(""))
+                    {
+                        isSearching = false;
+                        IsSearching = false;
+                    }
+                    else
+                    {
+                        isSearching = true;
+                        IsSearching = true;
+                    }
+                }
+                catch { }
+                OnPropertyChanged(nameof(ExerciseTitle));
+            }
+        }
+
+        private bool isSearching;   // Use to determine if user is searching for execrise
+
+        public bool IsSearching
+        {
+            get { return isSearching; }
+            set
+            {
+
+                isSearching = value;
+                OnPropertyChanged(nameof(IsSearching));
+            }
+        }
+
         // Active data for timer, will change when timer is active
         public int Hours { get; set; } 
         public int Minutes { get; set; }
@@ -120,7 +159,10 @@ namespace CurryFit.model.blocks
 
         public ICommand HandleSecChangeCmd { get; private set; }
 
+        public ICommand StopSearchCmd { get; private set; }
         
+
+
         public NormalSetBlock()
         {
             IsNormalSet = this.IsNormalSet;
@@ -139,6 +181,8 @@ namespace CurryFit.model.blocks
             SecondsSet = this.SecondsSet;
             TimerOn = false;
             TimerDisplay = this.TimerDisplay;
+
+            StopSearchCmd = new Command(() => { isSearching = false; IsSearching = false; });
 
             HandleMinChangeCmd = new Command<(int, int, IList<int>)>(tuple =>
             {

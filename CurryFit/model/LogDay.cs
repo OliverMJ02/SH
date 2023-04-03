@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CurryFit.model
 {
-    public class LogDay
+    public class LogDay : ObservableObject 
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
