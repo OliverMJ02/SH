@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using CurryFit.model;
 using SkiaSharp;
 using Microcharts;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CurryFit.view
 {
@@ -17,6 +18,9 @@ namespace CurryFit.view
     {
 
         Calendar calendar = new Calendar();
+        string Label;
+        string ValueLabel;
+        Color Color;
         public FoodPage()
         {
             InitializeComponent();
@@ -30,6 +34,10 @@ namespace CurryFit.view
             dateLabel.Text = DateTime.Now.ToString("dd MMMM yyyy");
             SearchBar.WidthRequest = xamarinWidth - (15*4 + 34*2); // Width of searchbar, expands to make gap between searchbar and imagebuttons constant undependent on screenwidth
             KcalBarOutline.WidthRequest = xamarinWidth;
+            NutrimeterPageHeight.HeightRequest = xamarinHeight;
+            SlideUpFrame.WidthRequest = xamarinWidth;
+            SlideUpFrame.HeightRequest = xamarinHeight;
+            
 
             // KcalBar progress
             double ratio = 1641.0 / 1761.0; // Ratio of (consumed Kcals / daily goal)
@@ -38,8 +46,17 @@ namespace CurryFit.view
 
             Fade2.Color = Color.FromRgb(255, (int)(Math.Round((16 * 14 - 72) * (1 - ratio) + 72)), 16);
 
+            //MacroCharts
+            populateCarbChart();
+
             // WaterFrame
             WaterFrame.WidthRequest = xamarinWidth;
+        }
+        private void populateCarbChart()
+        {
+        
+
+            CarbChart.Chart = new RadialGaugeChart { };
         }
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
@@ -84,6 +101,42 @@ namespace CurryFit.view
         private async void Handle_ProfilePage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfilePage());
+        }
+
+        double? layoutHeight;
+        double layoutBoundsHeight;
+        int direction;
+        const double layoutPropHeightMax = 0.95;
+        const double layoutPropHeightMin = 0.22; 
+        private void Handle_SlideUpFrame(object sender, PanUpdatedEventArgs e)
+        {
+            layoutHeight = layoutHeight ?? ((sender as StackLayout).Parent as AbsoluteLayout).Height;
+            switch (e.StatusType)
+            {
+                case GestureStatus.Started:
+                    layoutBoundsHeight = AbsoluteLayout.GetLayoutBounds(sender as StackLayout).Height;
+                    break;
+                case GestureStatus.Running:
+                    direction = e.TotalY < 0 ? 1 : -1;
+                    var yProp = layoutBoundsHeight + (-e.TotalY / (double)layoutHeight);
+                    if ((yProp > layoutPropHeightMin) & (yProp < layoutPropHeightMax))
+                        AbsoluteLayout.SetLayoutBounds(bottomDrawer, new Rectangle(0.5, 1.00, 1, yProp));
+                    break;
+                case GestureStatus.Completed:
+                    if (direction > 0) // snap to max/min, you could use an animation....
+                    {
+                        AbsoluteLayout.SetLayoutBounds(bottomDrawer, new Rectangle(0.5, 1.00, 1, layoutPropHeightMax));
+                        SlideUpFrame.HeightRequest = 10000;
+                        //swipeLabel.Text = "Swipe me down";
+                    }
+                    else
+                    {
+                        AbsoluteLayout.SetLayoutBounds(bottomDrawer, new Rectangle(0.5, 1.00, 1, layoutPropHeightMin));
+                        SlideUpFrame.HeightRequest = 10000;
+                        //swipeLabel.Text = "Swipe me up";
+                    }
+                    break;
+            }
         }
 
         /*
