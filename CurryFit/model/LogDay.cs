@@ -60,8 +60,14 @@ namespace CurryFit.model
                 blocks.Add(App.Database.GetNormalBlockWithChildren(nb.Id));
                     //blocks.Add(nb);
             }
-            
-            
+
+            foreach (DropSetBlock db in d.DropSetBlocks)
+            {
+                blocks.Add(App.Database.GetDropBlockWithChildren(db.Id));
+                //blocks.Add(nb);
+            }
+
+
             /*
             try
             {

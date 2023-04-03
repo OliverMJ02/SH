@@ -32,6 +32,7 @@ namespace CurryFit.view
 
 
         NormalSetBlock currentNormalSetBlock;
+        DropSetBlock currentDropSetBlock;
 
         List<object> Blocks = new List<object>();
         FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
@@ -79,11 +80,37 @@ namespace CurryFit.view
 
         int currentSec = 0;
         int currentMin = 0;
+        bool Normal = false;
+        bool Drop = false;
+        bool Super = false;
+        bool Endurance = false;
         void Handle_ToFilterView(object sender, EventArgs e)
         {
-            currentNormalSetBlock = App.Database.GetNormalBlockWithChildren((sender as Button).CommandParameter);
+            Normal = false;
+            Drop = false;
+            Super = false;
+            Endurance = false;
+            try
+            {
+                currentNormalSetBlock = App.Database.GetNormalBlockWithChildren((sender as Button).CommandParameter);
+                FilterView.BindingContext = currentNormalSetBlock;
+                Normal = true;
+                Drop = false;
+                Super = false;
+                Endurance = false;
+            }
+            catch { }
+            try
+            {
+                currentDropSetBlock = App.Database.GetDropBlockWithChildren((sender as Button).CommandParameter);
+                FilterView.BindingContext = currentDropSetBlock;
+                Drop = true;
+                Normal = false;
+                Super = false;
+                Endurance = false;
+            }
+            catch { }
 
-            FilterView.BindingContext = currentNormalSetBlock;
             FilterView.IsVisible = true;
             List<string> list = new List<string>();
             for(int i = 0; i < 60; i++)
@@ -98,12 +125,25 @@ namespace CurryFit.view
                 }
                 
             }
-            WheelPickerMinutes.ItemsSourceSimple = list;
-            WheelPickerMinutes.SelectedItemsIndex = new List<int>() { currentNormalSetBlock.Minutes };
-            WheelPickerSeconds.ItemsSourceSimple = list;
-            WheelPickerSeconds.SelectedItemsIndex = new List<int>() { currentNormalSetBlock.Seconds };
-            currentMin = currentNormalSetBlock.Minutes;
-            currentSec = currentNormalSetBlock.Seconds;
+            if (Normal)
+            {
+                WheelPickerMinutes.ItemsSourceSimple = list;
+                WheelPickerMinutes.SelectedItemsIndex = new List<int>() { currentNormalSetBlock.Minutes };
+                WheelPickerSeconds.ItemsSourceSimple = list;
+                WheelPickerSeconds.SelectedItemsIndex = new List<int>() { currentNormalSetBlock.Seconds };
+                currentMin = currentNormalSetBlock.Minutes;
+                currentSec = currentNormalSetBlock.Seconds;
+            }
+            else if (Drop)
+            {
+                WheelPickerMinutes.ItemsSourceSimple = list;
+                WheelPickerMinutes.SelectedItemsIndex = new List<int>() { currentDropSetBlock.Minutes };
+                WheelPickerSeconds.ItemsSourceSimple = list;
+                WheelPickerSeconds.SelectedItemsIndex = new List<int>() { currentDropSetBlock.Seconds };
+                currentMin = currentDropSetBlock.Minutes;
+                currentSec = currentDropSetBlock.Seconds;
+            }
+            
             BindableLayout.SetItemsSource(PresetsView, App.Database.GetSettings().PresetTimers);  // Fills PresetsView with saved presets fromm settings (global presets)
 
         }
@@ -425,6 +465,8 @@ namespace CurryFit.view
 
         }
 
+            
+
         //---------- DROP SETS ---------------
         void Handle_AddDropSet(object sender, EventArgs e)
         {
@@ -435,7 +477,6 @@ namespace CurryFit.view
             dsb = App.Database.GetDropBlockWithChildren(dsb.Id);
             dsb.DropSets.Add(App.Database.GetDropSetWithChildren(ds.Id));
             App.Database.UpdateDropBlockWithChildren(dsb);
-            Blocks.Add(dsb);
             currentLogDay.DropSetBlocks.Add(dsb);
             currentLogDay.Counter++;
             App.Database.UpdateLogDayWithChildren(currentLogDay);
@@ -446,18 +487,28 @@ namespace CurryFit.view
 
         void Handle_NewDropSet(object sender, EventArgs e)
         {
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(((Button)sender).CommandParameter);
-            DropSet ds = new DropSet(dsb.DropSets.Count + 1);
-            App.Database.SaveDropSet(ds);
-            dsb = dsb.CloseAllSets();
-            dsb.DropSets.Add(App.Database.GetDropSetWithChildren(ds.Id));
-            dsb.Fade1 = "#A6A0A6";
-            dsb.Fade2 = "#A6A0A6";
-            App.Database.UpdateDropBlockWithChildren(dsb);
-            App.Database.UpdateLogDayWithChildren(currentLogDay);
+            try
+            {
+                DropSetBlock dsb = App.Database.GetDropBlockWithChildren(((Button)sender).CommandParameter);
+                DropSet ds = new DropSet(dsb.DropSets.Count + 1);
+                App.Database.SaveDropSet(ds);
+                dsb = dsb.CloseAllSets();
+                dsb.DropSets.Add(App.Database.GetDropSetWithChildren(ds.Id));
+                if (dsb.DropSets.Count == 1)
+                {
+                    dsb.NumberOfSets = "1 SET";
+                }
+                else
+                {
+                    dsb.NumberOfSets = dsb.DropSets.Count.ToString() + " SETS";
+                }
+                App.Database.UpdateDropBlockWithChildren(dsb);
+                App.Database.UpdateLogDayWithChildren(currentLogDay);
 
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            }
+            catch { }
         }
 
         void UpdateDropSetVisibility(object sender, EventArgs e)
@@ -479,8 +530,6 @@ namespace CurryFit.view
             //If there is no sets left, change Add new set button border to fade colors
             if (dsb.DropSets.Count - 1 == 0)
             {
-                dsb.Fade1 = "#FF4816";
-                dsb.Fade2 = "#FFE000";
                 App.Database.UpdateDropBlockWithChildren(dsb);
             }
             dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
@@ -498,27 +547,6 @@ namespace CurryFit.view
                 App.Database.DeleteDropSet(ds);
             }
             App.Database.DeleteDropBlock(dsb);
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
-
-        void Handle_DropSetDecreaseStartWeight(object sender, EventArgs e)
-        {
-            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
-            ds.StartWeight--;
-            App.Database.UpdateDropSetWithChildren(ds);
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
-        void Handle_DropSetIncreaseStartWeight(object sender, EventArgs e)
-        {
-            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
-            ds.StartWeight++;
-            App.Database.UpdateDropSetWithChildren(ds);
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
         }
@@ -546,26 +574,6 @@ namespace CurryFit.view
         }
 
 
-        void Handle_DropSetDecreaseEndWeight(object sender, EventArgs e)
-        {
-            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
-            ds.EndWeight--;
-            App.Database.UpdateDropSetWithChildren(ds);
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
-        void Handle_DropSetIncreaseEndWeight(object sender, EventArgs e)
-        {
-            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
-            ds.EndWeight++;
-            App.Database.UpdateDropSetWithChildren(ds);
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
 
         void Handle_DropSetUpdateEndWeight(object sender, EventArgs e)
         {
@@ -589,44 +597,6 @@ namespace CurryFit.view
             catch { }
         }
 
-
-        void Handle_DropSetDecreaseReps(object sender, EventArgs e)
-        {
-            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
-            ds.Reps--;
-            App.Database.UpdateDropSetWithChildren(ds);
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
-        void Handle_DropSetIncreaseReps(object sender, EventArgs e)
-        {
-            DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
-            ds.Reps++;
-            App.Database.UpdateDropSetWithChildren(ds);
-            DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-
-            bool check = true;
-            foreach (DropSet ds2 in dsb.DropSets)
-            {
-                if (ds2.Id > ds.Id)
-                {
-                    check = false;
-                    break;
-                }
-            }
-            //Changes add new set button to faded border only if the last set was edited
-            if (check && ds.Reps > 0)
-            {
-                dsb.Fade1 = "#FF4816";
-                dsb.Fade2 = "#FFE000";
-                App.Database.UpdateDropBlockWithChildren(dsb);
-            }
-
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
-        }
 
         void Handle_DropSetUpdateReps(object sender, EventArgs e)
         {
@@ -667,8 +637,6 @@ namespace CurryFit.view
                 //Changes add new set button to faded border only if the last set was edited
                 if (check)
                 {
-                    dsb.Fade1 = "#FF4816";
-                    dsb.Fade2 = "#FFE000";
                     App.Database.UpdateDropBlockWithChildren(dsb);
                     BindableLayout.SetItemsSource(BlockCollection, null);
                     BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
@@ -775,14 +743,34 @@ namespace CurryFit.view
 
         void Handle_SaveFilterView(object sendr, EventArgs e)
         {
-            currentNormalSetBlock = App.Database.GetNormalBlockWithChildren(currentNormalSetBlock.Id);
-            currentNormalSetBlock.TimerOn = false;
-            model.Timer timer = new model.Timer(currentNormalSetBlock.Hours, currentNormalSetBlock.Minutes, currentNormalSetBlock.Seconds);
-            timer.UpdateDisplay();
-            currentNormalSetBlock.TimerDisplay = timer.Display;
-            currentNormalSetBlock.Width = 0;
-            currentNormalSetBlock.XMargin = 40;
-            App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            // -- Normal set --
+            if (Normal)
+            {
+                currentNormalSetBlock = App.Database.GetNormalBlockWithChildren(currentNormalSetBlock.Id);
+                currentNormalSetBlock.TimerOn = false;
+                model.Timer timer = new model.Timer(currentNormalSetBlock.Hours, currentNormalSetBlock.Minutes, currentNormalSetBlock.Seconds);
+                timer.UpdateDisplay();
+                currentNormalSetBlock.TimerDisplay = timer.Display;
+                currentNormalSetBlock.Width = 0;
+                currentNormalSetBlock.XMargin = 40;
+                App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            }
+            
+
+            // -- Drop Set --
+            else if (Drop)
+            {
+                currentDropSetBlock = App.Database.GetDropBlockWithChildren(currentDropSetBlock.Id);
+                currentDropSetBlock.TimerOn = false;
+                model.Timer timer = new model.Timer(currentDropSetBlock.Hours, currentDropSetBlock.Minutes, currentDropSetBlock.Seconds);
+                timer.UpdateDisplay();
+                currentDropSetBlock.TimerDisplay = timer.Display;
+                currentDropSetBlock.Width = 0;
+                currentDropSetBlock.XMargin = 40;
+                App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
+            }
+            
+
             FilterView.IsVisible = false;
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
@@ -790,19 +778,41 @@ namespace CurryFit.view
 
         void Handle_DiscardFilterView(object sendr, EventArgs e)
         {
-            currentNormalSetBlock.Minutes = currentMin;
-            currentNormalSetBlock.Seconds = currentSec;
-            currentNormalSetBlock.MinutesSet = currentMin;
-            currentNormalSetBlock.SecondsSet = currentSec;
-            App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            if (Normal)
+            {
+                currentNormalSetBlock.Minutes = currentMin;
+                currentNormalSetBlock.Seconds = currentSec;
+                currentNormalSetBlock.MinutesSet = currentMin;
+                currentNormalSetBlock.SecondsSet = currentSec;
+                App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            }
+
+            else if (Drop)
+            {
+                currentDropSetBlock.Minutes = currentMin;
+                currentDropSetBlock.Seconds = currentSec;
+                currentDropSetBlock.MinutesSet = currentMin;
+                currentDropSetBlock.SecondsSet = currentSec;
+                App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
+            }
+            
             FilterView.IsVisible = false;
         }
 
         void Handle_AddPresetTime(object sender, EventArgs e)
         {
             Settings setting = App.Database.GetSettings();
-            currentNormalSetBlock = App.Database.GetNormalBlockWithChildren(currentNormalSetBlock.Id);
-            model.Timer timer = new model.Timer(currentNormalSetBlock.Hours, currentNormalSetBlock.Minutes, currentNormalSetBlock.Seconds);
+            model.Timer timer = new model.Timer();
+            if (Normal)
+            {
+                currentNormalSetBlock = App.Database.GetNormalBlockWithChildren(currentNormalSetBlock.Id);
+                timer = new model.Timer(currentNormalSetBlock.Hours, currentNormalSetBlock.Minutes, currentNormalSetBlock.Seconds);
+            }
+            else if (Drop)
+            {
+                currentDropSetBlock = App.Database.GetDropBlockWithChildren(currentDropSetBlock.Id);
+                timer = new model.Timer(currentDropSetBlock.Hours, currentDropSetBlock.Minutes, currentDropSetBlock.Seconds);
+            }
             if(setting.PresetTimers.Count < 6)
             {
                 timer.PresetMenuVisible = false;
@@ -832,12 +842,26 @@ namespace CurryFit.view
             model.Timer timer = App.Database.GetTimer(((Button)sender).CommandParameter);
             WheelPickerMinutes.SelectedItemsIndex = new List<int>() { timer.Minutes };
             WheelPickerSeconds.SelectedItemsIndex = new List<int>() { timer.Seconds };
-            currentNormalSetBlock.Seconds = timer.Seconds;
-            currentNormalSetBlock.SecondsSet = timer.Seconds;
-            currentNormalSetBlock.Minutes = timer.Minutes;
-            currentNormalSetBlock.MinutesSet = timer.Minutes;
-            currentNormalSetBlock.TimerOn = false;
-            App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            if (Normal)
+            {
+                currentNormalSetBlock.Seconds = timer.Seconds;
+                currentNormalSetBlock.SecondsSet = timer.Seconds;
+                currentNormalSetBlock.Minutes = timer.Minutes;
+                currentNormalSetBlock.MinutesSet = timer.Minutes;
+                currentNormalSetBlock.TimerOn = false;
+                App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            }
+            else if (Drop)
+            {
+                currentDropSetBlock.Seconds = timer.Seconds;
+                currentDropSetBlock.SecondsSet = timer.Seconds;
+                currentDropSetBlock.Minutes = timer.Minutes;
+                currentDropSetBlock.MinutesSet = timer.Minutes;
+                currentDropSetBlock.TimerOn = false;
+                App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
+            }
+            
+            
         }
 
 
