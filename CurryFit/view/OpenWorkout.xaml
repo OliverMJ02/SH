@@ -822,19 +822,19 @@
                                                 <StackLayout  Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,15">
                                                     <Label Text="WORKOUT GOAL(S)" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M"  Padding="0,0,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                                     <Label Text="Hypertrophy" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="10,5,25,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-
                                                 </StackLayout>
 
                                                 <StackLayout  Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,15">
                                                     <Label Text="WORKOUT DURATION (APPROX.)" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M"  Padding="0,0,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-                                                    <Label Text="60-90 minutes" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="10,5,25,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-
+                                                    <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
+                                                        <Label Text="60-90" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="10,5,0,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+                                                    <Label Text=" minutes" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="0,5,25,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+                                                    </StackLayout>
                                                 </StackLayout>
 
                                                 <StackLayout  Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,15">
                                                     <Label Text="NUMBER OF EXERCISES" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M"  Padding="0,0,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                                     <Label Text="5" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="10,5,25,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-
                                                 </StackLayout>
 
 
@@ -1140,7 +1140,7 @@
                                 <yummi:Border.GradientStops>
                                     <yummi:GradientStopCollection>
                                         <yummi:GradientStop Color="#FFE000" Offset="0"></yummi:GradientStop>
-                                    <yummi:GradientStop Color="#FF4816" Offset="1"></yummi:GradientStop>
+                                        <yummi:GradientStop Color="#FF4816" Offset="1"></yummi:GradientStop>
                                     </yummi:GradientStopCollection>
                                 </yummi:Border.GradientStops>
                             </yummi:Border>
