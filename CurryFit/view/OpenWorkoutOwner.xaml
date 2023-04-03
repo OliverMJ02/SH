@@ -237,49 +237,95 @@
                                                     </StackLayout>
                                                 </StackLayout>
 
-                                               
 
+
+
+                                                <StackLayout x:Name="SetInstance" Spacing="0" IsVisible="True">
+                                                    <StackLayout Spacing="0"  x:Name="TitleSetOne" IsVisible="False">
+                                                        <BoxView BackgroundColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="15,15,15,0" ></BoxView >
+                                                        <StackLayout  Spacing="0" Orientation="Horizontal" Padding="15,20,0,10" Margin="0,0,0,0">
+                                                            <Label Text="SET " FontSize="14" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="0,0,0,0" VerticalOptions="Center"/>
+                                                            <Label Text="1" FontSize="14" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="0,0,0,0" VerticalOptions="Center"/>
+                                                        </StackLayout>
+
+                                                    </StackLayout>
+
+                                                    <!--Repetitions-->
+                                                    <StackLayout x:Name="RepsBox" IsVisible="true" Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
+                                                        <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
+                                                            <Label Text="repetitions" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                            <Label x:Name="Val_NrReps" Text="NO REPS" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                        </StackLayout>
+                                                        <StackLayout Spacing="0"  HorizontalOptions="FillAndExpand" Padding="0,20,0,0" Margin="0,-6,0,0" >
+                                                            <Slider Maximum="9" Minimum="0" x:Name="Slider_NrReps" ValueChanged="Handle_SliderNrReps" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+
+
+                                                    <!--REP TO FAILURE-->
+                                                    <StackLayout x:Name="RepToFailure" Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
+                                                        <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
+                                                            <Label Text="rep to failure" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                            <Switch x:Name="RepToFailureToggle" ThumbColor="{DynamicResource AshGrey}" OnColor="{DynamicResource RiceWhite}" Scale="1.5" Margin="0,-5,5,0"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+
+                                                    <!--Rest time-->
+                                                    <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
+                                                        <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
+                                                            <Label Text="rest time" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                            <Label x:Name="Val_Rest" Text="NO TIME" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                        </StackLayout>
+                                                        <StackLayout Spacing="0"  HorizontalOptions="FillAndExpand" Padding="0,20,0,0" Margin="0,-6,0,0" >
+                                                            <Slider Maximum="14" Minimum="0" x:Name="Slider_Rest" ValueChanged="Handle_SliderValRest" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </StackLayout>
+
+
+                                                
+                    <!--kopior av elementen ifall repetitionerna skiljer sig mellan seten-->
                                                 <StackLayout x:Name="ParentSetInstance" >
 
-                                                    <StackLayout x:Name="SetInstance" Spacing="0" >
+
+                                                    <StackLayout x:Name="SetInstance2" Spacing="0" IsVisible="False">
+                                                        <BoxView BackgroundColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="15,15,15,0" ></BoxView >
+                                                        <StackLayout Spacing="0" Orientation="Horizontal" Padding="15,20,0,10" Margin="0,0,0,0">
+                                                            <Label Text="SET " FontSize="14" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="0,0,0,0" VerticalOptions="Center"/>
+                                                            <Label Text="2" FontSize="14" TextTransform="Uppercase" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="0,0,0,0" VerticalOptions="Center"/>
+                                                        </StackLayout>
+
                                                         <!--Repetitions-->
-                                                        <StackLayout x:Name="RepsBox" IsVisible="true" Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
-                                                            <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
+                                                        <StackLayout x:Name="RepsBox2" IsVisible="true" Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
                                                             <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
                                                                 <Label Text="repetitions" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                                <Label x:Name="Val_NrReps" Text="NO REPS" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                                <Label x:Name="Val_NrReps2" Text="NO REPS" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
                                                             </StackLayout>
                                                             <StackLayout Spacing="0"  HorizontalOptions="FillAndExpand" Padding="0,20,0,0" Margin="0,-6,0,0" >
-                                                                <!--<Stepper Visual="Default"/>-->
-                                                                <Slider Maximum="9" Minimum="0" x:Name="Slider_NrReps" ValueChanged="Handle_SliderNrReps" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
+                                                                <Slider Maximum="9" Minimum="0" x:Name="Slider_NrReps2" ValueChanged="Handle_SliderNrReps2" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
                                                             </StackLayout>
                                                         </StackLayout>
 
 
                                                         <!--REP TO FAILURE-->
-                                                        <StackLayout x:Name="RepToFailure" Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
-                                                            <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
+                                                        <StackLayout x:Name="RepToFailure2" Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
                                                             <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
                                                                 <Label Text="rep to failure" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                                <Switch x:Name="RepToFailureToggle" ThumbColor="{DynamicResource AshGrey}" OnColor="{DynamicResource RiceWhite}" Scale="1.5" Margin="0,-5,5,0"/>
+                                                                <Switch x:Name="RepToFailureToggle2" ThumbColor="{DynamicResource AshGrey}" OnColor="{DynamicResource RiceWhite}" Scale="1.5" Margin="0,-5,5,0"/>
                                                             </StackLayout>
                                                         </StackLayout>
 
                                                         <!--Rest time-->
                                                         <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
-                                                            <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
                                                             <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
                                                                 <Label Text="rest time" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                                <Label x:Name="Val_Rest" Text="NO TIME" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
+                                                                <Label x:Name="Val_Rest2" Text="NO TIME" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
                                                             </StackLayout>
                                                             <StackLayout Spacing="0"  HorizontalOptions="FillAndExpand" Padding="0,20,0,0" Margin="0,-6,0,0" >
-                                                                <!--<Stepper Visual="Default"/>-->
-                                                                <Slider Maximum="14" Minimum="0" x:Name="Slider_Rest" ValueChanged="Handle_SliderValRest" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
+                                                                <Slider Maximum="14" Minimum="0" x:Name="Slider_Rest2" ValueChanged="Handle_SliderValRest2" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
                                                             </StackLayout>
                                                         </StackLayout>
                                                     </StackLayout>
-
-                       
 
 
                                                 </StackLayout>

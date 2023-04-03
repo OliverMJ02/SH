@@ -29,7 +29,10 @@ namespace CurryFit.view
         List<(int, string)> RestList = new List<(int, string)>() { (0, "0:10"), (1, "0:20"), (2, "0:30"), (3, "0:45"), (4, "1:00"), (5, "1:15"), (6, "1:30"), (7, "1:45"), (8, "2:00"), (9, "2:30"), (10, "3:00"), (11, "3:30"), (12, "4:00"), (13, "4:30"), (14, "5:00") };
         List<(int, string)> RepsList = new List<(int, string)>() { (0, "1-3"), (1, "1-5"), (2, "6-8"), (3, "8-12"), (4, "12-16"), (5, "16-20"), (6, "20-30"), (7, "30-40"), (8, "40-50"), (9, "50+") };
 
-        
+        List<(int, string)> RestList2 = new List<(int, string)>() { (0, "0:10"), (1, "0:20"), (2, "0:30"), (3, "0:45"), (4, "1:00"), (5, "1:15"), (6, "1:30"), (7, "1:45"), (8, "2:00"), (9, "2:30"), (10, "3:00"), (11, "3:30"), (12, "4:00"), (13, "4:30"), (14, "5:00") };
+        List<(int, string)> RepsList2 = new List<(int, string)>() { (0, "1-3"), (1, "1-5"), (2, "6-8"), (3, "8-12"), (4, "12-16"), (5, "16-20"), (6, "20-30"), (7, "30-40"), (8, "40-50"), (9, "50+") };
+
+
 
         bool VarRepBool;
 
@@ -119,15 +122,10 @@ namespace CurryFit.view
                 // Add new copies
                 for ( i = 0; i < value; i++)
                 {
-                    ParentSetInstance.Children.Add(new StackLayout
-                    {
-                        // Customize the properties of each StackLayout as desired
-                        BackgroundColor = Color.LightGray,
-                        HeightRequest = 50,
-                        Margin = new Thickness(10, 5, 10, 5)
+                    ParentSetInstance.Children.Add(SetInstance2);
+                    SetInstance2.IsVisible = true;
+                    TitleSetOne.IsVisible = true;
 
-
-                    });
                 }
             }
 
@@ -137,6 +135,8 @@ namespace CurryFit.view
                 for (i = ParentSetInstance.Children.Count -1; i >=0; i--)
                 {
                     ParentSetInstance.Children.RemoveAt(i);
+                    SetInstance2.IsVisible = false;
+                    TitleSetOne.IsVisible = false;
                 }
 
 
@@ -181,6 +181,22 @@ namespace CurryFit.view
             int value = (int)Math.Round(Slider_Rest.Value);
 
             Val_Rest.Text = RestList[value].Item2;
+
+        }
+
+        void Handle_SliderNrReps2(object sender, EventArgs e)
+        {
+            int value = (int)Math.Round(Slider_NrReps2.Value);
+
+            Val_NrReps2.Text = RepsList2[value].Item2;
+
+        }
+
+        void Handle_SliderValRest2(object sender, EventArgs e)
+        {
+            int value = (int)Math.Round(Slider_Rest2.Value);
+
+            Val_Rest2.Text = RestList2[value].Item2;
 
         }
 
