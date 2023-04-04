@@ -14,6 +14,7 @@
                     <Image Source="login_beginwithregin.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,-3,0,0"/>
                 </StackLayout>
                 <StackLayout AbsoluteLayout.LayoutBounds="1,1" Spacing="0" VerticalOptions="End" Margin="0,330,0,0">
+                    <!--Grid för sociala medier-->
                     <Grid Margin="10,0,10,0" HorizontalOptions="Center" RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -53,12 +54,15 @@
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
+                        <!--OR-->
                         <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Spacing="0" HorizontalOptions="Center" Padding="0,30,0,0">
                             <Label Text="OR" FontSize="16" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
                         </StackLayout>
                     </Grid>
+                    <!--Mail och Lösen entries-->
                     <Entry IsPassword="False" Keyboard="Default" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,20,15,0"/>
                     <Entry IsPassword="True" Keyboard="Default" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,15,15,0"/>
+                    <!--Knapp och text nedan--> 
                     <StackLayout VerticalOptions="End" Margin="0,30,0,0">
                         <Frame CornerRadius="10" HasShadow="True" Margin="15,0,15,0">
                             <Frame.Background>
