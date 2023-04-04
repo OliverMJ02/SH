@@ -51,7 +51,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <ScrollView>
+                <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout>
                         <!--KCALBar + Graphs-->
 
@@ -128,6 +128,7 @@
 
                         <!-- Water + Meals -->
                         <StackLayout>
+                            <!-- WaterFrame -->
                             <Frame x:Name="WaterFrame" Margin="10,0,10,0" CornerRadius="5" Padding="0,0,0,0">
                                 <Frame.Background>
                                     <LinearGradientBrush>
@@ -137,25 +138,87 @@
                                     </LinearGradientBrush>
                                 </Frame.Background>
 
-                                <StackLayout>
-                                    <StackLayout HeightRequest="45" Orientation="Horizontal">
-                                        <ImageButton Source="pointer_down_gray.png" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0"/>
-                                        <Label Text="WATER" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalTextAlignment="Center"/>
-                                        <Frame HorizontalOptions="EndAndExpand">
-
-                                        </Frame>
-                                        <Frame HeightRequest="30" WidthRequest="30" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Padding="0,0,0,0" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource AshGrey}" Margin="0,0,5,0">
-                                            <ImageButton Source="add_water_blue.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
-                                        </Frame>
-                                    </StackLayout>
+                                <StackLayout Spacing="0">
+                                        <StackLayout HeightRequest="45" Orientation="Horizontal">
+                                            <AbsoluteLayout HorizontalOptions="FillAndExpand">
+                                                <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5">
+                                                    <ImageButton Source="pointer_down_gray.png" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0"/>
+                                                    <Label Text="water" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalTextAlignment="Center"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5">
+                                                    <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
+                                                        <Label Text="1.5" FontSize="14" FontFamily="M" VerticalTextAlignment="Center" TextColor="{DynamicResource RiceWhite}"/>
+                                                        <Label Text="liters" FontSize="10" FontFamily="M" TextTransform="Uppercase" VerticalTextAlignment="Center" TextColor="{DynamicResource RiceWhite}"/>
+                                                    </StackLayout>
+                                                    <Frame CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Padding="0,0,0,0" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource AshGrey}" Margin="0,0,5,0">
+                                                        <ImageButton Source="add_water_blue.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </AbsoluteLayout>
+                                        </StackLayout>
                                     <!-- Expanding part -->
-                                    <StackLayout>
-
-                                    </StackLayout>
+                                        <StackLayout>
+                                            
+                                        </StackLayout>
                                 </StackLayout>
                             </Frame>
-                        </StackLayout>
+                            
+                            <!-- BreakfastFrame -->
+                                <Frame x:Name="BreakfastFrame" Margin="10,0,10,0" CornerRadius="5" Padding="0,0,0,0">
+                                    <Frame.Background>
+                                        <LinearGradientBrush>
+                                            <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
+                                            <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
+                                            <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
 
+                                    <StackLayout Spacing="0">
+                                        <StackLayout HeightRequest="45" Orientation="Horizontal">
+                                            <AbsoluteLayout HorizontalOptions="FillAndExpand">
+                                                <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5">
+                                                    <ImageButton Source="pointer_down_gray.png" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Start" Margin="5,0,0,0"/>
+                                                    <Label Text="breakfast" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalTextAlignment="Center"/>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5">
+                                                    <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
+                                                        <Label Text="1.5" FontSize="14" FontFamily="M" VerticalTextAlignment="Center" TextColor="{DynamicResource RiceWhite}"/>
+                                                        <Label Text="liters" FontSize="10" FontFamily="M" TextTransform="Uppercase" VerticalTextAlignment="Center" TextColor="{DynamicResource RiceWhite}"/>
+                                                    </StackLayout>
+                                                    <Frame CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Padding="0,0,0,0" Background="{DynamicResource BCGrey}" BorderColor="{DynamicResource AshGrey}" Margin="0,0,5,0">
+                                                        <ImageButton Source="add_gray_v2.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"/>
+                                                    </Frame>
+                                                </StackLayout>
+                                            </AbsoluteLayout>
+                                        </StackLayout>
+                                        <!-- Expanding part -->
+                                        <StackLayout>
+                                            <BoxView HeightRequest="1" BackgroundColor="{DynamicResource SPGrey}" Margin="10,0,10,0"/>
+                                            <Frame Margin="10,0,10,10" CornerRadius="5" BackgroundColor="{DynamicResource Black}" Padding="0,0,0,0">
+                                                <AbsoluteLayout HeightRequest="44">
+                                                    <StackLayout Spacing="0" Margin="10,5,0,0">
+                                                        <Label Text="Kycklinglår Kycklingklubba" FontSize="14" FontFamily="N" TextColor="{DynamicResource AshGrey}"/>
+                                                        <Label Text="140 g | 196 kcal" FontSize="10" FontFamily="N" TextColor="{DynamicResource AshGrey}"/>
+                                                    </StackLayout>
+                                                    <ImageButton Source="cancel.png" BackgroundColor="Transparent" HeightRequest="34" WidthRequest="34" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5" Margin="0,0,10,0"/>
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                            <Frame Margin="10,0,10,10" CornerRadius="5" BackgroundColor="{DynamicResource Black}" Padding="0,0,0,0">
+                                                <AbsoluteLayout HeightRequest="44">
+                                                    <StackLayout Spacing="0" Margin="10,5,0,0">
+                                                        <Label Text="Kycklinglår Kycklingklubba" FontSize="14" FontFamily="N" TextColor="{DynamicResource AshGrey}"/>
+                                                        <Label Text="140 g | 196 kcal" FontSize="10" FontFamily="N" TextColor="{DynamicResource AshGrey}"/>
+                                                    </StackLayout>
+                                                    <ImageButton Source="cancel.png" BackgroundColor="Transparent" HeightRequest="34" WidthRequest="34" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5" Margin="0,0,10,0"/>
+                                                </AbsoluteLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout> <!-- Enabels allt content above to be visible when fully scrolled down -->
+                                <BoxView HeightRequest="120" BackgroundColor="Transparent"/>
+                            </StackLayout>
 
 
                     </StackLayout>
