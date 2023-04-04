@@ -48,16 +48,57 @@ namespace CurryFit.view
 
             //MacroCharts
             populateCarbChart();
+            
 
             // WaterFrame
             WaterFrame.WidthRequest = xamarinWidth;
         }
+
+        // CarbChart
         private void populateCarbChart()
         {
-        
+            var entries = new[] //CarbChart
+            {
+                new ChartEntry (166f)
+                {
+                    Color = SKColor.Parse("#2C91FF")
+                },
+                new ChartEntry (54f)
+                {
+                    Color = SKColor.Parse("#2A282A")
+                }
+            };
 
-            CarbChart.Chart = new RadialGaugeChart { };
+            var entries2 = new[] //ProteinChart
+            {
+                new ChartEntry (108f-88f)
+                {
+                    Color = SKColor.Parse("#FF2656")
+                },
+                new ChartEntry (2*88f-108f)
+                {
+                    Color = SKColor.Parse("#993D51")
+                }
+            };
+
+            var entries3 = new[] //FatChart
+            {
+                new ChartEntry (57f)
+                {
+                    Color = SKColor.Parse("#E4DD18")
+                },
+                new ChartEntry (2f)
+                {
+                    Color = SKColor.Parse("#2A282A")
+                }
+            };
+
+            CarbChart.Chart = new DonutChart {Entries = entries, IsAnimated = true, BackgroundColor = SKColor.Parse("#00FFFFFF"), HoleRadius = 0.8f,  };
+            ProteinChart.Chart = new DonutChart { Entries = entries2, IsAnimated = true, BackgroundColor = SKColor.Parse("#00FFFFFF"), HoleRadius = 0.8f, };
+            FatChart.Chart = new DonutChart { Entries = entries3, IsAnimated = true, BackgroundColor = SKColor.Parse("#00FFFFFF"), HoleRadius = 0.8f, };
         }
+
+
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScannerPage());
