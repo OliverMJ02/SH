@@ -29,6 +29,10 @@ namespace CurryFit.view
             //Nurition frames
             DailyNutritionF1.WidthRequest = xamarinWidth * 0.85;
             DailyNutritionF2.WidthRequest = xamarinWidth * 0.85;
+            KcalBarOutline.WidthRequest = xamarinWidth;
+            CarbBarOutline.WidthRequest = xamarinWidth * 0.34;
+            ProteinBarOutline.WidthRequest = xamarinWidth * 0.34;
+            FatBarOutline.WidthRequest = xamarinWidth * 0.34;
 
             //Exercise frames
             ExerciseF1.WidthRequest = xamarinWidth * 0.85;
@@ -43,11 +47,6 @@ namespace CurryFit.view
             ProgressF2.WidthRequest = xamarinWidth * 0.85;
 
             //Other frames
-            //XPBar.WidthRequest = xamarinWidth * 0.15;
-            KcalBarOutline.WidthRequest = xamarinWidth;
-            CarbBarOutline.WidthRequest = xamarinWidth * 0.34;
-            ProteinBarOutline.WidthRequest = xamarinWidth * 0.34;
-            FatBarOutline.WidthRequest = xamarinWidth * 0.34;
             XPBarOutline.WidthRequest = xamarinWidth * 0.18;
 
             // KcalBar progress
@@ -58,16 +57,16 @@ namespace CurryFit.view
             Fade2.Color = Color.FromRgb(255, (int)(Math.Round((16*14-72)*(1-ratio)+72)), 16);
 
             //MacroNutrients
+            double MacroFullBar = xamarinWidth * 0.34; // Can reuse "MAcroFullBar" since all the progressbars has the same max width
             //Carbs
-            double CarbRatio = 66.0 / 120.0;
-            double CarbFullBar = xamarinWidth * 0.34; ;
-            CarbBarColored.TranslationX = -1 * (CarbFullBar - CarbFullBar * (CarbRatio));
+            double CarbRatio = 66.0 / 120.0; 
+            CarbBarColored.TranslationX = -1 * (MacroFullBar - MacroFullBar * (CarbRatio));
             //Protein
             double ProteinRatio = 43.0 / 98.0;
-            ProteinBarColored.TranslationX = -1 * (CarbFullBar - CarbFullBar * (ProteinRatio));    // Can reuse "CarbFullBar" since all the progressbars has the same max width
+            ProteinBarColored.TranslationX = -1 * (MacroFullBar - MacroFullBar * (ProteinRatio));    
             //Fat
             double FatRatio = 21.0 / 64.0;
-            FatBarColored.TranslationX= -1 * (CarbFullBar - CarbFullBar * (FatRatio));
+            FatBarColored.TranslationX= -1 * (MacroFullBar - MacroFullBar * (FatRatio));
 
             //XPBar
             double XPRatio = 45.0 / 100.0;
@@ -89,7 +88,7 @@ namespace CurryFit.view
 
         private async void Handle_WorkoutPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new WorkoutPage());
+            await Navigation.PushAsync(new WorkoutView());
         }
 
         private async void Handle_StatPage(object sender, EventArgs e)

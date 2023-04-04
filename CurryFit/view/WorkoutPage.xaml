@@ -27,12 +27,14 @@
     Red            #FF1648
     Dark red       #993D51
     -->
+    
+    
     <ContentPage.Content>
         <AbsoluteLayout>
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
-                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60" MinimumHeightRequest="60">
-                    <ImageButton Source="QAicon_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="10,0,0,0"></ImageButton>
-                    <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label>
+                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="55" MinimumHeightRequest="55">
+                    <!--  !!!!GAMMALT!!!! <Label Text="WORKOUT" FontFamily="Montserrat" HorizontalOptions="CenterAndExpand" TextColor="#A6A0A6" FontSize="Medium" CharacterSpacing="3" HorizontalTextAlignment="Center" WidthRequest="150" VerticalTextAlignment="Center"></Label> -->
+                    <Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
                     <ImageButton Source="settings_gray.png" WidthRequest="36" BackgroundColor="Transparent" Margin="0,0,10,0"></ImageButton>
                 </StackLayout>
                 <BoxView BackgroundColor="#A6A0A6" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
@@ -42,28 +44,28 @@
                     <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
 
                         <StackLayout>
-                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer></TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <StackLayout>
-                            <local:GradientLabel TextColor1="White" TextColor2="White" TextColor="WHITE" Text="EXERCISES" FontAttributes="Bold" FontSize="Medium"/>
+                            <local:GradientLabel TextColor="#FFFFFF" TextColor1="#FFFFFF" TextColor2="#FFFFFF" Text="EXERCISES" FontFamily="M" FontSize="12"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
                         <StackLayout>
-                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PASS" FontAttributes="Bold" FontSize="Medium"/>
+                            <local:GradientLabel TextColor1="#A6A0A6" TextColor2="#A6A0A6" TextColor="#A6A0A6" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer></TapGestureRecognizer>
+                                <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
                         <StackLayout>
-                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontAttributes="Bold" FontSize="Medium"/>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
@@ -73,7 +75,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                         <Frame BackgroundColor="#2A282A" BorderColor="#A6A0A6" CornerRadius="20" Padding="-10,0,0,0" Margin="0,0,0,0" VerticalOptions="Center" HeightRequest="40" >
                             <StackLayout Orientation="Horizontal" BackgroundColor="Transparent" HeightRequest="30" VerticalOptions="Center">
-                                <SearchBar x:Name="SearchBar" BackgroundColor="Transparent" Placeholder="Sök efter övningar" FontFamily="N" PlaceholderColor="#726E72" TextColor="#726E72" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
+                                <SearchBar x:Name="SearchBar" BackgroundColor="Transparent"  Placeholder="Search for exercises" FontFamily="N" PlaceholderColor="#726E72" TextColor="#FFFFFF" Margin="-30,0,0,0" FontSize="Body" HeightRequest="30" VerticalOptions="Center"></SearchBar>
                                 <Image Source="search.png" HeightRequest="30" Margin="0,0,10,0"></Image>
                             </StackLayout>
                         </Frame>
@@ -146,39 +148,123 @@
                     </StackLayout>
                 </StackLayout>
 
+
+                <!-- Layout for Workouts -->
+                <StackLayout x:Name="WorkoutLayout" IsVisible="False" VerticalOptions="FillAndExpand">
+                    
+                    
+                    <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor1="#FFFFFF" TextColor2="#FFFFFF" TextColor="#FFFFFF" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </FlexLayout>
+
+
+                   
+                </StackLayout>
+
+
+                <!-- Layout for Programs -->
+                <StackLayout x:Name="ProgramLayout" IsVisible="False" VerticalOptions="FillAndExpand">
+
+                    
+                    <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor1="#FFFFFF" TextColor2="#FFFFFF" TextColor="#FFFFFF" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </FlexLayout>
+                    
+                    
+                </StackLayout>
+
+
+
+
+
+
+
                 <!-- Layout for Logbook -->
                 <StackLayout x:Name="LogbookLayout" IsVisible="False" VerticalOptions="FillAndExpand">
                     <StackLayout>
                         <FlexLayout Direction="Row" Margin="10,10,10,10" JustifyContent="SpaceAround">
 
                             <StackLayout>
-                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="M.G.S." FontAttributes="Bold" FontSize="Medium"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer></TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <StackLayout>
-                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontAttributes="Bold" FontSize="Medium"/>
+                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="EXERCISES" FontFamily="M" FontSize="12"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
 
                             <StackLayout>
-                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PASS" FontAttributes="Bold" FontSize="Medium"/>
+                                <local:GradientLabel TextColor1="#A6A0A6" TextColor2="#A6A0A6" TextColor="#A6A0A6" Text="WORKOUTS" FontFamily="M" FontSize="12"/>
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer></TapGestureRecognizer>
+                                    <TapGestureRecognizer Tapped="Handle_ToWorkouts"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
 
                             <StackLayout>
-                                <local:GradientLabel TextColor1="White" TextColor2="White" TextColor="White" Text="LOGBOOK" FontAttributes="Bold" FontSize="Medium"/>
+                                <local:GradientLabel TextColor="#A6A0A6" TextColor1="#A6A0A6" TextColor2="#A6A0A6" Text="PROGRAMS" FontFamily="M" FontSize="12"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_ToPrograms"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <local:GradientLabel TextColor="#FFFFFF" TextColor1="#FFFFFF" TextColor2="#FFFFFF" Text="LOGBOOK" FontFamily="M" FontSize="12"/>
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Handle_ToLogbook"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
-
                         </FlexLayout>
 
                         <ScrollView HeightRequest="5000">
@@ -971,9 +1057,10 @@
                     </StackLayout>
 
                 </StackLayout>
+                
 
 
-                <!-- Menu buttons -->
+                <!-- Menu buttons 
                 <BoxView BackgroundColor="#4A484A" HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,-6,0,0"></BoxView>
                 <StackLayout x:Name="MenuLayout" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End" Margin="0,-6,0,0"  BackgroundColor="#2A282A" Padding="0,0,0,0" Orientation="Horizontal">
                     <ImageButton x:Name="BtnHome" BackgroundColor="#2A282A" Source="homegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13" Clicked="Handle_MainPage"></ImageButton>
@@ -982,7 +1069,263 @@
                     <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="statsgrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                     <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profilegrey.png" Margin="0,0,-6,0" Padding="13,13,13,13"></ImageButton>
                 </StackLayout>
-            </StackLayout>
+                
+                
+                
+                
+                
+
+                
+                 <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
+                            <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
+                            <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
+                            <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
+                            <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
+                            <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+                
+                -->
+
+                <!-- Menu Buttons / navbar -->
+                <StackLayout VerticalOptions="EndAndExpand" Spacing="0" HorizontalOptions="FillAndExpand">
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
+                    <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5" MinimumHeightRequest="70" HeightRequest="70" VerticalOptions="End">
+
+
+
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition />
+                              
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            
+
+                            <StackLayout Grid.Column="0" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="1" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="2" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="3" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
+                            </StackLayout>
+
+                            <StackLayout Grid.Column="4" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                                </StackLayout.GestureRecognizers>
+                                <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
+                            </StackLayout>
+
+
+
+                            <StackLayout Grid.Row="1" Grid.Column="0" AbsoluteLayout.LayoutFlags="PositionProportional"  Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="1" AbsoluteLayout.LayoutFlags="PositionProportional" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="2" AbsoluteLayout.LayoutFlags="PositionProportional"  Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="3" AbsoluteLayout.LayoutFlags="PositionProportional" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.Column="4" AbsoluteLayout.LayoutFlags="PositionProportional" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                                </StackLayout.GestureRecognizers>
+                                <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                            </StackLayout>
+                        </Grid>
+
+                    </AbsoluteLayout>
+                </StackLayout>
+
+
+                <!-- Menu Buttons / navbar 
+                <StackLayout x:Name="MenuLayout" VerticalOptions="EndAndExpand" Spacing="0">
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,0,0,0"></BoxView>
+                    <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5">
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
+                            <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
+                            <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
+                            <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
+                            <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+                        <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                            </StackLayout.GestureRecognizers>
+                            <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
+                            <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        </StackLayout>
+
+
+
+                    </AbsoluteLayout>
+                </StackLayout>-->
+                
+                
+                
+                <!-- Menu Buttons / navbar
+                <StackLayout x:Name="MenuLayout" VerticalOptions="EndAndExpand" Spacing="0">
+                    <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,0,0,0"></BoxView>
+                    <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,65">
+                        <Grid  HorizontalOptions="FillAndExpand" HeightRequest="1" Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                           Your main content here
+
+                            <StackLayout Grid.Row="1" Orientation="Horizontal">
+
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_MainPage"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
+                                    <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
+                                    <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
+                                    <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                                </StackLayout>
+
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_StatPage"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
+                                    <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                                </StackLayout>
+
+
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
+                                    </StackLayout.GestureRecognizers>
+                                    <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
+                                    <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Grid>
+
+                    </AbsoluteLayout>
+                    </StackLayout> -->
+                </StackLayout>
 
 
 

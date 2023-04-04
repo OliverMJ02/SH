@@ -3,27 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurryFit.view.NewMainPage"
              xmlns:local="clr-namespace:CurryFit.CustomRenderers"
-             BackgroundColor="{DynamicResource Black}">
+             BackgroundColor="#1F1E1F">
 
-<!-- HOME ej i center pga pil tilbaka, antar att detta löser sig självt när denna page setts som första/Main -->
+    <!-- HOME ej i center pga pil tilbaka, antar att detta löser sig självt när denna page setts som första/Main -->
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="H O M E" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="Center"/>
+<Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" Margin="15,0,0,0"></Label>
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        
+
         <StackLayout>
-            
-            
-            
             <ScrollView VerticalScrollBarVisibility="Never">
                 <StackLayout>
                     <Label Text="WELCOME BACK, [NAME]!" FontSize="16" TextColor="{DynamicResource AshGrey}" FontFamily="M" Margin="10,7,0,0"/>
                     <!-- Denna lable behöver kod så att namnet uppdateras till vad nu användaren heter -->
                     
-                    <!-- Info + Shortcuts ___________________________________________________________________________________________________________________________________________-->   
+                    <!-- Top gridview -->   
            <StackLayout>
                 <Grid Margin="10,0,10,0">
                     <Grid.ColumnDefinitions>
@@ -37,8 +34,6 @@
                     </Grid.RowDefinitions>
 
                     <!-- Stepcounter + KCAL // Motion/cardio - Frame --> 
-                
-
                     <Frame Grid.Row="0" Grid.Column="0" CornerRadius="8" HasShadow="True" Padding="0,0,0,0">
                         <Frame.Background>
                             <LinearGradientBrush >
@@ -47,74 +42,39 @@
                                 <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Frame.Background>
-                                <!-- I detta fallet är lablen en gradient och icon med text till höger gråa pga att målet är uppnått, om det inte är det skall de se ut som för water griden, steps är då vitt och iconen med text grön, se figma-->
-                                <AbsoluteLayout>
-                                    <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
-                                    <Label FontSize="10" AbsoluteLayout.LayoutBounds="8,18" TextColor="{DynamicResource AshGrey}" Text="486 KCAL" FontFamily="M"/>
-                                    <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
-                                        <ImageButton Source="FootSteeps_Gray" Clicked="Handle_AddWaterPage" WidthRequest="16" HeightRequest="20" BackgroundColor="Transparent"/>
-                                        <Label Text="STEP &#10; COUNTER" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
-                                    </StackLayout>
-
-                                </AbsoluteLayout>
                         
-                           <!--   OLD KOD <StackLayout Orientation="Horizontal">
-                                    
-                                    <StackLayout Margin="8,8,0,0">
-                                        <local:GradientLabel x:Name="StepCounter" Text="10125 STEPS" FontSize="8" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
-                                        <Label FontSize="10" TextColor="{DynamicResource AshGrey}" Text="486 KCAL" FontFamily="M" Margin="0,-8,0,0"/>
-                                    </StackLayout>
-                                    
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                        <BoxView VerticalOptions="CenterAndExpand"  WidthRequest="1" HeightRequest="43" BackgroundColor="{DynamicResource AshGrey}" Margin="40,0,0,0"/>
-                                    </StackLayout>
-                                    
-                                    <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,0,0">
-                                        <ImageButton Source="FootSteeps_Green.png" WidthRequest="16" HeightRequest="20" Clicked="Handle_StepCounter" BackgroundColor="Transparent" Margin="0,4,8,0"/>
-                                        <Label Text="STEP &#10; COUNTER" FontSize="8" FontFamily="M" TextColor="{DynamicResource Green}" HorizontalTextAlignment="Center" Margin="0,-4,8,0"/>
-                                    </StackLayout>
-                                    
-                                </StackLayout> -->  
+                                <!-- I detta fallet är lablen en gradient och icon med text till höger gråa pga att målet är uppnått, om det inte är det skall de se ut som för water griden, steps är då vitt och iconen med text grön, se figma-->
+                        <AbsoluteLayout>
+                            <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
+                            <Label FontSize="10" AbsoluteLayout.LayoutBounds="8,18" TextColor="{DynamicResource AshGrey}" Text="486 KCAL" FontFamily="M"/>
+                            <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
+                            <StackLayout AbsoluteLayout.LayoutBounds="0.93,8" AbsoluteLayout.LayoutFlags="XProportional">
+                                <ImageButton Source="FootSteeps_Gray" Clicked="Handle_AddWaterPage" WidthRequest="16" HeightRequest="20" BackgroundColor="Transparent"/>
+                                <Label Text="STEP&#10;COUNTER" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                            </StackLayout>
+                        </AbsoluteLayout>
                     </Frame>
                     
                 
                     <!-- Water - Frame -->
-                    <Frame Grid.Row="0" Grid.Column="1" CornerRadius="8" Padding="0,0,0,0">
-                        <Frame.Background>
-                            <LinearGradientBrush >
-                                <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
-                                <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
-                                <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
-                            </LinearGradientBrush>
-                        </Frame.Background>
-                                <!-- OLD KOD <StackLayout Orientation="Horizontal">
-                                    <StackLayout Margin="8,8,0,0">
-                                        <Label FontSize="8" TextColor="{DynamicResource RiceWhite}" Text="1.5 LITERS" FontFamily="M"/>
-                                        <Label FontSize="8" TextColor="{DynamicResource AshGrey}" Text="1 L TO GO" FontFamily="M" Margin="0,-8,0,0"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                        <BoxView VerticalOptions="CenterAndExpand"  WidthRequest="1" HeightRequest="43" BackgroundColor="{DynamicResource AshGrey}" Margin="50,0,0,0"/>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,0,0">
-                                        <ImageButton Source="add_water_Blue" WidthRequest="30" HeightRequest="30" Clicked="Handle_AddWaterPage" BackgroundColor="Transparent" Margin="0,0,8,0"/>
-                                        <Label Text="ADD &#10; WATER" FontSize="8" FontFamily="M" TextColor="{DynamicResource WaterBlue}" HorizontalTextAlignment="Center" Margin="0,-8,8,0"/>
-                                    </StackLayout>
-                                    
-                        </StackLayout> -->
+                            <Frame Grid.Row="0" Grid.Column="1" CornerRadius="8" Padding="0,0,0,0">
+                                <Frame.Background>
+                                    <LinearGradientBrush >
+                                        <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
+                                        <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
                                 <AbsoluteLayout>
                                     <Label AbsoluteLayout.LayoutBounds="8,8" FontSize="10" TextColor="{DynamicResource RiceWhite}" Text="1.5 LITERS" FontFamily="M"/>
                                     <Label AbsoluteLayout.LayoutBounds="8,18" FontSize="10" TextColor="{DynamicResource AshGrey}" Text="1 L TO GO" FontFamily="M" />
                                     <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,2" AbsoluteLayout.LayoutFlags="XProportional">
+                                    <StackLayout AbsoluteLayout.LayoutBounds="0.90,2" AbsoluteLayout.LayoutFlags="XProportional">
                                         <ImageButton Source="add_water_Blue" Clicked="Handle_AddWaterPage" BackgroundColor="Transparent" WidthRequest="30" HeightRequest="30"/>
-                                        <Label Text="ADD &#10; WATER" FontSize="8" FontFamily="M" TextColor="{DynamicResource WaterBlue}" HorizontalTextAlignment="Center" Margin="0,-8,0,0"/>
+                                        <Label Text="ADD&#10;WATER" FontSize="8" FontFamily="M" TextColor="{DynamicResource WaterBlue}" HorizontalTextAlignment="Center" Margin="0,-8,0,0"/>
                                     </StackLayout>
-
                                 </AbsoluteLayout>
-                       
-                        
-                    </Frame>
+                            </Frame>
 
                     <!-- Gamification - Frame -->
                     <Frame Grid.Row="1" Grid.Column="0" CornerRadius="8" Padding="0,0,0,0">
@@ -125,53 +85,33 @@
                                 <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
                             </LinearGradientBrush>
                         </Frame.Background>
+                        
                                 <AbsoluteLayout>
                                     <Label AbsoluteLayout.LayoutBounds="8,8" FontSize="10" TextColor="{DynamicResource RiceWhite}" Text="LEVEL 4" FontFamily="M"/>
                                     <Label AbsoluteLayout.LayoutBounds="8,18" FontSize="10" TextColor="{DynamicResource AshGrey}" Text="GYMSIS" FontFamily="M"/>
                                     <Image AbsoluteLayout.LayoutBounds="0.5,8,26,26" AbsoluteLayout.LayoutFlags="XProportional" Source="Gymsis.png"/>
                                     <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
+                                    <StackLayout AbsoluteLayout.LayoutBounds="0.90,8" AbsoluteLayout.LayoutFlags="XProportional">
                                         <ImageButton Source="medal_Yellow" BackgroundColor="Transparent" WidthRequest="20" HeightRequest="20"/>
-                                        <Label Text="ALL &#10; BADGES" FontSize="8" FontFamily="M" TextColor="{DynamicResource GameYellow}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                                        <Label Text="ALL&#10;BADGES" FontSize="8" FontFamily="M" TextColor="{DynamicResource GameYellow}" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
                                     </StackLayout>
-                                    
+
                                     <!-- Progressbar / XPBar -->
                                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="5" AbsoluteLayout.LayoutFlags="YProportional" AbsoluteLayout.LayoutBounds="8,0.9">
                                         <Label Text="L4" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
-                                        
-                                        <!-- 
-                                       <AbsoluteLayout>
-                                            <Frame x:Name="XPBar" HeightRequest="6" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="Transparent" BorderColor="{DynamicResource AshGrey}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0.5">
-                                            </Frame>
-                                            <Frame Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource RiceWhite}" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0.5,0.3,0.5">
-                                            </Frame>
-                                        </AbsoluteLayout> 
-                                        -->       
-
                                         <Frame Padding="0,0,0,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent">
                                             <AbsoluteLayout x:Name="XPBarOutline" VerticalOptions="Center">
-                                                <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="6">
-
-                                                </Frame>
-                                                <Frame x:Name="XPBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource RiceWhite}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="6">
-
-                                                </Frame>
+                                                <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="6"/>
+                                                <Frame x:Name="XPBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource RiceWhite}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="6"/>
                                             </AbsoluteLayout>
                                         </Frame>
-
                                         <Label Text="L5" FontSize="8" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
                                     </StackLayout>
-                                    
                                 </AbsoluteLayout>
-                        
-                       <!-- OLD KOD<StackLayout Margin="10,10,0,0">
-                                    <Label FontSize="10" TextColor="{DynamicResource RiceWhite}" Text="LEVEL 4" FontFamily="M"/>
-                                    <Label FontSize="10" TextColor="{DynamicResource AshGrey}" Text="GYMSIS" FontFamily="M" Margin="0,-10,0,0"/>
-                        </StackLayout> -->
                     </Frame>
 
                     <!-- Shortcuts - Frame -->
-                    <Frame Grid.Row="1" Grid.Column="1" CornerRadius="8" Padding="0,0,0,0">
+                            <Frame Grid.Row="1" Grid.Column="1" CornerRadius="8" Padding="0,0,0,0">
                                 <Frame.Background>
                                     <LinearGradientBrush >
                                         <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
@@ -186,34 +126,12 @@
                                     <ImageButton AbsoluteLayout.LayoutBounds="0.29,0.854,25,25" AbsoluteLayout.LayoutFlags="PositionProportional" Source="bike_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
                                     <ImageButton AbsoluteLayout.LayoutBounds="0.53,0.854,25,25" AbsoluteLayout.LayoutFlags="PositionProportional" Source="swimming_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
                                     <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
-                                    <StackLayout AbsoluteLayout.LayoutBounds="0.95,8" AbsoluteLayout.LayoutFlags="XProportional">
+                                    <StackLayout AbsoluteLayout.LayoutBounds="0.90,8" AbsoluteLayout.LayoutFlags="XProportional">
                                         <ImageButton Source="cardio_Red.png" BackgroundColor="Transparent" Clicked="Handle_Cardiocenter" WidthRequest="20" HeightRequest="20"/>
-                                        <Label Text="CARDIO &#10; CENTER" TextColor="{DynamicResource Red}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
+                                        <Label Text="CARDIO&#10;CENTER" TextColor="{DynamicResource Red}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center" Margin="0,-5,0,0"/>
                                     </StackLayout>
-                                    
                                 </AbsoluteLayout>
-                        
-                        
-                       <!--    OLD KOD     <StackLayout Orientation="Horizontal">
-                                    <StackLayout Margin="8,8,0,0" Orientation="Vertical">
-                                        <Label FontSize="10" TextColor="{DynamicResource AshGrey}" Text="SHORTCUTS" FontFamily="M"/>
-                                        <StackLayout Orientation="Horizontal" Margin="0,0,0,0">
-                                            <ImageButton Source="running_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
-                                            <ImageButton Source="bike_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
-                                            <ImageButton Source="swimming_gray.png" BackgroundColor="Transparent" WidthRequest="25" HeightRequest="25" Clicked="Handle_UserShortcutPage"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
-                                        <BoxView VerticalOptions="CenterAndExpand"  WidthRequest="1" HeightRequest="43" BackgroundColor="{DynamicResource AshGrey}" Margin="0,0,0,0"/>
-                                    </StackLayout>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Vertical">
-                                        <ImageButton Source="cardio_Red.png" BackgroundColor="Transparent" WidthRequest="20" HeightRequest="20" Clicked="Handle_Cardiocenter" Margin="0,8,10,0"/>
-                                        <Label Text="CARDIO &#10; CENTER" TextColor="{DynamicResource Red}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center" Margin="0,-5,8,-10"/>
-                                    </StackLayout>
-                                    
-                                </StackLayout> --> 
-                    </Frame>
-                    
+                            </Frame>
                 </Grid>
                
                <!-- Calander -->
@@ -221,7 +139,7 @@
                 <ScrollView Orientation="Horizontal" Margin="0,0,0,0" HorizontalScrollBarVisibility="Never">
                     <FlexLayout Direction="Row" Margin="10,0,10,0">
                         <StackLayout Orientation="Horizontal">
-                            
+
                                     <Frame x:Name="CalenderF1" CornerRadius="5" HeightRequest="120" Padding="0,0,0,0">
                                         <Frame.Background>
                                             <LinearGradientBrush>
@@ -231,29 +149,27 @@
                                             </LinearGradientBrush>
                                         </Frame.Background>
 
-                                       <StackLayout>
-                                            
+                                        <StackLayout>
+
                                             <StackLayout>
                                                 <AbsoluteLayout>
                                                     <Label Text="TO DO LIST" TextColor="{DynamicResource RiceWhite}" FontSize="12" FontFamily="M" AbsoluteLayout.LayoutBounds="10,5" />
                                                 </AbsoluteLayout>
-                                                
-                                            </StackLayout>  
-                                            
-                                             <StackLayout Orientation="Horizontal">
+
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal">
                                                 <AbsoluteLayout>
                                                     <ImageButton HorizontalOptions="Start" Source="todo_box_ticked.png" AbsoluteLayout.LayoutBounds="10,0,20,20"/>
                                                     <Label Text = "15 min cardio" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" AbsoluteLayout.LayoutBounds="40,0"/>
                                                 </AbsoluteLayout>
-                                                
+
                                             </StackLayout>
-                                            
+
                                             <StackLayout Orientation="Horizontal">
                                                 <AbsoluteLayout>
-                                                    
                                                     <ImageButton HorizontalOptions="Start" Source="todo_box_unticked.png" HeightRequest="20" WidthRequest="20" BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="10,5,20,20"/>
                                                     <Label Text = "10 min stretching" TextColor="{DynamicResource RiceWhite}" FontSize="14" FontFamily="N" AbsoluteLayout.LayoutBounds="40,5"/>
-                                                    
                                                     <!-- Koden nedan skall bara vara "aktiv" när boxen är unticked som i detta exemplet -->
                                                     <StackLayout Spacing="0" AbsoluteLayout.LayoutBounds="14,25" Orientation="Horizontal" Padding="0,0,0,0">
                                                         <Image Source="arrow_down_left.png" HeightRequest="30"/>
@@ -262,17 +178,12 @@
                                                         <Label Text="15:30" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" Margin="5,9,0,0"/>
                                                     </StackLayout>
                                                     <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutBounds="75,35" Spacing="4">
-                                                        
                                                     </StackLayout>
-                                                    
                                                 </AbsoluteLayout>
-                                            </StackLayout> 
+                                            </StackLayout>
                                             
-                                        </StackLayout> 
-
+                                        </StackLayout>
                                     </Frame>
-
-
                                     <Frame x:Name="CalenderF2" CornerRadius="5" HeightRequest="120" Padding="0,0,0,0" Margin="4,0,0,0">
                                         <Frame.Background>
                                             <LinearGradientBrush>
@@ -282,8 +193,7 @@
                                             </LinearGradientBrush>
                                         </Frame.Background>
                                     </Frame>
-
-                         </StackLayout>
+                                </StackLayout>
                     </FlexLayout>
                 </ScrollView>
                
@@ -293,11 +203,11 @@
                     <FlexLayout Direction="Row" Margin="10,0,10,0">
                         <StackLayout Orientation="Horizontal">
                             <Frame x:Name="DailyNutritionF1" CornerRadius="5" HeightRequest="120" Padding="0,0,0,0">
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="Handle_FoodPage"/>
-                                        </Frame.GestureRecognizers>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Handle_FoodPage"/>
+                                </Frame.GestureRecognizers>
                                 
-                                        <Frame.Background>
+                                <Frame.Background>
                                     <LinearGradientBrush>
                                         <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
                                         <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
@@ -314,21 +224,18 @@
                                                 <Label Text="664/1926 KCAL" TextColor="{DynamicResource RiceWhite}" FontSize="20" FontFamily="M" Margin="10,5,0,0"/>
                                             </StackLayout>
 
-                                            <Frame Padding="0,0,0,0" Margin="10,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                                            <Frame Padding="0,0,0,0" Margin="10,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                                 <AbsoluteLayout x:Name="KcalBarOutline" VerticalOptions="Center">
-                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource BCGrey}" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="{DynamicResource SPGrey}">
-
-                                                    </Frame>
-                                                    <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="-250" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
+                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource BCGrey}" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="{DynamicResource SPGrey}"/>
+                                                    <!-- Cornerradius leder till att den fyller i färg utanför den yttre framen till vänster, sätter man den till 0 löses detta men vi får ingen runding tillhöger i det färglagda-->
+                                                    <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="0" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
                                                         <Frame.Background>
                                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                                 <GradientStop Color="{DynamicResource ThemeYellow}" Offset="0"/>
                                                                 <GradientStop x:Name="Fade2" Color="{DynamicResource ThemeOrange}"  Offset="1"/>
                                                             </LinearGradientBrush>
                                                         </Frame.Background>
-
                                                     </Frame>
-                                                    
                                                 </AbsoluteLayout>
                                             </Frame>
                                             
@@ -336,63 +243,44 @@
                                             <StackLayout Orientation="Horizontal" Spacing="0">
                                                 <Label Text="66g/120g CARBS." TextColor="{DynamicResource CarbBlue}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
                                                 <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
-                                                        <AbsoluteLayout x:Name="CarbBarOutline" VerticalOptions="Center">
-                                                            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8">
-                                                                
-                                                            </Frame>
-                                                            <Frame x:Name="CarbBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource CarbBlue}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8">
-                                                                
-                                                            </Frame>
-                                                        </AbsoluteLayout>
-                                                    </Frame>
-                                                
-                                                
+                                                    <AbsoluteLayout x:Name="CarbBarOutline" VerticalOptions="Center">
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                        <Frame x:Name="CarbBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource CarbBlue}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                    </AbsoluteLayout>
+                                                </Frame>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal" Spacing="0">
                                                 <Label Text="43g/98g PROTEIN." TextColor="{DynamicResource ProteinRed}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
                                                 <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
                                                     <AbsoluteLayout x:Name="ProteinBarOutline" VerticalOptions="Center">
-                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8">
-
-                                                        </Frame>
-                                                        <Frame x:Name="ProteinBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource ProteinRed}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8">
-
-                                                        </Frame>
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                        <Frame x:Name="ProteinBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource ProteinRed}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
                                                     </AbsoluteLayout>
                                                 </Frame>
-
                                             </StackLayout>
-                                                
+
                                             <StackLayout Orientation="Horizontal" Spacing="0">
                                                 <Label Text="21g/64g FAT." TextColor="{DynamicResource FatYellow}" FontFamily="M" FontSize="12" Margin="10,0,0,0"/>
                                                 <Frame Padding="0,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent">
                                                     <AbsoluteLayout x:Name="FatBarOutline" VerticalOptions="Center">
-                                                    <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8">
-
-                                                    </Frame>
-                                                    <Frame x:Name="FatBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource FatYellow}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8">
-
-                                                    </Frame>
-                                                </AbsoluteLayout>
+                                                        <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="0,0,0,0" BackgroundColor="{DynamicResource BCGrey}" BorderColor="{DynamicResource SPGrey}" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                        <Frame x:Name="FatBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" TranslationX="0" Padding="0,0,0,0" BackgroundColor="{DynamicResource FatYellow}" BorderColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="8" CornerRadius="50"/>
+                                                    </AbsoluteLayout>
                                                 </Frame>
-                                                
-
                                             </StackLayout>
-                                            
                                         </StackLayout>
                             </Frame>
                                     <Frame x:Name="DailyNutritionF2" CornerRadius="5" HeightRequest="120" Margin="4,0,0,0" Padding="0,0,0,0">
-                                <Frame.Background>
-                                    <LinearGradientBrush>
-                                        <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
-                                        <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
-                                        <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
-                                    </LinearGradientBrush>
-                                </Frame.Background>
-                            </Frame>
-
-                        </StackLayout>
+                                        <Frame.Background>
+                                            <LinearGradientBrush>
+                                                <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
+                                                <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
+                                                <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Frame.Background>
+                                    </Frame>
+                                </StackLayout>
                     </FlexLayout>
                 </ScrollView>
                
@@ -431,7 +319,7 @@
                                                 </Frame>
                                             </FlexLayout>
                                             <!-- Vet inte vad som blir lättas med backend koden osv, men nedan följer hur det skall se ut. Alla övningar i next workout skall radas upp, får det inte plats på en rad skall den brytas-->
-                                            <StackLayout Spacing="0">
+                                            <StackLayout Spacing="0" Margin="0,-5,0,0">
                                                 <Label FontSize="10" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="10,0,0,0" Text="Squats | Leg Press | Leg Curl | Leg Extension"/>
                                                 <Label FontSize="10" FontFamily="N" TextColor="{DynamicResource AshGrey}" Margin="10,0,0,0" Text="Stiff Leg Deadlift | Standing Calf Press"/>
                                             </StackLayout>
@@ -524,45 +412,45 @@
             <!-- Menu Buttons / navbar -->
             <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
                 <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" HeightRequest="0" Margin="0,-6,0,0"></BoxView>
-                <AbsoluteLayout BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,5">
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0" Spacing="0">
+                <AbsoluteLayout MinimumHeightRequest="55" HeightRequest="55" BackgroundColor="{DynamicResource BCGrey}" Padding="0,0,0,0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.08,0" Spacing="0" Margin="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_MainPage"/>
                         </StackLayout.GestureRecognizers>
-                        <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage"></ImageButton>
-                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="10" FontFamily="M"/>
+                        <ImageButton x:Name="BtnHome" BackgroundColor="Transparent" Source="home_white.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_MainPage" Padding="0,0,0,0"></ImageButton>
+                        <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.25,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.27,0" Spacing="0" Margin="0,3,0,0" >
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_FoodPage"/>
                         </StackLayout.GestureRecognizers>
-                        <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage"></ImageButton>
-                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <ImageButton x:Name="BtnFood" BackgroundColor="Transparent" Source="food_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_FoodPage" Padding="0,0,0,0"></ImageButton>
+                        <Label Text="NUTRITION" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0" Spacing="0" Margin="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_WorkoutPage"/>
                         </StackLayout.GestureRecognizers>
-                        <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage"></ImageButton>
-                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <ImageButton x:Name="BtnWorkout" BackgroundColor="Transparent" Source="training_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_WorkoutPage" Padding="0,0,0,0"></ImageButton>
+                        <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.75,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.73,0" Spacing="0" Margin="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_StatPage"/>
                         </StackLayout.GestureRecognizers>
-                        <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage"></ImageButton>
-                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <ImageButton x:Name="BtnStats" BackgroundColor="#2A282A" Source="stats_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_StatPage" Padding="0,0,0,0"></ImageButton>
+                        <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.95,0" Spacing="0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.92,0" Spacing="0" Margin="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
                         </StackLayout.GestureRecognizers>
-                        <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage"></ImageButton>
-                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="10" FontFamily="M"/>
+                        <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage" Padding="0,0,0,0"></ImageButton>
+                        <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
                     
