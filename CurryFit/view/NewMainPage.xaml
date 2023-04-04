@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CurryFit.view.NewMainPage"
@@ -7,8 +7,8 @@
 
     <!-- HOME ej i center pga pil tilbaka, antar att detta löser sig självt när denna page setts som första/Main -->
     <NavigationPage.TitleView>
-        <StackLayout>
-<Label Text="HOME" CharacterSpacing="5" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" WidthRequest="150"  VerticalTextAlignment="Center" Margin="15,0,0,0"></Label>
+        <StackLayout >
+            <Label Text="H O M E" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
         </StackLayout>
     </NavigationPage.TitleView>
 
@@ -45,7 +45,7 @@
                         
                                 <!-- I detta fallet är lablen en gradient och icon med text till höger gråa pga att målet är uppnått, om det inte är det skall de se ut som för water griden, steps är då vitt och iconen med text grön, se figma-->
                         <AbsoluteLayout>
-                            <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
+                            <local:GradientLabel x:Name="StepCounter" AbsoluteLayout.LayoutBounds="8,8" Text="10125 STEPS" FontSize="10" TextColor="{DynamicResource ThemeYellow}" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
                             <Label FontSize="10" AbsoluteLayout.LayoutBounds="8,18" TextColor="{DynamicResource AshGrey}" Text="486 KCAL" FontFamily="M"/>
                             <BoxView AbsoluteLayout.LayoutBounds="0.65,0.5,1,43" AbsoluteLayout.LayoutFlags="PositionProportional" BackgroundColor="{DynamicResource AshGrey}"/>
                             <StackLayout AbsoluteLayout.LayoutBounds="0.93,8" AbsoluteLayout.LayoutFlags="XProportional">
@@ -227,7 +227,6 @@
                                             <Frame Padding="0,0,0,0" Margin="10,0,10,0" CornerRadius="50" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                                 <AbsoluteLayout x:Name="KcalBarOutline" VerticalOptions="Center">
                                                     <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="0,0,0,0" CornerRadius="50" BackgroundColor="{DynamicResource BCGrey}" Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" HeightRequest="17" BorderColor="{DynamicResource SPGrey}"/>
-                                                    <!-- Cornerradius leder till att den fyller i färg utanför den yttre framen till vänster, sätter man den till 0 löses detta men vi får ingen runding tillhöger i det färglagda-->
                                                     <Frame x:Name="KcalBarColored" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" TranslationX="0" Padding="0,0,0,0" CornerRadius="50" Margin="0,0,0,0"  HeightRequest="17" BorderColor="Transparent" HorizontalOptions="FillAndExpand">
                                                         <Frame.Background>
                                                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -305,7 +304,7 @@
                                         <StackLayout Spacing="4">
                                             <StackLayout>
                                                 <AbsoluteLayout>
-                                                    <local:GradientLabel AbsoluteLayout.LayoutBounds="10,5" Text="NEXT WORKOUT" FontSize="12" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
+                                                    <local:GradientLabel AbsoluteLayout.LayoutBounds="10,5" Text="NEXT WORKOUT" FontSize="12" TextColor="{DynamicResource ThemeYellow}" TextColor1="{DynamicResource ThemeYellow}" TextColor2="{DynamicResource ThemeOrange}" FontFamily="M"/>
                                                     <Label Text="Leg Day" FontFamily="N" FontSize="20" TextColor="{DynamicResource RiceWhite}" AbsoluteLayout.LayoutBounds="10,18"/>
                                                 </AbsoluteLayout>
                                             </StackLayout>
@@ -421,7 +420,7 @@
                         <Label Text="HOME" TextColor="{DynamicResource RiceWhite}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.27,0" Spacing="0" Margin="0,3,0,0" >
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.27,0" Spacing="0" Margin="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_FoodPage"/>
                         </StackLayout.GestureRecognizers>
@@ -437,7 +436,7 @@
                         <Label Text="TRAINING" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.73,0" Spacing="0" Margin="0,3,0,0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.73,0" Spacing="0" Padding="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_StatPage"/>
                         </StackLayout.GestureRecognizers>
@@ -445,16 +444,13 @@
                         <Label Text="STATISTICS" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
 
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.92,0" Spacing="0" Margin="0,3,0,0">
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.92,0" Spacing="0" Padding="0,3,0,0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Handle_ProfilePage"/>
                         </StackLayout.GestureRecognizers>
                         <ImageButton x:Name="BtnProfile" BackgroundColor="#2A282A" Source="profile_gray.png" HeightRequest="32" WidthRequest="32" Clicked="Handle_ProfilePage" Padding="0,0,0,0"></ImageButton>
                         <Label Text="PROFILE" TextColor="{DynamicResource AshGrey}" FontSize="8" FontFamily="M" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-
-                    
-                    
                 </AbsoluteLayout>
             </StackLayout>
 

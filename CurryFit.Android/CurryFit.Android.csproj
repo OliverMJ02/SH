@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +60,9 @@
     </PackageReference>
     <PackageReference Include="Microcharts.Forms">
       <Version>1.0.0-preview1</Version>
+    </PackageReference>
+    <PackageReference Include="org.rgot.RadialGauge">
+      <Version>1.0.4</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
       <Version>2.88.3</Version>
@@ -333,6 +337,7 @@
     <AndroidResource Include="Resources\drawable\gray_slider.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\pick_gray.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

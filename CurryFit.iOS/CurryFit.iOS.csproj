@@ -131,6 +131,9 @@
     <PackageReference Include="Microcharts.Forms">
       <Version>1.0.0-preview1</Version>
     </PackageReference>
+    <PackageReference Include="org.rgot.RadialGauge">
+      <Version>1.0.4</Version>
+    </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
       <Version>2.88.3</Version>
     </PackageReference>
