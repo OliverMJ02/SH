@@ -20,7 +20,10 @@ namespace CurryFit
         {
             InitializeComponent();
         }
-
+        private async void Handle_NewMainPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewMainPage());
+        }
         private async void Handle_WorkoutPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new WorkoutPage());
@@ -34,6 +37,11 @@ namespace CurryFit
         private async void Handle_FoodPage(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FoodPage());
+        }
+
+        private async void Handle_WorkoutView(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WorkoutView());
         }
 
         public async Task<List<Exercise>> GetAllExercises()
@@ -84,5 +92,8 @@ namespace CurryFit
                 }
             
         }
+
+
+
     }
 }

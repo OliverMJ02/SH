@@ -16,6 +16,8 @@ namespace CurryFit.model.blocks
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        public bool IsNormalSet { get; set; }
+
         private bool normalSetBlockVisibility;
         public bool NormalSetBlockVisibility
         {
@@ -81,6 +83,45 @@ namespace CurryFit.model.blocks
 
         }
 
+        private string exerciseTitle;  // The title of the current exercise chosen
+
+        public string ExerciseTitle
+        {
+            get { return exerciseTitle; }
+            set
+            {
+                exerciseTitle = value;
+                try
+                {
+                    if (exerciseTitle.Equals(""))
+                    {
+                        isSearching = false;
+                        IsSearching = false;
+                    }
+                    else
+                    {
+                        isSearching = true;
+                        IsSearching = true;
+                    }
+                }
+                catch { }
+                OnPropertyChanged(nameof(ExerciseTitle));
+            }
+        }
+
+        private bool isSearching;   // Use to determine if user is searching for execrise
+
+        public bool IsSearching
+        {
+            get { return isSearching; }
+            set
+            {
+
+                isSearching = value;
+                OnPropertyChanged(nameof(IsSearching));
+            }
+        }
+
         // Active data for timer, will change when timer is active
         public int Hours { get; set; } 
         public int Minutes { get; set; }
@@ -91,13 +132,14 @@ namespace CurryFit.model.blocks
         public int MinutesSet { get; set; }
         public int SecondsSet { get; set; }
 
+        public bool TimerOn { get; set; }
+
         private string timerDisplay;  // What the Resting timer will display
         public string TimerDisplay
         {
             get { return timerDisplay; }
             set
             {
-
                 timerDisplay = value;
                 OnPropertyChanged(nameof(TimerDisplay));
             }
@@ -113,9 +155,17 @@ namespace CurryFit.model.blocks
 
         public ICommand HandleRestingTimerCmd { get; private set; }
 
-        bool TimerOn = false;
+        public ICommand HandleMinChangeCmd { get; private set; }
+
+        public ICommand HandleSecChangeCmd { get; private set; }
+
+        public ICommand StopSearchCmd { get; private set; }
+        
+
+
         public NormalSetBlock()
         {
+            IsNormalSet = this.IsNormalSet;
             IsNotFinished = this.IsNotFinished;
             SaveOrFinish = this.SaveOrFinish;
             Order = this.Order;
@@ -129,6 +179,33 @@ namespace CurryFit.model.blocks
             HoursSet = this.HoursSet;
             MinutesSet = this.MinutesSet;
             SecondsSet = this.SecondsSet;
+            TimerOn = false;
+            TimerDisplay = this.TimerDisplay;
+
+            StopSearchCmd = new Command(() => { isSearching = false; IsSearching = false; });
+
+            HandleMinChangeCmd = new Command<(int, int, IList<int>)>(tuple =>
+            {
+                var (selectedWheelIndex, indexOfItemChangedInSelectedWheel, selectedItemsIndexes) = tuple;
+                Minutes = indexOfItemChangedInSelectedWheel;
+                MinutesSet = indexOfItemChangedInSelectedWheel;
+                TimerOn = false;
+                Width = 0;
+                XMargin = 40;
+                App.Database.UpdateNormalBlockWithChildren(this);
+            });
+
+            HandleSecChangeCmd = new Command<(int, int, IList<int>)>(tuple =>
+            {
+                var (selectedWheelIndex, indexOfItemChangedInSelectedWheel, selectedItemsIndexes) = tuple;
+                Seconds= indexOfItemChangedInSelectedWheel;
+                SecondsSet = indexOfItemChangedInSelectedWheel;
+                TimerOn = false;
+                Width = 0;
+                XMargin = 40;
+                App.Database.UpdateNormalBlockWithChildren(this);
+            });
+
             UpdateBlockVisibilityCmd = new Command(() => { UpdateNormalSetBlockVisibility(); IsNotFinished = false; SaveOrFinish = "SAVE CHANGES"; App.Database.UpdateNormalBlockWithChildren(this);});
 
             HandleRestingTimerCmd = new Command(() => {
@@ -142,9 +219,11 @@ namespace CurryFit.model.blocks
                 model.Timer timer = new model.Timer(0, 0, 0);
                 int time = Hours * 3600 + Minutes * 60 + Seconds;
                 int c = 0;
+                TimerOn = App.Database.GetNormalBlockWithChildren(this.Id).TimerOn;
                 if (TimerOn)
                 {
                     TimerOn = false;
+                    App.Database.UpdateNormalBlockWithChildren(this);
                 }
                 else
                 {
@@ -153,14 +232,16 @@ namespace CurryFit.model.blocks
                     timer.Minutes = Minutes;
                     timer.Seconds = Seconds;
                     TimerOn = true;
+                    App.Database.UpdateNormalBlockWithChildren(this);
                     Device.StartTimer(TimeSpan.FromMilliseconds(50), () =>
                     {
                         try
                         {
                             Width = Width + barWidth / time/20;
                             XMargin = XMargin - barWidth / time/20;
-                            if(c%20 == 0)
+                            if (c%20 == 0)
                             {
+                                TimerOn = App.Database.GetNormalBlockWithChildren(this.Id).TimerOn;
                                 timer.Update();
                                 timer.UpdateDisplay();
                                 TimerDisplay = timer.Display;
@@ -176,7 +257,7 @@ namespace CurryFit.model.blocks
 
                         if (time - c/20 < 1)
                         {
-                            TimerOn = false;
+                            this.TimerOn = false;
                             Width = 0;
                             XMargin = 40;
                             Hours = HoursSet;
@@ -191,8 +272,9 @@ namespace CurryFit.model.blocks
                             return false;
                         }
 
-
-                        return TimerOn;
+                        try { return App.Database.GetNormalBlockWithChildren(this.Id).TimerOn; }
+                        catch { return false; }
+                        
                     });
                 }
             });
@@ -200,6 +282,7 @@ namespace CurryFit.model.blocks
 
         public NormalSetBlock(int Counter)
         {
+            IsNormalSet = true;
             IsNotFinished = true;
             SaveOrFinish = "FINISH EXERCISE";
             Order = Counter;
@@ -214,6 +297,7 @@ namespace CurryFit.model.blocks
             HoursSet = 0;
             MinutesSet = 0;
             SecondsSet = 30;
+            TimerOn = false;
 
 
             //Used to determine TimerDisplay

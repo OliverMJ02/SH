@@ -72,7 +72,7 @@ namespace CurryFit.view
                 //Add the product to the database 
                 try
                 {
-                    await firebaseClient.Child("FoodProducts").Child(foodProduct.Name).PutAsync(foodProduct);
+                    await firebaseClient.Child("FoodProducts").Child(foodProduct.gtin).PutAsync(foodProduct);
                     await DisplayAlert("Success", "Product added", "OK");
                 }
                 catch (Exception ex)

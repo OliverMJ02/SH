@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CurryFit.model
 {
-    public class LogDay
+    public class LogDay : ObservableObject 
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -17,8 +17,11 @@ namespace CurryFit.model
 
         public int Counter { get; set; }  //Counter for order
 
-        //[OneToMany]
-        //public List<TextBlock> TextBlocks { get; set; }
+        [OneToMany]
+        public List<TextBlock> TextBlocks { get; set; }
+
+        [OneToMany]
+        public List<ToDoList> ToDoLists { get; set; }
 
         [OneToMany]
         public List<NormalSetBlock> NormalSetBlocks { get; set; }
@@ -39,21 +42,32 @@ namespace CurryFit.model
             List<object> blocks = new List<object>();
     
 
-            /*
+            
             foreach(TextBlock tb in this.TextBlocks)
             {
                 blocks.Add(tb);
             }
-            */
-            
-            
-                foreach (NormalSetBlock nb in d.NormalSetBlocks)
-                {
-                    blocks.Add(App.Database.GetNormalBlockWithChildren(nb.Id));
+
+            foreach (ToDoList tdl in this.ToDoLists)
+            {
+                blocks.Add(App.Database.GetToDoList(tdl.Id));
+            }
+
+
+
+            foreach (NormalSetBlock nb in d.NormalSetBlocks)
+            {
+                blocks.Add(App.Database.GetNormalBlockWithChildren(nb.Id));
                     //blocks.Add(nb);
-                }
-            
-            
+            }
+
+            foreach (DropSetBlock db in d.DropSetBlocks)
+            {
+                blocks.Add(App.Database.GetDropBlockWithChildren(db.Id));
+                //blocks.Add(nb);
+            }
+
+
             /*
             try
             {

@@ -5,6 +5,7 @@ using System.IO;
 
 [assembly: ExportFont("Nunito-SemiBold.ttf", Alias = "N")]
 [assembly: ExportFont("Montserrat-SemiBold.ttf", Alias = "M")]
+[assembly: ExportFont("Regin_small-Regular.ttf", Alias = "R")]
 
 namespace CurryFit
 {
