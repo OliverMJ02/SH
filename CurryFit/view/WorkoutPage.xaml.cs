@@ -122,10 +122,8 @@ namespace CurryFit.view
         bool Drop = false;
         bool Super = false;
         bool Endurance = false;
+     
         void Handle_ToFilterView(object sender, EventArgs e)
-
-
-        void Handle_ToFilterView(object sendr, EventArgs e)
         {
             Normal = false;
             Drop = false;
