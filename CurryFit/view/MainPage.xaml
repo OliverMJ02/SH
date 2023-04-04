@@ -17,11 +17,12 @@
         <!--Top-->
         <StackLayout Orientation="Vertical" VerticalOptions="Start">
             <StackLayout Orientation="Vertical">
-                <Button Text="new main page" FontFamily="R" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="30" Clicked="Handle_NewMainPage"></Button>
-                <Button Text="training page" FontFamily="R" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="30" Clicked="Handle_WorkoutPage"></Button>
-                <Button Text="workouts tab" FontFamily="R" HorizontalOptions="Center" BackgroundColor="DeepSkyBlue" TextColor="White" FontSize="30" Clicked="Handle_WorkoutView"></Button>
+                <Button Text="new main page" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="DeepSkyBlue" TextColor="Black" FontSize="30" Clicked="Handle_NewMainPage"></Button>
+                <Button Text="training page" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Pink" TextColor="Black" FontSize="30" Clicked="Handle_WorkoutPage"></Button>
+                <Button Text="workouts tab" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="White" TextColor="Black" FontSize="30" Clicked="Handle_WorkoutView"></Button>
+                <Button Text="food" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Pink" TextColor="Black" FontSize="Title" Clicked="Handle_FoodPage"></Button>
+                <Button Text="log in" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="DeepSkyBlue" TextColor="Black" FontSize="30" Clicked="Handle_LoginPage"></Button>
 
-                <Button Text="food" FontFamily="R" HorizontalOptions="Center" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}" FontSize="Title" Clicked="Handle_FoodPage"></Button>
             </StackLayout>
         </StackLayout>
 

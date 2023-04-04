@@ -44,6 +44,11 @@ namespace CurryFit
             await Navigation.PushAsync(new WorkoutView());
         }
 
+        private async void Handle_LoginPage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
         public async Task<List<Exercise>> GetAllExercises()
         {
 
