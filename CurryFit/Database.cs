@@ -36,7 +36,135 @@ namespace CurryFit
             _database.CreateTable<DropSetBlock>();
             _database.CreateTable<DropSet>();
 
+            _database.CreateTable<TextBlock>();
+
+            _database.CreateTable<ToDoList>();
+            _database.CreateTable<ToDoItem>();
+
+            _database.CreateTable<Settings>();
+            _database.CreateTable<model.Timer>();
+
+            
+            try {
+                
+                if (_database.Table<Settings>().ToList().Count < 1)     //Create new settings, but only do it once
+                {
+                    Settings settings = new Settings() { PresetTimers = new List<model.Timer>()};
+                    SaveSettings(settings);
+                    model.Timer t = new model.Timer() { IsPreset = false, PresetMenuVisible = true, PresetOrder = 10 };
+                    SaveTimer(t);
+                    settings.PresetTimers.Add(t);
+                    UpdateSettings(settings);
+                }
+            }
+            catch { }
+
+            
+            
         }
+
+        //Methods for settings
+        public Settings GetSettings()
+        {
+            return _database.GetWithChildren<Settings>(_database.Table<Settings>().ToList()[0].Id);
+        }
+        public int SaveSettings(Settings settings)
+        {
+            return _database.Insert(settings);
+        }
+        public void UpdateSettings(Settings settings)
+        {
+            _database.UpdateWithChildren(settings);
+        }
+
+        //Methods for Timer
+        public List<model.Timer> GetTimers()
+        {
+            return _database.Table<model.Timer>().ToList();
+        }
+
+        public model.Timer GetTimer(object id)
+        {
+            return _database.Get<model.Timer>(id);
+        }
+
+        public int SaveTimer(model.Timer timer)
+        {
+            return _database.Insert(timer);
+        }
+        public void UpdateTimer(model.Timer timer)
+        {
+            _database.UpdateWithChildren(timer);
+        }
+
+        public int DeleteTimer(object id)
+        {
+            return _database.Delete<model.Timer>(id);
+        }
+
+        //Methods for TextBlock
+
+        public TextBlock GetTextBlock(object id)
+        {
+            return _database.Get<TextBlock>(id);
+        }
+
+        public int SaveTextBlock(TextBlock textBlock)
+        {
+            return _database.Insert(textBlock);
+        }
+        public void UpdateTextBlock(TextBlock textBlock)
+        {
+            _database.UpdateWithChildren(textBlock);
+        }
+
+        public int DeleteTextBlock(object id)
+        {
+            return _database.Delete<TextBlock>(id);
+        }
+
+        //Methods for ToDoList
+
+        public ToDoList GetToDoList(object id)
+        {
+            return _database.GetWithChildren<ToDoList>(id);
+        }
+
+        public int SaveToDoList(ToDoList toDoList)
+        {
+            return _database.Insert(toDoList);
+        }
+        public void UpdateToDoList(ToDoList toDoList)
+        {
+            _database.UpdateWithChildren(toDoList);
+        }
+
+        public int DeleteToDoList(object id)
+        {
+            return _database.Delete<ToDoList>(id);
+        }
+
+        //Methods for ToDoItem
+
+        public ToDoItem GetToDoItem(object id)
+        {
+            return _database.Get<ToDoItem>(id);
+        }
+
+        public int SaveToDoItem(ToDoItem toDoItem)
+        {
+            return _database.Insert(toDoItem);
+        }
+        public void UpdateToDoItem(ToDoItem toDoItem)
+        {
+            _database.UpdateWithChildren(toDoItem);
+        }
+
+        public int DeleteToDoItem(object id)
+        {
+            return _database.Delete<ToDoItem>(id);
+        }
+
 
         //Methods for TrainingPrograms 
         public List<TrainingProgram> GetTrainingPrograms()
