@@ -5,14 +5,32 @@
     <Application.Resources>
         <!--Resource Definitions-->
         <ResourceDictionary>
+            <!-- Färger -->
             <Color x:Key="SPGrey">#726E72</Color>
             <Color x:Key="BCGrey">#2A282A</Color>
             <Color x:Key="AshGrey">#A6A0A6</Color>
             <Color x:Key="RiceWhite">#FFFFFF</Color>
             <Color x:Key="Black">#1F1E1F</Color>
-            
+            <Color x:Key="ThemeYellow">#FFE000</Color>
+            <Color x:Key="GameYellow">#E4DD18</Color>
+            <Color x:Key="ThemeOrange">#FF4816</Color>
+            <Color x:Key="GradientGary1">#504E50</Color>
+            <Color x:Key="GradientGary2">#2D2B2D</Color>
+            <Color x:Key="GradientGary3">#2A282A</Color>
+            <Color x:Key="WaterBlue"> #2C91FF </Color>
+            <Color x:Key="Red">#FF2656</Color>
+            <Color x:Key="Green">#26C152</Color>
+            <Color x:Key="CarbBlue">#2C91FF</Color>
+            <Color x:Key="ProteinRed">#FF2656</Color>
+            <Color x:Key="FatYellow">#E4DD18</Color>
+            <Color x:Key="TargetMuscelGroup">#993D51</Color>
+            <Color x:Key="EquipmentColor">#485CA3</Color>
 
-                <!--Global Styles-->
+
+
+
+
+            <!--Global Styles-->
             <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource BCGrey}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource AshGrey}"/>

@@ -32,6 +32,7 @@ namespace CurryFit.view
 
         private async void Handle_ManualPage(object sender, EventArgs e)
         {
+            //Should be changed
             await Navigation.PushAsync(new ManualAddPage("2"));
         }
         
