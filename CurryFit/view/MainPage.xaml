@@ -6,7 +6,7 @@
     <!--Nav Bar-->
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Label Text="regin" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
+            <Label Text="strength hub" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" 
                    FontSize="25" FontFamily="R"  TextColor="{DynamicResource AshGrey}">
             </Label>
         </StackLayout>
