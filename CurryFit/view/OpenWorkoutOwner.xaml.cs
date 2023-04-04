@@ -49,7 +49,7 @@ namespace CurryFit.view
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
 
-            
+
 
             RepToFailureToggle.Toggled += (sender, args) =>
             {
@@ -67,10 +67,131 @@ namespace CurryFit.view
 
             VarRepToggle.Toggled += (sender, args) =>
             {
-                
+
                 if (args.Value == true)
                 {
-                    VarRepBool = true;
+                    //        // Clear any existing children in the parent layout maybe 
+                    //        ParentSetInstance.Children.Clear();
+
+                    //        // Get the new slider value
+                    //        int sliderValue = (int)Math.Round(Slider_NrSets.Value);
+
+
+                    //        if (VarRepToggle.IsToggled == true)
+                    //        {
+                    //            // Create and add new stack layouts based on the slider value
+                    //            for (int i = 0; i < sliderValue; i++)
+                    //            {
+                    //                var stackLayout = new StackLayout
+                    //                {
+
+                    //                    // Add your desired child elements here
+                    //                    Children =
+                    //        {
+                    //    new BoxView{
+                    //        BackgroundColor = (Color)App.Current.Resources["SPGrey"],
+                    //        HorizontalOptions = LayoutOptions.FillAndExpand,
+                    //        HeightRequest = 1,
+                    //        Margin = new Thickness(15, 15, 15, 0)
+                    //        },
+                    //    new StackLayout
+                    //    {
+                    //        Spacing = 0,
+                    //        Orientation = StackOrientation.Horizontal,
+                    //        Padding = new Thickness(15, 20, 0, 10),
+                    //        Margin = new Thickness(0, 0, 0, 0),
+                    //        Children =
+                    //        {
+                    //        new Label{
+                    //        Text = "SET ",
+                    //        FontSize = 14,
+                    //        TextTransform = TextTransform.Uppercase,
+                    //        FontFamily = "M",
+                    //        TextColor = (Color)App.Current.Resources["RiceWhite"],
+                    //        Margin = new Thickness(0, 0, 0, 0),
+                    //        VerticalOptions = LayoutOptions.Center
+                    //        },
+                    //    new Label{
+                    //        Text = "2",
+                    //        FontSize = 14,
+                    //        TextTransform = TextTransform.Uppercase,
+                    //        FontFamily = "M",
+                    //        TextColor = (Color)App.Current.Resources["RiceWhite"],
+                    //        Margin = new Thickness(0, 0, 0, 0),
+                    //        VerticalOptions = LayoutOptions.Center}
+                    //        }
+                    //    }
+
+
+                    //    },
+                    //                };
+                    //                new StackLayout
+                    //                {
+                    //                    IsVisible = true,
+                    //                    Spacing = 0,
+                    //                    Orientation = StackOrientation.Vertical,
+                    //                    Padding = new Thickness(15, 10, 15, 10),
+                    //                    Margin = new Thickness(0, 0, 0, 0),
+                    //                    Children =
+                    //{
+                    //    new StackLayout
+                    //    {
+                    //        Spacing = 0,
+                    //        Orientation = StackOrientation.Horizontal,
+                    //        Padding = new Thickness(0, 5, 0, 0),
+                    //        Margin = new Thickness(0, -6, 0, 0),
+                    //        HorizontalOptions = LayoutOptions.FillAndExpand,
+                    //        Children =
+                    //        {
+                    //            new Label
+                    //            {
+                    //                Text = "repetitions",
+                    //                TextTransform = TextTransform.Uppercase,
+                    //                FontSize = 14,
+                    //                FontFamily = "M",
+                    //                TextColor = (Color)App.Current.Resources["AshGrey"],
+                    //                HorizontalOptions = LayoutOptions.StartAndExpand,
+                    //                Margin = new Thickness(0, 0, 0, 0),
+                    //                Padding = new Thickness(0, 0, 0, 0)
+                    //            },
+                    //            new Label
+                    //            {
+                    //                Text = "NO REPS",
+                    //                FontSize = 14,
+                    //                FontFamily = "M",
+                    //                TextColor = (Color)App.Current.Resources["AshGrey"],
+                    //                HorizontalOptions = LayoutOptions.End,
+                    //                Margin = new Thickness(0, 0, 0, 0),
+                    //                Padding = new Thickness(0, 0, 0, 0)
+                    //            }
+                    //        }
+                    //    },
+                    //    new StackLayout
+                    //    {
+                    //        Spacing = 0,
+                    //        HorizontalOptions = LayoutOptions.FillAndExpand,
+                    //        Padding = new Thickness(0, 20, 0, 0),
+                    //        Margin = new Thickness(0, -6, 0, 0),
+                    //        Children =
+                    //        {
+                    //            new Slider
+                    //            {
+                    //                Maximum = 9,
+                    //                Minimum = 0,
+                    //                Scale = 2,
+                    //                MinimumTrackColor = Color.White,
+                    //                MaximumTrackColor = (Color)App.Current.Resources["AshGrey"],
+                    //                ThumbColor = (Color)App.Current.Resources["AshGrey"],
+                    //                Margin = new Thickness(64, 0, 64, 0)
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    //                };
+
+                    //                ParentSetInstance.Children.Add(stackLayout);
+                    //            }
+                    //        }
                 }
 
                 if (args.Value == false)
@@ -78,7 +199,7 @@ namespace CurryFit.view
                     VarRepBool = false;
                 }
             };
-           
+
 
 
 
@@ -100,70 +221,282 @@ namespace CurryFit.view
         {
             await Navigation.PushAsync(new NewMainPage());
         }
-  
 
-        void Handle_SliderValNrSets(object sender, EventArgs e)
+
+        //    void Handle_SliderValNrSets(object sender, EventArgs e)
+        //    {
+
+        //        int i;
+        //        int value = (int)Math.Round(Slider_NrSets.Value);
+        //        Val_NrSets.Text = value.ToString();
+
+        //        if (VarRepBool == true) {
+
+
+
+
+        //            for (i = ParentSetInstance.Children.Count - 1; i >= 0; i--)
+        //            {
+        //                ParentSetInstance.Children.RemoveAt(i);
+        //            }
+
+        //            // Add new copies
+        //            for (i = 0; i < value; i++)
+        //            {
+        //                var stackLayout = new StackLayout
+        //                {
+
+
+
+
+
+
+        //            };
+        //            }
+        //            SetInstance2.IsVisible = true;
+        //            TitleSetOne.IsVisible = true;
+        //        }
+
+
+
+
+
+        //        else
+        //        {
+
+        //            for (i = ParentSetInstance.Children.Count -1; i >=0; i--)
+        //            {
+
+        //                SetInstance2.IsVisible = false;
+        //                TitleSetOne.IsVisible = false;
+        //            }
+        //        }
+        //}
+
+
+
+
+
+        private void Handle_SliderValNrSets(object sender, ValueChangedEventArgs e)
         {
+            // Clear any existing children in the parent layout maybe 
+            ParentSetInstance.Children.Clear();
 
-            int i;
-            int value = (int)Math.Round(Slider_NrSets.Value);
-            Val_NrSets.Text = value.ToString();
-
-            if (VarRepBool == true) {
-
+            // Get the new slider value
+            int sliderValue = (int)e.NewValue;
 
 
-
-                for (i = ParentSetInstance.Children.Count - 1; i >= 0; i--)
-                {
-                    ParentSetInstance.Children.RemoveAt(i);
-                }
-
-                // Add new copies
-                for ( i = 0; i < value; i++)
-                {
-                    ParentSetInstance.Children.Add(SetInstance2);
-                    SetInstance2.IsVisible = true;
-                    TitleSetOne.IsVisible = true;
-
-                }
-            }
-
-            else
+            if (VarRepToggle.IsToggled == true)
             {
-                
-                for (i = ParentSetInstance.Children.Count -1; i >=0; i--)
+                // Create and add new stack layouts based on the slider value
+               // Create and add new stack layouts based on the slider value
+            for (int i = 0; i < sliderValue; i++)
+            {
+                //SetInstance2
+                var stackLayout = new StackLayout
                 {
-                    ParentSetInstance.Children.RemoveAt(i);
-                    SetInstance2.IsVisible = false;
-                    TitleSetOne.IsVisible = false;
-                }
+                    Children =
+                    {
+                        new BoxView{
+                            BackgroundColor = (Color)App.Current.Resources["SPGrey"],
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            HeightRequest = 1,
+                            Margin = new Thickness(15, 15, 15, 0)
+                            },
+                        new StackLayout
+                        {
+                            Spacing = 0,
+                            Orientation = StackOrientation.Horizontal,
+                            Padding = new Thickness(15, 20, 0, 10),
+                            Margin = new Thickness(0, 0, 0, 0),
+                            Children =
+                            {
+                                new Label{
+                                Text = "SET ",
+                                FontSize = 14,
+                                TextTransform = TextTransform.Uppercase,
+                                FontFamily = "M",
+                                TextColor = (Color)App.Current.Resources["RiceWhite"],
+                                Margin = new Thickness(0, 0, 0, 0),
+                                VerticalOptions = LayoutOptions.Center
+                                },
+                                new Label{
+                                    Text = "2",
+                                    FontSize = 14,
+                                    TextTransform = TextTransform.Uppercase,
+                                    FontFamily = "M",
+                                    TextColor = (Color)App.Current.Resources["RiceWhite"],
+                                    Margin = new Thickness(0, 0, 0, 0),
+                                    VerticalOptions = LayoutOptions.Center}
+                                    }
+                        },
+                        //Repetitions
+                        new StackLayout
+                        {
+                            IsVisible = true,
+                            Spacing = 0,
+                            Orientation = StackOrientation.Vertical,
+                            Padding = new Thickness(15, 10, 15, 10),
+                            Margin = new Thickness(0, 0, 0, 0),
+                            Children =
+                            {
+                                new StackLayout
+                                {
+                                Spacing = 0,
+                                Orientation = StackOrientation.Horizontal,
+                                Padding = new Thickness(0, 5, 0, 0),
+                                Margin = new Thickness(0, -6, 0, 0),
+                                HorizontalOptions = LayoutOptions.FillAndExpand,
+                                Children =
+                                {
+                                new Label
+                                {
+                                    Text = "repetitions",
+                                    TextTransform = TextTransform.Uppercase,
+                                    FontSize = 14,
+                                    FontFamily = "M",
+                                    TextColor = (Color)App.Current.Resources["AshGrey"],
+                                    HorizontalOptions = LayoutOptions.StartAndExpand,
+                                    Margin = new Thickness(0, 0, 0, 0),
+                                    Padding = new Thickness(0, 0, 0, 0)
+                                },
+                                new Label
+                                {
+                                    Text = "NO REPS",
+                                    FontSize = 14,
+                                    FontFamily = "M",
+                                    TextColor = (Color)App.Current.Resources["AshGrey"],
+                                    HorizontalOptions = LayoutOptions.End,
+                                    Margin = new Thickness(0, 0, 0, 0),
+                                    Padding = new Thickness(0, 0, 0, 0)
+                                }}},
+                                new StackLayout
+                                {
+                                    Spacing = 0,
+                                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                                    Padding = new Thickness(0, 20, 0, 0),
+                                    Margin = new Thickness(0, -6, 0, 0),
+                                    Children =
+                                    {
+                                        new Slider
+                                        {
+                                            Maximum = 9,
+                                            Minimum = 0,
+                                            Scale = 2,
+                                            MinimumTrackColor = Color.White,
+                                            MaximumTrackColor = (Color)App.Current.Resources["AshGrey"],
+                                            ThumbColor = (Color)App.Current.Resources["AshGrey"],
+                                            Margin = new Thickness(64, 0, 64, 0)
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        //Rep to failure
+                        new StackLayout
+                        {
+                        Spacing = 0,
+                        Orientation = StackOrientation.Vertical,
+                        Padding = new Thickness(15, 10, 15, 10),
+                        Margin = new Thickness(0),
+                        Children = {
+                                new StackLayout
+                                {
+                                    Spacing = 0,
+                                    Orientation = StackOrientation.Horizontal,
+                                    Padding = new Thickness(0, 5, 0, 0),
+                                    Margin = new Thickness(0, -6, 0, 0),
+                                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                                    Children = {
+                                        new Label
+                                        {
+                                            Text = "rep to failure",
+                                            TextTransform = TextTransform.Uppercase,
+                                            FontSize = 14,
+                                            FontFamily = "M",
+                                            TextColor = (Color)Application.Current.Resources["AshGrey"],
+                                            HorizontalOptions = LayoutOptions.StartAndExpand,
+                                            Margin = new Thickness(0)
+                                        },
+                                        new Switch
+                                        {
+                                            ThumbColor = (Color)Application.Current.Resources["AshGrey"],
+                                            OnColor = (Color)Application.Current.Resources["RiceWhite"],
+                                            Scale = 1.5,
+                                            Margin = new Thickness(0, -5, 5, 0)
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        //Rest timer
+                        new StackLayout
+                        {
+                            Spacing = 0,
+                            Orientation = StackOrientation.Vertical,
+                            Padding = new Thickness(15, 10, 15, 10),
+                            Margin = new Thickness(0, 0, 0, 0),
+                            Children = {
+                                new StackLayout
+                                {
+                                    Spacing = 0,
+                                    Orientation = StackOrientation.Horizontal,
+                                    Padding = new Thickness(0, 5, 0, 0),
+                                    Margin = new Thickness(0, -6, 0, 0),
+                                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                                    Children = {
+                                        new Label {
+                                        Text = "rest time",
+                                        TextTransform = TextTransform.Uppercase,
+                                        FontSize = 14,
+                                        FontFamily = "M",
+                                        TextColor = (Color)App.Current.Resources["AshGrey"],
+                                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                                        Margin = new Thickness(0, 0, 0, 0),
+                                        Padding = new Thickness(0, 0, 0, 0)
+                                        },
+                                        new Label{
+                                        Text = "NO TIME",
+                                        FontSize = 14,
+                                        FontFamily = "M",
+                                        TextColor = (Color)App.Current.Resources["AshGrey"],
+                                        HorizontalOptions = LayoutOptions.End,
+                                        Margin = new Thickness(0, 0, 0, 0),
+                                        Padding = new Thickness(0, 0, 0, 0),
+                                        }
+                                    }
+                                },
+                                new StackLayout
+                                {
+                                    Spacing = 0,
+                                    HorizontalOptions = LayoutOptions.FillAndExpand,
+                                    Padding = new Thickness(0, 20, 0, 0),
+                                    Margin = new Thickness(0, -6, 0, 0),
+                                    Children = {
+                                        new Slider
+                                        {
+                                            Maximum = 14,
+                                            Minimum = 0,
+                                            Value = 0,
+                                            Scale = 2,
+                                            MinimumTrackColor = Color.White,
+                                            MaximumTrackColor = (Color)App.Current.Resources["AshGrey"],
+                                            ThumbColor = (Color)App.Current.Resources["AshGrey"],
+                                            Margin = new Thickness(64, 0, 64, 0)
+                                        }
+                                    }
+                                }
+                            }
 
+                        }
+            }
+                };
 
+                    TitleSetOne.IsVisible = true;
+                    ParentSetInstance.Children.Add(stackLayout);
+            }
             }
 
-
-
-            //if (value > 1) {
-            //    for (int i = 0; i < value; i++)
-            //    {
-            //        ParentSetInstance.Children.Add(new StackLayout
-            //        {
-            //            // Customize the properties of each StackLayout as desired
-            //            BackgroundColor = Color.LightGray,
-            //            HeightRequest = 50,
-            //            Margin = new Thickness(10, 5, 10, 5)
-            //        });
-            //    }
-
-
-            //    // Set the content of the page to be the stack layout
-            //    //ParentSetInstance = SetInstance;
-
-            //    SetInstance.Children.Clear();
-
-            //}
-            // Add some views to the stack layout
         }
 
 
