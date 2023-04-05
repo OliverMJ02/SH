@@ -274,7 +274,7 @@
                                                     </StackLayout>
 
                                                     <!--Rest time-->
-                                                    <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
+                                                    <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,15,25" Margin="0,0,0,0">
                                                         <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
                                                             <Label Text="rest time" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
                                                             <Label x:Name="Val_Rest" Text="NO TIME" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>

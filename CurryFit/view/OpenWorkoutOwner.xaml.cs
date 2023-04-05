@@ -88,7 +88,7 @@ namespace CurryFit.view
                             BackgroundColor = (Color)App.Current.Resources["SPGrey"],
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             HeightRequest = 1,
-                            Margin = new Thickness(15, 15, 15, 0)
+                            Margin = new Thickness(15, 0, 15, 0)
                             },
                         new StackLayout
                         {

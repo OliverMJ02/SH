@@ -10,16 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace CurryFit.view
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class CreateAccountPage : ContentPage
     {
-        public LoginPage()
+        public CreateAccountPage()
         {
             InitializeComponent();
         }
 
-        private async void Handle_ToCreateAccount(object sender, EventArgs e)
+        private async void Handle_ToLogin(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateAccountPage());
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }
