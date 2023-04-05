@@ -28,7 +28,7 @@
                     <!--QUICK DETAILS-->
                     <StackLayout Spacing="0" Orientation="Vertical" Margin="0,-5,0,0">
 
-                        <Grid  BackgroundColor="{DynamicResource BCGrey}" Padding="0,10,0,0" RowSpacing="0" ColumnSpacing="0" HeightRequest="95">
+                        <Grid  BackgroundColor="{DynamicResource BCGrey}" Padding="10,10,10,0" RowSpacing="0" ColumnSpacing="0" HeightRequest="105">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="15"/>
                                 <RowDefinition Height="15"/>
@@ -45,14 +45,14 @@
                                 <Label TextColor="{DynamicResource AshGrey}" Text="WORKOUT DURATION" FontFamily="M" FontSize="10" HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
 
-                            <StackLayout Grid.Row="1" Grid.Column="0"  Spacing="0" HeightRequest="150" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" >
-                                <Label TextColor="{DynamicResource AshGrey}" Text="Hypertrophy" FontFamily="N" FontSize="14" HorizontalOptions="CenterAndExpand"/>
+                            <StackLayout Grid.Row="1" Grid.Column="0"  Spacing="0" HeightRequest="150" HorizontalOptions="CenterAndExpand" Padding="0,0,0,0" >
+                                <Label TextColor="{DynamicResource AshGrey}" Text="Hypertrophy" LineBreakMode="WordWrap" FontFamily="N" FontSize="14" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1" Grid.Column="1"  Spacing="0" HeightRequest="150" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" >
                                 <Label TextColor="{DynamicResource AshGrey}" Text="60-90 min" FontFamily="N" FontSize="14" HorizontalOptions="CenterAndExpand"/>
                             </StackLayout>
 
-                            <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="0" HeightRequest="60" HorizontalOptions="Fill" VerticalOptions="Center"  Padding="15,10,15,0" >
+                            <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="0" HeightRequest="60" HorizontalOptions="Fill" VerticalOptions="Center"  Padding="5,20,5,0" >
                                 <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" Grid.Column="0" >
                                     <yummi:PancakeView.Border>
                                         <yummi:Border Thickness="1">
@@ -72,7 +72,7 @@
 
 
 
-                    <ScrollView Margin="0,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="580" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
+                    <ScrollView Margin="0,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="570" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
 
                         <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Stretch" Margin="10,0,10,0" Padding="0,0,0,10">
                             <!--x:Name="WorkoutCollection"-->
