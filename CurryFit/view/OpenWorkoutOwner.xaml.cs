@@ -81,7 +81,8 @@ namespace CurryFit.view
                         //SetInstance2
                         var stackLayout = new StackLayout
                             {
-                                Children =
+                               Padding= new Thickness(0,0,0,15),
+                            Children =
                     {
                         new BoxView{
                             BackgroundColor = (Color)App.Current.Resources["SPGrey"],

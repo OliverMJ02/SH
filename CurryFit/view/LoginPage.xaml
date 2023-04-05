@@ -8,12 +8,12 @@
              NavigationPage.HasNavigationBar="False">
    
     <ContentPage.Content>
-        <StackLayout>
-            <AbsoluteLayout>
-                <StackLayout AbsoluteLayout.LayoutBounds="1,1" Spacing="0" >
+        <StackLayout >
+            <AbsoluteLayout  >
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Spacing="0" VerticalOptions="StartAndExpand">
                     <Image Source="login_beginwithregin.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,-3,0,0"/>
                 </StackLayout>
-                <StackLayout AbsoluteLayout.LayoutBounds="1,1" Spacing="0" VerticalOptions="End" Margin="0,330,0,0">
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Spacing="0" VerticalOptions="EndAndExpand" Margin="0,0,0,20">
                     <!--Grid för sociala medier-->
                     <Grid Margin="10,0,10,0" HorizontalOptions="Center" RowSpacing="0">
                         <Grid.RowDefinitions>

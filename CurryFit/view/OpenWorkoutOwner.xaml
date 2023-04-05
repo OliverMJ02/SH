@@ -288,7 +288,7 @@
 
                                                 
                     <!--kopior av elementen ifall repetitionerna skiljer sig mellan seten-->
-                                                <StackLayout x:Name="ParentSetInstance" >
+                                                <StackLayout x:Name="ParentSetInstance" Padding="0,0,0,0">
 
 
                                                     <StackLayout x:Name="SetInstance2" Spacing="0" IsVisible="False">
