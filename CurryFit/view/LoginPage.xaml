@@ -61,7 +61,7 @@
                         </StackLayout>
                         <!--OR-->
                         <StackLayout Grid.ColumnSpan="2" Grid.Row="3" Spacing="0" HorizontalOptions="Center" Padding="0,0,0,0">
-                            <Label Text="OR" FontSize="16" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
+                            <Label Text="Kolla om create account funkar nu. Om det ser bra ut ändrar jag denna till samma" FontSize="16" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
                         </StackLayout>
                         <StackLayout Grid.ColumnSpan="2" Grid.Row="4" Spacing="0" HorizontalOptions="Center" >
                             <BoxView BackgroundColor="Transparent" x:Name="boxtwo" HorizontalOptions="CenterAndExpand"/>
