@@ -49,9 +49,46 @@ namespace CurryFit.view
             //MacroCharts
             populateCarbChart();
             
-
+            //Meals - Frames for each meal + waterframe
             // WaterFrame
             WaterFrame.WidthRequest = xamarinWidth;
+
+            //BreakfastFrame
+            BreakfastFrame.WidthRequest = xamarinWidth;
+            double CarbValBreakfast = 42; //Exmaple value for Carbs in g
+            double ProteinValBreakfast = 30; //Exmaple value for Protein in g
+            double FatValBreakfast = 12; //Exmaple value for Fat in g
+            double TotalConsumptionBreakfast = CarbValBreakfast + ProteinValBreakfast + FatValBreakfast; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Breakfast only)
+            double CarbRatioBreakfast = CarbValBreakfast / TotalConsumptionBreakfast;
+            double ProteinRatioBreakfast = ProteinValBreakfast / TotalConsumptionBreakfast;
+            double FatRatioBreakfast = FatValBreakfast / TotalConsumptionBreakfast;
+            BreakfastCarb.WidthRequest = CarbRatioBreakfast * 100;
+            BreakfastProtein.WidthRequest = ProteinRatioBreakfast * 100;
+            BreakfastFat.WidthRequest = FatRatioBreakfast * 100;
+
+            //LunchFrame
+            double CarbValLunch = 58; //Exmaple value for Carbs in g
+            double ProteinValLunch = 35; //Exmaple value for Protein in g
+            double FatValLunch = 24; //Exmaple value for Fat in g
+            double TotalConsumptionLunch = CarbValLunch + ProteinValLunch + FatValLunch; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Lunch only)
+            double CarbRatioLunch = CarbValLunch / TotalConsumptionLunch;
+            double ProteinRatioLunch = ProteinValLunch / TotalConsumptionLunch;
+            double FatRatioLunch = FatValLunch / TotalConsumptionLunch;
+            LunchCarb.WidthRequest = CarbRatioLunch * 100;
+            LunchProtein.WidthRequest = ProteinRatioLunch * 100;
+            LunchFat.WidthRequest = FatRatioLunch * 100;
+
+            //DinnerFrame
+            double CarbValDinner = 66; //Exmaple value for Carbs in g
+            double ProteinValDinner = 43; //Exmaple value for Protein in g
+            double FatValDinner = 21; //Exmaple value for Fat in g
+            double TotalConsumptionDinner = CarbValDinner + ProteinValDinner + FatValDinner; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Dinner only)
+            double CarbRatioDinner = CarbValDinner / TotalConsumptionDinner;
+            double ProteinRatioDinner = ProteinValDinner / TotalConsumptionDinner;
+            double FatRatioDinner = FatValDinner / TotalConsumptionDinner;
+            DinnerCarb.WidthRequest = CarbRatioDinner * 100;
+            DinnerProtein.WidthRequest = ProteinRatioDinner * 100;
+            DinnerFat.WidthRequest = FatRatioDinner * 100;
         }
 
         // CarbChart
@@ -97,7 +134,6 @@ namespace CurryFit.view
             ProteinChart.Chart = new DonutChart { Entries = entries2, IsAnimated = true, BackgroundColor = SKColor.Parse("#00FFFFFF"), HoleRadius = 0.8f, };
             FatChart.Chart = new DonutChart { Entries = entries3, IsAnimated = true, BackgroundColor = SKColor.Parse("#00FFFFFF"), HoleRadius = 0.8f, };
         }
-
 
         private async void Handle_ScannerPage(object sender, EventArgs e)
         {
@@ -179,6 +215,60 @@ namespace CurryFit.view
                     break;
             }
         }
+
+        // Meals expansions
+        private void Handle_WaterExpansion(object sender, EventArgs e)
+        {
+
+        }
+        private void Handle_BreakfastExpansion(object sender, EventArgs e)
+        {
+            if (BreakfastExpansion.IsVisible)
+            {
+                BreakfastExpansion.IsVisible = false;
+                BreakfastExpansionButton.Source = "pointer_down_gray.png";
+            }
+            else
+            {
+                BreakfastExpansion.IsVisible = true;
+                BreakfastExpansionButton.Source = "pointer_up_gray.png";
+            }
+        }
+
+        private void Handle_LunchExpansion(object sender, EventArgs e)
+        {
+            if (LunchExpansion.IsVisible)
+            {
+                LunchExpansion.IsVisible = false;
+                LunchExpansionButton.Source = "pointer_down_gray.png";
+            }
+            else
+            {
+                LunchExpansion.IsVisible= true;
+                LunchExpansionButton.Source = "pointer_up_gray.png";
+            }
+        }
+
+        private void Handle_DinnerExpansion(object sender, EventArgs e)
+        {
+            if (DinnerExpansion.IsVisible)
+            {
+                DinnerExpansion.IsVisible = false;
+                DinnerExpansionButton.Source = "pointer_down_gray.png";
+            }
+            else
+            {
+                DinnerExpansion.IsVisible = true;
+                DinnerExpansionButton.Source = "pointer_up_gray.png";
+            }
+        }
+
+        private void Handle_OtherExpansion(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         /*
         private void populateCarbChart()
