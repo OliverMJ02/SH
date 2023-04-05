@@ -90,5 +90,11 @@ namespace CurryFit.model
             */
             return blocks;
         }
+
+        public List<string> GetTempStringList()
+        {
+            List<string> list = new List<string>() { "Bench press", "Pull ups", "Chin ups", "Sit ups", "Dead lift", "Squats", "Random name 1", "Random name 2", "Random name 3", "Weird name 1", "Weird name 2"};
+            return list;
+        }
     }
 }

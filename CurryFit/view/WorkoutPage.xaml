@@ -393,7 +393,7 @@
 
                                                                     <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" Margin="0,0,5,0" HeightRequest="35">
                                                                         <StackLayout Orientation="Horizontal">
-                                                                            <Entry Placeholder="Search for exercises" HorizontalOptions="FillAndExpand" FontFamily="N" FontSize="14" PlaceholderColor="#726E72" TextColor="#FFFFFF" VerticalTextAlignment="Center" Margin="10,0,0,-2" Text="{Binding ExerciseTitle}">
+                                                                            <Entry Placeholder="Search for exercises" HorizontalOptions="FillAndExpand" FontFamily="N" FontSize="14" PlaceholderColor="#726E72" TextColor="#FFFFFF" VerticalTextAlignment="Center" Margin="10,0,0,-2" Text="{Binding ExerciseTitle}" Focused="Handle_ToSearchExerciseView" ReturnCommandParameter="{Binding Id}">
                                                                                 <Entry.Effects>
                                                                                     <effects:PlainEntry/>
                                                                                 </Entry.Effects>
@@ -1203,6 +1203,36 @@
                 
                 
                 
+            </StackLayout>
+
+            <!-- Search for exercise in Logbook view Layout-->
+
+            <StackLayout x:Name="SearchExerciseView" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" IsVisible="False" BackgroundColor="#1F1E1F">
+                <StackLayout BackgroundColor="#2A282A" Orientation="Horizontal" HeightRequest="60">
+                    <Button Clicked="Handle_BackFromSearchExerciseView" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="Red" HeightRequest="34" VerticalOptions="Center"></Button>
+                    <Frame Padding="0,0,0,0" CornerRadius="50" BorderColor="#1F1E1F" BackgroundColor="#2A282A" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,0,5,0" HeightRequest="34">
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name="SearchExerciseEntry" Placeholder="Search for exercises" HorizontalOptions="FillAndExpand" FontFamily="N" FontSize="14" PlaceholderColor="#726E72" TextColor="#FFFFFF" VerticalTextAlignment="Center" Margin="10,0,0,-2" TextChanged="Handle_SearchExerciseTextChanged">
+                                <Entry.Effects>
+                                    <effects:PlainEntry/>
+                                </Entry.Effects>
+                            </Entry>
+                            <ImageButton HeightRequest="20" WidthRequest="20" BackgroundColor="Green" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,10,0"></ImageButton>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <FlexLayout x:Name="SearchExerciseCollection" Direction="Column">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding .}" TextColor="White" Margin="30,5,0,5"></Label>
+                                <Button Text="Choose" HorizontalOptions="EndAndExpand" Margin="0,0,30,0" BackgroundColor="Transparent" CommandParameter="{Binding .}" Clicked="Handle_ChooseSearchExercise"></Button>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
             </StackLayout>
 
         </AbsoluteLayout>

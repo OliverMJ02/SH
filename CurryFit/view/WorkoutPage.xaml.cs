@@ -78,12 +78,56 @@ namespace CurryFit.view
 
         }
 
+        void Handle_ToSearchExerciseView(object sender, EventArgs e)
+        {
+            SearchExerciseView.IsVisible = true;
+            currentNormalSetBlock = currentNormalSetBlock = App.Database.GetNormalBlockWithChildren((sender as Entry).ReturnCommandParameter);
+            BindableLayout.SetItemsSource(SearchExerciseCollection, null);
+            BindableLayout.SetItemsSource(SearchExerciseCollection, currentLogDay.GetTempStringList());
+            
+        }
+
+        void Handle_BackFromSearchExerciseView(object sender, EventArgs e)
+        {
+            SearchExerciseView.IsVisible = false;   
+        }
+
+        void Handle_SearchExerciseTextChanged(object sender, EventArgs e)
+        {
+            string text = SearchExerciseEntry.Text;
+            List<string> list = new List<string>();
+            foreach (string str in currentLogDay.GetTempStringList())
+            {
+                if (str.Contains(text))
+                {
+                    list.Add(str);
+                }
+            }
+            BindableLayout.SetItemsSource(SearchExerciseCollection, null);
+            BindableLayout.SetItemsSource(SearchExerciseCollection, list);
+        }
+
+        void Handle_ChooseSearchExercise(object sender, EventArgs e)
+        {
+            string str = (sender as Button).CommandParameter.ToString();
+            currentNormalSetBlock.ExerciseTitle = str;
+            App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            SearchExerciseView.IsVisible = false;
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+
+        }
+        
+
+
         int currentSec = 0;
         int currentMin = 0;
         bool Normal = false;
         bool Drop = false;
         bool Super = false;
         bool Endurance = false;
+
+
         void Handle_ToFilterView(object sender, EventArgs e)
         {
             Normal = false;

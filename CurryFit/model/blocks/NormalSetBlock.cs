@@ -100,8 +100,8 @@ namespace CurryFit.model.blocks
                     }
                     else
                     {
-                        isSearching = true;
-                        IsSearching = true;
+                        //isSearching = true;
+                        //IsSearching = true;
                     }
                 }
                 catch { }
@@ -160,7 +160,7 @@ namespace CurryFit.model.blocks
         public ICommand HandleSecChangeCmd { get; private set; }
 
         public ICommand StopSearchCmd { get; private set; }
-        
+
 
 
         public NormalSetBlock()
@@ -181,6 +181,7 @@ namespace CurryFit.model.blocks
             SecondsSet = this.SecondsSet;
             TimerOn = false;
             TimerDisplay = this.TimerDisplay;
+
 
             StopSearchCmd = new Command(() => { isSearching = false; IsSearching = false; });
 
