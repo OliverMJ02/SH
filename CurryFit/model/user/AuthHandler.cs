@@ -18,7 +18,7 @@ namespace CurryFit.model.user
             var config = new FirebaseAuthConfig
             {
                 ApiKey = apikey,
-                AuthDomain = "",,
+                AuthDomain = "",
                 Providers = new FirebaseAuthProvider[]
                 {
                     new GoogleProvider().AddScopes("email"),
