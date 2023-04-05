@@ -391,10 +391,10 @@
                                                     <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
                                                         <AbsoluteLayout HeightRequest="45">
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0">
-                                                                <Label Text="664" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
-                                                                <Label Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="OtherKcalText1" Text="0" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="OtherKcalText2" Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
                                                             </StackLayout>
-                                                            <Frame x:Name="OtherChart" CornerRadius="5" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5,100,10" Padding="0,0,0,0">
+                                                            <Frame x:Name="OtherChart" CornerRadius="5" BorderColor="Transparent" BackgroundColor="{DynamicResource AshGrey}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5,100,10" Padding="0,0,0,0">
                                                                 <StackLayout Orientation="Horizontal" Spacing="0">
                                                                     <BoxView x:Name="OtherCarb" BackgroundColor="{DynamicResource CarbBlue}"/>
                                                                     <BoxView x:Name="OtherProtein" BackgroundColor="{DynamicResource ProteinRed}"/>
@@ -402,9 +402,9 @@
                                                                 </StackLayout>
                                                             </Frame>
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1" Margin="0,0,0,5">
-                                                                <Label Text="66g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
-                                                                <Label Text="43g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
-                                                                <Label Text="21g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
+                                                                <Label x:Name="OtherCarbText" Text="0g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
+                                                                <Label x:Name="OtherProteinText" Text="0g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
+                                                                <Label x:Name="OtherFatText" Text="0g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
                                                             </StackLayout>
                                                         </AbsoluteLayout>
                                                     </StackLayout>

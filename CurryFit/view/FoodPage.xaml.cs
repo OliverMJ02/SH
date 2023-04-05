@@ -59,6 +59,10 @@ namespace CurryFit.view
             double ProteinValBreakfast = 30; //Exmaple value for Protein in g
             double FatValBreakfast = 12; //Exmaple value for Fat in g
             double TotalConsumptionBreakfast = CarbValBreakfast + ProteinValBreakfast + FatValBreakfast; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Breakfast only)
+            if (TotalConsumptionBreakfast == 0)
+            {
+                TotalConsumptionBreakfast = 1;
+            }
             double CarbRatioBreakfast = CarbValBreakfast / TotalConsumptionBreakfast;
             double ProteinRatioBreakfast = ProteinValBreakfast / TotalConsumptionBreakfast;
             double FatRatioBreakfast = FatValBreakfast / TotalConsumptionBreakfast;
@@ -71,6 +75,10 @@ namespace CurryFit.view
             double ProteinValLunch = 35; //Exmaple value for Protein in g
             double FatValLunch = 24; //Exmaple value for Fat in g
             double TotalConsumptionLunch = CarbValLunch + ProteinValLunch + FatValLunch; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Lunch only)
+            if (TotalConsumptionLunch == 0)
+            {
+                TotalConsumptionLunch = 1;
+            }
             double CarbRatioLunch = CarbValLunch / TotalConsumptionLunch;
             double ProteinRatioLunch = ProteinValLunch / TotalConsumptionLunch;
             double FatRatioLunch = FatValLunch / TotalConsumptionLunch;
@@ -83,12 +91,50 @@ namespace CurryFit.view
             double ProteinValDinner = 43; //Exmaple value for Protein in g
             double FatValDinner = 21; //Exmaple value for Fat in g
             double TotalConsumptionDinner = CarbValDinner + ProteinValDinner + FatValDinner; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Dinner only)
+            if (TotalConsumptionDinner == 0)
+            {
+                TotalConsumptionDinner = 1;
+            }
             double CarbRatioDinner = CarbValDinner / TotalConsumptionDinner;
             double ProteinRatioDinner = ProteinValDinner / TotalConsumptionDinner;
             double FatRatioDinner = FatValDinner / TotalConsumptionDinner;
             DinnerCarb.WidthRequest = CarbRatioDinner * 100;
             DinnerProtein.WidthRequest = ProteinRatioDinner * 100;
             DinnerFat.WidthRequest = FatRatioDinner * 100;
+
+            //OtherFrame
+            double CarbValOther = 0; //Exmaple value for Carbs in g
+            double ProteinValOther = 0; //Exmaple value for Protein in g
+            double FatValOther = 0; //Exmaple value for Fat in g
+            double TotalConsumptionOther = CarbValOther + ProteinValOther + FatValOther; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Other only)
+            if (TotalConsumptionOther == 0)
+            {
+                TotalConsumptionOther = 1;
+            }
+            double CarbRatioOther = CarbValOther / TotalConsumptionOther;
+            double ProteinRatioOther = ProteinValOther / TotalConsumptionOther;
+            double FatRatioOther = FatValOther / TotalConsumptionOther;
+            OtherCarb.WidthRequest = CarbRatioOther * 100;
+            OtherProtein.WidthRequest = ProteinRatioOther * 100;
+            OtherFat.WidthRequest = FatRatioOther * 100;
+
+            if (TotalConsumptionOther == 0) //Fungerar inte ATM
+            {
+                OtherKcalText1.TextColor= Color.FromHex("#A6A0A6");
+                OtherKcalText2.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (CarbValOther == 0)
+            {
+                OtherCarbText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (ProteinValOther == 0)
+            {
+                OtherProteinText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (FatValOther == 0)
+            {
+                OtherFatText.TextColor = Color.FromHex("#A6A0A6");
+            }
         }
 
         // CarbChart
@@ -265,7 +311,16 @@ namespace CurryFit.view
 
         private void Handle_OtherExpansion(object sender, EventArgs e)
         {
-
+            if (OtherExpansion.IsVisible)
+            {
+                OtherExpansion.IsVisible = false;
+                OtherExpansionButton.Source = "pointer_down_gray.png";
+            }
+            else
+            {
+                OtherExpansion.IsVisible = true;
+                OtherExpansionButton.Source = "pointer_up_gray.png";
+            }
         }
 
 
