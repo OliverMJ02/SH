@@ -91,36 +91,10 @@ namespace CurryFit.model.blocks
             set
             {
                 exerciseTitle = value;
-                try
-                {
-                    if (exerciseTitle.Equals(""))
-                    {
-                        isSearching = false;
-                        IsSearching = false;
-                    }
-                    else
-                    {
-                        //isSearching = true;
-                        //IsSearching = true;
-                    }
-                }
-                catch { }
                 OnPropertyChanged(nameof(ExerciseTitle));
             }
         }
 
-        private bool isSearching;   // Use to determine if user is searching for execrise
-
-        public bool IsSearching
-        {
-            get { return isSearching; }
-            set
-            {
-
-                isSearching = value;
-                OnPropertyChanged(nameof(IsSearching));
-            }
-        }
 
         // Active data for timer, will change when timer is active
         public int Hours { get; set; } 
@@ -132,7 +106,16 @@ namespace CurryFit.model.blocks
         public int MinutesSet { get; set; }
         public int SecondsSet { get; set; }
 
-        public bool TimerOn { get; set; }
+        private bool timerOn;
+        public bool TimerOn
+        {
+            get { return timerOn; }
+            set
+            {
+                timerOn = value;
+                OnPropertyChanged(nameof(TimerOn));
+            }
+        }
 
         private string timerDisplay;  // What the Resting timer will display
         public string TimerDisplay
@@ -159,7 +142,6 @@ namespace CurryFit.model.blocks
 
         public ICommand HandleSecChangeCmd { get; private set; }
 
-        public ICommand StopSearchCmd { get; private set; }
 
 
 
@@ -169,7 +151,7 @@ namespace CurryFit.model.blocks
             IsNotFinished = this.IsNotFinished;
             SaveOrFinish = this.SaveOrFinish;
             Order = this.Order;
-            Title = "NORMAL SET";
+            Title = "REGULAR SETS";
             NormalSetBlockVisibility = true;
             NumberOfSets = this.NumberOfSets;
             XMargin = this.XMargin;
@@ -182,8 +164,6 @@ namespace CurryFit.model.blocks
             TimerOn = false;
             TimerDisplay = this.TimerDisplay;
 
-
-            StopSearchCmd = new Command(() => { isSearching = false; IsSearching = false; });
 
             HandleMinChangeCmd = new Command<(int, int, IList<int>)>(tuple =>
             {

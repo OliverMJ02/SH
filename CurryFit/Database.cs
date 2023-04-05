@@ -36,6 +36,9 @@ namespace CurryFit
             _database.CreateTable<DropSetBlock>();
             _database.CreateTable<DropSet>();
 
+            _database.CreateTable<SuperSetBlock>();
+            _database.CreateTable<SuperSet>();
+
             _database.CreateTable<TextBlock>();
 
             _database.CreateTable<ToDoList>();
@@ -378,6 +381,58 @@ namespace CurryFit
             return _database.Insert(set);
         }
         public void DeleteDropSet(DropSet set)
+        {
+            _database.Delete(set);
+        }
+
+
+        //Methods for SuperSetBlocks
+        public void UpdateSuperBlockWithChildren(SuperSetBlock block)
+        {
+            _database.UpdateWithChildren(block);
+        }
+
+        public int DeleteSingleSuperBlock(object id)
+        {
+            return _database.Delete<SuperSetBlock>(id);
+        }
+
+        public SuperSetBlock GetSuperBlockWithChildren(object id)
+        {
+            return _database.GetWithChildren<SuperSetBlock>(id);
+        }
+
+        public int SaveSuperBlock(SuperSetBlock block)
+        {
+            return _database.Insert(block);
+        }
+
+        public void DeleteSuperBlock(SuperSetBlock block)
+        {
+            _database.Delete(block);
+        }
+
+        //Methods for SuperSets
+        public void UpdateSuperSetWithChildren(SuperSet set)
+        {
+            _database.UpdateWithChildren(set);
+        }
+
+        public int DeleteSingleSuperSet(object id)
+        {
+            return _database.Delete<DropSet>(id);
+        }
+
+        public SuperSet GetSuperSetWithChildren(object id)
+        {
+            return _database.GetWithChildren<SuperSet>(id);
+        }
+
+        public int SaveSuperSet(SuperSet set)
+        {
+            return _database.Insert(set);
+        }
+        public void DeleteSuperSet(SuperSet set)
         {
             _database.Delete(set);
         }

@@ -20,6 +20,7 @@ using System.Threading;
 using System.Globalization;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using CurryFit;
 
 namespace CurryFit.view
 {
@@ -33,9 +34,18 @@ namespace CurryFit.view
 
         NormalSetBlock currentNormalSetBlock;
         DropSetBlock currentDropSetBlock;
+        SuperSetBlock currentSuperSetBlock;
+
 
         List<object> Blocks = new List<object>();
         FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
+
+        bool Normal = false;
+        bool Drop = false;
+        bool Super = false;
+        bool Endurance = false;
+        bool IsSuperA = false;
+
         public WorkoutPage()
         {
             InitializeComponent();
@@ -81,10 +91,68 @@ namespace CurryFit.view
         void Handle_ToSearchExerciseView(object sender, EventArgs e)
         {
             SearchExerciseView.IsVisible = true;
-            currentNormalSetBlock = currentNormalSetBlock = App.Database.GetNormalBlockWithChildren((sender as Entry).ReturnCommandParameter);
+            SearchExerciseEntry.Text = string.Empty;
+            SearchExerciseEntry.Focus();
+
+            try
+            {
+                currentNormalSetBlock = App.Database.GetNormalBlockWithChildren((sender as Entry).ReturnCommandParameter);
+                FilterView.BindingContext = currentNormalSetBlock;
+                Normal = true;
+                Drop = false;
+                Super = false;
+                Endurance = false;
+            }
+            catch { }
+            try
+            {
+                currentDropSetBlock = App.Database.GetDropBlockWithChildren((sender as Entry).ReturnCommandParameter);
+                FilterView.BindingContext = currentDropSetBlock;
+                Drop = true;
+                Normal = false;
+                Super = false;
+                Endurance = false;
+            }
+            catch { }
+            try
+            {
+                currentSuperSetBlock = App.Database.GetSuperBlockWithChildren((sender as Entry).ReturnCommandParameter);
+                FilterView.BindingContext = currentSuperSetBlock;
+                Drop = false;
+                Normal = false;
+                Super = true;
+                Endurance = false;
+
+                IsSuperA = true;
+            }
+            catch { }
+
             BindableLayout.SetItemsSource(SearchExerciseCollection, null);
             BindableLayout.SetItemsSource(SearchExerciseCollection, currentLogDay.GetTempStringList());
             
+        }
+
+        void Handle_ToSearchExerciseViewB(object sender, EventArgs e)
+        {
+            SearchExerciseView.IsVisible = true;
+            SearchExerciseEntry.Text = string.Empty;
+            SearchExerciseEntry.Focus();
+            try
+            {
+                currentSuperSetBlock = App.Database.GetSuperBlockWithChildren((sender as Entry).ReturnCommandParameter);
+                FilterView.BindingContext = currentSuperSetBlock;
+                Drop = false;
+                Normal = false;
+                Super = true;
+                Endurance = false;
+
+                IsSuperA = false;
+            }
+            catch { }
+
+            BindableLayout.SetItemsSource(SearchExerciseCollection, null);
+            BindableLayout.SetItemsSource(SearchExerciseCollection, currentLogDay.GetTempStringList());
+
         }
 
         void Handle_BackFromSearchExerciseView(object sender, EventArgs e)
@@ -98,7 +166,7 @@ namespace CurryFit.view
             List<string> list = new List<string>();
             foreach (string str in currentLogDay.GetTempStringList())
             {
-                if (str.Contains(text))
+                if (str.ToLower().Contains(text.ToLower()))
                 {
                     list.Add(str);
                 }
@@ -110,8 +178,29 @@ namespace CurryFit.view
         void Handle_ChooseSearchExercise(object sender, EventArgs e)
         {
             string str = (sender as Button).CommandParameter.ToString();
-            currentNormalSetBlock.ExerciseTitle = str;
-            App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            if (Normal)
+            {
+                currentNormalSetBlock.ExerciseTitle = str;
+                App.Database.UpdateNormalBlockWithChildren(currentNormalSetBlock);
+            }
+            else if (Drop)
+            {
+                currentDropSetBlock.ExerciseTitle = str;
+                App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
+            }
+            else if (Super)
+            {
+                if (IsSuperA)
+                {
+                    currentSuperSetBlock.AExerciseTitle = str;
+                }
+                else
+                {
+                    currentSuperSetBlock.BExerciseTitle = str;
+                }
+                
+                App.Database.UpdateSuperBlockWithChildren(currentSuperSetBlock);
+            }
             SearchExerciseView.IsVisible = false;
             BindableLayout.SetItemsSource(BlockCollection, null);
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
@@ -122,11 +211,6 @@ namespace CurryFit.view
 
         int currentSec = 0;
         int currentMin = 0;
-        bool Normal = false;
-        bool Drop = false;
-        bool Super = false;
-        bool Endurance = false;
-
 
         void Handle_ToFilterView(object sender, EventArgs e)
         {
@@ -151,6 +235,16 @@ namespace CurryFit.view
                 Drop = true;
                 Normal = false;
                 Super = false;
+                Endurance = false;
+            }
+            catch { }
+            try
+            {
+                currentSuperSetBlock = App.Database.GetSuperBlockWithChildren((sender as Button).CommandParameter);
+                FilterView.BindingContext = currentSuperSetBlock;
+                Drop = false;
+                Normal = false;
+                Super = true;
                 Endurance = false;
             }
             catch { }
@@ -401,16 +495,16 @@ namespace CurryFit.view
 
         void Handle_DeleteNormalSet(object sender, EventArgs e)
         {
-            try
-            {
+            
                 NormalSet ns = App.Database.GetNormalSetWithChildren(((ImageButton)sender).CommandParameter);
                 NormalSetBlock nsb = App.Database.GetNormalBlockWithChildren(ns.NormalSetBlockId);
                 if(nsb.NormalSets.Count > 1) 
                 {
                     nsb.UpdateNormalSetTitels(int.Parse((ns.Title).Remove(0, 4)));
+                    nsb.NormalSets.Remove(ns);
                     App.Database.DeleteNormalSet(ns);
-
-                    if (nsb.NormalSets.Count == 1)
+                    nsb = App.Database.GetNormalBlockWithChildren(nsb.Id);
+                if (nsb.NormalSets.Count == 1)
                     {
                         nsb.NumberOfSets = "1 SET";
                     }
@@ -426,8 +520,8 @@ namespace CurryFit.view
                     BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
                 }
                 
-            }
-            catch { }
+            
+            
         }
 
         void Handle_DeleteNormalBlock(object sender, EventArgs e)
@@ -565,22 +659,34 @@ namespace CurryFit.view
             BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
         }
 
+        
+
         void Handle_DeleteDropSet(object sender, EventArgs e)
         {
+
             DropSet ds = App.Database.GetDropSetWithChildren(((ImageButton)sender).CommandParameter);
             DropSetBlock dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-            dsb.UpdateDropSetTitels(int.Parse((ds.Title).Remove(0, 4)));
-            App.Database.DeleteDropSet(ds);
-            //If there is no sets left, change Add new set button border to fade colors
-            if (dsb.DropSets.Count - 1 == 0)
+            if (dsb.DropSets.Count > 1)
             {
+                dsb.UpdateDropSetTitels(int.Parse((ds.Title).Remove(0, 4)));
+                dsb.DropSets.Remove(ds);
+                App.Database.DeleteDropSet(ds);
+                dsb = App.Database.GetDropBlockWithChildren(dsb.Id);
+                if (dsb.DropSets.Count == 1)
+                {
+                    dsb.NumberOfSets = "1 SET";
+                }
+                else
+                {
+                    dsb.NumberOfSets = dsb.DropSets.Count.ToString() + " SETS";
+                }
                 App.Database.UpdateDropBlockWithChildren(dsb);
-            }
-            dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
-            App.Database.UpdateLogDayWithChildren(currentLogDay);
+                dsb = App.Database.GetDropBlockWithChildren(ds.DropSetBlockId);
+                App.Database.UpdateLogDayWithChildren(currentLogDay);
 
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            }
         }
 
         void Handle_DeleteDropBlock(object sender, EventArgs e)
@@ -690,18 +796,245 @@ namespace CurryFit.view
 
         }
 
+        //-------------------------------------
         //---------- SUPER SETS ---------------
+        //-------------------------------------
+
         void Handle_AddSuperSet(object sender, EventArgs e)
         {
-            Blocks.Add(new SuperSetBlock { IsTextBlock = false, IsNormalSet = false, IsDropSet = false, IsSuperSet = true, IsEnduranceSet = false, Order = currentLogDay.Counter, Title="SUPER SET" });
-            BindableLayout.SetItemsSource(BlockCollection, null);
-            BindableLayout.SetItemsSource(BlockCollection, Blocks);
-            ChooseSetLayout.IsVisible = false;
+            SuperSet ss = new SuperSet();
+            App.Database.SaveSuperSet(ss);
+            SuperSetBlock ssb = new SuperSetBlock(currentLogDay.Counter);
+            App.Database.SaveSuperBlock(ssb);
+            ssb = App.Database.GetSuperBlockWithChildren(ssb.Id);
+            ssb.SuperSets.Add(App.Database.GetSuperSetWithChildren(ss.Id));
+            App.Database.UpdateSuperBlockWithChildren(ssb);
+            currentLogDay.SuperSetBlocks.Add(ssb);
             currentLogDay.Counter++;
             App.Database.UpdateLogDayWithChildren(currentLogDay);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            ChooseSetLayout.IsVisible = false;
         }
 
+        void Handle_NewSuperSet(object sender, EventArgs e)
+        {
+            try
+            {
+                SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(((Button)sender).CommandParameter);
+               SuperSet ns = new SuperSet(ssb.SuperSets.Count + 1);
+                App.Database.SaveSuperSet(ns);
+                ssb = ssb.CloseAllSets();
+                ssb.SuperSets.Add(App.Database.GetSuperSetWithChildren(ns.Id));
+                if (ssb.SuperSets.Count == 1)
+                {
+                    ssb.NumberOfSets = "1 SET";
+                }
+                else
+                {
+                    ssb.NumberOfSets = ssb.SuperSets.Count.ToString() + " SETS";
+                }
+                App.Database.UpdateSuperBlockWithChildren(ssb);
+                App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+                BindableLayout.SetItemsSource(BlockCollection, null);
+                BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+            }
+            catch { }
+        }
+
+        void Handle_UpdateSuperSetBlockVisibility(object sender, EventArgs e)
+        {
+            SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(((ImageButton)sender).CommandParameter);
+            ssb.UpdateSuperSetBlockVisibility();
+            App.Database.UpdateSuperBlockWithChildren(ssb);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+
+        }
+
+        void Handle_DeleteSuperSet(object sender, EventArgs e)
+        {
+            try
+            {
+                SuperSet ss = App.Database.GetSuperSetWithChildren(((ImageButton)sender).CommandParameter);
+                SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(ss.SuperSetBlockId);
+                if (ssb.SuperSets.Count > 1)
+                {
+                    ssb.UpdateSuperSetTitels(int.Parse((ss.Title)));
+                    ssb.SuperSets.Remove(ss);
+                    App.Database.DeleteSuperSet(ss);
+                    ssb = App.Database.GetSuperBlockWithChildren(ssb.Id);
+
+                    if (ssb.SuperSets.Count == 1)
+                    {
+                        ssb.NumberOfSets = "1 SET";
+                    }
+                    else
+                    {
+                        ssb.NumberOfSets = ssb.SuperSets.Count.ToString() + " SETS";
+                    }
+                    App.Database.UpdateSuperBlockWithChildren(ssb);
+                    ssb = App.Database.GetSuperBlockWithChildren(ss.SuperSetBlockId);
+                    App.Database.UpdateLogDayWithChildren(currentLogDay);
+
+                    BindableLayout.SetItemsSource(BlockCollection, null);
+                    BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+                }
+            }
+            catch { }
+            
+            
+        }
+
+        void Handle_DeleteSuperBlock(object sender, EventArgs e)
+        {
+            SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(((ImageButton)sender).CommandParameter);
+            foreach (SuperSet ss in ssb.SuperSets)
+            {
+                App.Database.DeleteSuperSet(ss);
+            }
+            App.Database.DeleteSuperBlock(ssb);
+            BindableLayout.SetItemsSource(BlockCollection, null);
+            BindableLayout.SetItemsSource(BlockCollection, currentLogDay.GetAllBlocks());
+        }
+
+
+
+
+        void Handle_SuperSetUpdateAWeight(object sender, EventArgs e)
+        {
+            try
+            {
+                SuperSet ss = App.Database.GetSuperSetWithChildren(((Entry)sender).Placeholder);
+
+                try
+                {
+                    ss.AWeight = Double.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ss.AWeight = 0;
+                }
+
+                App.Database.UpdateSuperSetWithChildren(ss);
+                SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(ss.SuperSetBlockId);
+
+            }
+            catch { }
+        }
+
+        void Handle_SuperSetUpdateBWeight(object sender, EventArgs e)
+        {
+            try
+            {
+                SuperSet ss = App.Database.GetSuperSetWithChildren(((Entry)sender).Placeholder);
+
+                try
+                {
+                    ss.BWeight = Double.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ss.BWeight = 0;
+                }
+
+                App.Database.UpdateSuperSetWithChildren(ss);
+                SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(ss.SuperSetBlockId);
+
+            }
+            catch { }
+        }
+
+        void Handle_SuperSetUpdateAReps(object sender, EventArgs e)
+        {
+            bool check = true;
+            try
+            {
+                SuperSet ss = App.Database.GetSuperSetWithChildren(((Entry)sender).Placeholder);
+                //We dont want to make add new set buttons border faded if we just focused and then unfocused without changing anything on reps
+                try
+                {
+                    if (int.Parse(((Entry)sender).Text) == ss.AReps)
+                    {
+                        check = false;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    ss.AReps = int.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ss.AReps = 0;
+                }
+
+                App.Database.UpdateSuperSetWithChildren(ss);
+                SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(ss.SuperSetBlockId);
+
+                foreach (SuperSet ss2 in ssb.SuperSets)
+                {
+                    if (ss2.Id > ss.Id)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+
+            }
+            catch { }
+
+        }
+
+        void Handle_SuperSetUpdateBReps(object sender, EventArgs e)
+        {
+            bool check = true;
+            try
+            {
+                SuperSet ss = App.Database.GetSuperSetWithChildren(((Entry)sender).Placeholder);
+                //We dont want to make add new set buttons border faded if we just focused and then unfocused without changing anything on reps
+                try
+                {
+                    if (int.Parse(((Entry)sender).Text) == ss.BReps)
+                    {
+                        check = false;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    ss.BReps = int.Parse(((Entry)sender).Text);
+                }
+                catch
+                {
+                    ss.BReps = 0;
+                }
+
+                App.Database.UpdateSuperSetWithChildren(ss);
+                SuperSetBlock ssb = App.Database.GetSuperBlockWithChildren(ss.SuperSetBlockId);
+
+                foreach (SuperSet ss2 in ssb.SuperSets)
+                {
+                    if (ss2.Id > ss.Id)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+
+            }
+            catch { }
+
+        }
+
+
+
+        //-----------------------------------------
         //---------- ENDURANCE SETS ---------------
+        //-----------------------------------------
         void Handle_AddEnduranceSet(object sender, EventArgs e)
         {
             Blocks.Add(new EnduranceSetBlock { IsTextBlock = false, IsNormalSet = false, IsDropSet = false, IsSuperSet = false, IsEnduranceSet = true, Order = currentLogDay.Counter, Title="ENDURANCE SET" });
@@ -813,7 +1146,20 @@ namespace CurryFit.view
                 currentDropSetBlock.XMargin = 40;
                 App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
             }
-            
+
+            // -- Super Set --
+            else if (Super)
+            {
+                currentSuperSetBlock = App.Database.GetSuperBlockWithChildren(currentSuperSetBlock.Id);
+                currentSuperSetBlock.TimerOn = false;
+                model.Timer timer = new model.Timer(currentSuperSetBlock.Hours, currentSuperSetBlock.Minutes, currentSuperSetBlock.Seconds);
+                timer.UpdateDisplay();
+                currentSuperSetBlock.TimerDisplay = timer.Display;
+                currentSuperSetBlock.Width = 0;
+                currentSuperSetBlock.XMargin = 40;
+                App.Database.UpdateSuperBlockWithChildren(currentSuperSetBlock);
+            }
+
 
             FilterView.IsVisible = false;
             BindableLayout.SetItemsSource(BlockCollection, null);
@@ -839,7 +1185,16 @@ namespace CurryFit.view
                 currentDropSetBlock.SecondsSet = currentSec;
                 App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
             }
-            
+
+            else if (Super)
+            {
+                currentSuperSetBlock.Minutes = currentMin;
+                currentSuperSetBlock.Seconds = currentSec;
+                currentSuperSetBlock.MinutesSet = currentMin;
+                currentSuperSetBlock.SecondsSet = currentSec;
+                App.Database.UpdateSuperBlockWithChildren(currentSuperSetBlock);
+            }
+
             FilterView.IsVisible = false;
         }
 
@@ -857,7 +1212,12 @@ namespace CurryFit.view
                 currentDropSetBlock = App.Database.GetDropBlockWithChildren(currentDropSetBlock.Id);
                 timer = new model.Timer(currentDropSetBlock.Hours, currentDropSetBlock.Minutes, currentDropSetBlock.Seconds);
             }
-            if(setting.PresetTimers.Count < 6)
+            else if (Super)
+            {
+                currentSuperSetBlock = App.Database.GetSuperBlockWithChildren(currentSuperSetBlock.Id);
+                timer = new model.Timer(currentSuperSetBlock.Hours, currentSuperSetBlock.Minutes, currentSuperSetBlock.Seconds);
+            }
+            if (setting.PresetTimers.Count < 6)
             {
                 timer.PresetMenuVisible = false;
                 timer.IsPreset = true;
@@ -904,8 +1264,17 @@ namespace CurryFit.view
                 currentDropSetBlock.TimerOn = false;
                 App.Database.UpdateDropBlockWithChildren(currentDropSetBlock);
             }
-            
-            
+            else if (Super)
+            {
+                currentSuperSetBlock.Seconds = timer.Seconds;
+                currentSuperSetBlock.SecondsSet = timer.Seconds;
+                currentSuperSetBlock.Minutes = timer.Minutes;
+                currentSuperSetBlock.MinutesSet = timer.Minutes;
+                currentSuperSetBlock.TimerOn = false;
+                App.Database.UpdateSuperBlockWithChildren(currentSuperSetBlock);
+            }
+
+
         }
 
 

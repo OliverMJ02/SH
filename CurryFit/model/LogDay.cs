@@ -29,8 +29,8 @@ namespace CurryFit.model
         [OneToMany]
         public List<DropSetBlock> DropSetBlocks { get; set; }
 
-        //[OneToMany]
-        //public List<SuperSetBlock> SuperSetBlocks { get; set; }
+        [OneToMany]
+        public List<SuperSetBlock> SuperSetBlocks { get; set; }
 
         //[OneToMany]
         //public List<EnduranceSetBlock> EnduranceSetBlocks { get; set; }
@@ -58,13 +58,16 @@ namespace CurryFit.model
             foreach (NormalSetBlock nb in d.NormalSetBlocks)
             {
                 blocks.Add(App.Database.GetNormalBlockWithChildren(nb.Id));
-                    //blocks.Add(nb);
             }
 
             foreach (DropSetBlock db in d.DropSetBlocks)
             {
                 blocks.Add(App.Database.GetDropBlockWithChildren(db.Id));
-                //blocks.Add(nb);
+            }
+
+            foreach (SuperSetBlock sb in d.SuperSetBlocks)
+            {
+                blocks.Add(App.Database.GetSuperBlockWithChildren(sb.Id));
             }
 
 
