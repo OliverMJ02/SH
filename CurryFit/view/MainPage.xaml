@@ -17,11 +17,12 @@
         <!--Top-->
         <StackLayout Orientation="Vertical" VerticalOptions="Start">
             <StackLayout Orientation="Vertical">
-                <Button Text="new main page" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="DeepSkyBlue" TextColor="Black" FontSize="30" Clicked="Handle_NewMainPage"></Button>
-                <Button Text="training page" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Pink" TextColor="Black" FontSize="30" Clicked="Handle_WorkoutPage"></Button>
-                <Button Text="workouts tab" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="White" TextColor="Black" FontSize="30" Clicked="Handle_WorkoutView"></Button>
-                <Button Text="food" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Pink" TextColor="Black" FontSize="Title" Clicked="Handle_FoodPage"></Button>
-                <Button Text="log in" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="DeepSkyBlue" TextColor="Black" FontSize="30" Clicked="Handle_LoginPage"></Button>
+                <Button Text="new main page" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Red" TextColor="White" FontSize="30" Clicked="Handle_NewMainPage"></Button>
+                <Button Text="training page" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Orange" TextColor="Black" FontSize="30" Clicked="Handle_WorkoutPage"></Button>
+                <Button Text="workouts tab" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" TextColor="Black" FontSize="30" Clicked="Handle_WorkoutView"></Button>
+                <Button Text="food" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Green" TextColor="White" FontSize="Title" Clicked="Handle_FoodPage"></Button>
+                <Button Text="log in" FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" TextColor="White" FontSize="30" Clicked="Handle_LoginPage"></Button>
+                <Button  FontFamily="R" HorizontalOptions="FillAndExpand" BackgroundColor="Purple" TextColor="White" FontSize="30" Clicked="Handle_LoginPage"></Button>
 
             </StackLayout>
         </StackLayout>

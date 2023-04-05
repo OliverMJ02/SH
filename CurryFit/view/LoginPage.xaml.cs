@@ -25,9 +25,9 @@ namespace CurryFit.view
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
 
-            boxone.HeightRequest = (xamarinHeight - 600) / 8;
-            boxtwo.HeightRequest = (xamarinHeight - 600) / 8;
-            boxthree.HeightRequest = (xamarinHeight - 600) / 4;
+            //boxone.HeightRequest = (xamarinHeight - 600) / 8;
+            //boxtwo.HeightRequest = (xamarinHeight - 600) / 8;
+            //boxthree.HeightRequest = (xamarinHeight - 600) / 4;
             //double bone = (xamarinHeight - 600) / 4;
             //fu.Text = xamarinHeight.ToString();
             //uf.Text = bone.ToString();
