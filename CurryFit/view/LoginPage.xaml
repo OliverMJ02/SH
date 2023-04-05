@@ -26,7 +26,7 @@
                             <Frame BackgroundColor="{DynamicResource BCGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Fill" CornerRadius="10" HeightRequest="15" Margin="0,0,0,0">
                                 <StackLayout Orientation="Horizontal" Spacing="0" HeightRequest="15" WidthRequest="300" HorizontalOptions="Start">
                                     <Image Source="google_icon.png" HeightRequest="20" Scale="1" Margin="-4,0,0,0"/>
-                                    <Label Text="Sign in with Google" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource AshGrey}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
+                                    <Label Text="Sign in with Google" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource RiceWhite}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -34,7 +34,7 @@
                             <Frame BackgroundColor="{DynamicResource BCGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Fill" CornerRadius="10" HeightRequest="15" Margin="0,0,0,0">
                                 <StackLayout Orientation="Horizontal" Spacing="0" HeightRequest="15" WidthRequest="300" HorizontalOptions="Start">
                                     <Image Source="facebook_icon.png" HeightRequest="20" Scale="1" Margin="0"/>
-                                    <Label Text="Sign in with Facebook" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource AshGrey}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
+                                    <Label Text="Sign in with Facebook" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource RiceWhite}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -42,7 +42,7 @@
                             <Frame BackgroundColor="{DynamicResource BCGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Fill" CornerRadius="10" HeightRequest="15" Margin="0,0,0,0">
                                 <StackLayout Orientation="Horizontal" Spacing="0" HeightRequest="15" WidthRequest="300" HorizontalOptions="Start">
                                     <Image Source="apple_icon.png" HeightRequest="20" Scale="1" Margin="-4,-3,0,0"/>
-                                    <Label Text="Sign in with Apple" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource AshGrey}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
+                                    <Label Text="Sign in with Apple" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource RiceWhite}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -50,7 +50,7 @@
                             <Frame BackgroundColor="{DynamicResource BCGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Fill" CornerRadius="10" HeightRequest="15" Margin="0,0,0,0">
                                 <StackLayout Orientation="Horizontal" Spacing="0" HeightRequest="15" WidthRequest="300" HorizontalOptions="Start">
                                     <Image Source="twitter_icon.png" HeightRequest="20" Scale="1" Margin="0"/>
-                                    <Label Text="Sign in with Twitter" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource AshGrey}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
+                                    <Label Text="Sign in with Twitter" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource RiceWhite}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
@@ -60,8 +60,8 @@
                         </StackLayout>
                     </Grid>
                     <!--Mail och Lösen entries-->
-                    <Entry IsPassword="False" Keyboard="Default" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,20,15,0"/>
-                    <Entry IsPassword="True" Keyboard="Default" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,15,15,0"/>
+                    <Entry IsPassword="False" Keyboard="Email" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,20,15,0"/>
+                    <Entry IsPassword="True" Keyboard="Plain" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,15,15,0"/>
                     <!--Knapp och text nedan--> 
                     <StackLayout VerticalOptions="End" Margin="0,30,0,0">
                         <Frame CornerRadius="10" HasShadow="True" Margin="15,0,15,0">
