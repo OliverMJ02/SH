@@ -75,7 +75,7 @@
                     <StackLayout Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Label Text="OR" FontSize="16"  HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
                     </StackLayout>
-                    <StackLayout VerticalOptions="End" Margin="0,0,0,0">
+                    <StackLayout VerticalOptions="EndAndExpand" Margin="0,0,0,0">
                         <!--Mail och Lösen entries-->
                         <Entry IsPassword="False" Keyboard="Email" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,0,15,0"/>
                         <Entry IsPassword="True" Keyboard="Plain" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,0,15,0"/>
