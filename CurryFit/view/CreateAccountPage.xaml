@@ -14,6 +14,7 @@
                         <Image Source="login_beginwithregin.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,-3,0,0"/>
                     </StackLayout>
                     <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Spacing="0" VerticalOptions="EndAndExpand" Margin="0,0,0,20">
+                        
                         <!--Grid för sociala medier-->
                         <Grid Margin="10,0,10,0" HorizontalOptions="Center" RowSpacing="0">
                             <Grid.RowDefinitions>
@@ -54,14 +55,24 @@
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
-                            <!--OR-->
-                            <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Spacing="0" HorizontalOptions="Center" Padding="0,20,0,0">
+                        <StackLayout Grid.ColumnSpan="2" Grid.Row="2" Spacing="0" HorizontalOptions="Center" >
+                            <BoxView BackgroundColor="Transparent" x:Name="boxone" HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <!--OR-->
+                            <StackLayout Grid.ColumnSpan="2" Grid.Row="3" Spacing="0" HorizontalOptions="Center" Padding="0,0,0,0">
                                 <Label Text="OR" FontSize="16" FontFamily="M" TextColor="{DynamicResource AshGrey}"/>
                             </StackLayout>
-                        </Grid>
+                        <StackLayout Grid.ColumnSpan="2" Grid.Row="4" Spacing="0" HorizontalOptions="Center" >
+                            <BoxView BackgroundColor="Transparent" x:Name="boxtwo" HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </Grid>
                         <!--Mail och Lösen entries-->
-                        <Entry IsPassword="False" Keyboard="Email" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,-10,15,0"/>
+                        <Entry IsPassword="False" Keyboard="Email" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,-40,15,0"/>
                         <Entry IsPassword="True" Keyboard="Plain" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,10,15,0"/>
+                    <StackLayout Spacing="0" HorizontalOptions="Center" >
+                        <BoxView BackgroundColor="Transparent" x:Name="boxthree" HorizontalOptions="CenterAndExpand"/>
+                    </StackLayout>
+
                     <StackLayout Orientation="Horizontal" Margin="15,5,0,0" Spacing="0">
                         <CheckBox x:Name="termsBox" VerticalOptions="Center"/>
                         <Label Text="I consent to the" FontFamily="N" FontSize="14" TextColor="{DynamicResource AshGrey}" VerticalOptions="Center" Margin="5,0,5,0"/>
