@@ -73,11 +73,13 @@ namespace CurryFit.view
                     
                         // Create and add new stack layouts based on the slider value
                         // Create and add new stack layouts based on the slider value
-                        for (int i = 0; i < sliderValue; i++)
+                        for (int i = 0; i < sliderValue-1; i++)
                         {
-                            int n = i + 2;
-                            //SetInstance2
-                            var stackLayout = new StackLayout
+                        
+                        int n = i + 2;
+                        Val_NrSets.Text = n.ToString();
+                        //SetInstance2
+                        var stackLayout = new StackLayout
                             {
                                 Children =
                     {
@@ -376,8 +378,8 @@ namespace CurryFit.view
             ParentSetInstance.Children.Clear();
 
             // Get the new slider value
-            sliderValue = (int)e.NewValue;
-
+            sliderValue = (int)Math.Round(Slider_NrSets.Value);
+            Val_NrSets.Text = sliderValue.ToString();
 
             //if (VarRepToggle.IsToggled == true)
             //{
@@ -595,7 +597,7 @@ namespace CurryFit.view
 
             //else
             //{
- 
+
             //        TitleSetOne.IsVisible = false;
             //}
 

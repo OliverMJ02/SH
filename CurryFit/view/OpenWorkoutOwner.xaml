@@ -227,7 +227,7 @@
                                                     </StackLayout>
                                                     <StackLayout Spacing="0"  HorizontalOptions="FillAndExpand" Padding="0,20,0,0" Margin="0,-6,0,0" >
                                                         <!--<Stepper Visual="Default"/>-->
-                                                        <Slider Maximum="6" Minimum="1" x:Name="Slider_NrSets" ValueChanged="Handle_SliderValNrSets" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
+                                                        <Slider Maximum="6" Minimum="1" x:Name="Slider_NrSets"  ValueChanged="Handle_SliderValNrSets" Scale="2" MinimumTrackColor="White" MaximumTrackColor="{DynamicResource AshGrey}" ThumbColor="{DynamicResource AshGrey}" Margin="64,0,64,0"/>
                                                     </StackLayout>
                                                 </StackLayout>
 
