@@ -274,7 +274,7 @@
                                                     </StackLayout>
 
                                                     <!--Rest time-->
-                                                    <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,15,10" Margin="0,0,0,0">
+                                                    <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,15,25" Margin="0,0,0,0">
                                                         <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" HorizontalOptions="FillAndExpand" >
                                                             <Label Text="rest time" TextTransform="Uppercase" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="StartAndExpand" Margin="0,0,0,0" Padding="0,0,0,0"/>
                                                             <Label x:Name="Val_Rest" Text="NO TIME" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" HorizontalOptions="End" Margin="0,0,0,0" Padding="0,0,0,0"/>
@@ -337,20 +337,20 @@
                                         </Frame>
 
 
-                                        <!--NEW EXERCISE FRAME BEGIN-->
+                                        <!--NEW EXERCISE FRAME BEGIN--><!--
                                         <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0" BackgroundColor="{DynamicResource Black}">
                                             <Frame.Background>
                                                 <SolidColorBrush Color="{DynamicResource Black}"/>
                                             </Frame.Background>
                                             <StackLayout Spacing="0">
 
-                                                <!--TITLE of exercise-->
+                                                --><!--TITLE of exercise--><!--
                                                 <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,15">
                                                     <Label Text="Bench Press" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                                     <Image Source="options_gray.png" HeightRequest="30" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                                 </StackLayout>
 
-                                                <!--TAGS-->
+                                                --><!--TAGS--><!--
                                                 <Grid Margin="15,0,0,0">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="*" />
@@ -370,7 +370,7 @@
                                                                     </yummi:Border.GradientStops>
                                                                 </yummi:Border>
                                                             </yummi:PancakeView.Border>
-                                                            <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
+                                                            --><!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>--><!--
                                                             <Label Text="BARBELL" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                                         </yummi:PancakeView>
 
@@ -385,11 +385,11 @@
                                                                     </yummi:Border.GradientStops>
                                                                 </yummi:Border>
                                                             </yummi:PancakeView.Border>
-                                                            <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
+                                                            --><!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>--><!--
                                                             <Label Text="BENCH" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
                                                         </yummi:PancakeView>
 
-                                                        <!--<yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
+                                                        --><!--<yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
                                                             <yummi:PancakeView.Border>
                                                                 <yummi:Border Thickness="2">
                                                                     <yummi:Border.GradientStops>
@@ -404,7 +404,7 @@
                                                         <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
                                                         <!--
                                                             <Label Text="GYM" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>-->
+                                                        </yummi:PancakeView>--><!--
 
 
                                                         <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
@@ -425,9 +425,9 @@
                                                     </StackLayout>
                                                 </Grid>
 
-                                                <!--EXERCISE DETAILS-->
+                                                --><!--EXERCISE DETAILS--><!--
                                                 <StackLayout Spacing="0" Orientation="Vertical" Padding="15,8,0,10" Margin="0,0,0,0">
-                                                    <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
+                                                    --><!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett --><!--
                                                     <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" >
                                                         <Label Text="3" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
                                                         <Label Text="SETS  |  REST TIME:" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
@@ -440,297 +440,21 @@
                                                 </StackLayout>
 
                                             </StackLayout>
-                                        </Frame>
+                                        </Frame>-->
 
-
-                                        <!--NEW EXERCISE FRAME BEGIN-->
-                                        <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0" BackgroundColor="{DynamicResource Black}">
-                                            <Frame.Background>
-                                                <SolidColorBrush Color="{DynamicResource Black}"/>
-                                            </Frame.Background>
-                                            <StackLayout>
-
-                                                <!--TITLE of exercise-->
-                                                <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                                    <Label Text="Seated Cable Rows" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-                                                    <Image Source="options_gray.png" HeightRequest="30" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
-                                                </StackLayout>
-
-                                                <!--TAGS-->
-                                                <Grid Margin="15,10,0,0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
-                                                            <Label Text="CABLE MACHINE" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <Label Text="BACK" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <Label Text="ARMS" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-                                                    </StackLayout>
-                                                </Grid>
-
-                                                <!--EXERCISE DETAILS-->
-                                                <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,0,10" Margin="0,-6,0,0">
-                                                    <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
-                                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" >
-                                                        <Label Text="4" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="SETS  |  REST TIME:" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="1:00" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                    </StackLayout>
-                                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,10,0,0" Margin="0,-6,0,0" >
-                                                        <Label Text="10-14" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="REPETITIONS EACH" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                    </StackLayout>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </Frame>
-
-
-                                        <!--NEW EXERCISE FRAME BEGIN-->
-                                        <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0" BackgroundColor="{DynamicResource Black}">
-                                            <Frame.Background>
-                                                <SolidColorBrush Color="{DynamicResource Black}"/>
-                                            </Frame.Background>
-                                            <StackLayout>
-
-                                                <!--TITLE of exercise-->
-                                                <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                                    <Label Text="Cable Flyes" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-                                                    <Image Source="options_gray.png" HeightRequest="30" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
-                                                </StackLayout>
-
-                                                <!--TAGS-->
-                                                <Grid Margin="15,10,0,0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
-                                                            <Label Text="CABLE MACHINE" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
-                                                            <Label Text="LIGHTWEIGHT" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <Label Text="CHEST" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-                                                    </StackLayout>
-                                                </Grid>
-
-                                                <!--EXERCISE DETAILS-->
-                                                <StackLayout Spacing="0" Orientation="Vertical" Padding="15,10,0,10" Margin="0,-6,0,0">
-                                                    <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
-                                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" >
-                                                        <Label Text="4" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="SETS  |  REST TIME:" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="1:00" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                    </StackLayout>
-                                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,10,0,0" Margin="0,-6,0,0" >
-                                                        <Label Text="12-16" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="REPETITIONS EACH" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                    </StackLayout>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </Frame>
-
-
-                                        <!--NEW EXERCISE FRAME BEGIN-->
-                                        <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0" BackgroundColor="{DynamicResource Black}">
-                                            <Frame.Background>
-                                                <SolidColorBrush Color="{DynamicResource Black}"/>
-                                            </Frame.Background>
-                                            <StackLayout Spacing="0">
-
-                                                <!--TITLE of exercise-->
-                                                <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,15">
-                                                    <Label Text="Lat Pulldowns" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-                                                    <Image Source="options_gray.png" HeightRequest="30" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
-                                                </StackLayout>
-
-                                                <!--TAGS-->
-                                                <Grid Margin="15,0,0,0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="*" />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-5,0,0">
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
-                                                            <Label Text="CABLE MACHINE" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-                                                        <!--<yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary2}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#485CA3" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            -->
-                                                        <!--<local:GradientLabel Text="FULL BODY" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="Transparent" TextColor="#FF4816" TextColor1="#FF4816" TextColor2="#FFE000"/>-->
-                                                        <!--
-                                                            <Label Text="GYM" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>-->
-
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <Label Text="BACK" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-
-
-                                                        <yummi:PancakeView CornerRadius="5" HorizontalOptions="Fill" Margin="0,-12,1,0" HeightRequest="20" BackgroundColor="{DynamicResource GradientGary3}">
-                                                            <yummi:PancakeView.Border>
-                                                                <yummi:Border Thickness="2">
-                                                                    <yummi:Border.GradientStops>
-                                                                        <yummi:GradientStopCollection>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="0"></yummi:GradientStop>
-                                                                            <yummi:GradientStop Color="#993D51" Offset="1"></yummi:GradientStop>
-                                                                        </yummi:GradientStopCollection>
-                                                                    </yummi:Border.GradientStops>
-                                                                </yummi:Border>
-                                                            </yummi:PancakeView.Border>
-                                                            <Label Text="BICEPS" HeightRequest="20" FontSize="10" FontFamily="M" HorizontalOptions="Center" Padding="8,3,8,0" BackgroundColor="{DynamicResource BCGrey}" TextColor="{DynamicResource AshGrey}"></Label>
-                                                        </yummi:PancakeView>
-
-
-                                                    </StackLayout>
-                                                </Grid>
-
-                                                <!--EXERCISE DETAILS-->
-                                                <StackLayout Spacing="0" Orientation="Vertical" Padding="15,8,0,10" Margin="0,0,0,0">
-                                                    <!-- Texten i den här delen skall vara kopplat till inställnningarna som skaparen har angett -->
-                                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,5,0,0" Margin="0,-6,0,0" >
-                                                        <Label Text="4" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="SETS  |  REST TIME:" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="1:00" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                    </StackLayout>
-                                                    <StackLayout Spacing="0" Orientation="Horizontal" Padding="0,10,0,0" Margin="0,-6,0,0" >
-                                                        <Label Text="8-10" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="0,0,0,0" Padding="0,0,0,0"/>
-                                                        <Label Text="REPETITIONS EACH" FontSize="14" FontFamily="M" TextColor="{DynamicResource AshGrey}" Margin="5,0,0,0" Padding="0,0,0,0"/>
-                                                    </StackLayout>
-                                                </StackLayout>
-
-                                            </StackLayout>
-                                        </Frame>
+                                            <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" Grid.Column="0" >
+                                                <yummi:PancakeView.Border>
+                                                    <yummi:Border Thickness="1">
+                                                        <yummi:Border.GradientStops>
+                                                            <yummi:GradientStopCollection>
+                                                                <yummi:GradientStop Color="#726E72" Offset="0"></yummi:GradientStop>
+                                                                <yummi:GradientStop Color="#726E72" Offset="1"></yummi:GradientStop>
+                                                            </yummi:GradientStopCollection>
+                                                        </yummi:Border.GradientStops>
+                                                    </yummi:Border>
+                                                </yummi:PancakeView.Border>
+                                                <Button Text="add new exercise" TextTransform="Uppercase" FontFamily="M" FontSize="12" HeightRequest="35" Padding="10,0,10,0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent" CornerRadius="50" CommandParameter="{Binding Id}" ></Button>
+                                            </yummi:PancakeView>
 
 
 
@@ -1180,6 +904,9 @@
 
                                             </StackLayout>
                                         </Frame>
+
+                                     
+
 
 
                                     </FlexLayout>

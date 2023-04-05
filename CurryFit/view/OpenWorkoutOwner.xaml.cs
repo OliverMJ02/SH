@@ -42,14 +42,6 @@ namespace CurryFit.view
             InitializeComponent();
 
 
-            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-            var deviceHeight = mainDisplayInfo.Height;
-            var deviceWidth = mainDisplayInfo.Width;
-            var density = mainDisplayInfo.Density;
-            var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
-            var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
-
-
 
             RepToFailureToggle.Toggled += (sender, args) =>
             {
@@ -70,10 +62,11 @@ namespace CurryFit.view
 
                 if (args.Value == true)
                 {
-                    
-                        // Create and add new stack layouts based on the slider value
-                        // Create and add new stack layouts based on the slider value
-                        for (int i = 0; i < sliderValue-1; i++)
+                    var duration = TimeSpan.FromSeconds(0.1);
+                    Vibration.Vibrate(duration);
+                    // Create and add new stack layouts based on the slider value
+                    // Create and add new stack layouts based on the slider value
+                    for (int i = 0; i < sliderValue-1; i++)
                         {
                         
                         int n = i + 2;
@@ -88,7 +81,7 @@ namespace CurryFit.view
                             BackgroundColor = (Color)App.Current.Resources["SPGrey"],
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             HeightRequest = 1,
-                            Margin = new Thickness(15, 15, 15, 0)
+                            Margin = new Thickness(15, 0, 15, 0)
                             },
                         new StackLayout
                         {
