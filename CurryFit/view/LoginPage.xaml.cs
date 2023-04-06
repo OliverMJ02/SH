@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CurryFit.model.user;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,11 +9,11 @@ namespace CurryFit.view
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        public LoginPage()
+        private readonly IAuthHandler authHandler;
+        public LoginPage(IAuthHandler _authHandler)
         {
             InitializeComponent();
-
-
+            authHandler = _authHandler;
 
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
             var deviceHeight = mainDisplayInfo.Height;
@@ -24,18 +21,18 @@ namespace CurryFit.view
             var density = mainDisplayInfo.Density;
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
-
-            //boxone.HeightRequest = (xamarinHeight - 600) / 8;
-            //boxtwo.HeightRequest = (xamarinHeight - 600) / 8;
-            //boxthree.HeightRequest = (xamarinHeight - 600) / 4;
-            //double bone = (xamarinHeight - 600) / 4;
-            //fu.Text = xamarinHeight.ToString();
-            //uf.Text = bone.ToString();
         }
 
         private async void Handle_ToCreateAccount(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateAccountPage());
+            await Navigation.PushAsync(new CreateAccountPage(authHandler));
         }
+        private async void Handle_Login(object sender, EventArgs e)
+        {
+            string email = emailEntry.Text.ToString();
+            string password = passwordEntry.Text.ToString();
+            await authHandler.Login(email, password);
+        }
+        
     }
 }

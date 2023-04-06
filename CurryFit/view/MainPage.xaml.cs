@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using CurryFit.view;
 using Firebase.Database;
 using CurryFit.model;
+using CurryFit.model.user;
 
 namespace CurryFit
 {
@@ -16,6 +15,8 @@ namespace CurryFit
         FirebaseClient firebaseClient = new Firebase.Database.FirebaseClient("https://projectspice-shoof-default-rtdb.europe-west1.firebasedatabase.app/");
         List<Exercise> LocalExercises = new List<Exercise>();
         List<Exercise> CloudExercises = new List<Exercise>();
+
+
         public MainPage()
         {
             InitializeComponent();
@@ -46,7 +47,8 @@ namespace CurryFit
 
         private async void Handle_LoginPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            var authService = DependencyService.Get<IAuthHandler>();
+            await Navigation.PushAsync(new LoginPage(authService));
         }
 
         public async Task<List<Exercise>> GetAllExercises()

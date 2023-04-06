@@ -77,8 +77,8 @@
                     </StackLayout>
                     <StackLayout VerticalOptions="EndAndExpand" Margin="0,0,0,0">
                         <!--Mail och Lösen entries-->
-                        <Entry IsPassword="False" Keyboard="Email" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,0,15,0"/>
-                        <Entry IsPassword="True" Keyboard="Plain" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,0,15,0"/>
+                        <Entry x:Name="emailEntry" IsPassword="False" Keyboard="Email" Placeholder="Email Address" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,0,15,0"/>
+                        <Entry x:Name="passwordEntry" IsPassword="True" Keyboard="Plain" Placeholder="Password" PlaceholderColor="{DynamicResource SPGrey}" TextColor="{DynamicResource RiceWhite}" FontFamily="N" FontSize="16" Margin="15,0,15,0"/>
                         <!--<StackLayout Spacing="0" HorizontalOptions="Center" >
                             <BoxView BackgroundColor="Transparent" x:Name="boxthree" HorizontalOptions="CenterAndExpand"/>
                         </StackLayout>-->
@@ -107,6 +107,9 @@
                             <AbsoluteLayout>
                                 <StackLayout AbsoluteLayout.LayoutBounds="0.5,4" AbsoluteLayout.LayoutFlags="XProportional" VerticalOptions="End" HeightRequest="14">
                                     <Label Text="SIGN UP" FontSize="20" FontFamily="M" TextColor="{DynamicResource BCGrey}" HorizontalTextAlignment="Center" Margin="0,-8,0,0" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Handle_SignUp"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </AbsoluteLayout>
                         </Frame>

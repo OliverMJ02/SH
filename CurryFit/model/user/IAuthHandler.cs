@@ -7,6 +7,7 @@ namespace CurryFit.model.user
     {
         bool IsLoggedIn();
         Task<string> Login(string email, string password);
+        Task<string> LoginWithProvider(string idToken, string provider);
         Task<string> SignUp(string email, string password);
         Task Logout();
     }
