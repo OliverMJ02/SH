@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
+using System.Linq;
 
 namespace CurryFit.model.firebase
 {
@@ -31,7 +32,15 @@ namespace CurryFit.model.firebase
         /// <param name="key">The key of the data to be added.</param>
         public async Task AddDataAsync(T data, string key)
         {
-            await client.Child(typeof(T).Name).Child(key).PutAsync(data);
+            try
+            {
+                await client.Child(typeof(T).Name).Child(key).PutAsync(data);
+            }
+            catch(Exception ex)
+            {
+                throw(ex);
+            }
+            
         }
         /// <summary>
         /// Removes data from the Firebase Database.
@@ -52,11 +61,32 @@ namespace CurryFit.model.firebase
         /// <param name="key">The key of the data to be checked.</param>
         public async Task<bool> CheckDataExistsAsync(T data, string key)
         {
-            var data_snapshot = await client.Child(typeof(T).Name).OnceAsync<T>();
+            var data_snapshot = (await client.Child(typeof(T).Name).Child(key).OnceAsync<T>());
             if (data_snapshot.Equals(data))
                 return true;
             else
                 return false;
+        }
+
+        /// <summary>
+        /// Gets  a single item from the Firebase Database.
+        /// </summary>
+        /// <param name="key">The key of the data to be retrieved.</param>
+        /// <returns>The data retrieved from the Firebase Database.</returns>
+        public async Task<T> GetDataAsync(string key)
+        {
+            var data_snapshot = (await client.Child(typeof(T).Name).Child(key).OnceAsync<T>());
+            return data_snapshot.FirstOrDefault().Object;
+        }
+
+        /// <summary>
+        /// Gets a list of items from the Firebase Database.
+        /// </summary>
+        /// <returns>The data retrieved from the Firebase Database.</returns>
+        public async Task<T> GetListOfDataAsync()
+        {
+            var data_snapshot = (await client.Child(typeof(T).Name).OnceAsync<T>());
+            return data_snapshot.Select(x => x.Object).ToList().FirstOrDefault();
         }
     }
 }
