@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
+using CurryFit.model.user;
+using CurryFit.model.firebase;
 
 [assembly: ExportFont("Nunito-SemiBold.ttf", Alias = "N")]
 [assembly: ExportFont("Montserrat-SemiBold.ttf", Alias = "M")]
@@ -14,6 +16,9 @@ namespace CurryFit
         public App()
         {
             InitializeComponent();
+
+            DependencyService.Register<IFirebaseService, FirebaseService>();
+            DependencyService.Register<IAuthHandler, AuthHandler>();
 
             MainPage = new NavigationPage(new MainPage());
         }

@@ -13,12 +13,12 @@ namespace CurryFit.model.user
         private readonly FirebaseAuthClient client;
         UserCredential userCredential;
 
-        public AuthHandler(string apikey)
+        public AuthHandler()
         {
             var config = new FirebaseAuthConfig
             {
-                ApiKey = apikey,
-                AuthDomain = "",
+                ApiKey = "AIzaSyDCQvzgKerYjKPtE9xJX9o4uFTqc6apdPE",
+                AuthDomain = "strengthhub-app.firebaseapp.com",
                 Providers = new FirebaseAuthProvider[]
                 {
                     new GoogleProvider().AddScopes("email"),

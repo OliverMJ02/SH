@@ -6,10 +6,12 @@ namespace CurryFit.model.firebase
     /// <summary>
     /// This interface is the connection between the app and the broker.
     /// </summary>
-    public interface IFirebaseService<T>
+    public interface IFirebaseService
     {
-        Task AddDataAsync(T data, string key);
-        Task RemoveDataAsync(T data, string key);
-        Task<bool> CheckDataExistsAsync(T data, string key);
+        Task AddDataAsync<T>(T data, string key);
+        Task RemoveDataAsync<T>(T data, string key);
+        Task<bool> CheckDataExistsAsync<T>(T data, string key);
+        Task<T> GetDataAsync<T>(T data, string key);
+        Task<T> GetListOfDataAsync<T>(T data);
     }
 }
