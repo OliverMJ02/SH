@@ -11,7 +11,7 @@ namespace CurryFit.CustomRenderers
     propertyName: nameof(TextColor1),
     returnType: typeof(Color),
     declaringType: typeof(Color),
-    defaultValue: Color.Red);
+    defaultValue: Color.FromHex("#ffe000"));
         public Color TextColor1
         {
             get => (Color)GetValue(TextColor1Property);
@@ -21,7 +21,7 @@ namespace CurryFit.CustomRenderers
             propertyName: nameof(TextColor2),
             returnType: typeof(Color),
             declaringType: typeof(Color),
-            defaultValue: Color.Green);
+            defaultValue: Color.FromHex("#ff4816"));
         public Color TextColor2
         {
             get => (Color)GetValue(TextColor2Property);
