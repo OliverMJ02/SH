@@ -42,7 +42,7 @@ namespace CurryFit
 
         private async void Handle_WorkoutView(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new WorkoutView());
+            await Navigation.PushAsync(new ExerciseView());
         }
 
         private async void Handle_LoginPage(object sender, EventArgs e)

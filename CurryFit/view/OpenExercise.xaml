@@ -1,19 +1,19 @@
-﻿<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:effects="clr-namespace:CurryFit.Effects"
+             x:Class="CurryFit.view.OpenExercise"
              xmlns:local="clr-namespace:CurryFit.CustomRenderers"
              xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:wp="clr-namespace:Vapolia.WheelPickerForms;assembly=Vapolia.WheelPickerForms"
-             x:Class="CurryFit.view.OpenWorkout"
              BackgroundColor="#1F1E1F">
 
     <NavigationPage.TitleView>
         <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-            <Label Text="Push-Pull Workout" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="0,0,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+            <Label Text="One Arm Dumbbell Tricep Extension" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="0,0,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
             <Image Source="star_empty.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,0,15,0"/>
-            <StackLayout.GestureRecognizers>
+            <!--<StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="Handle_ToOwnerView"></TapGestureRecognizer>
-            </StackLayout.GestureRecognizers>
+            </StackLayout.GestureRecognizers>-->
         </StackLayout>
     </NavigationPage.TitleView>
 
@@ -22,60 +22,59 @@
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" VerticalOptions="FillAndExpand" >
 
 
-<!--EXERCISE TAB-->
+                <!--EXERCISE TAB-->
                 <StackLayout x:Name="ExerciseTab" IsVisible="True" VerticalOptions="FillAndExpand" Spacing="0">
 
-                    <!--QUICK DETAILS-->
-                    <StackLayout Spacing="0" Orientation="Vertical" Margin="0,-5,0,0">
-
-                        <Grid  BackgroundColor="{DynamicResource BCGrey}" Padding="10,10,10,0" RowSpacing="0" ColumnSpacing="0" HeightRequest="105">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="15"/>
-                                <RowDefinition Height="15"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-
-                            <StackLayout Grid.Row="0" Grid.Column="0" Spacing="0" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                <Label TextColor="{DynamicResource AshGrey}" Text="TYPE OF TRAINING" FontFamily="M" FontSize="10" HorizontalOptions="CenterAndExpand"/>
-                            </StackLayout>
-                            <StackLayout Grid.Row="0" Grid.Column="1" Spacing="0" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                <Label TextColor="{DynamicResource AshGrey}" Text="WORKOUT DURATION" FontFamily="M" FontSize="10" HorizontalOptions="CenterAndExpand"/>
-                            </StackLayout>
-
-                            <StackLayout Grid.Row="1" Grid.Column="0"  Spacing="0" HeightRequest="150" HorizontalOptions="CenterAndExpand" Padding="0,0,0,0" >
-                                <Label TextColor="{DynamicResource AshGrey}" Text="Hypertrophy" LineBreakMode="WordWrap" FontFamily="N" FontSize="14" HorizontalOptions="CenterAndExpand" Margin="0,0,0,0"/>
-                            </StackLayout>
-                            <StackLayout Grid.Row="1" Grid.Column="1"  Spacing="0" HeightRequest="150" HorizontalOptions="FillAndExpand" Padding="0,0,0,0" >
-                                <Label TextColor="{DynamicResource AshGrey}" Text="60-90 min" FontFamily="N" FontSize="14" HorizontalOptions="CenterAndExpand"/>
-                            </StackLayout>
-
-                            <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="0" HeightRequest="60" HorizontalOptions="Fill" VerticalOptions="Center"  Padding="5,20,5,0" >
-                                <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" Grid.Column="0" >
-                                    <yummi:PancakeView.Border>
-                                        <yummi:Border Thickness="1">
-                                            <yummi:Border.GradientStops>
-                                                <yummi:GradientStopCollection>
-                                                    <yummi:GradientStop Color="#726E72" Offset="0"></yummi:GradientStop>
-                                                    <yummi:GradientStop Color="#726E72" Offset="1"></yummi:GradientStop>
-                                                </yummi:GradientStopCollection>
-                                            </yummi:Border.GradientStops>
-                                        </yummi:Border>
-                                    </yummi:PancakeView.Border>
-                                    <Button Text="ADD WORKOUT TO CURRENT PROGRAM" FontFamily="M" FontSize="12" HeightRequest="35" Padding="10,0,10,0" HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent" CornerRadius="50" CommandParameter="{Binding Id}" ></Button>
-                                </yummi:PancakeView>
-                            </StackLayout>
-                        </Grid>
-                    </StackLayout>
+                   
 
 
 
-                    <ScrollView Margin="0,0,0,0" VerticalOptions="EndAndExpand" HeightRequest="570" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
+                    <ScrollView Margin="0,0,0,0" VerticalOptions="StartAndExpand" Padding="0,0,0,50" VerticalScrollBarVisibility="Never">
 
                         <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Stretch" Margin="10,0,10,0" Padding="0,0,0,10">
                             <!--x:Name="WorkoutCollection"-->
+
+
+
+                            <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Margin="0,10,0,0">
+
+                                <Frame.Background>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="{DynamicResource GradientGary1}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource GradientGary2}" Offset="0.5"/>
+                                        <GradientStop Color="{DynamicResource GradientGary3}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+
+
+                                <StackLayout >
+
+
+
+                                    <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Stretch" Margin="10,0,10,0">
+                                        <!--x:Name="WorkoutCollection"-->
+
+
+                                       
+
+
+
+                                    </FlexLayout>
+                                </StackLayout>
+                            </Frame>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                             <!--MAIN FRAME BEGIN-->
                             <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,10" Margin="0,10,0,0">
@@ -95,16 +94,16 @@
                                     <FlexLayout Direction="Row" Margin="30,10,30,-5" Padding="0,0,0,0" JustifyContent="SpaceAround">
                                         <StackLayout>
                                             <local:GradientLabel TextColor="{DynamicResource RiceWhite}" TextColor1="{DynamicResource RiceWhite}" TextColor2="{DynamicResource RiceWhite}" Text="EXERCISES" FontFamily="M" FontSize="14"/>
-                                            <StackLayout.GestureRecognizers>
+                                            <!--<StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
+                                            </StackLayout.GestureRecognizers>-->
                                         </StackLayout>
 
                                         <StackLayout>
                                             <local:GradientLabel TextColor1="{DynamicResource AshGrey}" TextColor2="{DynamicResource AshGrey}" TextColor="{DynamicResource AshGrey}" Text="DETAILS" FontFamily="M" FontSize="14"/>
-                                            <StackLayout.GestureRecognizers>
+                                            <!--<StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Handle_ToDetails"></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
+                                            </StackLayout.GestureRecognizers>-->
                                         </StackLayout>
                                     </FlexLayout>
 
@@ -690,16 +689,16 @@
 
 
 
-                
-                
-                
-                
-                
-                
-                
-                
-<!--DETAILS TAB-->
-                
+
+
+
+
+
+
+
+
+                <!--DETAILS TAB-->
+
                 <StackLayout x:Name="DetailsTab" IsVisible="False" VerticalOptions="FillAndExpand" Spacing="0">
 
                     <!--QUICK DETAILS-->
@@ -757,33 +756,33 @@
                                     <FlexLayout Direction="Row" Margin="30,10,30,-5" JustifyContent="SpaceAround">
                                         <StackLayout>
                                             <local:GradientLabel TextColor1="{DynamicResource AshGrey}" TextColor2="{DynamicResource AshGrey}" TextColor="{DynamicResource AshGrey}" Text="EXERCISES" FontFamily="M" FontSize="14"/>
-                                            <StackLayout.GestureRecognizers>
+                                            <!--<StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Handle_ToExercises"></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
+                                            </StackLayout.GestureRecognizers>-->
                                         </StackLayout>
 
                                         <StackLayout>
                                             <local:GradientLabel TextColor="{DynamicResource RiceWhite}" TextColor1="{DynamicResource RiceWhite}" TextColor2="{DynamicResource RiceWhite}" Text="DETAILS" FontFamily="M" FontSize="14"/>
-                                            <StackLayout.GestureRecognizers>
+                                            <!--<StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="Handle_ToDetails"></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
+                                            </StackLayout.GestureRecognizers>-->
                                         </StackLayout>
                                     </FlexLayout>
 
 
                                     <FlexLayout  Direction="Column" JustifyContent="Start" AlignItems="Stretch" Margin="10,0,10,0">
                                         <!--x:Name="WorkoutCollection"-->
-                                        
-                                        
-                                        
-                                        
+
+
+
+
                                         <!--DESCRIPTION FRAME-->
                                         <Frame CornerRadius="10" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0" BackgroundColor="{DynamicResource Black}">
                                             <Frame.Background>
                                                 <SolidColorBrush Color="{DynamicResource Black}"/>
                                             </Frame.Background>
                                             <StackLayout Spacing="0">
-                                                
+
                                                 <StackLayout  Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,15">
                                                     <Label Text="DESCRIPTION" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                                     <Label Text="The Push-Pull Workout is a bodybuilding routine that alternates between pushing and pulling exercises to target the upper body muscles. The workout includes Barbell Bench Press, Seated Cable Rows, Incline Bench Press, Lat Pulldowns, and Cable Flyes. This workout can be done 1-2 times per week with 2-3 days of rest in between. Use appropriate weights and warm up properly to avoid injury." LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="12" FontFamily="N" Padding="20,5,20,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
@@ -828,7 +827,7 @@
                                                     <Label Text="WORKOUT DURATION (APPROX.)" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="M"  Padding="0,0,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                                     <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
                                                         <Label Text="60-90" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="10,5,0,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
-                                                    <Label Text=" minutes" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="0,5,25,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+                                                        <Label Text=" minutes" LineHeight="0.9" TextColor="{DynamicResource AshGrey}" FontSize="14" FontFamily="N" Padding="0,5,25,0"  HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                                     </StackLayout>
                                                 </StackLayout>
 
@@ -1126,41 +1125,41 @@
                     </StackLayout>
                 </StackLayout>
 
-         
+
 
 
             </StackLayout>
 
 
             <StackLayout   Spacing="0" HeightRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Padding="10,0,10,50" >
-                <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="{DynamicResource BCGrey}" > 
-                    
-                        <yummi:PancakeView.Border>
-                            <yummi:Border Thickness="1">
-                                <yummi:Border.GradientStops>
-                                    <yummi:GradientStopCollection>
-                                        <yummi:GradientStop Color="#FFE000" Offset="0"></yummi:GradientStop>
-                                        <yummi:GradientStop Color="#FF4816" Offset="1"></yummi:GradientStop>
-                                    </yummi:GradientStopCollection>
-                                </yummi:Border.GradientStops>
-                            </yummi:Border>
-                        </yummi:PancakeView.Border>
+                <yummi:PancakeView CornerRadius="50" HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="{DynamicResource BCGrey}" >
+
+                    <yummi:PancakeView.Border>
+                        <yummi:Border Thickness="1">
+                            <yummi:Border.GradientStops>
+                                <yummi:GradientStopCollection>
+                                    <yummi:GradientStop Color="#FFE000" Offset="0"></yummi:GradientStop>
+                                    <yummi:GradientStop Color="#FF4816" Offset="1"></yummi:GradientStop>
+                                </yummi:GradientStopCollection>
+                            </yummi:Border.GradientStops>
+                        </yummi:Border>
+                    </yummi:PancakeView.Border>
 
 
                     <yummi:PancakeView.Shadow>
                         <yummi:DropShadow Color="#000000" Opacity="1" Offset="0,2" />
                     </yummi:PancakeView.Shadow>
-                    
+
                     <local:GradientLabel WidthRequest="1000" Text="START THIS WORKOUT" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontFamily="M" FontSize="12" HeightRequest="35" Padding="10,10,10,0" BackgroundColor="Transparent" TextColor="#FFE000" TextColor1="#FFE000" TextColor2="#FF4816"/>
 
                 </yummi:PancakeView>
 
             </StackLayout>
-            
-            
-            
-            
-            
+
+
+
+
+
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
