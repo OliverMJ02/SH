@@ -35,7 +35,7 @@ namespace CurryFit.view
         }
         private async void Handle_OpenExercise(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new OpenExercise());
+            await Navigation.PushAsync(new OpenExercise());
         }
 
         private async void Handle_MainPage(object sender, EventArgs e)
