@@ -64,26 +64,25 @@ namespace CurryFit.model.user
         /// <returns>The user's UID.</returns>
         public async Task<string> LoginWithProvider(string idToken, string provider)
         {
-            try{
-            switch(provider)
+            try
             {
-                case "google":
-                    return await LoginWithGoogle(idToken);
-                case "facebook":
-                    return await LoginWithFacebook(idToken);
-                case "twitter":
-                    return await LoginWithTwitter(idToken);
-                default:
-                    throw new Exception("Invalid provider");
-            }
+                switch(provider)
+                {
+                    case "google":
+                        return await LoginWithGoogle(idToken);
+                    case "facebook":
+                        return await LoginWithFacebook(idToken);
+                    case "twitter":
+                        return await LoginWithTwitter(idToken);
+                    default:
+                        throw new Exception("Invalid provider");
+                }
             }
             catch (Exception ex)
             {
                 throw(ex);
             }
         }
-
-
         private async Task<string> LoginWithGoogle(string idToken){
                 var credential = GoogleProvider.GetCredential(idToken);
                 userCredential = await client.SignInWithCredentialAsync(credential);
@@ -104,11 +103,9 @@ namespace CurryFit.model.user
         /// <summary>
         /// Logs out a user.
         /// </summary>
-        public Task Logout()
+        public void Logout()
         {
             client.SignOut();
-            return Task.CompletedTask;
-            
         }
         /// <summary>
         /// Signs up a user.
