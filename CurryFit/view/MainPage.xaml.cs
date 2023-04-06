@@ -39,6 +39,11 @@ namespace CurryFit
             await Navigation.PushAsync(new FoodPage());
         }
 
+        private async void Handle_WorkoutView(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WorkoutView());
+        }
+
         public async Task<List<Exercise>> GetAllExercises()
         {
 
@@ -87,5 +92,8 @@ namespace CurryFit
                 }
             
         }
+
+
+
     }
 }
