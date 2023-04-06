@@ -14,50 +14,12 @@
     <None Remove="resources\fonts\Montserrat-Semibold.ttf" />
     <None Remove="resources\fonts\Nunito-Semibold.ttf" />
     <None Remove="resources\font\Regin_small-Regular.ttf" />
-    <None Remove="resources\muscle-group-selector\images\ex_abs.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_base.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_biceps.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_calves.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_chest.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_delts.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_forearms.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_gluteusmaximus.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_gluteusmedius.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_hamstrings.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_innerthighs.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_lats.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_lowerback.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_obliques.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_quads.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_rhomboids.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_teres.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_traps.png" />
-    <None Remove="resources\muscle-group-selector\images\ex_triceps.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="resources\font\Montserrat-Semibold.ttf" />
     <EmbeddedResource Include="resources\font\Nunito-Semibold.ttf" />
     <EmbeddedResource Include="resources\font\Regin_small-Regular.ttf" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_abs.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_base.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_biceps.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_calves.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_chest.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_delts.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_forearms.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_gluteusmaximus.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_gluteusmedius.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_hamstrings.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_innerthighs.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_lats.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_lowerback.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_obliques.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_quads.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_rhomboids.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_teres.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_traps.png" />
-    <EmbeddedResource Include="resources\muscle-group-selector\images\ex_triceps.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="resources\muscle-group-selector\images\" />
     <Folder Include="viewmodel\" />
   </ItemGroup>
 

@@ -260,7 +260,7 @@
 
                                     <!--TITLE of workout-->
                                     <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                        <Label Text="Incline Bench Press" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+                                        <Label Text="Incline Bench Press" LineHeight="0.75" TextColor="{DynamicResource SPGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_empty.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
 
@@ -367,7 +367,7 @@
 
                                     <!--TITLE of workout-->
                                     <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                        <Label Text="Tricep Extensions" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+                                        <Label Text="Tricep Extensions" LineHeight="0.75" TextColor="{DynamicResource SPGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_empty.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
 
@@ -474,7 +474,7 @@
 
                                     <!--TITLE of workout-->
                                     <StackLayout  Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,0,0,0">
-                                        <Label Text="Bicep Curls" LineHeight="0.75" TextColor="{DynamicResource AshGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
+                                        <Label Text="Bicep Curls" LineHeight="0.75" TextColor="{DynamicResource SPGrey}" FontSize="20" FontFamily="N"  Padding="15,10,0,0" HorizontalOptions="Start" LineBreakMode="WordWrap"/>
                                         <Image Source="star_filled.png" HeightRequest="25" HorizontalOptions="EndAndExpand" Margin="0,5,8,0"/>
                                     </StackLayout>
 

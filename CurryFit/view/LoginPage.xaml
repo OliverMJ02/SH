@@ -30,9 +30,9 @@
                                     <StackLayout Orientation="Horizontal" Spacing="0"  WidthRequest="300" HorizontalOptions="Start">
                                         <Image Source="google_icon.png" HeightRequest="15" Scale="1" Margin="-4,0,0,0"/>
                                         <Label Text="Sign up with Google" FontFamily="N" HorizontalTextAlignment="Start"  TextColor="{DynamicResource RiceWhite}" FontSize="10" VerticalOptions="Center" Margin="8,-1,0,0"/>
-                                        <StackLayout.GestureRecognizers>
+                                        <!--<StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="Handle_GoogleLogin"></TapGestureRecognizer>
-                                        </StackLayout.GestureRecognizers>
+                                        </StackLayout.GestureRecognizers>-->
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
