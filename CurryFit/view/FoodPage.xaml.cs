@@ -59,17 +59,6 @@ namespace CurryFit.view
             double ProteinValBreakfast = 30; //Exmaple value for Protein in g
             double FatValBreakfast = 12; //Exmaple value for Fat in g
             double TotalConsumptionBreakfast = CarbValBreakfast + ProteinValBreakfast + FatValBreakfast; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Breakfast only)
-            if (TotalConsumptionBreakfast == 0)
-            {
-                TotalConsumptionBreakfast = 1;
-            }
-            double CarbRatioBreakfast = CarbValBreakfast / TotalConsumptionBreakfast;
-            double ProteinRatioBreakfast = ProteinValBreakfast / TotalConsumptionBreakfast;
-            double FatRatioBreakfast = FatValBreakfast / TotalConsumptionBreakfast;
-            BreakfastCarb.WidthRequest = CarbRatioBreakfast * 100;
-            BreakfastProtein.WidthRequest = ProteinRatioBreakfast * 100;
-            BreakfastFat.WidthRequest = FatRatioBreakfast * 100;
-
             if (TotalConsumptionBreakfast == 0) //Fungerar inte ATM
             {
                 BreakfastKcalText1.TextColor = Color.FromHex("#A6A0A6");
@@ -87,23 +76,22 @@ namespace CurryFit.view
             {
                 BreakfastFatText.TextColor = Color.FromHex("#A6A0A6");
             }
+            if (TotalConsumptionBreakfast == 0)
+            {
+                TotalConsumptionBreakfast = 1;
+            }
+            double CarbRatioBreakfast = CarbValBreakfast / TotalConsumptionBreakfast;
+            double ProteinRatioBreakfast = ProteinValBreakfast / TotalConsumptionBreakfast;
+            double FatRatioBreakfast = FatValBreakfast / TotalConsumptionBreakfast;
+            BreakfastCarb.WidthRequest = CarbRatioBreakfast * 100;
+            BreakfastProtein.WidthRequest = ProteinRatioBreakfast * 100;
+            BreakfastFat.WidthRequest = FatRatioBreakfast * 100;
 
             //LunchFrame
             double CarbValLunch = 58; //Exmaple value for Carbs in g
             double ProteinValLunch = 35; //Exmaple value for Protein in g
             double FatValLunch = 24; //Exmaple value for Fat in g
             double TotalConsumptionLunch = CarbValLunch + ProteinValLunch + FatValLunch; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Lunch only)
-            if (TotalConsumptionLunch == 0)
-            {
-                TotalConsumptionLunch = 1;
-            }
-            double CarbRatioLunch = CarbValLunch / TotalConsumptionLunch;
-            double ProteinRatioLunch = ProteinValLunch / TotalConsumptionLunch;
-            double FatRatioLunch = FatValLunch / TotalConsumptionLunch;
-            LunchCarb.WidthRequest = CarbRatioLunch * 100;
-            LunchProtein.WidthRequest = ProteinRatioLunch * 100;
-            LunchFat.WidthRequest = FatRatioLunch * 100;
-
             if (TotalConsumptionLunch == 0) //Fungerar inte ATM
             {
                 LunchKcalText1.TextColor = Color.FromHex("#A6A0A6");
@@ -121,23 +109,22 @@ namespace CurryFit.view
             {
                 LunchFatText.TextColor = Color.FromHex("#A6A0A6");
             }
+            if (TotalConsumptionLunch == 0)
+            {
+                TotalConsumptionLunch = 1;
+            }
+            double CarbRatioLunch = CarbValLunch / TotalConsumptionLunch;
+            double ProteinRatioLunch = ProteinValLunch / TotalConsumptionLunch;
+            double FatRatioLunch = FatValLunch / TotalConsumptionLunch;
+            LunchCarb.WidthRequest = CarbRatioLunch * 100;
+            LunchProtein.WidthRequest = ProteinRatioLunch * 100;
+            LunchFat.WidthRequest = FatRatioLunch * 100;
 
             //DinnerFrame
             double CarbValDinner = 66; //Exmaple value for Carbs in g
             double ProteinValDinner = 43; //Exmaple value for Protein in g
             double FatValDinner = 21; //Exmaple value for Fat in g
             double TotalConsumptionDinner = CarbValDinner + ProteinValDinner + FatValDinner; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Dinner only)
-            if (TotalConsumptionDinner == 0)
-            {
-                TotalConsumptionDinner = 1;
-            }
-            double CarbRatioDinner = CarbValDinner / TotalConsumptionDinner;
-            double ProteinRatioDinner = ProteinValDinner / TotalConsumptionDinner;
-            double FatRatioDinner = FatValDinner / TotalConsumptionDinner;
-            DinnerCarb.WidthRequest = CarbRatioDinner * 100;
-            DinnerProtein.WidthRequest = ProteinRatioDinner * 100;
-            DinnerFat.WidthRequest = FatRatioDinner * 100;
-
             if (TotalConsumptionDinner == 0) //Fungerar inte ATM
             {
                 DinnerKcalText1.TextColor = Color.FromHex("#A6A0A6");
@@ -155,26 +142,25 @@ namespace CurryFit.view
             {
                 DinnerFatText.TextColor = Color.FromHex("#A6A0A6");
             }
+            if (TotalConsumptionDinner == 0)
+            {
+                TotalConsumptionDinner = 1;
+            }
+            double CarbRatioDinner = CarbValDinner / TotalConsumptionDinner;
+            double ProteinRatioDinner = ProteinValDinner / TotalConsumptionDinner;
+            double FatRatioDinner = FatValDinner / TotalConsumptionDinner;
+            DinnerCarb.WidthRequest = CarbRatioDinner * 100;
+            DinnerProtein.WidthRequest = ProteinRatioDinner * 100;
+            DinnerFat.WidthRequest = FatRatioDinner * 100;
 
             //OtherFrame
             double CarbValOther = 0; //Exmaple value for Carbs in g
             double ProteinValOther = 0; //Exmaple value for Protein in g
             double FatValOther = 0; //Exmaple value for Fat in g
             double TotalConsumptionOther = CarbValOther + ProteinValOther + FatValOther; // Total Consumption in g = carbs in g + Protein in g + Fat in g (For Other only)
-            if (TotalConsumptionOther == 0)
-            {
-                TotalConsumptionOther = 1;
-            }
-            double CarbRatioOther = CarbValOther / TotalConsumptionOther;
-            double ProteinRatioOther = ProteinValOther / TotalConsumptionOther;
-            double FatRatioOther = FatValOther / TotalConsumptionOther;
-            OtherCarb.WidthRequest = CarbRatioOther * 100;
-            OtherProtein.WidthRequest = ProteinRatioOther * 100;
-            OtherFat.WidthRequest = FatRatioOther * 100;
-
             if (TotalConsumptionOther == 0) //Fungerar inte ATM
             {
-                OtherKcalText1.TextColor= Color.FromHex("#A6A0A6");
+                OtherKcalText1.TextColor = Color.FromHex("#A6A0A6");
                 OtherKcalText2.TextColor = Color.FromHex("#A6A0A6");
             }
             if (CarbValOther == 0)
@@ -189,6 +175,16 @@ namespace CurryFit.view
             {
                 OtherFatText.TextColor = Color.FromHex("#A6A0A6");
             }
+            if (TotalConsumptionOther == 0)
+            {
+                TotalConsumptionOther = 1;
+            }
+            double CarbRatioOther = CarbValOther / TotalConsumptionOther;
+            double ProteinRatioOther = ProteinValOther / TotalConsumptionOther;
+            double FatRatioOther = FatValOther / TotalConsumptionOther;
+            OtherCarb.WidthRequest = CarbRatioOther * 100;
+            OtherProtein.WidthRequest = ProteinRatioOther * 100;
+            OtherFat.WidthRequest = FatRatioOther * 100;
         }
 
         // CarbChart
