@@ -45,11 +45,20 @@ namespace CurryFit.model.api
         {
             List<FoodProduct.Nutrient> orderedNutrients = new List<FoodProduct.Nutrient>(nutrients.Count);
             List<FoodProduct.Nutrient> detailedNutrients = new List<FoodProduct.Nutrient>(nutrients.Count - 5);
+            splitNutrients(nutrients, orderedNutrients, detailedNutrients);
 
+            orderedNutrients.Sort((n1, n2) => nutrientOrder[n1.Name].CompareTo(nutrientOrder[n2.Name]));
+            orderedNutrients.AddRange(detailedNutrients);
+
+            return orderedNutrients;
+        }
+
+        private void splitNutrients(List<FoodProduct.Nutrient> nutrients, List<FoodProduct.Nutrient> orderedNutrients, List<FoodProduct.Nutrient> detailedNutrients)
+        {
             foreach (var nutrient in nutrients)
             {
                 if (nutrientOrder.ContainsKey(nutrient.Name))
-                {   
+                {
                     if (nutrient.Name == "Energi" && nutrient.Unit != "kcal")
                     {
                         detailedNutrients.Add(nutrient);
@@ -64,12 +73,6 @@ namespace CurryFit.model.api
                     detailedNutrients.Add(nutrient);
                 }
             }
-
-
-            orderedNutrients.Sort((n1, n2) => nutrientOrder[n1.Name].CompareTo(nutrientOrder[n2.Name]));
-            orderedNutrients.AddRange(detailedNutrients);
-
-            return orderedNutrients;
         }
 
         /// <summary>
