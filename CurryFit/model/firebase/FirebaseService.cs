@@ -7,7 +7,7 @@ using System.Linq;
 namespace CurryFit.model.firebase
 {
     /// <summary>
-    /// This class acts as a broker between the Firebase Database and the application.
+    /// This class acts as a broker and gives concrete implementation to the IFirebaseService interface.
     /// </summary>
     public class FirebaseService : IFirebaseService
     {
@@ -58,7 +58,6 @@ namespace CurryFit.model.firebase
             {
                 throw new Exception("Item does not exist");
             }
-
         }
         /// <summary>
         /// Checks if data exists in the Firebase Database.
