@@ -22,7 +22,6 @@ namespace CurryFit.view
             var xamarinHeight = deviceHeight / mainDisplayInfo.Density;
             var xamarinWidth = deviceWidth / mainDisplayInfo.Density;
         }
-
         private async void Handle_ToCreateAccount(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CreateAccountPage(authHandler));
@@ -31,8 +30,13 @@ namespace CurryFit.view
         {
             string email = emailEntry.Text.ToString();
             string password = passwordEntry.Text.ToString();
-            await authHandler.Login(email, password);
+            var result = await authHandler.Login(email, password);
+            await DisplayAlert("Success", "Logged in with" + result.ToString(), "OK");
         }
-        
+        private async void Handle_GoogleLogin(object sender, EventArgs e)
+        {
+            string idToken = null;
+            await authHandler.LoginWithProvider(idToken, "google");
+        }
     }
 }
