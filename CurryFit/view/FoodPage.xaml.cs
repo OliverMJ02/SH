@@ -70,6 +70,24 @@ namespace CurryFit.view
             BreakfastProtein.WidthRequest = ProteinRatioBreakfast * 100;
             BreakfastFat.WidthRequest = FatRatioBreakfast * 100;
 
+            if (TotalConsumptionBreakfast == 0) //Fungerar inte ATM
+            {
+                BreakfastKcalText1.TextColor = Color.FromHex("#A6A0A6");
+                BreakfastKcalText2.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (CarbValBreakfast == 0)
+            {
+                BreakfastCarbText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (ProteinValBreakfast == 0)
+            {
+                BreakfastProteinText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (FatValBreakfast == 0)
+            {
+                BreakfastFatText.TextColor = Color.FromHex("#A6A0A6");
+            }
+
             //LunchFrame
             double CarbValLunch = 58; //Exmaple value for Carbs in g
             double ProteinValLunch = 35; //Exmaple value for Protein in g
@@ -86,6 +104,24 @@ namespace CurryFit.view
             LunchProtein.WidthRequest = ProteinRatioLunch * 100;
             LunchFat.WidthRequest = FatRatioLunch * 100;
 
+            if (TotalConsumptionLunch == 0) //Fungerar inte ATM
+            {
+                LunchKcalText1.TextColor = Color.FromHex("#A6A0A6");
+                LunchKcalText2.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (CarbValLunch == 0)
+            {
+                LunchCarbText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (ProteinValLunch == 0)
+            {
+                LunchProteinText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (FatValLunch == 0)
+            {
+                LunchFatText.TextColor = Color.FromHex("#A6A0A6");
+            }
+
             //DinnerFrame
             double CarbValDinner = 66; //Exmaple value for Carbs in g
             double ProteinValDinner = 43; //Exmaple value for Protein in g
@@ -101,6 +137,24 @@ namespace CurryFit.view
             DinnerCarb.WidthRequest = CarbRatioDinner * 100;
             DinnerProtein.WidthRequest = ProteinRatioDinner * 100;
             DinnerFat.WidthRequest = FatRatioDinner * 100;
+
+            if (TotalConsumptionDinner == 0) //Fungerar inte ATM
+            {
+                DinnerKcalText1.TextColor = Color.FromHex("#A6A0A6");
+                DinnerKcalText2.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (CarbValDinner == 0)
+            {
+                DinnerCarbText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (ProteinValDinner == 0)
+            {
+                DinnerProteinText.TextColor = Color.FromHex("#A6A0A6");
+            }
+            if (FatValDinner == 0)
+            {
+                DinnerFatText.TextColor = Color.FromHex("#A6A0A6");
+            }
 
             //OtherFrame
             double CarbValOther = 0; //Exmaple value for Carbs in g

@@ -184,8 +184,8 @@
                                                     <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
                                                         <AbsoluteLayout HeightRequest="45">
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0">
-                                                                <Label Text="439" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
-                                                                <Label Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="BreakfastKcalText1" Text="439" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="BreakfastKcalText2" Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
                                                             </StackLayout>
                                                             <Frame x:Name="BreakfastChart" CornerRadius="5" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5,100,10" Padding="0,0,0,0">
                                                                 <StackLayout Orientation="Horizontal" Spacing="0">
@@ -195,9 +195,9 @@
                                                                 </StackLayout>
                                                             </Frame>
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1" Margin="0,0,0,5">
-                                                                <Label Text="42g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
-                                                                <Label Text="30g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
-                                                                <Label Text="12g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
+                                                                <Label x:Name="BreakfastCarbText" Text="42g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
+                                                                <Label x:Name="BreakfastProteinText" Text="30g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
+                                                                <Label x:Name="BreakfastFatText" Text="12g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
                                                             </StackLayout>
                                                         </AbsoluteLayout>
                                                     </StackLayout>
@@ -253,8 +253,8 @@
                                                     <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
                                                         <AbsoluteLayout HeightRequest="45">
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0">
-                                                                <Label Text="579" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
-                                                                <Label Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="LunchKcalText1" Text="579" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="LunchKcalText2" Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
                                                             </StackLayout>
                                                             <Frame x:Name="LunchChart" CornerRadius="5" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5,100,10" Padding="0,0,0,0">
                                                                 <StackLayout Orientation="Horizontal" Spacing="0">
@@ -264,9 +264,9 @@
                                                                 </StackLayout>
                                                             </Frame>
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1" Margin="0,0,0,5">
-                                                                <Label Text="58g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
-                                                                <Label Text="35g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
-                                                                <Label Text="24g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
+                                                                <Label x:Name="LunchCarbText" Text="58g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
+                                                                <Label x:Name="LunchProteinText" Text="35g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
+                                                                <Label x:Name="LunchFatText" Text="24g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
                                                             </StackLayout>
                                                         </AbsoluteLayout>
                                                     </StackLayout>
@@ -322,8 +322,8 @@
                                                     <StackLayout Orientation="Horizontal" Margin="0,0,10,0">
                                                         <AbsoluteLayout HeightRequest="45">
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0">
-                                                                <Label Text="664" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
-                                                                <Label Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="DinnerKcalText1" Text="664" FontSize="14" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
+                                                                <Label x:Name="DinnerKcalText2" Text="kcal" TextTransform="Uppercase" FontSize="10" FontFamily="M" TextColor="{DynamicResource RiceWhite}" VerticalTextAlignment="End"/>
                                                             </StackLayout>
                                                             <Frame x:Name="DinnerChart" CornerRadius="5" BorderColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,0.5,100,10" Padding="0,0,0,0">
                                                                 <StackLayout Orientation="Horizontal" Spacing="0">
@@ -333,9 +333,9 @@
                                                                 </StackLayout>
                                                             </Frame>
                                                             <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1" Margin="0,0,0,5">
-                                                                <Label Text="66g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
-                                                                <Label Text="43g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
-                                                                <Label Text="21g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
+                                                                <Label x:Name="DinnerCarbText" Text="66g" FontSize="10" TextColor="{DynamicResource CarbBlue}"/>
+                                                                <Label x:Name="DinnerProteinText" Text="43g" FontSize="10" TextColor="{DynamicResource ProteinRed}"/>
+                                                                <Label x:Name="DinnerFatText" Text="21g" FontSize="10" TextColor="{DynamicResource FatYellow}"/>
                                                             </StackLayout>
                                                         </AbsoluteLayout>
                                                     </StackLayout>
